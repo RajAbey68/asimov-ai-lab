@@ -285,6 +285,148 @@ const Assessment = () => {
               </CardContent>
             </Card>
 
+            {/* Compliance, Legal & Regulatory Risk Section */}
+            <Card className="border-border mb-16 bg-gradient-subtle">
+              <CardHeader>
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <Scale className="w-6 h-6 text-accent" />
+                  AI CI/CD: Addressing Compliance, Legal & Regulatory Risk
+                </CardTitle>
+                <CardDescription className="text-base">
+                  Transforming compliance from a point-in-time audit exercise into a continuous, automated governance process embedded throughout the ML lifecycle
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <p className="text-muted-foreground">
+                  AI CI/CD fundamentally transforms compliance because AI models are non-deterministic and their behavior emerges from training data, prompts, and user interactions—making traditional "check-the-box" compliance dangerously inadequate.
+                </p>
+
+                {/* Continuous Compliance Architecture */}
+                <div>
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <Shield className="w-5 h-5 text-accent" />
+                    Continuous Compliance Architecture
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="p-4 rounded-lg bg-background/50 border border-border">
+                      <h4 className="font-semibold text-accent mb-2">Automated Governance Checkpoints</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Integrated directly into CI/CD pipelines, ensuring every code commit, model update, and deployment undergoes compliance validation before progressing. This includes automated bias testing, privacy checks, security scans, and regulatory framework validation against standards like the EU AI Act, GDPR, NIST AI RMF, and industry-specific regulations.
+                      </p>
+                    </div>
+                    <div className="p-4 rounded-lg bg-background/50 border border-border">
+                      <h4 className="font-semibold text-accent mb-2">Audit Trail Automation</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Generates comprehensive documentation and lineage tracking throughout the ML lifecycle. Every data transformation, model training run, hyperparameter change, and deployment decision is logged with timestamps, actor accountability, and rationale—creating defensible evidence for regulators and auditors.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Risk Management Through Phase Gates */}
+                <div>
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <AlertCircle className="w-5 h-5 text-accent" />
+                    Compliance-Specific Phase Gate Checks
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      { phase: "Data Collection", checks: "Data privacy compliance (GDPR, HIPAA), ethical sourcing, bias assessment, consent management" },
+                      { phase: "Training", checks: "Model risk management policies, fairness metrics thresholds, explainability requirements, documentation standards" },
+                      { phase: "Validation", checks: "Bias audits, adversarial robustness testing, performance validation across protected demographic groups" },
+                      { phase: "Deployment", checks: "Security assessments, infrastructure compliance verification, model card documentation, risk committee sign-off" },
+                      { phase: "Inference", checks: "Real-time fairness monitoring, output filtering for harmful content, user consent verification" },
+                      { phase: "Monitoring", checks: "Continuous drift detection, performance degradation alerts, automated compliance reporting to regulatory bodies" }
+                    ].map((gate, i) => (
+                      <div key={i} className="p-4 rounded-lg bg-background/50 border border-border hover:border-accent/30 transition-colors">
+                        <h4 className="font-semibold text-accent mb-2">{gate.phase}</h4>
+                        <p className="text-sm text-muted-foreground">{gate.checks}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Industry-Specific Regulatory Alignment */}
+                <div>
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <Landmark className="w-5 h-5 text-accent" />
+                    Industry-Specific Regulatory Alignment
+                  </h3>
+                  <div className="space-y-3">
+                    <div className="p-4 rounded-lg bg-blue-500/5 border border-blue-500/20">
+                      <div className="flex items-start gap-3">
+                        <Building2 className="w-5 h-5 text-blue-500 mt-1 flex-shrink-0" />
+                        <div>
+                          <h4 className="font-semibold mb-1">Financial Services</h4>
+                          <p className="text-sm text-muted-foreground">
+                            Basel III capital requirements, Fair Lending Act provisions for credit decisioning, SEC AI risk disclosure guidelines. MLOps frameworks embed model risk management (MRM) practices including independent validation, back-testing, and stress testing directly into CI/CD workflows.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-4 rounded-lg bg-green-500/5 border border-green-500/20">
+                      <div className="flex items-start gap-3">
+                        <Heart className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
+                        <div>
+                          <h4 className="font-semibold mb-1">Healthcare & Life Sciences</h4>
+                          <p className="text-sm text-muted-foreground">
+                            HIPAA privacy requirements, FDA regulations for AI-powered diagnostics, EU AI Act high-risk classification. Pre-Cert Cybersecurity Plans (PCCP) and Total Product Lifecycle (TPLC) frameworks integrate with CI/CD to enable compliant adaptive ML models that can update post-deployment.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-4 rounded-lg bg-orange-500/5 border border-orange-500/20">
+                      <div className="flex items-start gap-3">
+                        <Shield className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
+                        <div>
+                          <h4 className="font-semibold mb-1">Critical Infrastructure & Defense</h4>
+                          <p className="text-sm text-muted-foreground">
+                            NIST AI Risk Management Framework standards, CISA security guidance, Executive Order 13960 on trustworthy AI in government.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Governance as Competitive Advantage */}
+                <div className="bg-accent/5 border border-accent/20 rounded-lg p-6">
+                  <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
+                    <Target className="w-5 h-5 text-accent" />
+                    Governance as Competitive Advantage: Speed with Control
+                  </h3>
+                  <p className="text-muted-foreground mb-4">
+                    Organizations with robust CI/CD foundations gain the ability to innovate rapidly while maintaining regulatory compliance through:
+                  </p>
+                  <ul className="space-y-2 text-sm text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                      <span><strong>Role-based accountability</strong> with clearly defined responsibilities for model owners, validators, approvers, and deployers</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                      <span><strong>Policy enforcement automation</strong> where compliance rules are codified as tests within pipelines, eliminating manual reviews</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                      <span><strong>Real-time risk visibility</strong> through dashboards showing compliance posture, control failures, and emerging risks across all deployed models</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                      <span><strong>Third-party model risk management</strong> ensuring vendor-supplied models, open-source components, and foundation models meet governance standards</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+                      <span><strong>AI agent autonomy controls</strong> with CI/CD guardrails defining operational boundaries, automated verification checks, and human-in-the-loop approval workflows</span>
+                    </li>
+                  </ul>
+                  <p className="text-muted-foreground mt-4 font-medium">
+                    This convergence of MLOps engineering rigor with AI governance policy creates <strong>compliance-by-design architectures</strong> where regulatory requirements become testable, transparent, and integrated into developer workflows rather than bolted-on audit afterthoughts.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Core Risk Pillars */}
             <div className="mb-16">
               <h2 className="text-3xl font-bold text-center mb-8">Core Risk Assessment Pillars</h2>
