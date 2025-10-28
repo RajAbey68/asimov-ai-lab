@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle, AlertCircle, TrendingUp, Shield, Lock, Scale, DollarSign, UserCheck, Lightbulb, Zap, Eye, RefreshCw, Target, Building2, Heart, Landmark } from "lucide-react";
+import { CheckCircle, AlertCircle, TrendingUp, Shield, Lock, Scale, DollarSign, UserCheck, Lightbulb, Zap, Eye, RefreshCw, Target, Building2, Heart, Landmark, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -44,12 +44,19 @@ const Assessment = () => {
             <div className="text-center mb-16">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
                 <Shield className="w-4 h-4 text-accent" />
-                <span className="text-sm text-accent font-medium">Built for Boardrooms, Regulators & Executive Decision-Makers</span>
+                <span className="text-sm text-accent font-medium">Expert AI Risk Assessment & Compliance</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">ASIMOV-AI Risk Method</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">ASIMOV-AI Risk Assessment Method</h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                A structured, cross-disciplinary governance framework to manage legal, ethical, and technical risks of AI systems
+                Our proven framework helps you identify, assess, and mitigate AI risks to achieve compliance with EU AI Act, NIST, and ISO/IEC 42001 standards
               </p>
+              <div className="mt-8">
+                <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-lg shadow-lg">
+                  <a href="#request-form">
+                    Request Free Assessment <ArrowRight className="ml-2 w-5 h-5" />
+                  </a>
+                </Button>
+              </div>
             </div>
 
             {/* Compliance Illustration */}
@@ -280,7 +287,11 @@ const Assessment = () => {
             </Card>
 
             {/* Request Assessment Form */}
-            <div className="max-w-4xl mx-auto">
+            <div id="request-form" className="max-w-4xl mx-auto scroll-mt-24">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
+                <p className="text-xl text-muted-foreground">Get your free AI risk assessment within 24-48 hours</p>
+              </div>
               <div className="grid md:grid-cols-3 gap-6 mb-12">
                 {[
                   { icon: CheckCircle, title: "24-48 Hour Turnaround", desc: "Fast analysis without compromising quality" },
@@ -299,9 +310,9 @@ const Assessment = () => {
 
               <Card className="border-border">
                 <CardHeader>
-                  <CardTitle>Request an Assessment</CardTitle>
-                  <CardDescription>
-                    Fill out the form below and our team will begin your ASIMOV-AI risk assessment
+                  <CardTitle className="text-2xl">Start Your Free Risk Assessment</CardTitle>
+                  <CardDescription className="text-base">
+                    Our experts will analyze your AI system and provide actionable recommendations for compliance
                   </CardDescription>
                 </CardHeader>
               <CardContent>

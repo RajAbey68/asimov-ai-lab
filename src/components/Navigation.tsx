@@ -30,7 +30,7 @@ const Navigation = () => {
           </div>
 
           <Button asChild className="bg-accent hover:bg-accent/90">
-            <Link to="/assessment">Get Started</Link>
+            <Link to="/assessment">Book Consultation</Link>
           </Button>
         </div>
       </div>
