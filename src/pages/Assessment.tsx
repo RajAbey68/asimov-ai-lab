@@ -62,6 +62,14 @@ const Assessment = () => {
                 <p>
                   Developed in response to the growing complexity of AI risk, the methodology combines traditional audit disciplines with AI-specific safeguards. It aligns to global standards including the <strong>EU AI Act</strong>, <strong>NIST AI Risk Management Framework</strong>, and <strong>ISO/IEC 42001</strong>, enabling organisations to achieve practical compliance while maintaining operational agility.
                 </p>
+                <div className="pt-4">
+                  <Button asChild variant="outline" className="gap-2">
+                    <a href="/framework">
+                      <Eye className="w-4 h-4" />
+                      View Detailed Framework
+                    </a>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
 

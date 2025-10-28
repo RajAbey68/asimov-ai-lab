@@ -21,6 +21,9 @@ const Navigation = () => {
             <Link to="/assessment" className="text-foreground hover:text-accent transition-colors">
               AI Assessment
             </Link>
+            <Link to="/framework" className="text-foreground hover:text-accent transition-colors">
+              Framework
+            </Link>
             <Link to="/resources" className="text-foreground hover:text-accent transition-colors">
               Resources
             </Link>
