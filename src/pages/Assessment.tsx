@@ -4,6 +4,7 @@ import ContactInfo from "@/components/ContactInfo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import assessmentBg from "@/assets/assessment-bg.jpg";
 import aiCompliance from "@/assets/ai-compliance.jpg";
+import aiMlLifecycle from "@/assets/ai-ml-lifecycle.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -181,59 +182,95 @@ const Assessment = () => {
                   Unlike traditional waterfall development, the AI/ML lifecycle operates as a <strong>continuous, iterative process</strong> where models are constantly refined and improved
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-8">
                 <p className="text-muted-foreground">
                   Each phase includes both quantitative and qualitative gates that determine whether to proceed or iterate back. This enables organizations to maintain quality, compliance, and performance throughout the model lifecycle.
                 </p>
 
-                {/* Quantitative Phase Gates */}
-                <div>
-                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5 text-accent" />
-                    Quantitative Phase Gates
-                  </h3>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {[
-                      { phase: "Data Collection", metrics: "Dataset size, data quality metrics, missing value percentages, class balance ratios" },
-                      { phase: "Training", metrics: "Loss function values, convergence rates, training time, resource utilization metrics" },
-                      { phase: "Validation", metrics: "Accuracy, precision, recall, F1-score, AUC-ROC, validation loss thresholds" },
-                      { phase: "Deployment", metrics: "Latency benchmarks, throughput capacity, API response times, resource consumption" },
-                      { phase: "Inference", metrics: "Prediction speed, batch processing times, real-time performance metrics" },
-                      { phase: "Monitoring", metrics: "Model drift detection scores, performance degradation rates, data distribution shifts" }
-                    ].map((gate, i) => (
-                      <div key={i} className="p-4 rounded-lg bg-background/50 border border-border hover:border-accent/30 transition-colors">
-                        <h4 className="font-semibold text-accent mb-2">{gate.phase}</h4>
-                        <p className="text-sm text-muted-foreground">{gate.metrics}</p>
-                      </div>
-                    ))}
-                  </div>
+                {/* Lifecycle Diagram */}
+                <div className="flex justify-center my-8">
+                  <img 
+                    src={aiMlLifecycle} 
+                    alt="AI/ML Lifecycle showing continuous flow between Data Collection, Training, Validation, Inference, Monitoring, and Deployment phases with alternating quantitative and qualitative gates" 
+                    className="max-w-md w-full h-auto"
+                  />
                 </div>
 
-                {/* Qualitative Phase Gates */}
+                {/* Concrete Examples Table */}
                 <div>
-                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                    <UserCheck className="w-5 h-5 text-accent" />
-                    Qualitative Phase Gates
-                  </h3>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {[
-                      { phase: "Data Collection", criteria: "Data relevance assessment, ethical compliance review, bias evaluation, source credibility" },
-                      { phase: "Training", criteria: "Algorithm selection rationale, hyperparameter tuning decisions, feature engineering quality" },
-                      { phase: "Validation", criteria: "Edge case performance, business requirement alignment, stakeholder acceptance" },
-                      { phase: "Deployment", criteria: "Infrastructure readiness, security compliance, documentation completeness, team preparedness" },
-                      { phase: "Inference", criteria: "User experience quality, business value delivery, interpretability assessment" },
-                      { phase: "Monitoring", criteria: "Stakeholder feedback, operational insights, retraining triggers, governance compliance" }
-                    ].map((gate, i) => (
-                      <div key={i} className="p-4 rounded-lg bg-background/50 border border-border hover:border-accent/30 transition-colors">
-                        <h4 className="font-semibold text-accent mb-2">{gate.phase}</h4>
-                        <p className="text-sm text-muted-foreground">{gate.criteria}</p>
-                      </div>
-                    ))}
+                  <h3 className="text-xl font-bold mb-4 text-center">Concrete Phase Gate Examples</h3>
+                  <p className="text-muted-foreground text-center mb-6">
+                    Here are practical examples of quantitative and qualitative phase gates for each stage in the AI/ML lifecycle:
+                  </p>
+                  
+                  <div className="overflow-x-auto">
+                    <table className="w-full border-collapse">
+                      <thead>
+                        <tr className="border-b-2 border-border">
+                          <th className="text-left p-4 font-bold bg-accent/10">Phase</th>
+                          <th className="text-left p-4 font-bold bg-accent/10">Quantitative Gate Example</th>
+                          <th className="text-left p-4 font-bold bg-accent/10">Qualitative Gate Example</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b border-border hover:bg-accent/5 transition-colors">
+                          <td className="p-4 font-semibold">Data Collection</td>
+                          <td className="p-4 text-muted-foreground">Minimum data volume (e.g. &gt;10,000 samples), missing value rate</td>
+                          <td className="p-4 text-muted-foreground">Data source credibility, ethical and bias review</td>
+                        </tr>
+                        <tr className="border-b border-border hover:bg-accent/5 transition-colors">
+                          <td className="p-4 font-semibold">Training</td>
+                          <td className="p-4 text-muted-foreground">Training loss &lt; threshold, convergence in &lt;N epochs</td>
+                          <td className="p-4 text-muted-foreground">Proper algorithm selection, code & notebook quality</td>
+                        </tr>
+                        <tr className="border-b border-border hover:bg-accent/5 transition-colors">
+                          <td className="p-4 font-semibold">Validation</td>
+                          <td className="p-4 text-muted-foreground">Validation accuracy &gt; 95%, AUC-ROC &gt; 0.9</td>
+                          <td className="p-4 text-muted-foreground">Stakeholder acceptance, correct result interpretation</td>
+                        </tr>
+                        <tr className="border-b border-border hover:bg-accent/5 transition-colors">
+                          <td className="p-4 font-semibold">Deployment</td>
+                          <td className="p-4 text-muted-foreground">Latency &lt; 100ms, uptime &gt; 99%</td>
+                          <td className="p-4 text-muted-foreground">Production readiness, documentation & compliance</td>
+                        </tr>
+                        <tr className="border-b border-border hover:bg-accent/5 transition-colors">
+                          <td className="p-4 font-semibold">Inference</td>
+                          <td className="p-4 text-muted-foreground">Expected throughput, memory usage &lt; target limit</td>
+                          <td className="p-4 text-muted-foreground">Result interpretability, user experience check</td>
+                        </tr>
+                        <tr className="hover:bg-accent/5 transition-colors">
+                          <td className="p-4 font-semibold">Monitoring</td>
+                          <td className="p-4 text-muted-foreground">No significant drift detected, error rate &lt; 2%</td>
+                          <td className="p-4 text-muted-foreground">Incident review, business value alignment</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-4 mt-6">
+                    <div className="p-4 rounded-lg bg-accent/5 border border-accent/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <TrendingUp className="w-5 h-5 text-accent" />
+                        Quantitative Gates
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        Numeric thresholds or measurable performance criteria that must be met to advance
+                      </p>
+                    </div>
+                    <div className="p-4 rounded-lg bg-accent/5 border border-accent/20">
+                      <h4 className="font-bold mb-2 flex items-center gap-2">
+                        <UserCheck className="w-5 h-5 text-accent" />
+                        Qualitative Gates
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        Expert assessments, code reviews, documentation checks, or business alignment requirements before proceeding
+                      </p>
+                    </div>
                   </div>
                 </div>
 
                 {/* CI/CD in ML Operations */}
-                <div className="bg-accent/5 border border-accent/20 rounded-lg p-6 mt-6">
+                <div className="bg-accent/5 border border-accent/20 rounded-lg p-6">
                   <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
                     <RefreshCw className="w-5 h-5 text-accent" />
                     CI/CD in ML Operations
