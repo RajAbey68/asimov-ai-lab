@@ -1,6 +1,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Shield, Rocket, FileCheck, Users, Layers, Sparkles } from "lucide-react";
 import servicesBg from "@/assets/services-bg.jpg";
+import riskAssessmentImg from "@/assets/risk-assessment-team.jpg";
+import projectDeliveryImg from "@/assets/project-delivery.jpg";
+import rapidAssessmentImg from "@/assets/rapid-assessment.jpg";
+import expertConsultationImg from "@/assets/expert-consultation.jpg";
+import integrationSupportImg from "@/assets/integration-support.jpg";
+import continuousMonitoringImg from "@/assets/continuous-monitoring.jpg";
 
 const Services = () => {
   const services = [
@@ -8,37 +14,43 @@ const Services = () => {
       icon: Shield,
       title: "AI Risk Assessment",
       description: "Comprehensive evaluation of AI systems to identify vulnerabilities, compliance gaps, and operational risks before deployment.",
-      features: ["Regulatory Compliance", "Security Analysis", "Bias Detection", "Impact Assessment"]
+      features: ["Regulatory Compliance", "Security Analysis", "Bias Detection", "Impact Assessment"],
+      image: riskAssessmentImg
     },
     {
       icon: Rocket,
       title: "AI Project Delivery",
       description: "End-to-end execution of AI initiatives from strategy to deployment, ensuring quality, speed, and alignment with business goals.",
-      features: ["Strategy Development", "Model Development", "Integration Services", "Performance Optimization"]
+      features: ["Strategy Development", "Model Development", "Integration Services", "Performance Optimization"],
+      image: projectDeliveryImg
     },
     {
       icon: FileCheck,
       title: "Rapid Assessment",
       description: "Quick turnaround risk evaluation for time-sensitive projects, delivering actionable insights in days, not weeks.",
-      features: ["Fast Analysis", "Priority Scoring", "Immediate Recommendations", "Compliance Checking"]
+      features: ["Fast Analysis", "Priority Scoring", "Immediate Recommendations", "Compliance Checking"],
+      image: rapidAssessmentImg
     },
     {
       icon: Users,
       title: "Expert Consultation",
       description: "Access to seasoned AI professionals who provide strategic guidance and technical expertise throughout your AI journey.",
-      features: ["Technical Advisory", "Best Practices", "Architecture Review", "Team Training"]
+      features: ["Technical Advisory", "Best Practices", "Architecture Review", "Team Training"],
+      image: expertConsultationImg
     },
     {
       icon: Layers,
       title: "Integration Support",
       description: "Seamless integration of AI solutions into your existing infrastructure with minimal disruption and maximum efficiency.",
-      features: ["API Integration", "Legacy System Support", "Cloud Migration", "Workflow Automation"]
+      features: ["API Integration", "Legacy System Support", "Cloud Migration", "Workflow Automation"],
+      image: integrationSupportImg
     },
     {
       icon: Sparkles,
       title: "Continuous Monitoring",
       description: "Ongoing surveillance of deployed AI systems to ensure sustained performance, security, and compliance over time.",
-      features: ["Real-time Monitoring", "Drift Detection", "Performance Metrics", "Alert Management"]
+      features: ["Real-time Monitoring", "Drift Detection", "Performance Metrics", "Alert Management"],
+      image: continuousMonitoringImg
     }
   ];
 
@@ -58,11 +70,19 @@ const Services = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
-            <Card key={index} className="border-border hover:border-accent/50 transition-all hover:shadow-lg group">
-              <CardHeader>
-                <div className="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <Card key={index} className="border-border hover:border-accent/50 transition-all hover:shadow-lg group overflow-hidden">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={service.image} 
+                  alt={`${service.title} - Professional visualization of AI services`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+                <div className="absolute bottom-4 left-4 w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center shadow-lg">
                   <service.icon className="w-6 h-6 text-accent-foreground" />
                 </div>
+              </div>
+              <CardHeader>
                 <CardTitle className="text-xl">{service.title}</CardTitle>
                 <CardDescription className="text-base">{service.description}</CardDescription>
               </CardHeader>
