@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import resourcesBg from "@/assets/resources-bg.jpg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { FileText, Video, ExternalLink, Download } from "lucide-react";
@@ -48,8 +49,12 @@ const Resources = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <div className="pt-24 pb-16">
-        <div className="container mx-auto px-4">
+      <div className="pt-24 pb-16 relative">
+        <div className="absolute inset-0 z-0">
+          <img src={resourcesBg} alt="" className="w-full h-full object-cover opacity-5" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">Resources</h1>

@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Shield, Rocket, FileCheck, Users, Layers, Sparkles } from "lucide-react";
+import servicesBg from "@/assets/services-bg.jpg";
 
 const Services = () => {
   const services = [
@@ -42,8 +43,12 @@ const Services = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-subtle">
-      <div className="container mx-auto px-4">
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <img src={servicesBg} alt="" className="w-full h-full object-cover opacity-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background/95" />
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">

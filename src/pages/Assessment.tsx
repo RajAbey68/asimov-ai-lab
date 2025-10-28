@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import assessmentBg from "@/assets/assessment-bg.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -30,8 +31,12 @@ const Assessment = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <div className="pt-24 pb-16">
-        <div className="container mx-auto px-4">
+      <div className="pt-24 pb-16 relative">
+        <div className="absolute inset-0 z-0">
+          <img src={assessmentBg} alt="" className="w-full h-full object-cover opacity-5" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
             {/* Hero Section */}
             <div className="text-center mb-16">
