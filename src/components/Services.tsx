@@ -45,8 +45,8 @@ const Services = () => {
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <img src={servicesBg} alt="" className="w-full h-full object-cover opacity-20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/90 to-background/80" />
+        <img src={servicesBg} alt="" className="w-full h-full object-cover opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/85 to-background/75" />
       </div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">

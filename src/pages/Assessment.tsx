@@ -33,8 +33,8 @@ const Assessment = () => {
       
       <div className="pt-24 pb-16 relative">
         <div className="absolute inset-0 z-0">
-          <img src={assessmentBg} alt="" className="w-full h-full object-cover opacity-20" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/90 to-background" />
+          <img src={assessmentBg} alt="" className="w-full h-full object-cover opacity-40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/85 to-background" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
