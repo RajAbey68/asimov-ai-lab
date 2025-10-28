@@ -120,35 +120,30 @@ const Assessment = () => {
                   {
                     icon: Lightbulb,
                     title: "CONCEPT",
-                    desc: "Initial AI system design, requirement gathering, stakeholder alignment, and risk tiering",
                     bgColor: "bg-blue-500/10",
                     iconColor: "text-blue-500"
                   },
                   {
                     icon: Zap,
                     title: "DEVELOP",
-                    desc: "Build and train models, integrate data pipelines, document decisions, and implement controls",
                     bgColor: "bg-purple-500/10",
                     iconColor: "text-purple-500"
                   },
                   {
                     icon: CheckCircle,
                     title: "VALIDATE",
-                    desc: "Test against requirements, verify compliance controls, create audit trails, and documentation",
                     bgColor: "bg-green-500/10",
                     iconColor: "text-green-500"
                   },
                   {
                     icon: Eye,
                     title: "MONITOR",
-                    desc: "Continuous monitoring, performance tracking, model drift detection, and incident response",
                     bgColor: "bg-orange-500/10",
                     iconColor: "text-orange-500"
                   },
                   {
                     icon: RefreshCw,
                     title: "DEPLOY",
-                    desc: "Roll out to production, user training, change management, and stakeholder communication",
                     bgColor: "bg-cyan-500/10",
                     iconColor: "text-cyan-500"
                   }
@@ -158,8 +153,7 @@ const Assessment = () => {
                       <div className={`w-16 h-16 rounded-full ${phase.bgColor} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
                         <phase.icon className={`w-8 h-8 ${phase.iconColor}`} />
                       </div>
-                      <CardTitle className="text-lg font-bold mb-3">{phase.title}</CardTitle>
-                      <CardDescription className="text-sm leading-relaxed">{phase.desc}</CardDescription>
+                      <CardTitle className="text-lg font-bold">{phase.title}</CardTitle>
                     </CardHeader>
                   </Card>
                 ))}
