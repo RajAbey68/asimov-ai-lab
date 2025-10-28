@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import assessmentBg from "@/assets/assessment-bg.jpg";
 import aiCompliance from "@/assets/ai-compliance.jpg";
-import asimovIterative from "@/assets/asimov-iterative.jpg";
+import IterativeCycleDiagram from "@/components/IterativeCycleDiagram";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -111,13 +111,7 @@ const Assessment = () => {
 
               {/* ASIMOV Iterative Method Infographic */}
               <div className="mb-12 flex justify-center">
-                <div className="relative max-w-5xl">
-                  <img 
-                    src={asimovIterative} 
-                    alt="ASIMOV AI Risk Methodology showing five iterative phases with bidirectional arrows: Concept & Design, Development, Validation & Testing, Deployment, and Monitoring & Review" 
-                    className="w-full h-auto rounded-xl shadow-xl"
-                  />
-                </div>
+                <IterativeCycleDiagram />
               </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
