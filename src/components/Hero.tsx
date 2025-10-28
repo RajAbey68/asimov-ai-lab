@@ -25,9 +25,9 @@ const Hero = () => {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground leading-tight">
-            Navigate AI with
+            Confidence. Clarity. Control.
             <span className="block bg-gradient-accent bg-clip-text text-transparent">
-              Confidence & Precision
+              Your Path to Responsible AI.
             </span>
           </h1>
 
