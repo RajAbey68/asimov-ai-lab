@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import assessmentBg from "@/assets/assessment-bg.jpg";
 import aiCompliance from "@/assets/ai-compliance.jpg";
-import asimovMethod from "@/assets/asimov-method.jpg";
+import asimovIterative from "@/assets/asimov-iterative.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -98,17 +98,23 @@ const Assessment = () => {
 
             {/* 5 Core Phases */}
             <div className="mb-16">
-              <h2 className="text-3xl font-bold text-center mb-8">Lifecycle-Based Approach</h2>
-              <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Five core phases integrated with LifeWise domain experts embedded at concept stage to reduce rework and anticipate sectoral risk
+              <h2 className="text-3xl font-bold text-center mb-8">Iterative Lifecycle Approach</h2>
+              <p className="text-center text-muted-foreground mb-4 max-w-2xl mx-auto">
+                Five core phases integrated with domain experts embedded at concept stage to reduce rework and anticipate sectoral risk
               </p>
+              <div className="flex items-center justify-center gap-2 mb-8">
+                <RefreshCw className="w-5 h-5 text-accent" />
+                <p className="text-center text-accent font-semibold">
+                  This is NOT a waterfall process - each phase can iterate and feed back to previous phases
+                </p>
+              </div>
 
-              {/* ASIMOV Method Infographic */}
+              {/* ASIMOV Iterative Method Infographic */}
               <div className="mb-12 flex justify-center">
                 <div className="relative max-w-5xl">
                   <img 
-                    src={asimovMethod} 
-                    alt="ASIMOV AI Risk Methodology showing five interconnected phases: Concept, Development, Validation, Deployment, and Monitoring" 
+                    src={asimovIterative} 
+                    alt="ASIMOV AI Risk Methodology showing five iterative phases with bidirectional arrows: Concept & Design, Development, Validation & Testing, Deployment, and Monitoring & Review" 
                     className="w-full h-auto rounded-xl shadow-xl"
                   />
                 </div>
