@@ -4,7 +4,6 @@ import ContactInfo from "@/components/ContactInfo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import assessmentBg from "@/assets/assessment-bg.jpg";
 import aiCompliance from "@/assets/ai-compliance.jpg";
-import IterativeCycleDiagram from "@/components/IterativeCycleDiagram";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -106,74 +105,71 @@ const Assessment = () => {
               </CardContent>
             </Card>
 
-            {/* 5 Core Phases */}
+            {/* 5 Core Phases - Iterative Lifecycle */}
             <div className="mb-16">
-              <h2 className="text-3xl font-bold text-center mb-8">Iterative Lifecycle Approach</h2>
-              <p className="text-center text-muted-foreground mb-4 max-w-2xl mx-auto">
-                Five core phases integrated with domain experts embedded at concept stage to reduce rework and anticipate sectoral risk
-              </p>
-              <div className="flex items-center justify-center gap-2 mb-8">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">ITERATIVE LIFECYCLE</h2>
+                <p className="text-lg text-accent font-semibold mb-2">CONTINUOUS IMPROVEMENT</p>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Five core phases integrated with domain experts embedded at concept stage to reduce rework and anticipate sectoral risk
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+                {[
+                  {
+                    icon: Lightbulb,
+                    title: "CONCEPT",
+                    desc: "Initial AI system design, requirement gathering, stakeholder alignment, and risk tiering",
+                    bgColor: "bg-blue-500/10",
+                    iconColor: "text-blue-500"
+                  },
+                  {
+                    icon: Zap,
+                    title: "DEVELOP",
+                    desc: "Build and train models, integrate data pipelines, document decisions, and implement controls",
+                    bgColor: "bg-purple-500/10",
+                    iconColor: "text-purple-500"
+                  },
+                  {
+                    icon: CheckCircle,
+                    title: "VALIDATE",
+                    desc: "Test against requirements, verify compliance controls, create audit trails, and documentation",
+                    bgColor: "bg-green-500/10",
+                    iconColor: "text-green-500"
+                  },
+                  {
+                    icon: Eye,
+                    title: "MONITOR",
+                    desc: "Continuous monitoring, performance tracking, model drift detection, and incident response",
+                    bgColor: "bg-orange-500/10",
+                    iconColor: "text-orange-500"
+                  },
+                  {
+                    icon: RefreshCw,
+                    title: "DEPLOY",
+                    desc: "Roll out to production, user training, change management, and stakeholder communication",
+                    bgColor: "bg-cyan-500/10",
+                    iconColor: "text-cyan-500"
+                  }
+                ].map((phase) => (
+                  <Card key={phase.title} className="border-border hover:border-accent/50 transition-all hover:shadow-lg group">
+                    <CardHeader className="text-center">
+                      <div className={`w-16 h-16 rounded-full ${phase.bgColor} flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
+                        <phase.icon className={`w-8 h-8 ${phase.iconColor}`} />
+                      </div>
+                      <CardTitle className="text-lg font-bold mb-3">{phase.title}</CardTitle>
+                      <CardDescription className="text-sm leading-relaxed">{phase.desc}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
+
+              <div className="flex items-center justify-center gap-2 mt-8">
                 <RefreshCw className="w-5 h-5 text-accent" />
                 <p className="text-center text-accent font-semibold">
                   This is NOT a waterfall process - each phase can iterate and feed back to previous phases
                 </p>
-              </div>
-
-              {/* ASIMOV Iterative Method Infographic */}
-              <div className="mb-12 flex justify-center">
-                <IterativeCycleDiagram />
-              </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {[
-                  {
-                    phase: "1",
-                    icon: Lightbulb,
-                    title: "Concept & Design",
-                    desc: "Risk tiering, regulatory mapping, and stakeholder profiling",
-                    color: "text-blue-600"
-                  },
-                  {
-                    phase: "2",
-                    icon: Zap,
-                    title: "Development",
-                    desc: "Secure AI development lifecycle with embedded privacy and bias controls",
-                    color: "text-purple-600"
-                  },
-                  {
-                    phase: "3",
-                    icon: CheckCircle,
-                    title: "Pre-Deployment",
-                    desc: "Compliance validation and conformance documentation",
-                    color: "text-green-600"
-                  },
-                  {
-                    phase: "4",
-                    icon: Eye,
-                    title: "Monitoring",
-                    desc: "Real-time dashboards, model drift tracking, and incident logging",
-                    color: "text-orange-600"
-                  },
-                  {
-                    phase: "5",
-                    icon: RefreshCw,
-                    title: "Continuous Improvement",
-                    desc: "Post-incident learning and policy refresh cycles",
-                    color: "text-cyan-600"
-                  }
-                ].map((item) => (
-                  <Card key={item.phase} className="border-border hover:border-accent/50 transition-all group relative overflow-hidden">
-                    <div className="absolute top-4 right-4 text-6xl font-bold text-muted/10 group-hover:text-muted/20 transition-colors">
-                      {item.phase}
-                    </div>
-                    <CardHeader>
-                      <div className={`w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4 ${item.color}`}>
-                        <item.icon className="w-6 h-6" />
-                      </div>
-                      <CardTitle className="text-lg">{item.title}</CardTitle>
-                      <CardDescription>{item.desc}</CardDescription>
-                    </CardHeader>
-                  </Card>
-                ))}
               </div>
             </div>
 
