@@ -3,6 +3,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Lightbulb, Hammer, Settings, Users, AlertTriangle, Shield, Scale, Lock, Eye, CheckCircle, RefreshCw } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import aiRiskIllustration from "@/assets/ai-risk-illustration.jpg";
+import aiGovernance from "@/assets/ai-governance.jpg";
 
 const Framework = () => {
   const phases = [
@@ -154,6 +156,27 @@ const Framework = () => {
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 A structured approach to managing AI risks across four critical lifecycle phases: Design, Build, Operate, and Usage
               </p>
+            </div>
+
+            {/* AI Risk Illustration */}
+            <div className="mb-16">
+              <Card className="border-border overflow-hidden">
+                <div className="relative h-[400px] md:h-[500px]">
+                  <img 
+                    src={aiRiskIllustration} 
+                    alt="AI Risk Management illustration showing neural network with warning symbols, data bias, security shields, and privacy protection" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent flex items-end">
+                    <div className="p-8 w-full">
+                      <h2 className="text-2xl md:text-3xl font-bold mb-2">Understanding AI Risk Dimensions</h2>
+                      <p className="text-muted-foreground max-w-3xl">
+                        AI systems present multifaceted risks spanning bias, security vulnerabilities, privacy concerns, and ethical considerations. Effective risk management requires addressing each dimension across the system lifecycle.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
             </div>
 
             {/* Lifecycle Visualization */}
@@ -315,6 +338,17 @@ const Framework = () => {
               <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
                 When it comes to ethical and societal considerations in AI, there is no single global standard — but several leading frameworks, principles, and emerging standards are widely adopted across jurisdictions and sectors
               </p>
+
+              {/* AI Governance Illustration */}
+              <div className="mb-8 flex justify-center">
+                <div className="relative max-w-md">
+                  <img 
+                    src={aiGovernance} 
+                    alt="AI Governance Framework showing interconnected pillars of Ethics, Compliance, Security, Fairness, and Experience" 
+                    className="w-full h-auto rounded-lg shadow-lg"
+                  />
+                </div>
+              </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-8">
                 {[
