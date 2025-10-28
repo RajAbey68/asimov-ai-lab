@@ -1,6 +1,8 @@
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import assessmentBg from "@/assets/assessment-bg.jpg";
+import aiCompliance from "@/assets/ai-compliance.jpg";
+import asimovMethod from "@/assets/asimov-method.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -50,6 +52,27 @@ const Assessment = () => {
               </p>
             </div>
 
+            {/* Compliance Illustration */}
+            <div className="mb-12">
+              <Card className="border-border overflow-hidden">
+                <div className="relative h-[400px]">
+                  <img 
+                    src={aiCompliance} 
+                    alt="AI Compliance and Assessment showing checklists, risk matrices, regulatory documents, and compliance badges" 
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent flex items-end">
+                    <div className="p-8 w-full">
+                      <h2 className="text-2xl md:text-3xl font-bold mb-2">Comprehensive Risk Assessment</h2>
+                      <p className="text-muted-foreground max-w-3xl">
+                        Our methodology provides systematic evaluation across legal, ethical, and technical dimensions to ensure AI systems meet regulatory requirements and organizational standards.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
             {/* Overview Section */}
             <Card className="border-border mb-12 bg-gradient-subtle">
               <CardHeader>
@@ -79,6 +102,17 @@ const Assessment = () => {
               <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Five core phases integrated with LifeWise domain experts embedded at concept stage to reduce rework and anticipate sectoral risk
               </p>
+
+              {/* ASIMOV Method Infographic */}
+              <div className="mb-12 flex justify-center">
+                <div className="relative max-w-5xl">
+                  <img 
+                    src={asimovMethod} 
+                    alt="ASIMOV AI Risk Methodology showing five interconnected phases: Concept, Development, Validation, Deployment, and Monitoring" 
+                    className="w-full h-auto rounded-xl shadow-xl"
+                  />
+                </div>
+              </div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                   {

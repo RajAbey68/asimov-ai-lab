@@ -5,6 +5,7 @@ import { Lightbulb, Hammer, Settings, Users, AlertTriangle, Shield, Scale, Lock,
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import aiRiskIllustration from "@/assets/ai-risk-illustration.jpg";
 import aiGovernance from "@/assets/ai-governance.jpg";
+import aiLifecycle from "@/assets/ai-lifecycle.jpg";
 
 const Framework = () => {
   const phases = [
@@ -264,6 +265,17 @@ const Framework = () => {
               <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
                 Categorizing AI system risks into Design, Build, Operate, and Usage phases aligns with global frameworks including the EU AI Act, NIST AI RMF, and ISO/IEC 42001
               </p>
+
+              {/* Lifecycle Illustration */}
+              <div className="mb-12 flex justify-center">
+                <div className="relative max-w-2xl">
+                  <img 
+                    src={aiLifecycle} 
+                    alt="AI Lifecycle phases showing Design, Build, Operate, and Usage as interconnected stages" 
+                    className="w-full h-auto rounded-xl shadow-xl"
+                  />
+                </div>
+              </div>
               
               <div className="space-y-6">
                 {phases.map((phase, index) => (
