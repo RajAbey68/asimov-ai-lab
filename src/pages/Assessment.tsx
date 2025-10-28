@@ -173,6 +173,77 @@ const Assessment = () => {
               </div>
             </div>
 
+            {/* CI/CD Explanation Section */}
+            <Card className="border-border mb-16 bg-gradient-subtle">
+              <CardHeader>
+                <CardTitle className="text-2xl">Continuous Integration & Deployment in AI/ML</CardTitle>
+                <CardDescription className="text-base">
+                  Unlike traditional waterfall development, the AI/ML lifecycle operates as a continuous, iterative process where models are constantly refined and improved through feedback loops
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <p className="text-muted-foreground">
+                  Each phase includes both <strong>quantitative and qualitative gates</strong> that determine whether to proceed or iterate back. Monitoring triggers retraining, validation failures return to training adjustments, and inference results feed back into data collection.
+                </p>
+
+                {/* Quantitative Phase Gates */}
+                <div>
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <TrendingUp className="w-5 h-5 text-accent" />
+                    Quantitative Phase Gates
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      { phase: "Data Collection", metrics: "Dataset size, quality metrics, missing value %, class balance ratios" },
+                      { phase: "Training", metrics: "Loss function values, convergence rates, training time, resource utilization" },
+                      { phase: "Validation", metrics: "Accuracy, precision, recall, F1-score, AUC-ROC, validation loss thresholds" },
+                      { phase: "Deployment", metrics: "Latency benchmarks, throughput capacity, API response times, resource consumption" },
+                      { phase: "Inference", metrics: "Prediction speed, batch processing times, real-time performance metrics" },
+                      { phase: "Monitoring", metrics: "Model drift scores, performance degradation rates, data distribution shifts" }
+                    ].map((gate, i) => (
+                      <div key={i} className="p-4 rounded-lg bg-background/50 border border-border">
+                        <h4 className="font-semibold text-accent mb-2">{gate.phase}</h4>
+                        <p className="text-sm text-muted-foreground">{gate.metrics}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Qualitative Phase Gates */}
+                <div>
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                    <UserCheck className="w-5 h-5 text-accent" />
+                    Qualitative Phase Gates
+                  </h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {[
+                      { phase: "Data Collection", criteria: "Data relevance, ethical compliance, bias evaluation, source credibility" },
+                      { phase: "Training", criteria: "Algorithm selection rationale, hyperparameter decisions, feature engineering quality" },
+                      { phase: "Validation", criteria: "Edge case performance, business requirement alignment, stakeholder acceptance" },
+                      { phase: "Deployment", criteria: "Infrastructure readiness, security compliance, documentation completeness, team preparedness" },
+                      { phase: "Inference", criteria: "User experience quality, business value delivery, interpretability assessment" },
+                      { phase: "Monitoring", criteria: "Stakeholder feedback, operational insights, retraining triggers, governance compliance" }
+                    ].map((gate, i) => (
+                      <div key={i} className="p-4 rounded-lg bg-background/50 border border-border">
+                        <h4 className="font-semibold text-accent mb-2">{gate.phase}</h4>
+                        <p className="text-sm text-muted-foreground">{gate.criteria}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="bg-accent/5 border border-accent/20 rounded-lg p-6 mt-6">
+                  <h3 className="font-bold text-lg mb-3 flex items-center gap-2">
+                    <RefreshCw className="w-5 h-5 text-accent" />
+                    CI/CD in ML Operations
+                  </h3>
+                  <p className="text-muted-foreground">
+                    The iterative arrows in the lifecycle diagram represent <strong>continuous feedback loops</strong> that enable automated model updates, A/B testing of model versions, and progressive rollouts - fundamentally different from waterfall's linear, one-time deployment approach. This ensures models remain accurate, compliant, and aligned with business objectives over time.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Core Risk Pillars */}
             <div className="mb-16">
               <h2 className="text-3xl font-bold text-center mb-8">Core Risk Assessment Pillars</h2>
