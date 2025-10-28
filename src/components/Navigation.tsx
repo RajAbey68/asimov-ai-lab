@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Brain } from "lucide-react";
+import { Brain, Mail, Phone } from "lucide-react";
 
 const Navigation = () => {
   return (
@@ -14,7 +14,7 @@ const Navigation = () => {
             </span>
           </Link>
           
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             <Link to="/" className="text-foreground hover:text-accent transition-colors">
               Home
             </Link>
@@ -27,6 +27,16 @@ const Navigation = () => {
             <Link to="/resources" className="text-foreground hover:text-accent transition-colors">
               Resources
             </Link>
+            <div className="flex items-center gap-4 ml-4 pl-4 border-l border-border">
+              <a href="mailto:contact@asimov-ai.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
+                <Mail className="w-4 h-4" />
+                <span className="hidden lg:inline">contact@asimov-ai.com</span>
+              </a>
+              <a href="tel:+441234567890" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
+                <Phone className="w-4 h-4" />
+                <span className="hidden lg:inline">+44 (0) 123 456 7890</span>
+              </a>
+            </div>
           </div>
 
           <Button asChild className="bg-accent hover:bg-accent/90">

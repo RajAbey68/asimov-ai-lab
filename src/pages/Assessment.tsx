@@ -1,4 +1,6 @@
 import Navigation from "@/components/Navigation";
+import FloatingCTA from "@/components/FloatingCTA";
+import ContactInfo from "@/components/ContactInfo";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import assessmentBg from "@/assets/assessment-bg.jpg";
 import aiCompliance from "@/assets/ai-compliance.jpg";
@@ -32,6 +34,7 @@ const Assessment = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
+      <FloatingCTA />
       
       <div className="pt-24 pb-16 relative">
         <div className="absolute inset-0 z-0">
@@ -385,6 +388,12 @@ const Assessment = () => {
                 </form>
               </CardContent>
               </Card>
+
+              {/* Contact Information */}
+              <div className="mt-12">
+                <h3 className="text-2xl font-bold text-center mb-6">Prefer to Talk First?</h3>
+                <ContactInfo />
+              </div>
             </div>
           </div>
         </div>
