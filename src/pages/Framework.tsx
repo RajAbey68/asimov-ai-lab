@@ -309,6 +309,208 @@ const Framework = () => {
               </div>
             </div>
 
+            {/* Ethical & Societal Standards */}
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold text-center mb-8">Ethical & Societal Standards</h2>
+              <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+                When it comes to ethical and societal considerations in AI, there is no single global standard — but several leading frameworks, principles, and emerging standards are widely adopted across jurisdictions and sectors
+              </p>
+
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
+                {[
+                  {
+                    title: "OECD AI Principles",
+                    status: "Adopted by 46+ countries, including UK, US, EU, Japan",
+                    badge: "Global Policy Framework",
+                    areas: [
+                      "Inclusive growth and well-being",
+                      "Human-centred values and fairness",
+                      "Transparency and explainability",
+                      "Robustness, security, and safety",
+                      "Accountability"
+                    ],
+                    use: "Provides a global ethical foundation but is not an audit framework. Often used to align internal AI ethics principles."
+                  },
+                  {
+                    title: "UNESCO Recommendation on AI Ethics",
+                    status: "Endorsed by 193 member states (2021)",
+                    badge: "Global Policy Framework",
+                    areas: [
+                      "Human rights and dignity",
+                      "Environmental and societal well-being",
+                      "Avoidance of harms (bias, surveillance, manipulation)",
+                      "Governance and ethical impact assessments"
+                    ],
+                    use: "A global ethical policy framework. Encourages nations to develop legal structures and mandates AI Ethical Impact Assessments (AI-EIA)."
+                  },
+                  {
+                    title: "IEEE 7000 Series",
+                    status: "Industry technical standards (published and in development)",
+                    badge: "Engineering & Ethics Standards",
+                    areas: [
+                      "IEEE 7000 – Ethical system design processes",
+                      "IEEE 7001 – Transparency of autonomous systems",
+                      "IEEE 7010 – Well-being metrics for AI systems",
+                      "IEEE 7002 – Data privacy process"
+                    ],
+                    use: "Closest to an auditable standard for ethical AI design, especially useful for system engineers, developers, and risk teams."
+                  },
+                  {
+                    title: "NIST AI Risk Management Framework (AI RMF 1.0)",
+                    status: "US-developed, used internationally",
+                    badge: "Risk Management Framework",
+                    areas: [
+                      "Governance of risk",
+                      "Mapping sociotechnical risks (including societal and environmental)",
+                      "Measurable trustworthiness (including fairness, transparency)",
+                      "Managing and monitoring risks across lifecycle"
+                    ],
+                    use: "Best for risk-aware, ethical-by-design system planning. It supports mapping societal impacts, but not a standalone audit tool."
+                  },
+                  {
+                    title: "EU AI Act",
+                    status: "Binding legal standard in the EU (enforceable 2026)",
+                    badge: "Legal Regulation",
+                    areas: [
+                      "High-risk classification for systems that impact rights and well-being",
+                      "Obligations for transparency, human oversight, fairness",
+                      "Prohibited uses (e.g., social scoring, manipulative AI)",
+                      "Conformity assessments include fundamental rights impact"
+                    ],
+                    use: "Mandates documented risk analysis and post-deployment monitoring for societal harms. Closest to an enforceable audit path for ethics in AI."
+                  }
+                ].map((framework, i) => (
+                  <Card key={i} className="border-border hover:border-accent/50 transition-all">
+                    <CardHeader>
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <CardTitle className="text-xl">{framework.title}</CardTitle>
+                        <Badge variant="outline" className="text-xs whitespace-nowrap">{framework.badge}</Badge>
+                      </div>
+                      <CardDescription className="text-sm font-medium text-foreground/70">
+                        {framework.status}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div>
+                        <p className="text-sm font-semibold mb-2 text-accent">Focus Areas:</p>
+                        <ul className="space-y-1">
+                          {framework.areas.map((area, j) => (
+                            <li key={j} className="flex gap-2 text-sm">
+                              <span className="text-accent mt-1">•</span>
+                              <span>{area}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold mb-1 text-accent">Use:</p>
+                        <p className="text-sm text-muted-foreground">{framework.use}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+
+              {/* Important Distinction Table */}
+              <Card className="border-border bg-gradient-subtle">
+                <CardHeader>
+                  <CardTitle className="text-xl flex items-center gap-2">
+                    <AlertTriangle className="w-5 h-5 text-amber-600" />
+                    Important Distinction
+                  </CardTitle>
+                  <CardDescription>
+                    Understanding what you can and cannot audit against
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="overflow-x-auto">
+                    <table className="w-full border-collapse">
+                      <thead>
+                        <tr className="border-b border-border">
+                          <th className="text-left p-3 font-semibold">Type</th>
+                          <th className="text-left p-3 font-semibold">Examples</th>
+                          <th className="text-left p-3 font-semibold">Can You Audit Against It?</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border-b border-border/50 hover:bg-accent/5">
+                          <td className="p-3">
+                            <Badge variant="outline">Principles</Badge>
+                          </td>
+                          <td className="p-3 text-sm">OECD, UNESCO, FAT-ML</td>
+                          <td className="p-3 text-sm">Not directly — high-level guidance</td>
+                        </tr>
+                        <tr className="border-b border-border/50 hover:bg-accent/5">
+                          <td className="p-3">
+                            <Badge variant="outline" className="border-green-500/50 text-green-600">Standards</Badge>
+                          </td>
+                          <td className="p-3 text-sm">IEEE 7000, ISO/IEC 42001</td>
+                          <td className="p-3 text-sm font-medium text-green-600">Yes — technical or process audits possible</td>
+                        </tr>
+                        <tr className="border-b border-border/50 hover:bg-accent/5">
+                          <td className="p-3">
+                            <Badge variant="outline" className="border-blue-500/50 text-blue-600">Regulations</Badge>
+                          </td>
+                          <td className="p-3 text-sm">EU AI Act, GDPR</td>
+                          <td className="p-3 text-sm font-medium text-blue-600">Yes — legally enforceable, with penalties</td>
+                        </tr>
+                        <tr className="hover:bg-accent/5">
+                          <td className="p-3">
+                            <Badge variant="outline" className="border-purple-500/50 text-purple-600">Frameworks</Badge>
+                          </td>
+                          <td className="p-3 text-sm">NIST AI RMF, ISACA AI Audit</td>
+                          <td className="p-3 text-sm">Used to build auditable processes</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Combined Approach */}
+              <Card className="border-border bg-gradient-accent mt-8">
+                <CardHeader>
+                  <CardTitle className="text-xl text-accent-foreground flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5" />
+                    Recommended Combined Approach
+                  </CardTitle>
+                  <CardDescription className="text-accent-foreground/80">
+                    For real-world governance, ethical/societal impact is typically addressed through:
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div>
+                    <p className="text-sm font-semibold mb-2 text-accent-foreground">Impact Assessments:</p>
+                    <p className="text-sm text-accent-foreground/80">DPIA, Fundamental Rights Impact Assessment (FRIA), Ethical Impact Assessment (EIA)</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold mb-2 text-accent-foreground">Ethics Boards or Panels:</p>
+                    <p className="text-sm text-accent-foreground/80">Independent review or governance body</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold mb-2 text-accent-foreground">Conformance Audits:</p>
+                    <p className="text-sm text-accent-foreground/80">Using ISO 42001, IEEE 7000 or bespoke frameworks</p>
+                  </div>
+                  <div className="pt-4 border-t border-accent-foreground/20">
+                    <p className="text-sm font-semibold mb-2 text-accent-foreground">For a robust, auditable approach to ethical and societal risk, combine:</p>
+                    <ul className="space-y-2">
+                      {[
+                        "NIST AI RMF (mapping + managing risk)",
+                        "IEEE 7000 (design ethics + documentation)",
+                        "EU AI Act (legal thresholds + conformity)",
+                        "UNESCO or OECD principles (policy framing)"
+                      ].map((item, i) => (
+                        <li key={i} className="flex gap-2 text-sm text-accent-foreground/90">
+                          <span className="text-accent-foreground">•</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
             {/* Framework Alignment */}
             <div className="mb-16">
               <h2 className="text-3xl font-bold text-center mb-8">Framework Alignment</h2>
