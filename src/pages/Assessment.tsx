@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { CheckCircle, AlertCircle, TrendingUp } from "lucide-react";
+import { CheckCircle, AlertCircle, TrendingUp, Shield, Lock, Scale, DollarSign, UserCheck, Lightbulb, Zap, Eye, RefreshCw, Target, Building2, Heart, Landmark } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -32,37 +32,231 @@ const Assessment = () => {
       
       <div className="pt-24 pb-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">AI Rapid Assessment</h1>
-              <p className="text-xl text-muted-foreground">
-                Get a comprehensive risk evaluation of your AI project in record time
+          <div className="max-w-7xl mx-auto">
+            {/* Hero Section */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
+                <Shield className="w-4 h-4 text-accent" />
+                <span className="text-sm text-accent font-medium">Built for Boardrooms, Regulators & Executive Decision-Makers</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">ASIMOV-AI Risk Method</h1>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                A structured, cross-disciplinary governance framework to manage legal, ethical, and technical risks of AI systems
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 mb-12">
-              {[
-                { icon: CheckCircle, title: "24-48 Hour Turnaround", desc: "Fast analysis without compromising quality" },
-                { icon: AlertCircle, title: "Risk Identification", desc: "Comprehensive evaluation of potential issues" },
-                { icon: TrendingUp, title: "Actionable Insights", desc: "Clear recommendations for improvement" },
-              ].map((item, i) => (
-                <Card key={i} className="text-center border-border hover:border-accent/50 transition-all">
-                  <CardHeader>
-                    <item.icon className="w-10 h-10 text-accent mx-auto mb-3" />
-                    <CardTitle className="text-lg">{item.title}</CardTitle>
-                    <CardDescription>{item.desc}</CardDescription>
-                  </CardHeader>
-                </Card>
-              ))}
+            {/* Overview Section */}
+            <Card className="border-border mb-12 bg-gradient-subtle">
+              <CardHeader>
+                <CardTitle className="text-2xl">Framework Overview</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4 text-muted-foreground">
+                <p>
+                  The ASIMOV-AI Risk Method is a structured, cross-disciplinary governance framework developed to help organisations manage the legal, ethical, and technical risks of Artificial Intelligence (AI) systems. It is especially suited for high-risk AI applications such as generative AI, large language models (LLMs), and automated decision-making systems.
+                </p>
+                <p>
+                  Developed in response to the growing complexity of AI risk, the methodology combines traditional audit disciplines with AI-specific safeguards. It aligns to global standards including the <strong>EU AI Act</strong>, <strong>NIST AI Risk Management Framework</strong>, and <strong>ISO/IEC 42001</strong>, enabling organisations to achieve practical compliance while maintaining operational agility.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* 5 Core Phases */}
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold text-center mb-8">Lifecycle-Based Approach</h2>
+              <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Five core phases integrated with LifeWise domain experts embedded at concept stage to reduce rework and anticipate sectoral risk
+              </p>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  {
+                    phase: "1",
+                    icon: Lightbulb,
+                    title: "Concept & Design",
+                    desc: "Risk tiering, regulatory mapping, and stakeholder profiling",
+                    color: "text-blue-600"
+                  },
+                  {
+                    phase: "2",
+                    icon: Zap,
+                    title: "Development",
+                    desc: "Secure AI development lifecycle with embedded privacy and bias controls",
+                    color: "text-purple-600"
+                  },
+                  {
+                    phase: "3",
+                    icon: CheckCircle,
+                    title: "Pre-Deployment",
+                    desc: "Compliance validation and conformance documentation",
+                    color: "text-green-600"
+                  },
+                  {
+                    phase: "4",
+                    icon: Eye,
+                    title: "Monitoring",
+                    desc: "Real-time dashboards, model drift tracking, and incident logging",
+                    color: "text-orange-600"
+                  },
+                  {
+                    phase: "5",
+                    icon: RefreshCw,
+                    title: "Continuous Improvement",
+                    desc: "Post-incident learning and policy refresh cycles",
+                    color: "text-cyan-600"
+                  }
+                ].map((item) => (
+                  <Card key={item.phase} className="border-border hover:border-accent/50 transition-all group relative overflow-hidden">
+                    <div className="absolute top-4 right-4 text-6xl font-bold text-muted/10 group-hover:text-muted/20 transition-colors">
+                      {item.phase}
+                    </div>
+                    <CardHeader>
+                      <div className={`w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4 ${item.color}`}>
+                        <item.icon className="w-6 h-6" />
+                      </div>
+                      <CardTitle className="text-lg">{item.title}</CardTitle>
+                      <CardDescription>{item.desc}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
             </div>
 
-            <Card className="border-border">
+            {/* Core Risk Pillars */}
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold text-center mb-8">Core Risk Assessment Pillars</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  {
+                    icon: Scale,
+                    title: "Legal & Regulatory",
+                    desc: "EU AI Act, GDPR, IP law compliance",
+                    gradient: "from-blue-500/20 to-blue-600/20"
+                  },
+                  {
+                    icon: Shield,
+                    title: "Ethical & Societal",
+                    desc: "Bias, discrimination, transparency",
+                    gradient: "from-purple-500/20 to-purple-600/20"
+                  },
+                  {
+                    icon: Lock,
+                    title: "Security & Operational",
+                    desc: "Data governance, access controls",
+                    gradient: "from-cyan-500/20 to-cyan-600/20"
+                  },
+                  {
+                    icon: DollarSign,
+                    title: "Commercial & Reputational",
+                    desc: "Liability, contractual risk",
+                    gradient: "from-orange-500/20 to-orange-600/20"
+                  },
+                  {
+                    icon: UserCheck,
+                    title: "Governance & Accountability",
+                    desc: "Oversight, human-in-the-loop",
+                    gradient: "from-green-500/20 to-green-600/20"
+                  }
+                ].map((pillar, i) => (
+                  <Card key={i} className={`border-border hover:border-accent/50 transition-all bg-gradient-to-br ${pillar.gradient}`}>
+                    <CardHeader>
+                      <pillar.icon className="w-10 h-10 mb-3 text-accent" />
+                      <CardTitle className="text-xl">{pillar.title}</CardTitle>
+                      <CardDescription className="text-base">{pillar.desc}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            {/* Sector Applications */}
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold text-center mb-8">Proven Across Sectors</h2>
+              <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Applied successfully in multiple industries with specific use cases and measurable outcomes
+              </p>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {[
+                  {
+                    icon: Building2,
+                    title: "Financial Services",
+                    use: "Reducing bias in AI-based credit scoring models"
+                  },
+                  {
+                    icon: Heart,
+                    title: "Healthcare",
+                    use: "Enabling regulatory-compliant diagnostic tools"
+                  },
+                  {
+                    icon: Landmark,
+                    title: "Government",
+                    use: "Improving explainability for public sector decisions"
+                  },
+                  {
+                    icon: Target,
+                    title: "Retail",
+                    use: "Enhancing customer experience with responsible AI"
+                  }
+                ].map((sector, i) => (
+                  <Card key={i} className="border-border hover:border-accent/50 transition-all text-center">
+                    <CardHeader>
+                      <sector.icon className="w-10 h-10 text-accent mx-auto mb-3" />
+                      <CardTitle className="text-lg">{sector.title}</CardTitle>
+                      <CardDescription className="text-sm">{sector.use}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            {/* Key Benefits */}
+            <Card className="border-border bg-gradient-accent mb-12">
               <CardHeader>
-                <CardTitle>Request an Assessment</CardTitle>
-                <CardDescription>
-                  Fill out the form below and our team will begin your rapid assessment
-                </CardDescription>
+                <CardTitle className="text-2xl text-center text-accent-foreground">Strategic Advantages</CardTitle>
               </CardHeader>
+              <CardContent>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {[
+                    { icon: CheckCircle, title: "Compliance-Ready", desc: "Aligns with EU AI Act, NIST AI RMF, ISO/IEC 42001" },
+                    { icon: Shield, title: "Litigation Shield", desc: "Pre-empts legal challenges through documented governance" },
+                    { icon: TrendingUp, title: "Investment-Ready", desc: "Builds confidence by proving you understand and manage AI risk" },
+                    { icon: Target, title: "Operational Agility", desc: "Balance innovation with governance, speed with responsibility" }
+                  ].map((benefit, i) => (
+                    <div key={i} className="flex gap-4 items-start">
+                      <benefit.icon className="w-6 h-6 text-accent-foreground flex-shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-semibold text-accent-foreground mb-1">{benefit.title}</h3>
+                        <p className="text-sm text-accent-foreground/80">{benefit.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Request Assessment Form */}
+            <div className="max-w-4xl mx-auto">
+              <div className="grid md:grid-cols-3 gap-6 mb-12">
+                {[
+                  { icon: CheckCircle, title: "24-48 Hour Turnaround", desc: "Fast analysis without compromising quality" },
+                  { icon: AlertCircle, title: "Risk Identification", desc: "Comprehensive evaluation of potential issues" },
+                  { icon: TrendingUp, title: "Actionable Insights", desc: "Clear recommendations for improvement" },
+                ].map((item, i) => (
+                  <Card key={i} className="text-center border-border hover:border-accent/50 transition-all">
+                    <CardHeader>
+                      <item.icon className="w-10 h-10 text-accent mx-auto mb-3" />
+                      <CardTitle className="text-lg">{item.title}</CardTitle>
+                      <CardDescription>{item.desc}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
+
+              <Card className="border-border">
+                <CardHeader>
+                  <CardTitle>Request an Assessment</CardTitle>
+                  <CardDescription>
+                    Fill out the form below and our team will begin your ASIMOV-AI risk assessment
+                  </CardDescription>
+                </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
@@ -132,7 +326,8 @@ const Assessment = () => {
                   </Button>
                 </form>
               </CardContent>
-            </Card>
+              </Card>
+            </div>
           </div>
         </div>
       </div>
