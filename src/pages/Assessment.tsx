@@ -17,17 +17,22 @@ import { useToast } from "@/hooks/use-toast";
 const Assessment = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    projectName: "",
-    projectType: "",
-    description: "",
-    timeline: "",
+    name: "",
+    email: "",
+    phone: "",
+    organization: "",
+    industry: "",
+    aiSystemType: "",
+    currentStage: "",
+    mainConcerns: "",
+    preferredDate: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Assessment Request Submitted",
-      description: "Our team will review your request and contact you within 24 hours.",
+      title: "Initial Call Request Submitted",
+      description: "Our team will review your information and contact you within 24 hours to schedule your consultation call.",
     });
   };
 
@@ -56,7 +61,7 @@ const Assessment = () => {
               <div className="mt-8">
                 <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-lg shadow-lg">
                   <a href="#request-form">
-                    Request Free Assessment <ArrowRight className="ml-2 w-5 h-5" />
+                    Request free Initial call <ArrowRight className="ml-2 w-5 h-5" />
                   </a>
                 </Button>
               </div>
@@ -615,77 +620,155 @@ const Assessment = () => {
 
               <Card className="border-border">
                 <CardHeader>
-                  <CardTitle className="text-2xl">Start Your Free Risk Assessment</CardTitle>
+                  <CardTitle className="text-2xl">Request Your Free Initial Call</CardTitle>
                   <CardDescription className="text-base">
-                    Our experts will analyze your AI system and provide actionable recommendations for compliance
+                    Help us understand your current situation so we can assign the best subject matter and domain experts for your consultation call. We'll discuss your observations, agree on orientation, make decisions, and define next actions.
                   </CardDescription>
                 </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="projectName">Project Name</Label>
-                    <Input
-                      id="projectName"
-                      placeholder="Enter your project name"
-                      value={formData.projectName}
-                      onChange={(e) => setFormData({ ...formData, projectName: e.target.value })}
-                      required
-                    />
+                  {/* Contact Information */}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="name">Full Name *</Label>
+                      <Input
+                        id="name"
+                        placeholder="Your name"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email Address *</Label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="your.email@company.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        required
+                      />
+                    </div>
                   </div>
 
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Phone Number</Label>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        placeholder="+1 (555) 000-0000"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="organization">Organization/Company *</Label>
+                      <Input
+                        id="organization"
+                        placeholder="Your organization name"
+                        value={formData.organization}
+                        onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  {/* Industry & AI System Details */}
                   <div className="space-y-2">
-                    <Label htmlFor="projectType">Project Type</Label>
+                    <Label htmlFor="industry">Industry/Sector *</Label>
                     <Select
-                      value={formData.projectType}
-                      onValueChange={(value) => setFormData({ ...formData, projectType: value })}
+                      value={formData.industry}
+                      onValueChange={(value) => setFormData({ ...formData, industry: value })}
                       required
                     >
-                      <SelectTrigger id="projectType">
-                        <SelectValue placeholder="Select project type" />
+                      <SelectTrigger id="industry">
+                        <SelectValue placeholder="Select your industry" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="nlp">Natural Language Processing</SelectItem>
-                        <SelectItem value="computer-vision">Computer Vision</SelectItem>
-                        <SelectItem value="predictive">Predictive Analytics</SelectItem>
-                        <SelectItem value="recommendation">Recommendation Systems</SelectItem>
-                        <SelectItem value="automation">Process Automation</SelectItem>
+                        <SelectItem value="financial">Financial Services & Banking</SelectItem>
+                        <SelectItem value="healthcare">Healthcare & Life Sciences</SelectItem>
+                        <SelectItem value="government">Government & Public Sector</SelectItem>
+                        <SelectItem value="critical-infrastructure">Critical Infrastructure & Defense</SelectItem>
+                        <SelectItem value="technology">Technology & Software</SelectItem>
+                        <SelectItem value="retail">Retail & E-commerce</SelectItem>
+                        <SelectItem value="manufacturing">Manufacturing & Industrial</SelectItem>
+                        <SelectItem value="education">Education & Research</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="timeline">Expected Timeline</Label>
+                    <Label htmlFor="aiSystemType">AI System Type *</Label>
                     <Select
-                      value={formData.timeline}
-                      onValueChange={(value) => setFormData({ ...formData, timeline: value })}
+                      value={formData.aiSystemType}
+                      onValueChange={(value) => setFormData({ ...formData, aiSystemType: value })}
                       required
                     >
-                      <SelectTrigger id="timeline">
-                        <SelectValue placeholder="Select timeline" />
+                      <SelectTrigger id="aiSystemType">
+                        <SelectValue placeholder="Select AI system type" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="urgent">Urgent (1-2 weeks)</SelectItem>
-                        <SelectItem value="standard">Standard (1-2 months)</SelectItem>
-                        <SelectItem value="flexible">Flexible (3+ months)</SelectItem>
+                        <SelectItem value="generative-ai">Generative AI / LLMs</SelectItem>
+                        <SelectItem value="nlp">Natural Language Processing</SelectItem>
+                        <SelectItem value="computer-vision">Computer Vision</SelectItem>
+                        <SelectItem value="predictive">Predictive Analytics / ML</SelectItem>
+                        <SelectItem value="decision-making">Automated Decision-Making</SelectItem>
+                        <SelectItem value="recommendation">Recommendation Systems</SelectItem>
+                        <SelectItem value="robotics">Robotics / Autonomous Systems</SelectItem>
+                        <SelectItem value="other">Other AI Application</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="description">Project Description</Label>
+                    <Label htmlFor="currentStage">Current Project Stage *</Label>
+                    <Select
+                      value={formData.currentStage}
+                      onValueChange={(value) => setFormData({ ...formData, currentStage: value })}
+                      required
+                    >
+                      <SelectTrigger id="currentStage">
+                        <SelectValue placeholder="Select current stage" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="planning">Planning / Concept Phase</SelectItem>
+                        <SelectItem value="development">Development / Training</SelectItem>
+                        <SelectItem value="testing">Testing / Validation</SelectItem>
+                        <SelectItem value="deployment">Ready for Deployment</SelectItem>
+                        <SelectItem value="production">In Production / Live</SelectItem>
+                        <SelectItem value="maintenance">Maintenance / Monitoring</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {/* Main Concerns & Objectives */}
+                  <div className="space-y-2">
+                    <Label htmlFor="mainConcerns">Main Concerns & Objectives *</Label>
                     <Textarea
-                      id="description"
-                      placeholder="Describe your AI project, goals, and any specific concerns..."
-                      value={formData.description}
-                      onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                      rows={6}
+                      id="mainConcerns"
+                      placeholder="What are your main concerns? What do you hope to achieve from this consultation? (e.g., compliance requirements, risk assessment, ethical considerations, technical challenges...)"
+                      value={formData.mainConcerns}
+                      onChange={(e) => setFormData({ ...formData, mainConcerns: e.target.value })}
+                      rows={5}
                       required
                     />
                   </div>
 
+                  <div className="space-y-2">
+                    <Label htmlFor="preferredDate">Preferred Call Date/Time</Label>
+                    <Input
+                      id="preferredDate"
+                      placeholder="e.g., Next week, Monday 2pm EST, or ASAP"
+                      value={formData.preferredDate}
+                      onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
+                    />
+                  </div>
+
                   <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
-                    Submit Assessment Request
+                    Request Initial Call
                   </Button>
                 </form>
               </CardContent>
