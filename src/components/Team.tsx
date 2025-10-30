@@ -5,8 +5,8 @@ import { Linkedin, MessageCircle } from "lucide-react";
 const teamMembers = [
   {
     name: "Sushila Nair",
-    title: "Cybersecurity Expert",
-    bio: "Top Cybersecurity Leader with extensive experience in enterprise security and risk management.",
+    title: "Independent Cybersecurity Consultant",
+    bio: "Former VP of Cybersecurity Services at Capgemini and NTT DATA. Award-winning security leader with deep expertise in enterprise security architecture, regulatory compliance (NIST, ISO 27001, PCI-DSS), and global security program development.",
     linkedin: "https://www.linkedin.com/in/sushilanair/",
     image: "/placeholder.svg", // Replace with actual image
     whatsapp: "+1234567890" // Replace with actual number
