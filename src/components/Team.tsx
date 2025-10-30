@@ -10,6 +10,7 @@ const teamMembers = [
     name: "Sushila Nair",
     title: "Independent Cybersecurity Consultant",
     bio: "Former VP of Cybersecurity Services at Capgemini and NTT DATA. Award-winning security leader with deep expertise in enterprise security architecture, regulatory compliance (NIST, ISO 27001, PCI-DSS), and global security program development.",
+    specialties: "Cyber and AI security and regulatory audit",
     linkedin: "https://www.linkedin.com/in/sushilanair/",
     image: sushilaNairImg,
     whatsapp: "+1234567890", // Replace with actual number
@@ -22,6 +23,7 @@ const teamMembers = [
     name: "Rajiv AB",
     title: "Co-founder, Asimov-AI RISK",
     bio: "AI governance expert and creator of the ASIMOV-AI Risk Method. Specializes in EU AI Act compliance, responsible AI frameworks, and strategic transformation programs with 25+ years of experience across global enterprises.",
+    specialties: "AI application delivery, including platform and data-migration and CI/CD promotion of Inference platform",
     linkedin: "https://www.linkedin.com/in/rajivab/",
     image: rajivAbeysingheImg,
     whatsapp: "+1234567890", // Replace with actual number
@@ -34,6 +36,7 @@ const teamMembers = [
     name: "Nick Lockett",
     title: "Founder, CAAIRO & Managing Partner, ADL Solicitors",
     bio: "Technology lawyer and founder of CAAIRO London Centre for the Assessment of AI Risk & Opportunity. CEO Managing Partner at ADL Solicitors specializing in AI governance, intellectual property, commercial technology law, and regulatory compliance for technology businesses.",
+    specialties: "AI legal, regulatory, and Intellectual property",
     linkedin: "https://www.linkedin.com/in/nicklockett/",
     image: nickLockettImg,
     whatsapp: "+1234567890", // Replace with actual number
@@ -90,9 +93,14 @@ const Team = () => {
                   {member.title}
                 </p>
                 
-                <p className="text-sm text-muted-foreground mb-6">
+                <p className="text-sm text-muted-foreground mb-4">
                   {member.bio}
                 </p>
+                
+                <div className="mb-6 p-3 bg-accent/10 rounded-lg border border-accent/20">
+                  <h4 className="text-xs font-semibold mb-2 text-accent uppercase tracking-wide">Specialties</h4>
+                  <p className="text-sm text-foreground">{member.specialties}</p>
+                </div>
                 
                 <div className="mb-6 p-4 bg-muted/50 rounded-lg border border-border/50">
                   <h4 className="text-sm font-semibold mb-3 text-foreground">Online Consultation Rates</h4>
