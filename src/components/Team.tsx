@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Linkedin, MessageCircle } from "lucide-react";
 import nickLockettImg from "@/assets/nick-lockett.png";
+import sushilaNairImg from "@/assets/sushila-nair.png";
 
 const teamMembers = [
   {
@@ -9,7 +10,7 @@ const teamMembers = [
     title: "Independent Cybersecurity Consultant",
     bio: "Former VP of Cybersecurity Services at Capgemini and NTT DATA. Award-winning security leader with deep expertise in enterprise security architecture, regulatory compliance (NIST, ISO 27001, PCI-DSS), and global security program development.",
     linkedin: "https://www.linkedin.com/in/sushilanair/",
-    image: "/placeholder.svg", // Replace with actual image
+    image: sushilaNairImg,
     whatsapp: "+1234567890" // Replace with actual number
   },
   {
