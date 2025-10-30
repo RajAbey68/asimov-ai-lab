@@ -1,0 +1,98 @@
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Linkedin, MessageCircle } from "lucide-react";
+
+const teamMembers = [
+  {
+    name: "Sushila Nair",
+    title: "Cybersecurity Expert",
+    bio: "Top Cybersecurity Leader with extensive experience in enterprise security and risk management.",
+    linkedin: "https://www.linkedin.com/in/sushilanair/",
+    image: "/placeholder.svg", // Replace with actual image
+    whatsapp: "+1234567890" // Replace with actual number
+  },
+  {
+    name: "Rajiv AB",
+    title: "AI Governance Specialist",
+    bio: "Expert in AI risk assessment and regulatory compliance frameworks.",
+    linkedin: "https://www.linkedin.com/in/rajivab/",
+    image: "/placeholder.svg", // Replace with actual image
+    whatsapp: "+1234567890" // Replace with actual number
+  },
+  {
+    name: "Nick Lockett",
+    title: "Technology Advisor",
+    bio: "Strategic technology advisor with deep expertise in AI implementation and governance.",
+    linkedin: "https://www.linkedin.com/in/nicklockett/",
+    image: "/placeholder.svg", // Replace with actual image
+    whatsapp: "+1234567890" // Replace with actual number
+  }
+];
+
+const Team = () => {
+  const handleWhatsApp = (phone: string) => {
+    window.open(`https://wa.me/${phone.replace(/[^0-9]/g, '')}`, '_blank');
+  };
+
+  return (
+    <section className="py-24 bg-gradient-to-br from-background via-muted/20 to-background">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Meet Our Team</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Expert professionals dedicated to helping you navigate AI governance with confidence
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {teamMembers.map((member, index) => (
+            <Card 
+              key={index} 
+              className="p-6 hover:shadow-xl transition-all duration-300 bg-card border-border/50"
+            >
+              <div className="text-center">
+                <div className="mb-6">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-accent/20"
+                  />
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-2">{member.name}</h3>
+                
+                <a 
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent/80 transition-colors mb-3"
+                >
+                  <Linkedin className="w-4 h-4" />
+                  LinkedIn Profile
+                </a>
+                
+                <p className="text-lg font-semibold text-muted-foreground mb-3">
+                  {member.title}
+                </p>
+                
+                <p className="text-sm text-muted-foreground mb-6">
+                  {member.bio}
+                </p>
+                
+                <Button 
+                  onClick={() => handleWhatsApp(member.whatsapp)}
+                  className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white"
+                >
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Contact on WhatsApp
+                </Button>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Team;
