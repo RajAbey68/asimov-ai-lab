@@ -25,9 +25,9 @@ const Hero = () => {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground leading-tight">
-            AI Regulation Keeping You
+            Lead AI with Confidence —
             <span className="block bg-gradient-accent bg-clip-text text-transparent">
-              Up At Night?
+              From Boardroom to Deployment.
             </span>
           </h1>
 
