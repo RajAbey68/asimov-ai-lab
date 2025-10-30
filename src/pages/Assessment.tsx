@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import FloatingCTA from "@/components/FloatingCTA";
 import ContactInfo from "@/components/ContactInfo";
+import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import assessmentBg from "@/assets/assessment-bg.jpg";
 import aiCompliance from "@/assets/ai-compliance.jpg";
@@ -786,6 +787,7 @@ const Assessment = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
