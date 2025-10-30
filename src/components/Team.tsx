@@ -13,8 +13,8 @@ const teamMembers = [
   },
   {
     name: "Rajiv AB",
-    title: "AI Governance Specialist",
-    bio: "Expert in AI risk assessment and regulatory compliance frameworks.",
+    title: "Co-founder, Asimov-AI RISK",
+    bio: "AI governance expert and creator of the ASIMOV-AI Risk Method. Specializes in EU AI Act compliance, responsible AI frameworks, and strategic transformation programs with 25+ years of experience across global enterprises.",
     linkedin: "https://www.linkedin.com/in/rajivab/",
     image: "/placeholder.svg", // Replace with actual image
     whatsapp: "+1234567890" // Replace with actual number
