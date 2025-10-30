@@ -21,8 +21,8 @@ const teamMembers = [
   },
   {
     name: "Nick Lockett",
-    title: "Technology Advisor",
-    bio: "Strategic technology advisor with deep expertise in AI implementation and governance.",
+    title: "Founder, CAAIRO & Managing Partner, ADL Solicitors",
+    bio: "Technology lawyer and founder of CAAIRO London Centre for the Assessment of AI Risk & Opportunity. CEO Managing Partner at ADL Solicitors specializing in AI governance, intellectual property, commercial technology law, and regulatory compliance for technology businesses.",
     linkedin: "https://www.linkedin.com/in/nicklockett/",
     image: "/placeholder.svg", // Replace with actual image
     whatsapp: "+1234567890" // Replace with actual number
