@@ -572,10 +572,10 @@ const Framework = () => {
                     <div>
                       <CardTitle className="text-2xl mb-2 flex items-center gap-2">
                         <Scale className="w-6 h-6 text-primary" />
-                        EU AI Act Audit Framework
+                        EU AI Act Audit Framework — Overview v1.0
                       </CardTitle>
                       <CardDescription className="text-base">
-                        The EU AI Act is the world's first comprehensive legal framework for AI. This audit framework helps organizations prove compliance through clear evidence and governance.
+                        The first legally binding, comprehensive regulatory framework governing artificial intelligence
                       </CardDescription>
                     </div>
                     <Badge variant="default" className="text-sm">Version 1.0</Badge>
@@ -584,105 +584,143 @@ const Framework = () => {
                 
                 <CardContent className="pt-6">
                   <div className="prose prose-sm max-w-none dark:prose-invert mb-8">
-                    <p className="text-base text-muted-foreground">
-                      Regulation (EU) 2024/1689 requires all AI system providers, importers, distributors, and deployers to demonstrate compliance across risk management, data governance, and post-market monitoring. Our framework adapts established standards like COBIT, NIST AI RMF, and ISO/IEC 42001 to align with the EU AI Act's structure, making compliance auditable and achievable.
+                    <p className="text-base leading-relaxed mb-4">
+                      The <strong>EU AI Act</strong> (Regulation (EU) 2024/1689) is the first legally binding, comprehensive regulatory framework governing artificial intelligence.
+                    </p>
+                    <p className="text-base text-muted-foreground leading-relaxed mb-4">
+                      It requires all providers, importers, distributors, and deployers of AI systems to prove compliance with rules covering areas such as risk management, data governance, and post-market monitoring. As the regulation will be phased in between 2025 and 2027, organisations must urgently convert these requirements into auditable controls.
+                    </p>
+                    <p className="text-base text-muted-foreground leading-relaxed">
+                      Our audit framework adapts established enterprise risk and assurance standards—like <strong>COBIT</strong>, <strong>NIST AI RMF</strong>, and <strong>ISO/IEC 42001</strong>—to mirror the EU AI Act's structure.
+                    </p>
+                    <p className="text-base text-muted-foreground leading-relaxed mt-4">
+                      This helps internal auditors, compliance teams, and external reviewers confirm that each requirement is met through clear evidence and governance documents.
                     </p>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
-                    {[
-                      {
-                        icon: AlertTriangle,
-                        iconColor: "text-blue-600",
-                        bgColor: "bg-blue-500/10",
-                        title: "Risk-Based Classification",
-                        description: "Every AI system must be classified into one of four risk levels: Prohibited, High-Risk, Limited-Risk, or Minimal-Risk. This classification determines your compliance obligations."
-                      },
-                      {
-                        icon: Shield,
-                        iconColor: "text-purple-600",
-                        bgColor: "bg-purple-500/10",
-                        title: "Governance Alignment",
-                        description: "Review whether documented AI policies, quality management systems, and accountability structures are in place as required by Articles 16–18 and Annex IV."
-                      },
-                      {
-                        icon: CheckCircle,
-                        iconColor: "text-green-600",
-                        bgColor: "bg-green-500/10",
-                        title: "Data & Model Integrity",
-                        description: "Article 10 demands that datasets be relevant, representative, and unbiased. Audits verify data quality metrics and evidence of bias mitigation measures."
-                      },
-                      {
-                        icon: Eye,
-                        iconColor: "text-orange-600",
-                        bgColor: "bg-orange-500/10",
-                        title: "Transparency & Human Oversight",
-                        description: "Articles 13 and 14 require AI systems to be explainable and monitored by qualified individuals. Auditors verify proper oversight mechanisms and documentation."
-                      },
-                      {
-                        icon: Lock,
-                        iconColor: "text-red-600",
-                        bgColor: "bg-red-500/10",
-                        title: "Technical Robustness & Cybersecurity",
-                        description: "Article 15 requires strong and secure AI systems. Audits include adversarial resistance testing, fallback procedures, and secure development practices."
-                      },
-                      {
-                        icon: RefreshCw,
-                        iconColor: "text-teal-600",
-                        bgColor: "bg-teal-500/10",
-                        title: "Post-Market Monitoring & Reporting",
-                        description: "Articles 61–67 require ongoing monitoring, incident logging, and corrective action tracking to ensure continued compliance throughout the system lifecycle."
-                      },
-                      {
-                        icon: Users,
-                        iconColor: "text-indigo-600",
-                        bgColor: "bg-indigo-500/10",
-                        title: "Fundamental Rights & Ethics",
-                        description: "Audits ensure that AI systems uphold human dignity, equality, and non-discrimination principles as outlined in the regulation's recitals."
-                      },
-                      {
-                        icon: CheckCircle,
-                        iconColor: "text-emerald-600",
-                        bgColor: "bg-emerald-500/10",
-                        title: "Validation Scale",
-                        description: "Using a 4-point assessment: Fully Validated, Largely Validated, Partially Validated, or Not Yet Validated—covering governance, data quality, and ethical compliance."
-                      }
-                    ].map((item, index) => (
-                      <Card key={index} className="border-border hover:border-accent/50 transition-all">
-                        <CardHeader>
-                          <div className="flex items-start gap-3">
-                            <div className={`w-10 h-10 rounded-lg ${item.bgColor} flex items-center justify-center flex-shrink-0`}>
-                              <item.icon className={`w-5 h-5 ${item.iconColor}`} />
+                  <div className="mb-8">
+                    <h3 className="text-xl font-bold mb-6 text-center">Framework Components</h3>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {[
+                        {
+                          number: "1",
+                          icon: AlertTriangle,
+                          iconColor: "text-blue-600",
+                          bgColor: "bg-blue-500/10",
+                          title: "Risk-Based Classification",
+                          description: "The Act categorizes AI systems into four risk levels: Prohibited, High-Risk, Limited-Risk, and Minimal-Risk. Every AI system must be classified within these tiers."
+                        },
+                        {
+                          number: "2",
+                          icon: Shield,
+                          iconColor: "text-purple-600",
+                          bgColor: "bg-purple-500/10",
+                          title: "Governance Alignment",
+                          description: "Auditors review whether documented AI policies, quality management systems, and accountability structures are in place (as required by Articles 16–18 and Annex IV §1)."
+                        },
+                        {
+                          number: "3",
+                          icon: CheckCircle,
+                          iconColor: "text-green-600",
+                          bgColor: "bg-green-500/10",
+                          title: "Data & Model Integrity",
+                          description: "Article 10 and Annex IV §2 demand that datasets be relevant, representative, and unbiased. Audits focus on checking data quality metrics and evidence of bias mitigation."
+                        },
+                        {
+                          number: "4",
+                          icon: Eye,
+                          iconColor: "text-orange-600",
+                          bgColor: "bg-orange-500/10",
+                          title: "Transparency & Human Oversight",
+                          description: "Articles 13 and 14 require AI systems to be explainable and monitored by qualified individuals. Auditors test for proper oversight and documentation."
+                        },
+                        {
+                          number: "5",
+                          icon: Lock,
+                          iconColor: "text-red-600",
+                          bgColor: "bg-red-500/10",
+                          title: "Technical Robustness & Cybersecurity",
+                          description: "Article 15 and Annex IV §3 call for strong and secure AI systems. Audits include adversarial resistance testing, fallback procedures, and secure development practices."
+                        },
+                        {
+                          number: "6",
+                          icon: RefreshCw,
+                          iconColor: "text-teal-600",
+                          bgColor: "bg-teal-500/10",
+                          title: "Post-Market Monitoring & Reporting",
+                          description: "Articles 61–67 require ongoing monitoring, incident logs, and corrective action tracking."
+                        },
+                        {
+                          number: "7",
+                          icon: Users,
+                          iconColor: "text-indigo-600",
+                          bgColor: "bg-indigo-500/10",
+                          title: "Fundamental Rights & Ethics",
+                          description: "Audits ensure that AI systems uphold human dignity, equality, and non-discrimination principles (see Recitals 17–30)."
+                        },
+                        {
+                          number: "8",
+                          icon: Scale,
+                          iconColor: "text-pink-600",
+                          bgColor: "bg-pink-500/10",
+                          title: "Validation Scale",
+                          description: "A standardized scoring system: Fully Validated, Largely Validated, Partially Validated, or Not Yet Validated. This covers governance, data, and ethics."
+                        },
+                        {
+                          number: "9",
+                          icon: CheckCircle,
+                          iconColor: "text-emerald-600",
+                          bgColor: "bg-emerald-500/10",
+                          title: "Outcome",
+                          description: "The framework converts legal requirements into measurable controls, ensuring traceability from EU AI Act provisions to audit evidence."
+                        }
+                      ].map((item, index) => (
+                        <Card key={index} className="border-border hover:border-accent/50 transition-all">
+                          <CardHeader>
+                            <div className="flex items-start gap-3">
+                              <div className={`w-10 h-10 rounded-lg ${item.bgColor} flex items-center justify-center flex-shrink-0`}>
+                                <item.icon className={`w-5 h-5 ${item.iconColor}`} />
+                              </div>
+                              <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-1">
+                                  <span className="text-xs font-bold text-muted-foreground">{item.number}.</span>
+                                  <CardTitle className="text-base">{item.title}</CardTitle>
+                                </div>
+                                <p className="text-sm text-muted-foreground">{item.description}</p>
+                              </div>
                             </div>
-                            <div className="flex-1">
-                              <CardTitle className="text-base mb-1">{item.title}</CardTitle>
-                              <p className="text-sm text-muted-foreground">{item.description}</p>
-                            </div>
-                          </div>
-                        </CardHeader>
-                      </Card>
-                    ))}
+                          </CardHeader>
+                        </Card>
+                      ))}
+                    </div>
                   </div>
 
-                  <Card className="border-border bg-gradient-accent mt-8">
+                  <Card className="border-border bg-gradient-accent">
                     <CardHeader>
                       <CardTitle className="text-lg text-accent-foreground flex items-center gap-2">
                         <CheckCircle className="w-5 h-5" />
-                        Framework Outcome
+                        Framework Benefits
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-sm text-accent-foreground/90 mb-4">
-                        This framework converts legal requirements into measurable controls, ensuring complete traceability from EU AI Act provisions to audit evidence. It aligns with ISO/IEC 42001 and NIST AI RMF, providing organizational leadership with a unified view of regulatory readiness for certification.
+                      <p className="text-sm text-accent-foreground/90 leading-relaxed mb-4">
+                        The framework converts legal requirements into measurable controls, ensuring traceability from EU AI Act provisions to audit evidence. It is aligned with <strong>ISO/IEC 42001</strong> and <strong>NIST AI RMF</strong>, giving organizational leadership a unified overview of their readiness for regulatory review and certification.
                       </p>
-                      <div className="flex flex-wrap gap-2 pt-4 border-t border-accent-foreground/20">
-                        <Badge variant="outline" className="border-accent-foreground/30 text-accent-foreground">ISO/IEC 42001 Aligned</Badge>
-                        <Badge variant="outline" className="border-accent-foreground/30 text-accent-foreground">NIST AI RMF Compatible</Badge>
-                        <Badge variant="outline" className="border-accent-foreground/30 text-accent-foreground">COBIT Integrated</Badge>
-                        <Badge variant="outline" className="border-accent-foreground/30 text-accent-foreground">Phased Implementation 2025-2027</Badge>
+                      <div className="pt-4 border-t border-accent-foreground/20">
+                        <p className="text-sm font-semibold text-accent-foreground mb-3">Key Alignments:</p>
+                        <div className="flex flex-wrap gap-2">
+                          <Badge variant="outline" className="border-accent-foreground/30 text-accent-foreground">ISO/IEC 42001</Badge>
+                          <Badge variant="outline" className="border-accent-foreground/30 text-accent-foreground">NIST AI RMF</Badge>
+                          <Badge variant="outline" className="border-accent-foreground/30 text-accent-foreground">COBIT</Badge>
+                          <Badge variant="outline" className="border-accent-foreground/30 text-accent-foreground">Phased 2025-2027</Badge>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
+
+                  <div className="mt-6 text-xs text-muted-foreground text-center">
+                    © 2025 Asimov■AI Integrity • www.asimovrisk.com
+                  </div>
                 </CardContent>
               </Card>
             </div>
