@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Linkedin, MessageCircle } from "lucide-react";
 import nickLockettImg from "@/assets/nick-lockett.png";
 import sushilaNairImg from "@/assets/sushila-nair.png";
+import rajivAbeysingheImg from "@/assets/rajiv-abeysinghe.png";
 
 const teamMembers = [
   {
@@ -18,7 +19,7 @@ const teamMembers = [
     title: "Co-founder, Asimov-AI RISK",
     bio: "AI governance expert and creator of the ASIMOV-AI Risk Method. Specializes in EU AI Act compliance, responsible AI frameworks, and strategic transformation programs with 25+ years of experience across global enterprises.",
     linkedin: "https://www.linkedin.com/in/rajivab/",
-    image: "/placeholder.svg", // Replace with actual image
+    image: rajivAbeysingheImg,
     whatsapp: "+1234567890" // Replace with actual number
   },
   {
