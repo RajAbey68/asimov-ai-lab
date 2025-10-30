@@ -54,7 +54,10 @@ const Assessment = () => {
                 <Shield className="w-4 h-4 text-accent" />
                 <span className="text-sm text-accent font-medium">Expert AI Risk Assessment & Compliance</span>
               </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">ASIMOV-AI Risk Assessment Method</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">AI Governance Starts with Clarity: Assess, Align, Decide, Deliver.</h1>
+              <p className="text-lg text-accent/90 max-w-3xl mx-auto mb-2 italic">
+                Subtly reinterprets the OODA loop for strategic leadership in AI risk.
+              </p>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                 Our proven framework helps you identify, assess, and mitigate AI risks to achieve compliance with EU AI Act, NIST, and ISO/IEC 42001 standards
               </p>
