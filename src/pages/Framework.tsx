@@ -7,6 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import aiRiskIllustration from "@/assets/ai-risk-illustration.jpg";
 import aiGovernance from "@/assets/ai-governance.jpg";
 import aiLifecycle from "@/assets/ai-lifecycle.jpg";
+import euAiActInfographic from "@/assets/eu-ai-act-infographic.png";
 
 const Framework = () => {
   const phases = [
@@ -583,19 +584,36 @@ const Framework = () => {
                 </CardHeader>
                 
                 <CardContent className="pt-6">
-                  <div className="prose prose-sm max-w-none dark:prose-invert mb-8">
-                    <p className="text-base leading-relaxed mb-4">
-                      The <strong>EU AI Act</strong> (Regulation (EU) 2024/1689) is the first legally binding, comprehensive regulatory framework governing artificial intelligence.
-                    </p>
-                    <p className="text-base text-muted-foreground leading-relaxed mb-4">
-                      It requires all providers, importers, distributors, and deployers of AI systems to prove compliance with rules covering areas such as risk management, data governance, and post-market monitoring. As the regulation will be phased in between 2025 and 2027, organisations must urgently convert these requirements into auditable controls.
-                    </p>
-                    <p className="text-base text-muted-foreground leading-relaxed">
-                      Our audit framework adapts established enterprise risk and assurance standards—like <strong>COBIT</strong>, <strong>NIST AI RMF</strong>, and <strong>ISO/IEC 42001</strong>—to mirror the EU AI Act's structure.
-                    </p>
-                    <p className="text-base text-muted-foreground leading-relaxed mt-4">
-                      This helps internal auditors, compliance teams, and external reviewers confirm that each requirement is met through clear evidence and governance documents.
-                    </p>
+                  {/* Two Column Layout: Content Left, Infographic Right */}
+                  <div className="grid lg:grid-cols-2 gap-8 mb-8">
+                    {/* Left Column - Content */}
+                    <div>
+                      <div className="prose prose-sm max-w-none dark:prose-invert mb-8">
+                        <p className="text-base leading-relaxed mb-4">
+                          The <strong>EU AI Act</strong> (Regulation (EU) 2024/1689) is the first legally binding, comprehensive regulatory framework governing artificial intelligence.
+                        </p>
+                        <p className="text-base text-muted-foreground leading-relaxed mb-4">
+                          It requires all providers, importers, distributors, and deployers of AI systems to prove compliance with rules covering areas such as risk management, data governance, and post-market monitoring. As the regulation will be phased in between 2025 and 2027, organisations must urgently convert these requirements into auditable controls.
+                        </p>
+                        <p className="text-base text-muted-foreground leading-relaxed">
+                          Our audit framework adapts established enterprise risk and assurance standards—like <strong>COBIT</strong>, <strong>NIST AI RMF</strong>, and <strong>ISO/IEC 42001</strong>—to mirror the EU AI Act's structure.
+                        </p>
+                        <p className="text-base text-muted-foreground leading-relaxed mt-4">
+                          This helps internal auditors, compliance teams, and external reviewers confirm that each requirement is met through clear evidence and governance documents.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Right Column - Infographic */}
+                    <div className="flex items-center justify-center">
+                      <div className="relative w-full">
+                        <img 
+                          src={euAiActInfographic} 
+                          alt="EU AI Act Audit Framework infographic showing framework components and validation approach" 
+                          className="w-full h-auto rounded-lg shadow-lg border border-border"
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   <div className="mb-8">
