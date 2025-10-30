@@ -14,8 +14,8 @@ const teamMembers = [
     image: sushilaNairImg,
     whatsapp: "+1234567890", // Replace with actual number
     rates: {
-      initial: "$450 / 50 mins",
-      followUp: "$300 / 50 mins"
+      initial: "$450",
+      followUp: "$300"
     }
   },
   {
@@ -26,8 +26,8 @@ const teamMembers = [
     image: rajivAbeysingheImg,
     whatsapp: "+1234567890", // Replace with actual number
     rates: {
-      initial: "$400 / 50 mins",
-      followUp: "$360 / 50 mins"
+      initial: "$400",
+      followUp: "$360"
     }
   },
   {
@@ -38,8 +38,8 @@ const teamMembers = [
     image: nickLockettImg,
     whatsapp: "+1234567890", // Replace with actual number
     rates: {
-      initial: "$550 / hour",
-      followUp: "$500 / hour"
+      initial: "$550",
+      followUp: "$500"
     }
   }
 ];
@@ -97,7 +97,7 @@ const Team = () => {
                 <div className="mb-6 p-4 bg-muted/50 rounded-lg border border-border/50">
                   <h4 className="text-sm font-semibold mb-3 text-foreground">Online Consultation Rates</h4>
                   <p className="text-xs text-muted-foreground mb-3">
-                    Includes pre-meet questionnaire review, clarifications, and preparation
+                    Includes pre-meet questionnaire review, clarifications, and preparation for 50 minute consultation
                   </p>
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">
