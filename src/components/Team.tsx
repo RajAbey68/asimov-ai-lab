@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Linkedin, MessageCircle } from "lucide-react";
+import nickLockettImg from "@/assets/nick-lockett.png";
 
 const teamMembers = [
   {
@@ -24,7 +25,7 @@ const teamMembers = [
     title: "Founder, CAAIRO & Managing Partner, ADL Solicitors",
     bio: "Technology lawyer and founder of CAAIRO London Centre for the Assessment of AI Risk & Opportunity. CEO Managing Partner at ADL Solicitors specializing in AI governance, intellectual property, commercial technology law, and regulatory compliance for technology businesses.",
     linkedin: "https://www.linkedin.com/in/nicklockett/",
-    image: "/placeholder.svg", // Replace with actual image
+    image: nickLockettImg,
     whatsapp: "+1234567890" // Replace with actual number
   }
 ];
