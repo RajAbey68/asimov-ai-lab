@@ -27,6 +27,7 @@ const teamMembers = [
     linkedin: "https://www.linkedin.com/in/rajivab/",
     image: rajivAbeysingheImg,
     whatsapp: "+1234567890", // Replace with actual number
+    email: "Rajiv@ASIMOV-AI.ORG",
     rates: {
       initial: "$400",
       followUp: "$360"

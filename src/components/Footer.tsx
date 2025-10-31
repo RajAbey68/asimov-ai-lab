@@ -65,14 +65,14 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
                 <Mail className="w-4 h-4 mt-0.5 text-accent" />
-                <a href="mailto:contact@asimov-ai.com" className="text-sm text-muted-foreground hover:text-accent transition-colors">
-                  contact@asimov-ai.com
+                <a href="mailto:info@asimov-ai.org" className="text-sm text-muted-foreground hover:text-accent transition-colors">
+                  info@asimov-ai.org
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <Phone className="w-4 h-4 mt-0.5 text-accent" />
                 <a href="tel:+441234567890" className="text-sm text-muted-foreground hover:text-accent transition-colors">
-                  +44 (0) 123 456 7890
+                  +44 (0) 123 456 7890 (WhatsApp)
                 </a>
               </li>
               <li className="flex items-start gap-2">

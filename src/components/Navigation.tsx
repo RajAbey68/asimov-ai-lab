@@ -31,13 +31,13 @@ const Navigation = () => {
               Resources
             </Link>
             <div className="flex items-center gap-4 ml-4 pl-4 border-l border-border">
-              <a href="mailto:contact@asimov-ai.com" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
+              <a href="mailto:info@asimov-ai.org" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
                 <Mail className="w-4 h-4" />
-                <span className="hidden lg:inline">contact@asimov-ai.com</span>
+                <span className="hidden lg:inline">info@asimov-ai.org</span>
               </a>
               <a href="tel:+441234567890" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
                 <Phone className="w-4 h-4" />
-                <span className="hidden lg:inline">+44 (0) 123 456 7890</span>
+                <span className="hidden lg:inline">+44 (0) 123 456 7890 (WhatsApp)</span>
               </a>
             </div>
           </div>
