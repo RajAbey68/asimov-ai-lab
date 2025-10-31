@@ -23,9 +23,9 @@ const ContactInfo = () => {
               <Phone className="w-5 h-5 text-accent" />
             </div>
             <div>
-              <h3 className="font-semibold mb-1">Phone / WhatsApp</h3>
-              <a href="tel:+441234567890" className="text-muted-foreground hover:text-accent transition-colors">
-                +44 (0) 123 456 7890
+              <h3 className="font-semibold mb-1">Phone / WhatsApp / Telegram</h3>
+              <a href="tel:+447733393956" className="text-muted-foreground hover:text-accent transition-colors">
+                +44 7733 393956
               </a>
             </div>
           </div>

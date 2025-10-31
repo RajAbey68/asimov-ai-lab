@@ -13,7 +13,7 @@ const teamMembers = [
     specialties: "Cybersecurity, AI Security, and Regulatory Audit",
     linkedin: "https://www.linkedin.com/in/sushilanair/",
     image: sushilaNairImg,
-    whatsapp: "+1234567890", // Replace with actual number
+    whatsapp: "+447733393956",
     rates: {
       initial: "$450",
       followUp: "$300"
@@ -26,7 +26,7 @@ const teamMembers = [
     specialties: "AI Application Delivery, Platform Migration, Data Migration, and CI/CD Implementation for AI Platforms",
     linkedin: "https://www.linkedin.com/in/rajivab/",
     image: rajivAbeysingheImg,
-    whatsapp: "+1234567890", // Replace with actual number
+    whatsapp: "+447733393956",
     email: "Rajiv@ASIMOV-AI.ORG",
     rates: {
       initial: "$400",
@@ -40,7 +40,7 @@ const teamMembers = [
     specialties: "AI Legal Frameworks, Regulatory Compliance, and Intellectual Property",
     linkedin: "https://www.linkedin.com/in/nicklockett/",
     image: nickLockettImg,
-    whatsapp: "+1234567890", // Replace with actual number
+    whatsapp: "+447733393956",
     rates: {
       initial: "$550",
       followUp: "$500"

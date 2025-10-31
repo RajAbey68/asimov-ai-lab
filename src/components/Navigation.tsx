@@ -35,9 +35,9 @@ const Navigation = () => {
                 <Mail className="w-4 h-4" />
                 <span className="hidden lg:inline">info@asimov-ai.org</span>
               </a>
-              <a href="tel:+441234567890" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
+              <a href="tel:+447733393956" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors">
                 <Phone className="w-4 h-4" />
-                <span className="hidden lg:inline">+44 (0) 123 456 7890 (WhatsApp)</span>
+                <span className="hidden lg:inline">+44 7733 393956 (WhatsApp/Telegram)</span>
               </a>
             </div>
           </div>
