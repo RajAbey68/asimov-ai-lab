@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
+import RiskProfileSelector from "@/components/RiskProfileSelector";
 import Services from "@/components/Services";
 import Team from "@/components/Team";
 import FloatingCTA from "@/components/FloatingCTA";
@@ -11,6 +12,9 @@ const Index = () => {
       <Navigation />
       <FloatingCTA />
       <Hero />
+      <div id="risk-profiles">
+        <RiskProfileSelector />
+      </div>
       <Services />
       <Team />
       <Footer />
