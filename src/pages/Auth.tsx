@@ -10,39 +10,26 @@ import { useToast } from "@/hooks/use-toast";
 import { Shield, Brain, Lock, Key } from "lucide-react";
 import Navigation from "@/components/Navigation";
 
-const DEV_EMAIL = "RajAbey@me.com";
-const DEV_PASSWORD_KEY = "dev_test_password";
+const DEV_EMAIL = "RajAbety@me.com";
+const DEV_PASSWORD = "P@55w0rd12345";
 
 const Auth = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
 
-  // Generate and store dev password on first load
-  useEffect(() => {
-    const storedPassword = localStorage.getItem(DEV_PASSWORD_KEY);
-    if (!storedPassword) {
-      const generatedPassword = `Asimov${Math.random().toString(36).slice(2, 10)}#${Date.now().toString(36)}`;
-      localStorage.setItem(DEV_PASSWORD_KEY, generatedPassword);
-      console.log("🔑 Dev password generated and stored locally");
-    }
-  }, []);
-
   const loadDevCredentials = () => {
-    const password = localStorage.getItem(DEV_PASSWORD_KEY);
-    if (password) {
-      // Auto-fill forms
-      const emailInputs = document.querySelectorAll<HTMLInputElement>('input[type="email"]');
-      const passwordInputs = document.querySelectorAll<HTMLInputElement>('input[type="password"]');
-      
-      emailInputs.forEach(input => input.value = DEV_EMAIL);
-      passwordInputs.forEach(input => input.value = password);
-      
-      toast({
-        title: "Dev credentials loaded",
-        description: `Email: ${DEV_EMAIL}`,
-      });
-    }
+    // Auto-fill forms
+    const emailInputs = document.querySelectorAll<HTMLInputElement>('input[type="email"]');
+    const passwordInputs = document.querySelectorAll<HTMLInputElement>('input[type="password"]');
+    
+    emailInputs.forEach(input => input.value = DEV_EMAIL);
+    passwordInputs.forEach(input => input.value = DEV_PASSWORD);
+    
+    toast({
+      title: "Dev credentials loaded",
+      description: `Email: ${DEV_EMAIL}`,
+    });
   };
 
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
