@@ -7,18 +7,22 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { CheckCircle2, XCircle, Upload, Database } from "lucide-react";
 import { toast } from "sonner";
 
-// Sample controls data structure - you'll paste the full dataset here
+// Sample controls data structure - replace with actual data from Excel
 const CONTROLS_DATA = [
-  // Data Governance & Quality (DAT-001 to DAT-045)
   {
     controlId: "DAT-001",
     domain: "Data Governance & Quality",
     title: "Control 1 for Data Governance & Quality",
     specification: "Ensure that the data governance & quality framework includes policy, testing, and documentation per Art 10 of the EU AI Act.",
+    controlType: "Preventive",
+    lifecyclePhase: "Design, Development",
+    roleApplicability: "Data Scientist, ML Engineer",
+    threatVector: "Data quality issues",
     validationScale: "🟢",
-    evidence: "Policy, test records, and QMS documentation required.",
+    evidenceRequired: "Policy, test records, and QMS documentation required.",
     euArticle: "Art 10",
     euAnnex: "Annex IV §2",
+    mappingRationale: "Direct mapping to EU AI Act requirements",
     nistRef: "GV-1",
     cobitRef: "BAI06.02",
     isoRef: "ISO/IEC 27001 §6.1"
@@ -26,42 +30,17 @@ const CONTROLS_DATA = [
   // Add all 360 controls here...
 ];
 
-// Mapping functions
-const VALIDATION_SCALE_TO_RISK: Record<string, string> = {
-  '🟢': 'Low Risk',
-  '🟡': 'General Risk',
-  '🔴': 'High Risk',
-  '🔵': 'General Risk',
-};
-
-const DOMAIN_TO_PILLAR: Record<string, string> = {
-  'DAT': 'Accountability',
-  'RIS': 'Oversight',
-  'MOD': 'Interpretability',
-  'TRA': 'Accountability',
-  'HUM': 'Oversight',
-  'ACC': 'Accountability',
-  'CYB': 'Security',
-  'POS': 'Monitoring',
-};
-
-const mapRiskLevel = (validationScale: string): string => {
-  return VALIDATION_SCALE_TO_RISK[validationScale] || 'General Risk';
-};
-
-const mapAsimovPillar = (controlId: string): string => {
-  const prefix = controlId.split('-')[0];
-  return DOMAIN_TO_PILLAR[prefix] || 'Accountability';
-};
-
-const formatRegulatoryRefs = (control: any): string => {
-  const refs: string[] = [];
-  if (control.euArticle) refs.push(`EU AI Act ${control.euArticle}`);
-  if (control.euAnnex) refs.push(control.euAnnex);
-  if (control.nistRef) refs.push(`NIST ${control.nistRef}`);
-  if (control.cobitRef) refs.push(`COBIT ${control.cobitRef}`);
-  if (control.isoRef) refs.push(control.isoRef);
-  return refs.join(' | ') || '';
+// Helper function to parse array fields from string
+const parseArrayField = (value: string | undefined): string[] | null => {
+  if (!value || value.trim() === '') return null;
+  
+  // Split by common delimiters and clean up
+  const items = value
+    .split(/[,;|]/)
+    .map(item => item.trim())
+    .filter(item => item.length > 0);
+  
+  return items.length > 0 ? items : null;
 };
 
 const AdminControlsImport = () => {
@@ -86,21 +65,28 @@ const AdminControlsImport = () => {
     for (let i = 0; i < CONTROLS_DATA.length; i += batchSize) {
       const batch = CONTROLS_DATA.slice(i, i + batchSize);
       
-      const controlsToInsert = batch.map((control, index) => ({
-        control_name: control.title,
-        category: control.domain,
-        framework: 'EU AI Act (2023)',
-        asimov_pillar: mapAsimovPillar(control.controlId),
-        risk_level: mapRiskLevel(control.validationScale),
-        description: control.specification,
-        evidence_requirements: control.evidence,
-        regulatory_references: formatRegulatoryRefs(control),
-        sort_order: i + index + 1
+      const controlsToInsert = batch.map(control => ({
+        control_id: control.controlId,
+        domain: control.domain,
+        title: control.title,
+        specification: control.specification,
+        control_type: control.controlType || null,
+        lifecycle_phase: parseArrayField(control.lifecyclePhase),
+        role_applicability: parseArrayField(control.roleApplicability),
+        threat_vector: control.threatVector || null,
+        eu_article: control.euArticle || null,
+        eu_annex: control.euAnnex || null,
+        mapping_rationale: control.mappingRationale || null,
+        nist_ref: control.nistRef || null,
+        cobit_ref: control.cobitRef || null,
+        iso_ref: control.isoRef || null,
+        validation_scale: control.validationScale || null,
+        evidence_required: control.evidenceRequired || null
       }));
 
       try {
         const { error } = await supabase
-          .from('governance_controls')
+          .from('ai_controls')
           .insert(controlsToInsert);
 
         if (error) {
@@ -136,9 +122,9 @@ const AdminControlsImport = () => {
 
     try {
       const { error } = await supabase
-        .from('governance_controls')
+        .from('ai_controls')
         .delete()
-        .neq('id', 0); // Delete all
+        .neq('id', '00000000-0000-0000-0000-000000000000'); // Delete all
 
       if (error) throw error;
       
@@ -155,18 +141,18 @@ const AdminControlsImport = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Database className="h-6 w-6" />
-            Governance Controls Import
+            AI Controls Import
           </CardTitle>
           <CardDescription>
-            Import 360 EU AI AICM governance controls into the database
+            Import 360 EU AI AICM controls into the ai_controls table
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <Alert>
             <AlertDescription>
-              This tool will import {CONTROLS_DATA.length} governance controls across 8 domains:
-              Data Governance, Risk Management, Model Security, Transparency, Human Oversight, 
-              Accuracy, Cybersecurity, and Post-Market Monitoring.
+              This tool will import {CONTROLS_DATA.length} AI controls with full support for:
+              lifecycle phases, role applicability, threat vectors, and regulatory mappings 
+              (EU AI Act, NIST, COBIT, ISO 42001).
             </AlertDescription>
           </Alert>
 
@@ -237,7 +223,7 @@ const AdminControlsImport = () => {
             <AlertDescription className="text-xs">
               <strong>Note:</strong> Before importing, make sure you have the complete dataset 
               in CONTROLS_DATA array. Currently showing {CONTROLS_DATA.length} controls.
-              To use this tool, paste all 360 controls from the Excel file into the CONTROLS_DATA constant.
+              You can generate the full import SQL using the Python script: <code>python scripts/import_ai_controls.py</code>
             </AlertDescription>
           </Alert>
         </CardContent>
