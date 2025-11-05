@@ -14,6 +14,69 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_controls: {
+        Row: {
+          cobit_ref: string | null
+          control_id: string
+          control_type: string | null
+          domain: string
+          eu_annex: string | null
+          eu_article: string | null
+          evidence_required: string | null
+          id: string
+          iso_ref: string | null
+          last_updated: string | null
+          lifecycle_phase: string[] | null
+          mapping_rationale: string | null
+          nist_ref: string | null
+          role_applicability: string[] | null
+          specification: string | null
+          threat_vector: string | null
+          title: string | null
+          validation_scale: string | null
+        }
+        Insert: {
+          cobit_ref?: string | null
+          control_id: string
+          control_type?: string | null
+          domain: string
+          eu_annex?: string | null
+          eu_article?: string | null
+          evidence_required?: string | null
+          id?: string
+          iso_ref?: string | null
+          last_updated?: string | null
+          lifecycle_phase?: string[] | null
+          mapping_rationale?: string | null
+          nist_ref?: string | null
+          role_applicability?: string[] | null
+          specification?: string | null
+          threat_vector?: string | null
+          title?: string | null
+          validation_scale?: string | null
+        }
+        Update: {
+          cobit_ref?: string | null
+          control_id?: string
+          control_type?: string | null
+          domain?: string
+          eu_annex?: string | null
+          eu_article?: string | null
+          evidence_required?: string | null
+          id?: string
+          iso_ref?: string | null
+          last_updated?: string | null
+          lifecycle_phase?: string[] | null
+          mapping_rationale?: string | null
+          nist_ref?: string | null
+          role_applicability?: string[] | null
+          specification?: string | null
+          threat_vector?: string | null
+          title?: string | null
+          validation_scale?: string | null
+        }
+        Relationships: []
+      }
       assessment_evidence_files: {
         Row: {
           content_type: string | null
