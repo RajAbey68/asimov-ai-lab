@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,13 +7,43 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Shield, Brain, Lock } from "lucide-react";
+import { Shield, Brain, Lock, Key } from "lucide-react";
 import Navigation from "@/components/Navigation";
+
+const DEV_EMAIL = "RajAbey@me.com";
+const DEV_PASSWORD_KEY = "dev_test_password";
 
 const Auth = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
+
+  // Generate and store dev password on first load
+  useEffect(() => {
+    const storedPassword = localStorage.getItem(DEV_PASSWORD_KEY);
+    if (!storedPassword) {
+      const generatedPassword = `Asimov${Math.random().toString(36).slice(2, 10)}#${Date.now().toString(36)}`;
+      localStorage.setItem(DEV_PASSWORD_KEY, generatedPassword);
+      console.log("🔑 Dev password generated and stored locally");
+    }
+  }, []);
+
+  const loadDevCredentials = () => {
+    const password = localStorage.getItem(DEV_PASSWORD_KEY);
+    if (password) {
+      // Auto-fill forms
+      const emailInputs = document.querySelectorAll<HTMLInputElement>('input[type="email"]');
+      const passwordInputs = document.querySelectorAll<HTMLInputElement>('input[type="password"]');
+      
+      emailInputs.forEach(input => input.value = DEV_EMAIL);
+      passwordInputs.forEach(input => input.value = password);
+      
+      toast({
+        title: "Dev credentials loaded",
+        description: `Email: ${DEV_EMAIL}`,
+      });
+    }
+  };
 
   const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -99,6 +129,29 @@ const Auth = () => {
       <Navigation />
       
       <div className="container max-w-5xl mx-auto px-4 py-24">
+        {/* Development Helper */}
+        <div className="max-w-md mx-auto mb-6">
+          <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2 text-sm text-yellow-600 dark:text-yellow-400">
+                <Key className="h-4 w-4" />
+                <span className="font-medium">Development Mode</span>
+              </div>
+              <Button
+                onClick={loadDevCredentials}
+                variant="outline"
+                size="sm"
+                className="text-xs"
+              >
+                Load Test Credentials
+              </Button>
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">
+              Click to auto-fill with {DEV_EMAIL}
+            </p>
+          </div>
+        </div>
+
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Shield className="w-12 h-12 text-primary" />
