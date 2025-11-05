@@ -10,8 +10,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Progress } from "@/components/ui/progress";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { ArrowLeft, ArrowRight, Sparkles, Download, Save } from "lucide-react";
+import { ArrowLeft, ArrowRight, Sparkles, Download, Save, Info } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface Control {
   id: number;
@@ -160,34 +161,114 @@ const Assessment = () => {
             <CardHeader><CardTitle>Your Response</CardTitle></CardHeader>
             <CardContent>
               <form onSubmit={saveResponse} className="space-y-4">
-                <div className="space-y-2">
-                  <Label>Status</Label>
-                  <Select name="response" required>
-                    <SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Fully Implemented">Fully Implemented</SelectItem>
-                      <SelectItem value="Partially Implemented">Partially Implemented</SelectItem>
-                      <SelectItem value="Not Implemented">Not Implemented</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label>Score (1-5)</Label>
-                  <Select name="response_score" required>
-                    <SelectTrigger><SelectValue /></SelectTrigger>
-                    <SelectContent>
-                      {[5,4,3,2,1].map(n => <SelectItem key={n} value={n.toString()}>{n}</SelectItem>)}
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label>Evidence</Label>
-                  <Textarea name="evidence" rows={3} />
-                </div>
-                <div className="space-y-2">
-                  <Label>Notes</Label>
-                  <Textarea name="evidence_notes" rows={4} />
-                </div>
+                <TooltipProvider>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <Label>Status</Label>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Info className="h-4 w-4 text-muted-foreground cursor-help" />
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs">
+                          <p className="font-semibold mb-1">Implementation Status</p>
+                          <p className="text-xs">Indicates your current compliance level:</p>
+                          <ul className="text-xs mt-1 space-y-1">
+                            <li>• <strong>Fully Implemented:</strong> Control is active and documented</li>
+                            <li>• <strong>Partially Implemented:</strong> Work in progress, gaps exist</li>
+                            <li>• <strong>Not Implemented:</strong> No current controls in place</li>
+                          </ul>
+                          <p className="text-xs mt-2 text-yellow-600">Lower status increases compliance risk and audit exposure.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                    <Select name="response" required>
+                      <SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Fully Implemented">Fully Implemented</SelectItem>
+                        <SelectItem value="Partially Implemented">Partially Implemented</SelectItem>
+                        <SelectItem value="Not Implemented">Not Implemented</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <Label>Score (1-5)</Label>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Info className="h-4 w-4 text-muted-foreground cursor-help" />
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs">
+                          <p className="font-semibold mb-1">Compliance Maturity Score</p>
+                          <p className="text-xs">Rate the quality and maturity of your implementation:</p>
+                          <ul className="text-xs mt-1 space-y-1">
+                            <li>• <strong>5:</strong> Fully documented, tested, and optimized</li>
+                            <li>• <strong>4:</strong> Well implemented with minor gaps</li>
+                            <li>• <strong>3:</strong> Basic implementation, needs improvement</li>
+                            <li>• <strong>2:</strong> Significant gaps or documentation missing</li>
+                            <li>• <strong>1:</strong> Minimal or ineffective implementation</li>
+                          </ul>
+                          <p className="text-xs mt-2 text-yellow-600">Scores below 3 indicate high remediation priority and increased regulatory risk.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                    <Select name="response_score" required>
+                      <SelectTrigger><SelectValue /></SelectTrigger>
+                      <SelectContent>
+                        {[5,4,3,2,1].map(n => <SelectItem key={n} value={n.toString()}>{n}</SelectItem>)}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <Label>Evidence</Label>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Info className="h-4 w-4 text-muted-foreground cursor-help" />
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs">
+                          <p className="font-semibold mb-1">Supporting Evidence</p>
+                          <p className="text-xs">Document proof of compliance for auditors:</p>
+                          <ul className="text-xs mt-1 space-y-1">
+                            <li>• Policy documents and procedures</li>
+                            <li>• Technical documentation and architecture</li>
+                            <li>• Testing results and validation reports</li>
+                            <li>• Training records and certifications</li>
+                            <li>• Screenshots, logs, or system configurations</li>
+                          </ul>
+                          <p className="text-xs mt-2 text-yellow-600">Strong evidence is critical for defending your compliance during regulatory audits and demonstrating due diligence.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                    <Textarea name="evidence" rows={3} placeholder="List evidence: documents, URLs, file references..." />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <Label>Notes</Label>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Info className="h-4 w-4 text-muted-foreground cursor-help" />
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs">
+                          <p className="font-semibold mb-1">Implementation Notes</p>
+                          <p className="text-xs">Record context and action items:</p>
+                          <ul className="text-xs mt-1 space-y-1">
+                            <li>• Current challenges or blockers</li>
+                            <li>• Planned improvements and timelines</li>
+                            <li>• Dependencies on other teams/systems</li>
+                            <li>• Risk mitigation strategies</li>
+                            <li>• Questions for legal/compliance review</li>
+                          </ul>
+                          <p className="text-xs mt-2 text-yellow-600">Detailed notes create an audit trail showing proactive compliance management and continuous improvement efforts.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                    <Textarea name="evidence_notes" rows={4} placeholder="Add context, challenges, action items, or questions..." />
+                  </div>
+                </TooltipProvider>
+                
                 <div className="flex gap-2">
                   <Button type="button" variant="outline" className="flex-1" onClick={() => setCurrentIndex(Math.max(0, currentIndex - 1))} disabled={currentIndex === 0}>
                     <ArrowLeft className="w-4 h-4 mr-2" />Prev
