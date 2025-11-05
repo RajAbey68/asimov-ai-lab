@@ -113,6 +113,10 @@ const Assessment = () => {
 
     setSaving(false);
     toast({ title: "Response saved" });
+    
+    // Reset form for next question
+    e.currentTarget.reset();
+    
     if (currentIndex < controls.length - 1) setCurrentIndex(currentIndex + 1);
     else navigate("/assessment");
   };
