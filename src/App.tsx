@@ -15,6 +15,7 @@ import Framework from "./pages/Framework";
 import TeamPage from "./pages/Team";
 import AdminMedia from "./pages/AdminMedia";
 import AdminControlsImport from "./pages/AdminControlsImport";
+import ControlsViewer from "./pages/ControlsViewer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -48,6 +49,11 @@ const App = () => (
         <Route path="/admin/controls-import" element={
           <ProtectedRoute>
             <AdminControlsImport />
+          </ProtectedRoute>
+        } />
+        <Route path="/controls" element={
+          <ProtectedRoute>
+            <ControlsViewer />
           </ProtectedRoute>
         } />
             <Route path="/framework" element={<Framework />} />
