@@ -249,6 +249,39 @@ export type Database = {
           },
         ]
       }
+      hero_media: {
+        Row: {
+          created_at: string | null
+          file_path: string
+          id: number
+          is_active: boolean | null
+          media_type: string
+          sort_order: number | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          file_path: string
+          id?: number
+          is_active?: boolean | null
+          media_type: string
+          sort_order?: number | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          file_path?: string
+          id?: number
+          is_active?: boolean | null
+          media_type?: string
+          sort_order?: number | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       regions: {
         Row: {
           code: string
@@ -309,6 +342,42 @@ export type Database = {
           id?: string
           role?: Database["public"]["Enums"]["app_role"]
           user_id?: string
+        }
+        Relationships: []
+      }
+      video_links: {
+        Row: {
+          category: string
+          created_at: string | null
+          description: string | null
+          id: number
+          is_active: boolean | null
+          sort_order: number | null
+          title: string
+          updated_at: string | null
+          youtube_url: string
+        }
+        Insert: {
+          category: string
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          is_active?: boolean | null
+          sort_order?: number | null
+          title: string
+          updated_at?: string | null
+          youtube_url: string
+        }
+        Update: {
+          category?: string
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          is_active?: boolean | null
+          sort_order?: number | null
+          title?: string
+          updated_at?: string | null
+          youtube_url?: string
         }
         Relationships: []
       }

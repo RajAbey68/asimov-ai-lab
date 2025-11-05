@@ -13,6 +13,7 @@ import AssessmentInfo from "./pages/AssessmentInfo";
 import Resources from "./pages/Resources";
 import Framework from "./pages/Framework";
 import TeamPage from "./pages/Team";
+import AdminMedia from "./pages/AdminMedia";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,11 @@ const App = () => (
               </ProtectedRoute>
             } />
             <Route path="/assessment-info" element={<AssessmentInfo />} />
+            <Route path="/admin/media" element={
+              <ProtectedRoute>
+                <AdminMedia />
+              </ProtectedRoute>
+            } />
             <Route path="/framework" element={<Framework />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/team" element={<TeamPage />} />

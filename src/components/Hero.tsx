@@ -1,19 +1,67 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import heroBg from "@/assets/hero-bg.jpg";
 
+interface HeroMedia {
+  id: number;
+  media_type: string;
+  file_path: string;
+}
+
 const Hero = () => {
+  const [heroMedia, setHeroMedia] = useState<HeroMedia | null>(null);
+  const [mediaUrl, setMediaUrl] = useState<string>("");
+
+  useEffect(() => {
+    fetchHeroMedia();
+  }, []);
+
+  const fetchHeroMedia = async () => {
+    const { data } = await supabase
+      .from("hero_media")
+      .select("*")
+      .eq("is_active", true)
+      .order("sort_order")
+      .maybeSingle();
+
+    if (data) {
+      setHeroMedia(data);
+      const { data: urlData } = supabase.storage
+        .from("hero-media")
+        .getPublicUrl(data.file_path);
+      setMediaUrl(urlData.publicUrl);
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
+      <div className="absolute inset-0 z-0">
+        {heroMedia && mediaUrl ? (
+          heroMedia.media_type === "video" ? (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src={mediaUrl} type="video/mp4" />
+            </video>
+          ) : (
+            <div
+              className="w-full h-full bg-cover bg-center"
+              style={{ backgroundImage: `url(${mediaUrl})` }}
+            />
+          )
+        ) : (
+          <div
+            className="w-full h-full bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroBg})` }}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-primary/80" />
       </div>
 
