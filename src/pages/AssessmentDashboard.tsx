@@ -13,6 +13,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
 import { Plus, FileText, Calendar, CheckCircle2, Clock, TrendingUp, Shield, AlertTriangle, Activity, BarChart3, PieChart, Target, Zap } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { RadialBarChart, RadialBar, PieChart as RechartPie, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
@@ -73,6 +74,7 @@ const AssessmentDashboard = () => {
   const [regions, setRegions] = useState<Region[]>([]);
   const [loading, setLoading] = useState(true);
   const [creatingSession, setCreatingSession] = useState(false);
+  const [selectedRiskLevels, setSelectedRiskLevels] = useState<string[]>([]);
   const { user, signOut } = useAuth();
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -198,7 +200,11 @@ const AssessmentDashboard = () => {
     const session_name = formData.get("session_name") as string;
     const sector_id = formData.get("sector") as string;
     const region_id = formData.get("region") as string;
-    const risk_level_filter = formData.get("risk_level") as string;
+    
+    // Handle multiple risk levels
+    const risk_level_filter = selectedRiskLevels.length > 0 
+      ? selectedRiskLevels.join(",") 
+      : null;
 
     const { data, error } = await supabase
       .from("audit_sessions")
@@ -208,7 +214,7 @@ const AssessmentDashboard = () => {
         framework_filter: "EU AI Act (2023)",
         sector_id: sector_id ? parseInt(sector_id) : null,
         region_id: region_id ? parseInt(region_id) : null,
-        risk_level_filter: risk_level_filter || null,
+        risk_level_filter: risk_level_filter,
         status: "in_progress",
       })
       .select()
@@ -687,17 +693,54 @@ const AssessmentDashboard = () => {
                       </Select>
                     </div>
 
-                    <div className="space-y-2">
-                      <Label htmlFor="risk_level">Risk Level</Label>
-                      <Select name="risk_level" disabled={creatingSession}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="All risk levels" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="High Risk">High Risk Only</SelectItem>
-                          <SelectItem value="General Risk">General Risk Only</SelectItem>
-                        </SelectContent>
-                      </Select>
+                    <div className="space-y-3">
+                      <Label>Risk Level</Label>
+                      <div className="space-y-2 p-4 border rounded-lg">
+                        <div className="flex items-center space-x-2">
+                          <Checkbox
+                            id="high-risk"
+                            checked={selectedRiskLevels.includes("High Risk")}
+                            onCheckedChange={(checked) => {
+                              setSelectedRiskLevels(prev =>
+                                checked
+                                  ? [...prev, "High Risk"]
+                                  : prev.filter(level => level !== "High Risk")
+                              );
+                            }}
+                            disabled={creatingSession}
+                          />
+                          <label
+                            htmlFor="high-risk"
+                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+                          >
+                            High Risk Only
+                          </label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Checkbox
+                            id="general-risk"
+                            checked={selectedRiskLevels.includes("General Risk")}
+                            onCheckedChange={(checked) => {
+                              setSelectedRiskLevels(prev =>
+                                checked
+                                  ? [...prev, "General Risk"]
+                                  : prev.filter(level => level !== "General Risk")
+                              );
+                            }}
+                            disabled={creatingSession}
+                          />
+                          <label
+                            htmlFor="general-risk"
+                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+                          >
+                            General Risk Only
+                          </label>
+                        </div>
+                        <p className="text-xs text-muted-foreground mt-2">
+                          {selectedRiskLevels.length === 0 && "Select risk levels or leave empty for all"}
+                          {selectedRiskLevels.length > 0 && `Assessing: ${selectedRiskLevels.join(" + ")}`}
+                        </p>
+                      </div>
                     </div>
 
                     <Button type="submit" className="w-full" disabled={creatingSession}>

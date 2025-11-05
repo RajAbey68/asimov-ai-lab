@@ -60,11 +60,25 @@ const Assessment = () => {
   };
 
   const fetchControls = async () => {
-    const { data } = await supabase
+    // Get the session to check risk level filter
+    const { data: sessionData } = await supabase
+      .from("audit_sessions")
+      .select("risk_level_filter")
+      .eq("id", sessionId)
+      .single();
+
+    let query = supabase
       .from("controls")
       .select("*")
-      .eq("framework", "EU AI Act (2023)")
-      .order("sort_order");
+      .eq("framework", "EU AI Act (2023)");
+
+    // Apply risk level filter if exists
+    if (sessionData?.risk_level_filter) {
+      const riskLevels = sessionData.risk_level_filter.split(",");
+      query = query.in("risk_level", riskLevels);
+    }
+
+    const { data } = await query.order("sort_order");
     if (data) setControls(data);
   };
 
