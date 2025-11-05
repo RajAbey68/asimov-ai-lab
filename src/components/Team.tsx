@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Linkedin, MessageCircle } from "lucide-react";
 import nickLockettImg from "@/assets/nick-lockett.png";
 import sushilaNairImg from "@/assets/sushila-nair.png";
 import rajivAbeysingheImg from "@/assets/rajiv-abeysinghe.png";
+import ConsultationRequestDialog from "@/components/ConsultationRequestDialog";
 
 const teamMembers = [
   {
@@ -49,8 +51,15 @@ const teamMembers = [
 ];
 
 const Team = () => {
-  const handleWhatsApp = (phone: string) => {
-    window.open(`https://wa.me/${phone.replace(/[^0-9]/g, '')}`, '_blank');
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [selectedExpert, setSelectedExpert] = useState<{
+    name: string;
+    whatsapp: string;
+  } | null>(null);
+
+  const handleContactClick = (name: string, whatsapp: string) => {
+    setSelectedExpert({ name, whatsapp });
+    setDialogOpen(true);
   };
 
   return (
@@ -120,20 +129,28 @@ const Team = () => {
                   </div>
                 </div>
                 
-                {member.email && (
-                  <Button 
-                    onClick={() => handleWhatsApp(member.whatsapp)}
-                    className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white"
-                  >
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    Contact on WhatsApp
-                  </Button>
-                )}
+                <Button 
+                  onClick={() => handleContactClick(member.name, member.whatsapp)}
+                  className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white"
+                >
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Contact on WhatsApp
+                </Button>
               </div>
             </Card>
           ))}
         </div>
       </div>
+
+      {selectedExpert && (
+        <ConsultationRequestDialog
+          open={dialogOpen}
+          onOpenChange={setDialogOpen}
+          expertName={selectedExpert.name}
+          contactMethod="whatsapp"
+          contactHandle={selectedExpert.whatsapp}
+        />
+      )}
     </section>
   );
 };

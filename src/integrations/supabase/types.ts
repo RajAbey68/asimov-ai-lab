@@ -399,6 +399,42 @@ export type Database = {
           },
         ]
       }
+      consultation_requests: {
+        Row: {
+          company: string | null
+          contact_method: string
+          created_at: string
+          email: string
+          expert_name: string
+          id: string
+          message: string
+          name: string
+          phone: string
+        }
+        Insert: {
+          company?: string | null
+          contact_method: string
+          created_at?: string
+          email: string
+          expert_name: string
+          id?: string
+          message: string
+          name: string
+          phone: string
+        }
+        Update: {
+          company?: string | null
+          contact_method?: string
+          created_at?: string
+          email?: string
+          expert_name?: string
+          id?: string
+          message?: string
+          name?: string
+          phone?: string
+        }
+        Relationships: []
+      }
       controls: {
         Row: {
           asimov_pillar: string | null
