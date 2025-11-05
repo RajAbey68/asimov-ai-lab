@@ -10,7 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Shield, Brain, Lock, Key } from "lucide-react";
 import Navigation from "@/components/Navigation";
 
-const DEV_EMAIL = "RajAbety@me.com";
+const DEV_EMAIL = "rajabey@me.com";
 const DEV_PASSWORD = "P@55w0rd12345";
 
 const Auth = () => {
@@ -134,7 +134,7 @@ const Auth = () => {
               </Button>
             </div>
             <p className="text-xs text-muted-foreground mt-2">
-              Click to auto-fill with {DEV_EMAIL}
+              Email: {DEV_EMAIL} - Click "Sign Up" tab first to create account
             </p>
           </div>
         </div>
