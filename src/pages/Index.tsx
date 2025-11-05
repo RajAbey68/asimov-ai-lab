@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import RiskProfileSelector from "@/components/RiskProfileSelector";
 import Services from "@/components/Services";
+import AIAgentConsultancy from "@/components/AIAgentConsultancy";
 import Team from "@/components/Team";
 import FloatingCTA from "@/components/FloatingCTA";
 import Footer from "@/components/Footer";
@@ -16,6 +17,9 @@ const Index = () => {
         <RiskProfileSelector />
       </div>
       <Services />
+      <div id="ai-consultancy">
+        <AIAgentConsultancy />
+      </div>
       <Team />
       <Footer />
     </div>
