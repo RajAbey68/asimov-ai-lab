@@ -12,7 +12,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, FileText, Calendar, CheckCircle2, Clock, TrendingUp, Shield, AlertTriangle, Activity, BarChart3, PieChart } from "lucide-react";
+import { Plus, FileText, Calendar, CheckCircle2, Clock, TrendingUp, Shield, AlertTriangle, Activity, BarChart3, PieChart, Target, Zap } from "lucide-react";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+import { RadialBarChart, RadialBar, PieChart as RechartPie, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 interface AuditSession {
   id: string;
@@ -293,127 +295,223 @@ const AssessmentDashboard = () => {
 
           {/* Overview Tab - Analytics */}
           <TabsContent value="overview" className="space-y-6">
-            {/* Statistics Cards */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Card>
-                <CardHeader className="pb-3">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-sm font-medium text-muted-foreground">
-                      Total Sessions
-                    </CardTitle>
-                    <Activity className="w-4 h-4 text-muted-foreground" />
-                  </div>
+            {/* Hero Analytics - Visual Infographic Style */}
+            <div className="grid lg:grid-cols-3 gap-6">
+              {/* Compliance Score Radial Chart */}
+              <Card className="lg:col-span-1 bg-gradient-subtle">
+                <CardHeader>
+                  <CardTitle className="text-center">Compliance Score</CardTitle>
+                  <CardDescription className="text-center">Overall compliance rating</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold">{analytics.totalSessions}</div>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {analytics.inProgressSessions} in progress
-                  </p>
+                <CardContent className="flex flex-col items-center justify-center pb-6">
+                  <ChartContainer
+                    config={{
+                      score: {
+                        label: "Score",
+                        color: "hsl(var(--accent))",
+                      },
+                    }}
+                    className="h-[200px] w-full"
+                  >
+                    <RadialBarChart
+                      width={200}
+                      height={200}
+                      cx="50%"
+                      cy="50%"
+                      innerRadius="60%"
+                      outerRadius="80%"
+                      data={[{
+                        name: "Compliance",
+                        value: (analytics.averageComplianceScore / 5) * 100,
+                        fill: "hsl(var(--accent))",
+                      }]}
+                      startAngle={90}
+                      endAngle={-270}
+                    >
+                      <RadialBar
+                        background
+                        dataKey="value"
+                        cornerRadius={10}
+                      />
+                    </RadialBarChart>
+                  </ChartContainer>
+                  <div className="text-center mt-4">
+                    <div className="text-4xl font-bold">{analytics.averageComplianceScore.toFixed(1)}</div>
+                    <div className="text-sm text-muted-foreground">out of 5.0</div>
+                  </div>
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader className="pb-3">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-sm font-medium text-muted-foreground">
-                      Completion Rate
-                    </CardTitle>
-                    <TrendingUp className="w-4 h-4 text-muted-foreground" />
-                  </div>
+              {/* Status Distribution Pie Chart */}
+              <Card className="lg:col-span-1 bg-gradient-subtle">
+                <CardHeader>
+                  <CardTitle className="text-center">Session Status</CardTitle>
+                  <CardDescription className="text-center">Distribution overview</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold">
-                    {analytics.totalSessions > 0 
-                      ? Math.round((analytics.completedSessions / analytics.totalSessions) * 100)
-                      : 0}%
+                <CardContent className="flex flex-col items-center justify-center pb-6">
+                  <ChartContainer
+                    config={{
+                      completed: {
+                        label: "Completed",
+                        color: "hsl(142 76% 36%)",
+                      },
+                      inProgress: {
+                        label: "In Progress",
+                        color: "hsl(var(--accent))",
+                      },
+                    }}
+                    className="h-[200px] w-full"
+                  >
+                    <RechartPie width={200} height={200}>
+                      <Pie
+                        data={[
+                          { name: "Completed", value: analytics.completedSessions, fill: "hsl(142 76% 36%)" },
+                          { name: "In Progress", value: analytics.inProgressSessions, fill: "hsl(var(--accent))" },
+                        ]}
+                        cx="50%"
+                        cy="50%"
+                        labelLine={false}
+                        label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                        outerRadius={80}
+                        dataKey="value"
+                      >
+                      </Pie>
+                      <ChartTooltip content={<ChartTooltipContent />} />
+                    </RechartPie>
+                  </ChartContainer>
+                  <div className="grid grid-cols-2 gap-4 mt-4 w-full">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-green-600">{analytics.completedSessions}</div>
+                      <div className="text-xs text-muted-foreground">Completed</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold" style={{ color: "hsl(var(--accent))" }}>{analytics.inProgressSessions}</div>
+                      <div className="text-xs text-muted-foreground">In Progress</div>
+                    </div>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {analytics.completedSessions} completed
-                  </p>
                 </CardContent>
               </Card>
 
-              <Card>
-                <CardHeader className="pb-3">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-sm font-medium text-muted-foreground">
-                      Avg Compliance Score
-                    </CardTitle>
-                    <Shield className="w-4 h-4 text-muted-foreground" />
-                  </div>
+              {/* Key Metrics */}
+              <Card className="lg:col-span-1 bg-gradient-subtle">
+                <CardHeader>
+                  <CardTitle className="text-center">Key Metrics</CardTitle>
+                  <CardDescription className="text-center">At a glance</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold">{analytics.averageComplianceScore}/5</div>
-                  <Progress 
-                    value={(analytics.averageComplianceScore / 5) * 100} 
-                    className="mt-2"
-                  />
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="pb-3">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-sm font-medium text-muted-foreground">
-                      High Risk Issues
-                    </CardTitle>
-                    <AlertTriangle className="w-4 h-4 text-destructive" />
+                <CardContent className="space-y-6 pb-6">
+                  <div className="flex items-center justify-between p-4 bg-background/50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-accent/10 rounded-full">
+                        <Activity className="w-5 h-5 text-accent" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">Total Sessions</p>
+                        <p className="text-2xl font-bold">{analytics.totalSessions}</p>
+                      </div>
+                    </div>
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-3xl font-bold text-destructive">
-                    {analytics.highRiskIssues}
+                  <div className="flex items-center justify-between p-4 bg-background/50 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-accent/10 rounded-full">
+                        <Target className="w-5 h-5 text-accent" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">Total Responses</p>
+                        <p className="text-2xl font-bold">{analytics.totalResponses}</p>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Require immediate attention
-                  </p>
+                  <div className="flex items-center justify-between p-4 bg-destructive/10 rounded-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-destructive/20 rounded-full">
+                        <AlertTriangle className="w-5 h-5 text-destructive" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-muted-foreground">High Risk Issues</p>
+                        <p className="text-2xl font-bold text-destructive">{analytics.highRiskIssues}</p>
+                      </div>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
 
-            {/* Session Progress Overview */}
-            <Card>
+            {/* Session Progress Visualization */}
+            <Card className="bg-gradient-subtle">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <PieChart className="w-5 h-5" />
+                  <Zap className="w-5 h-5 text-accent" />
                   Session Progress Overview
                 </CardTitle>
                 <CardDescription>
-                  Track completion status across all active assessments
+                  Visual progress tracking across all assessments
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 {sessionStats.length === 0 ? (
-                  <p className="text-center text-muted-foreground py-8">
-                    No active sessions. Create one to start tracking progress.
-                  </p>
-                ) : (
-                  <div className="space-y-4">
-                    {sessionStats.map((stat) => (
-                      <div key={stat.sessionId} className="space-y-2">
-                        <div className="flex items-center justify-between">
-                          <div className="flex-1">
-                            <p className="font-medium">{stat.sessionName}</p>
-                            <p className="text-sm text-muted-foreground">
-                              {stat.answeredControls} of {stat.totalControls} controls completed
-                            </p>
-                          </div>
-                          <div className="flex items-center gap-4">
-                            <Badge variant="outline">
-                              Score: {stat.averageScore.toFixed(1)}/5
-                            </Badge>
-                            <span className="text-sm font-medium">
-                              {Math.round((stat.answeredControls / stat.totalControls) * 100)}%
-                            </span>
-                          </div>
-                        </div>
-                        <Progress 
-                          value={(stat.answeredControls / stat.totalControls) * 100}
-                          className="h-2"
-                        />
-                      </div>
-                    ))}
+                  <div className="text-center py-12">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-4">
+                      <FileText className="w-8 h-8 text-accent" />
+                    </div>
+                    <p className="text-muted-foreground">
+                      No active sessions. Create one to start tracking progress.
+                    </p>
                   </div>
+                ) : (
+                  <ChartContainer
+                    config={{
+                      progress: {
+                        label: "Progress",
+                        color: "hsl(var(--accent))",
+                      },
+                      score: {
+                        label: "Score",
+                        color: "hsl(142 76% 36%)",
+                      },
+                    }}
+                    className="h-[400px] w-full"
+                  >
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={sessionStats.map(stat => ({
+                        name: stat.sessionName.length > 20 
+                          ? stat.sessionName.substring(0, 20) + '...' 
+                          : stat.sessionName,
+                        progress: Math.round((stat.answeredControls / stat.totalControls) * 100),
+                        score: stat.averageScore,
+                      }))}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                        <XAxis 
+                          dataKey="name" 
+                          stroke="hsl(var(--muted-foreground))"
+                          tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                        />
+                        <YAxis 
+                          stroke="hsl(var(--muted-foreground))"
+                          tick={{ fill: 'hsl(var(--muted-foreground))' }}
+                        />
+                        <Tooltip 
+                          contentStyle={{
+                            backgroundColor: 'hsl(var(--card))',
+                            border: '1px solid hsl(var(--border))',
+                            borderRadius: '8px',
+                          }}
+                        />
+                        <Legend />
+                        <Bar 
+                          dataKey="progress" 
+                          fill="hsl(var(--accent))" 
+                          radius={[8, 8, 0, 0]}
+                          name="Progress %"
+                        />
+                        <Bar 
+                          dataKey="score" 
+                          fill="hsl(142 76% 36%)" 
+                          radius={[8, 8, 0, 0]}
+                          name="Avg Score"
+                        />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </ChartContainer>
                 )}
               </CardContent>
             </Card>
