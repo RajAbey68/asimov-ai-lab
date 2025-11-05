@@ -120,13 +120,15 @@ const Team = () => {
                   </div>
                 </div>
                 
-                <Button 
-                  onClick={() => handleWhatsApp(member.whatsapp)}
-                  className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white"
-                >
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Contact on WhatsApp
-                </Button>
+                {member.email && (
+                  <Button 
+                    onClick={() => handleWhatsApp(member.whatsapp)}
+                    className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Contact on WhatsApp
+                  </Button>
+                )}
               </div>
             </Card>
           ))}
