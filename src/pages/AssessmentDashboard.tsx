@@ -6,10 +6,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Progress } from "@/components/ui/progress";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, FileText, Calendar, CheckCircle2, Clock } from "lucide-react";
+import { Plus, FileText, Calendar, CheckCircle2, Clock, TrendingUp, Shield, AlertTriangle, Activity, BarChart3, PieChart } from "lucide-react";
 
 interface AuditSession {
   id: string;
@@ -19,6 +22,7 @@ interface AuditSession {
   created_at: string;
   sector_id: number | null;
   region_id: number | null;
+  completed_at: string | null;
 }
 
 interface Sector {
@@ -33,8 +37,36 @@ interface Region {
   code: string;
 }
 
+interface SessionStats {
+  sessionId: string;
+  sessionName: string;
+  totalControls: number;
+  answeredControls: number;
+  averageScore: number;
+  highRiskControls: number;
+  highRiskAnswered: number;
+}
+
+interface AnalyticsSummary {
+  totalSessions: number;
+  completedSessions: number;
+  inProgressSessions: number;
+  totalResponses: number;
+  averageComplianceScore: number;
+  highRiskIssues: number;
+}
+
 const AssessmentDashboard = () => {
   const [sessions, setSessions] = useState<AuditSession[]>([]);
+  const [sessionStats, setSessionStats] = useState<SessionStats[]>([]);
+  const [analytics, setAnalytics] = useState<AnalyticsSummary>({
+    totalSessions: 0,
+    completedSessions: 0,
+    inProgressSessions: 0,
+    totalResponses: 0,
+    averageComplianceScore: 0,
+    highRiskIssues: 0
+  });
   const [sectors, setSectors] = useState<Sector[]>([]);
   const [regions, setRegions] = useState<Region[]>([]);
   const [loading, setLoading] = useState(true);
@@ -46,6 +78,7 @@ const AssessmentDashboard = () => {
   useEffect(() => {
     fetchSessions();
     fetchSectorsAndRegions();
+    fetchAnalytics();
   }, []);
 
   const fetchSessions = async () => {
@@ -62,8 +95,87 @@ const AssessmentDashboard = () => {
       });
     } else {
       setSessions(data || []);
+      if (data) {
+        fetchSessionStats(data.map(s => s.id));
+      }
     }
     setLoading(false);
+  };
+
+  const fetchSessionStats = async (sessionIds: string[]) => {
+    const statsPromises = sessionIds.map(async (sessionId) => {
+      const session = sessions.find(s => s.id === sessionId);
+      
+      // Get total controls count
+      const { count: totalControls } = await supabase
+        .from("controls")
+        .select("*", { count: "exact", head: true })
+        .eq("framework", "EU AI Act (2023)");
+
+      // Get responses for this session
+      const { data: responses } = await supabase
+        .from("audit_responses")
+        .select("response_score")
+        .eq("session_id", sessionId);
+
+      // Get high risk controls
+      const { count: highRiskControls } = await supabase
+        .from("controls")
+        .select("*", { count: "exact", head: true })
+        .eq("framework", "EU AI Act (2023)")
+        .eq("risk_level", "High Risk");
+
+      const answeredControls = responses?.length || 0;
+      const averageScore = responses && responses.length > 0
+        ? responses.reduce((sum, r) => sum + (r.response_score || 0), 0) / responses.length
+        : 0;
+
+      return {
+        sessionId,
+        sessionName: session?.session_name || "",
+        totalControls: totalControls || 0,
+        answeredControls,
+        averageScore,
+        highRiskControls: highRiskControls || 0,
+        highRiskAnswered: 0
+      };
+    });
+
+    const stats = await Promise.all(statsPromises);
+    setSessionStats(stats);
+  };
+
+  const fetchAnalytics = async () => {
+    // Get session counts
+    const { data: allSessions } = await supabase
+      .from("audit_sessions")
+      .select("status");
+
+    const totalSessions = allSessions?.length || 0;
+    const completedSessions = allSessions?.filter(s => s.status === "completed").length || 0;
+    const inProgressSessions = allSessions?.filter(s => s.status === "in_progress").length || 0;
+
+    // Get all responses with scores
+    const { data: allResponses } = await supabase
+      .from("audit_responses")
+      .select("response_score");
+
+    const totalResponses = allResponses?.length || 0;
+    const averageComplianceScore = allResponses && allResponses.length > 0
+      ? allResponses.reduce((sum, r) => sum + (r.response_score || 0), 0) / allResponses.length
+      : 0;
+
+    // Count high risk issues (scores below 3)
+    const highRiskIssues = allResponses?.filter(r => (r.response_score || 0) < 3).length || 0;
+
+    setAnalytics({
+      totalSessions,
+      completedSessions,
+      inProgressSessions,
+      totalResponses,
+      averageComplianceScore: Math.round(averageComplianceScore * 10) / 10,
+      highRiskIssues
+    });
   };
 
   const fetchSectorsAndRegions = async () => {
@@ -153,8 +265,8 @@ const AssessmentDashboard = () => {
       <div className="container max-w-7xl mx-auto px-4 py-24">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-4xl font-bold mb-2">AI Governance Assessments</h1>
-            <p className="text-muted-foreground">Manage your EU AI Act compliance audits</p>
+            <h1 className="text-4xl font-bold mb-2">AI Governance Dashboard</h1>
+            <p className="text-muted-foreground">Monitor and manage your EU AI Act compliance audits</p>
           </div>
           <div className="flex gap-4">
             <Button variant="outline" onClick={signOut}>
@@ -163,157 +275,387 @@ const AssessmentDashboard = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Plus className="w-5 h-5" />
-                Create New Assessment
-              </CardTitle>
-              <CardDescription>
-                Start a new EU AI Act compliance audit session
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={createNewSession} className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="session_name">Assessment Name</Label>
-                  <Input
-                    id="session_name"
-                    name="session_name"
-                    placeholder="Q4 2025 AI Compliance Audit"
-                    required
-                    disabled={creatingSession}
+        <Tabs defaultValue="overview" className="space-y-6">
+          <TabsList className="grid w-full max-w-md grid-cols-3">
+            <TabsTrigger value="overview">
+              <BarChart3 className="w-4 h-4 mr-2" />
+              Overview
+            </TabsTrigger>
+            <TabsTrigger value="sessions">
+              <FileText className="w-4 h-4 mr-2" />
+              Sessions
+            </TabsTrigger>
+            <TabsTrigger value="create">
+              <Plus className="w-4 h-4 mr-2" />
+              New
+            </TabsTrigger>
+          </TabsList>
+
+          {/* Overview Tab - Analytics */}
+          <TabsContent value="overview" className="space-y-6">
+            {/* Statistics Cards */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Card>
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">
+                      Total Sessions
+                    </CardTitle>
+                    <Activity className="w-4 h-4 text-muted-foreground" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold">{analytics.totalSessions}</div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {analytics.inProgressSessions} in progress
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">
+                      Completion Rate
+                    </CardTitle>
+                    <TrendingUp className="w-4 h-4 text-muted-foreground" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold">
+                    {analytics.totalSessions > 0 
+                      ? Math.round((analytics.completedSessions / analytics.totalSessions) * 100)
+                      : 0}%
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {analytics.completedSessions} completed
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">
+                      Avg Compliance Score
+                    </CardTitle>
+                    <Shield className="w-4 h-4 text-muted-foreground" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold">{analytics.averageComplianceScore}/5</div>
+                  <Progress 
+                    value={(analytics.averageComplianceScore / 5) * 100} 
+                    className="mt-2"
                   />
-                </div>
+                </CardContent>
+              </Card>
 
-                <div className="space-y-2">
-                  <Label htmlFor="sector">Sector</Label>
-                  <Select name="sector" disabled={creatingSession}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select sector" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {sectors.map((sector) => (
-                        <SelectItem key={sector.id} value={sector.id.toString()}>
-                          {sector.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="region">Region</Label>
-                  <Select name="region" disabled={creatingSession}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select region" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {regions.map((region) => (
-                        <SelectItem key={region.id} value={region.id.toString()}>
-                          {region.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="risk_level">Risk Level</Label>
-                  <Select name="risk_level" disabled={creatingSession}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="All risk levels" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="High Risk">High Risk Only</SelectItem>
-                      <SelectItem value="General Risk">General Risk Only</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <Button type="submit" className="w-full" disabled={creatingSession}>
-                  {creatingSession ? "Creating..." : "Start Assessment"}
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Assessment Features</CardTitle>
-              <CardDescription>What you get with ASIMOV</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-start gap-3">
-                <FileText className="w-5 h-5 text-primary mt-0.5" />
-                <div>
-                  <p className="font-medium">127 EU AI Act Controls</p>
-                  <p className="text-sm text-muted-foreground">
-                    Comprehensive coverage of EU AI Act requirements
+              <Card>
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">
+                      High Risk Issues
+                    </CardTitle>
+                    <AlertTriangle className="w-4 h-4 text-destructive" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-3xl font-bold text-destructive">
+                    {analytics.highRiskIssues}
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Require immediate attention
                   </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Calendar className="w-5 h-5 text-primary mt-0.5" />
-                <div>
-                  <p className="font-medium">Evidence Collection</p>
-                  <p className="text-sm text-muted-foreground">
-                    Upload files, add URLs, and document compliance evidence
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-primary mt-0.5" />
-                <div>
-                  <p className="font-medium">AI-Powered Insights</p>
-                  <p className="text-sm text-muted-foreground">
-                    Get Life-Wise regulatory guidance for each control
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+                </CardContent>
+              </Card>
+            </div>
 
-        <div>
-          <h2 className="text-2xl font-bold mb-6">Your Assessment Sessions</h2>
-          
-          {sessions.length === 0 ? (
+            {/* Session Progress Overview */}
             <Card>
-              <CardContent className="py-12 text-center">
-                <p className="text-muted-foreground">
-                  No assessment sessions yet. Create one to get started.
-                </p>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <PieChart className="w-5 h-5" />
+                  Session Progress Overview
+                </CardTitle>
+                <CardDescription>
+                  Track completion status across all active assessments
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {sessionStats.length === 0 ? (
+                  <p className="text-center text-muted-foreground py-8">
+                    No active sessions. Create one to start tracking progress.
+                  </p>
+                ) : (
+                  <div className="space-y-4">
+                    {sessionStats.map((stat) => (
+                      <div key={stat.sessionId} className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <div className="flex-1">
+                            <p className="font-medium">{stat.sessionName}</p>
+                            <p className="text-sm text-muted-foreground">
+                              {stat.answeredControls} of {stat.totalControls} controls completed
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-4">
+                            <Badge variant="outline">
+                              Score: {stat.averageScore.toFixed(1)}/5
+                            </Badge>
+                            <span className="text-sm font-medium">
+                              {Math.round((stat.answeredControls / stat.totalControls) * 100)}%
+                            </span>
+                          </div>
+                        </div>
+                        <Progress 
+                          value={(stat.answeredControls / stat.totalControls) * 100}
+                          className="h-2"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </CardContent>
             </Card>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {sessions.map((session) => (
-                <Card
-                  key={session.id}
-                  className="cursor-pointer hover:border-primary/50 transition-colors"
-                  onClick={() => navigate(`/assessment/${session.id}`)}
+
+            {/* Quick Actions */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Quick Actions</CardTitle>
+                <CardDescription>Common tasks and shortcuts</CardDescription>
+              </CardHeader>
+              <CardContent className="grid md:grid-cols-3 gap-4">
+                <Button 
+                  variant="outline" 
+                  className="justify-start h-auto py-4"
+                  onClick={() => navigate("/controls")}
                 >
-                  <CardHeader>
-                    <div className="flex items-start justify-between">
-                      <CardTitle className="text-lg">{session.session_name}</CardTitle>
-                      {getStatusBadge(session.status)}
-                    </div>
-                    <CardDescription>
-                      {session.framework_filter}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground">
-                      Created {new Date(session.created_at).toLocaleDateString()}
+                  <FileText className="w-5 h-5 mr-3" />
+                  <div className="text-left">
+                    <p className="font-medium">View All Controls</p>
+                    <p className="text-xs text-muted-foreground">Browse 251 AI controls</p>
+                  </div>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="justify-start h-auto py-4"
+                  onClick={() => {
+                    const tabs = document.querySelector('[value="create"]') as HTMLElement;
+                    tabs?.click();
+                  }}
+                >
+                  <Plus className="w-5 h-5 mr-3" />
+                  <div className="text-left">
+                    <p className="font-medium">New Assessment</p>
+                    <p className="text-xs text-muted-foreground">Start compliance audit</p>
+                  </div>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className="justify-start h-auto py-4"
+                  onClick={() => navigate("/framework")}
+                >
+                  <Shield className="w-5 h-5 mr-3" />
+                  <div className="text-left">
+                    <p className="font-medium">Framework Info</p>
+                    <p className="text-xs text-muted-foreground">Learn about EU AI Act</p>
+                  </div>
+                </Button>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Sessions Tab */}
+          <TabsContent value="sessions">
+            <div>
+              <h2 className="text-2xl font-bold mb-6">Your Assessment Sessions</h2>
+              
+              {sessions.length === 0 ? (
+                <Card>
+                  <CardContent className="py-12 text-center">
+                    <p className="text-muted-foreground">
+                      No assessment sessions yet. Create one to get started.
                     </p>
                   </CardContent>
                 </Card>
-              ))}
+              ) : (
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {sessions.map((session) => {
+                    const stat = sessionStats.find(s => s.sessionId === session.id);
+                    const progress = stat 
+                      ? (stat.answeredControls / stat.totalControls) * 100 
+                      : 0;
+                    
+                    return (
+                      <Card
+                        key={session.id}
+                        className="cursor-pointer hover:border-primary/50 transition-colors group"
+                        onClick={() => navigate(`/assessment/${session.id}`)}
+                      >
+                        <CardHeader>
+                          <div className="flex items-start justify-between">
+                            <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                              {session.session_name}
+                            </CardTitle>
+                            {getStatusBadge(session.status)}
+                          </div>
+                          <CardDescription>
+                            {session.framework_filter}
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div>
+                            <div className="flex items-center justify-between text-sm mb-1">
+                              <span className="text-muted-foreground">Progress</span>
+                              <span className="font-medium">{Math.round(progress)}%</span>
+                            </div>
+                            <Progress value={progress} className="h-2" />
+                          </div>
+                          {stat && (
+                            <div className="flex items-center justify-between text-sm">
+                              <span className="text-muted-foreground">Compliance Score</span>
+                              <Badge variant="outline">
+                                {stat.averageScore.toFixed(1)}/5
+                              </Badge>
+                            </div>
+                          )}
+                          <p className="text-xs text-muted-foreground">
+                            Created {new Date(session.created_at).toLocaleDateString()}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    );
+                  })}
+                </div>
+              )}
             </div>
-          )}
-        </div>
+          </TabsContent>
+
+          {/* Create New Session Tab */}
+          <TabsContent value="create">
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Plus className="w-5 h-5" />
+                    Create New Assessment
+                  </CardTitle>
+                  <CardDescription>
+                    Start a new EU AI Act compliance audit session
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <form onSubmit={createNewSession} className="space-y-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="session_name">Assessment Name</Label>
+                      <Input
+                        id="session_name"
+                        name="session_name"
+                        placeholder="Q4 2025 AI Compliance Audit"
+                        required
+                        disabled={creatingSession}
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="sector">Sector</Label>
+                      <Select name="sector" disabled={creatingSession}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select sector" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {sectors.map((sector) => (
+                            <SelectItem key={sector.id} value={sector.id.toString()}>
+                              {sector.name}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="region">Region</Label>
+                      <Select name="region" disabled={creatingSession}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select region" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {regions.map((region) => (
+                            <SelectItem key={region.id} value={region.id.toString()}>
+                              {region.name}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="risk_level">Risk Level</Label>
+                      <Select name="risk_level" disabled={creatingSession}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="All risk levels" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="High Risk">High Risk Only</SelectItem>
+                          <SelectItem value="General Risk">General Risk Only</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <Button type="submit" className="w-full" disabled={creatingSession}>
+                      {creatingSession ? "Creating..." : "Start Assessment"}
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Assessment Features</CardTitle>
+                  <CardDescription>What you get with ASIMOV</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-primary mt-0.5" />
+                    <div>
+                      <p className="font-medium">251 AI Governance Controls</p>
+                      <p className="text-sm text-muted-foreground">
+                        Comprehensive coverage across EU AI Act, NIST AI RMF, ISO/IEC, GDPR, and SCF frameworks
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Calendar className="w-5 h-5 text-primary mt-0.5" />
+                    <div>
+                      <p className="font-medium">Evidence Management</p>
+                      <p className="text-sm text-muted-foreground">
+                        Upload files, add URLs, and document compliance evidence with AI quality assessment
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-0.5" />
+                    <div>
+                      <p className="font-medium">AI-Powered Life-Wise Insights</p>
+                      <p className="text-sm text-muted-foreground">
+                        Get sector-specific regulatory guidance with authentic references from trusted authorities
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Shield className="w-5 h-5 text-primary mt-0.5" />
+                    <div>
+                      <p className="font-medium">Risk Assessment & Analytics</p>
+                      <p className="text-sm text-muted-foreground">
+                        Visual dashboards, risk heatmaps, and ASIMOV Pillars tracking for compliance monitoring
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );
