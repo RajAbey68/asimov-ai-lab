@@ -14,16 +14,319 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      audit_responses: {
+        Row: {
+          ai_confidence_level: string | null
+          ai_evaluation: string | null
+          ai_quality_score: number | null
+          control_id: number
+          created_at: string | null
+          evaluation_status: string | null
+          evidence: string | null
+          evidence_date: string | null
+          evidence_notes: string | null
+          id: number
+          response: string
+          response_score: number | null
+          session_id: string
+          updated_at: string | null
+        }
+        Insert: {
+          ai_confidence_level?: string | null
+          ai_evaluation?: string | null
+          ai_quality_score?: number | null
+          control_id: number
+          created_at?: string | null
+          evaluation_status?: string | null
+          evidence?: string | null
+          evidence_date?: string | null
+          evidence_notes?: string | null
+          id?: number
+          response: string
+          response_score?: number | null
+          session_id: string
+          updated_at?: string | null
+        }
+        Update: {
+          ai_confidence_level?: string | null
+          ai_evaluation?: string | null
+          ai_quality_score?: number | null
+          control_id?: number
+          created_at?: string | null
+          evaluation_status?: string | null
+          evidence?: string | null
+          evidence_date?: string | null
+          evidence_notes?: string | null
+          id?: number
+          response?: string
+          response_score?: number | null
+          session_id?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "audit_responses_control_id_fkey"
+            columns: ["control_id"]
+            isOneToOne: false
+            referencedRelation: "controls"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "audit_responses_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "audit_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      audit_sessions: {
+        Row: {
+          category_filter: string | null
+          completed_at: string | null
+          created_at: string | null
+          framework_filter: string | null
+          id: string
+          region_id: number | null
+          risk_level_filter: string | null
+          sector_id: number | null
+          session_name: string
+          status: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          category_filter?: string | null
+          completed_at?: string | null
+          created_at?: string | null
+          framework_filter?: string | null
+          id?: string
+          region_id?: number | null
+          risk_level_filter?: string | null
+          sector_id?: number | null
+          session_name: string
+          status?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          category_filter?: string | null
+          completed_at?: string | null
+          created_at?: string | null
+          framework_filter?: string | null
+          id?: string
+          region_id?: number | null
+          risk_level_filter?: string | null
+          sector_id?: number | null
+          session_name?: string
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "audit_sessions_region_id_fkey"
+            columns: ["region_id"]
+            isOneToOne: false
+            referencedRelation: "regions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "audit_sessions_sector_id_fkey"
+            columns: ["sector_id"]
+            isOneToOne: false
+            referencedRelation: "sectors"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      controls: {
+        Row: {
+          asimov_pillar: string | null
+          category: string
+          control_name: string
+          created_at: string | null
+          description: string
+          evidence: string
+          framework: string
+          id: number
+          risk_level: string
+          sort_order: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          asimov_pillar?: string | null
+          category: string
+          control_name: string
+          created_at?: string | null
+          description: string
+          evidence: string
+          framework?: string
+          id?: number
+          risk_level: string
+          sort_order?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          asimov_pillar?: string | null
+          category?: string
+          control_name?: string
+          created_at?: string | null
+          description?: string
+          evidence?: string
+          framework?: string
+          id?: number
+          risk_level?: string
+          sort_order?: number | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      evidence_files: {
+        Row: {
+          content_type: string | null
+          created_at: string | null
+          file_path: string
+          file_size: number | null
+          filename: string
+          id: number
+          response_id: number
+        }
+        Insert: {
+          content_type?: string | null
+          created_at?: string | null
+          file_path: string
+          file_size?: number | null
+          filename: string
+          id?: number
+          response_id: number
+        }
+        Update: {
+          content_type?: string | null
+          created_at?: string | null
+          file_path?: string
+          file_size?: number | null
+          filename?: string
+          id?: number
+          response_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "evidence_files_response_id_fkey"
+            columns: ["response_id"]
+            isOneToOne: false
+            referencedRelation: "audit_responses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      evidence_urls: {
+        Row: {
+          created_at: string | null
+          id: number
+          response_id: number
+          url: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          response_id: number
+          url: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          response_id?: number
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "evidence_urls_response_id_fkey"
+            columns: ["response_id"]
+            isOneToOne: false
+            referencedRelation: "audit_responses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      regions: {
+        Row: {
+          code: string
+          created_at: string | null
+          id: number
+          name: string
+        }
+        Insert: {
+          code: string
+          created_at?: string | null
+          id?: number
+          name: string
+        }
+        Update: {
+          code?: string
+          created_at?: string | null
+          id?: number
+          name?: string
+        }
+        Relationships: []
+      }
+      sectors: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: number
+          name: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          name: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          name?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string | null
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "client" | "viewer"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +453,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "client", "viewer"],
+    },
   },
 } as const
