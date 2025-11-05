@@ -14,6 +14,202 @@ export type Database = {
   }
   public: {
     Tables: {
+      assessment_evidence_files: {
+        Row: {
+          content_type: string | null
+          created_at: string | null
+          file_path: string
+          file_size: number | null
+          filename: string
+          id: number
+          response_id: number
+        }
+        Insert: {
+          content_type?: string | null
+          created_at?: string | null
+          file_path: string
+          file_size?: number | null
+          filename: string
+          id?: number
+          response_id: number
+        }
+        Update: {
+          content_type?: string | null
+          created_at?: string | null
+          file_path?: string
+          file_size?: number | null
+          filename?: string
+          id?: number
+          response_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assessment_evidence_files_response_id_fkey"
+            columns: ["response_id"]
+            isOneToOne: false
+            referencedRelation: "assessment_responses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      assessment_evidence_urls: {
+        Row: {
+          created_at: string | null
+          id: number
+          response_id: number
+          url: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: number
+          response_id: number
+          url: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: number
+          response_id?: number
+          url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assessment_evidence_urls_response_id_fkey"
+            columns: ["response_id"]
+            isOneToOne: false
+            referencedRelation: "assessment_responses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      assessment_responses: {
+        Row: {
+          ai_confidence_level: string | null
+          ai_evaluation: string | null
+          ai_insight: string | null
+          ai_quality_score: number | null
+          control_id: number
+          created_at: string | null
+          evaluation_status: string | null
+          evidence_date: string | null
+          evidence_notes: string | null
+          evidence_text: string | null
+          id: number
+          response_score: number | null
+          response_status: string
+          session_id: string
+          updated_at: string | null
+        }
+        Insert: {
+          ai_confidence_level?: string | null
+          ai_evaluation?: string | null
+          ai_insight?: string | null
+          ai_quality_score?: number | null
+          control_id: number
+          created_at?: string | null
+          evaluation_status?: string | null
+          evidence_date?: string | null
+          evidence_notes?: string | null
+          evidence_text?: string | null
+          id?: number
+          response_score?: number | null
+          response_status: string
+          session_id: string
+          updated_at?: string | null
+        }
+        Update: {
+          ai_confidence_level?: string | null
+          ai_evaluation?: string | null
+          ai_insight?: string | null
+          ai_quality_score?: number | null
+          control_id?: number
+          created_at?: string | null
+          evaluation_status?: string | null
+          evidence_date?: string | null
+          evidence_notes?: string | null
+          evidence_text?: string | null
+          id?: number
+          response_score?: number | null
+          response_status?: string
+          session_id?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assessment_responses_control_id_fkey"
+            columns: ["control_id"]
+            isOneToOne: false
+            referencedRelation: "governance_controls"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "assessment_responses_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "assessment_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      assessment_sessions: {
+        Row: {
+          category_filter: string | null
+          completed_at: string | null
+          created_at: string | null
+          framework_filter: string | null
+          id: string
+          region_id: number | null
+          risk_level_filter: string | null
+          sector_id: number | null
+          session_name: string
+          status: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          category_filter?: string | null
+          completed_at?: string | null
+          created_at?: string | null
+          framework_filter?: string | null
+          id?: string
+          region_id?: number | null
+          risk_level_filter?: string | null
+          sector_id?: number | null
+          session_name: string
+          status?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          category_filter?: string | null
+          completed_at?: string | null
+          created_at?: string | null
+          framework_filter?: string | null
+          id?: string
+          region_id?: number | null
+          risk_level_filter?: string | null
+          sector_id?: number | null
+          session_name?: string
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assessment_sessions_region_id_fkey"
+            columns: ["region_id"]
+            isOneToOne: false
+            referencedRelation: "regions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "assessment_sessions_sector_id_fkey"
+            columns: ["sector_id"]
+            isOneToOne: false
+            referencedRelation: "sectors"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       audit_responses: {
         Row: {
           ai_confidence_level: string | null
@@ -249,6 +445,51 @@ export type Database = {
           },
         ]
       }
+      governance_controls: {
+        Row: {
+          asimov_pillar: string | null
+          category: string
+          control_name: string
+          created_at: string | null
+          description: string
+          evidence_requirements: string
+          framework: string
+          id: number
+          regulatory_references: string | null
+          risk_level: string
+          sort_order: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          asimov_pillar?: string | null
+          category: string
+          control_name: string
+          created_at?: string | null
+          description: string
+          evidence_requirements: string
+          framework?: string
+          id?: number
+          regulatory_references?: string | null
+          risk_level: string
+          sort_order?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          asimov_pillar?: string | null
+          category?: string
+          control_name?: string
+          created_at?: string | null
+          description?: string
+          evidence_requirements?: string
+          framework?: string
+          id?: number
+          regulatory_references?: string | null
+          risk_level?: string
+          sort_order?: number | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       hero_media: {
         Row: {
           created_at: string | null
@@ -282,6 +523,39 @@ export type Database = {
         }
         Relationships: []
       }
+      implementation_roadmaps: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: string
+          name: string
+          owner: string | null
+          status: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          name: string
+          owner?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          name?: string
+          owner?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
       regions: {
         Row: {
           code: string
@@ -302,6 +576,117 @@ export type Database = {
           name?: string
         }
         Relationships: []
+      }
+      roadmap_backlog_items: {
+        Row: {
+          assigned_to: string | null
+          control_id: number | null
+          created_at: string | null
+          description: string | null
+          effort_estimate: number | null
+          id: string
+          priority: string | null
+          roadmap_id: string
+          sprint_id: string | null
+          status: string | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          assigned_to?: string | null
+          control_id?: number | null
+          created_at?: string | null
+          description?: string | null
+          effort_estimate?: number | null
+          id?: string
+          priority?: string | null
+          roadmap_id: string
+          sprint_id?: string | null
+          status?: string | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          assigned_to?: string | null
+          control_id?: number | null
+          created_at?: string | null
+          description?: string | null
+          effort_estimate?: number | null
+          id?: string
+          priority?: string | null
+          roadmap_id?: string
+          sprint_id?: string | null
+          status?: string | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "roadmap_backlog_items_control_id_fkey"
+            columns: ["control_id"]
+            isOneToOne: false
+            referencedRelation: "governance_controls"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "roadmap_backlog_items_roadmap_id_fkey"
+            columns: ["roadmap_id"]
+            isOneToOne: false
+            referencedRelation: "implementation_roadmaps"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "roadmap_backlog_items_sprint_id_fkey"
+            columns: ["sprint_id"]
+            isOneToOne: false
+            referencedRelation: "roadmap_sprints"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      roadmap_sprints: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          end_date: string | null
+          id: string
+          name: string
+          roadmap_id: string
+          start_date: string | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          name: string
+          roadmap_id: string
+          start_date?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          name?: string
+          roadmap_id?: string
+          start_date?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "roadmap_sprints_roadmap_id_fkey"
+            columns: ["roadmap_id"]
+            isOneToOne: false
+            referencedRelation: "implementation_roadmaps"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       sectors: {
         Row: {
