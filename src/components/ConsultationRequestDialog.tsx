@@ -92,6 +92,13 @@ export default function ConsultationRequestDialog({
             )}`,
             "_blank"
           );
+        } else if (contactMethod === "telegram") {
+          window.open(
+            `https://t.me/${contactHandle.replace('@', '')}?text=${encodeURIComponent(
+              `Hi ${expertName}, I've submitted a consultation request. ${data.message}`
+            )}`,
+            "_blank"
+          );
         }
         
         onOpenChange(false);

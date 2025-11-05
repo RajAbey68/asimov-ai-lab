@@ -16,6 +16,7 @@ const teamMembers = [
     linkedin: "https://www.linkedin.com/in/sushilanair/",
     image: sushilaNairImg,
     whatsapp: "+447733393956",
+    telegram: "@SushilaNair",
     rates: {
       initial: "$450",
       followUp: "$300"
@@ -29,6 +30,7 @@ const teamMembers = [
     linkedin: "https://www.linkedin.com/in/rajivab/",
     image: rajivAbeysingheImg,
     whatsapp: "+447733393956",
+    telegram: "@RajivAB",
     email: "Rajiv@ASIMOV-AI.ORG",
     rates: {
       initial: "$400",
@@ -43,6 +45,7 @@ const teamMembers = [
     linkedin: "https://www.linkedin.com/in/nicklockett/",
     image: nickLockettImg,
     whatsapp: "+447733393956",
+    telegram: "@NickLockett",
     rates: {
       initial: "$550",
       followUp: "$500"
@@ -54,11 +57,12 @@ const Team = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedExpert, setSelectedExpert] = useState<{
     name: string;
-    whatsapp: string;
+    contactMethod: "whatsapp" | "telegram";
+    contactHandle: string;
   } | null>(null);
 
-  const handleContactClick = (name: string, whatsapp: string) => {
-    setSelectedExpert({ name, whatsapp });
+  const handleContactClick = (name: string, contactMethod: "whatsapp" | "telegram", contactHandle: string) => {
+    setSelectedExpert({ name, contactMethod, contactHandle });
     setDialogOpen(true);
   };
 
@@ -129,13 +133,22 @@ const Team = () => {
                   </div>
                 </div>
                 
-                <Button 
-                  onClick={() => handleContactClick(member.name, member.whatsapp)}
-                  className="w-full bg-[#25D366] hover:bg-[#20BA5A] text-white"
-                >
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Contact on WhatsApp
-                </Button>
+                <div className="flex gap-2">
+                  <Button 
+                    onClick={() => handleContactClick(member.name, "whatsapp", member.whatsapp)}
+                    className="flex-1 bg-[#25D366] hover:bg-[#20BA5A] text-white"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    WhatsApp
+                  </Button>
+                  <Button 
+                    onClick={() => handleContactClick(member.name, "telegram", member.telegram)}
+                    className="flex-1 bg-[#0088cc] hover:bg-[#0077b3] text-white"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Telegram
+                  </Button>
+                </div>
               </div>
             </Card>
           ))}
@@ -147,8 +160,8 @@ const Team = () => {
           open={dialogOpen}
           onOpenChange={setDialogOpen}
           expertName={selectedExpert.name}
-          contactMethod="whatsapp"
-          contactHandle={selectedExpert.whatsapp}
+          contactMethod={selectedExpert.contactMethod}
+          contactHandle={selectedExpert.contactHandle}
         />
       )}
     </section>
