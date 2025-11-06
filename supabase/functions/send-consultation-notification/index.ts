@@ -30,7 +30,7 @@ const sendEmail = async (to: string[], subject: string, html: string) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      from: "ASIMOV-AI RISK <onboarding@resend.dev>",
+      from: "ASIMOV-AI RISK <noreply@asimov-ai.org>",
       to,
       subject,
       html,
