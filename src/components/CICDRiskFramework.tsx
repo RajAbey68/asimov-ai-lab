@@ -14,7 +14,8 @@ const CICDRiskFramework = () => {
       risk: "Data contamination — poor lineage or unvalidated sources enter the model lifecycle.",
       consequence: "Biased or non-compliant models; violation of Art. 10 EU AI Act (Data Quality).",
       mitigation: "Implement data-quality gates in CI/CD; hash-based lineage logging; periodic data audits; require provenance metadata before model build.",
-      severity: "high"
+      severity: "high",
+      nistFunction: "Map / Measure"
     },
     {
       id: 2,
@@ -24,7 +25,8 @@ const CICDRiskFramework = () => {
       risk: "Uncontrolled drift or bias; parameters change without oversight.",
       consequence: "Accuracy decay; reputational or regulatory breach.",
       mitigation: "Introduce drift-detection thresholds; schedule human review checkpoints; automate retraining approval workflow with rollback option.",
-      severity: "high"
+      severity: "high",
+      nistFunction: "Measure / Manage"
     },
     {
       id: 3,
@@ -34,7 +36,8 @@ const CICDRiskFramework = () => {
       risk: "Dependency & security exposure — open-source packages, unscanned models.",
       consequence: "Data exfiltration, IP leakage, unlicensed component use.",
       mitigation: "Embed software-composition analysis (SCA) and vulnerability scans in CI; sign model artefacts; maintain dependency SBOM (Software Bill of Materials).",
-      severity: "critical"
+      severity: "critical",
+      nistFunction: "Measure / Manage"
     },
     {
       id: 4,
@@ -42,9 +45,10 @@ const CICDRiskFramework = () => {
       title: "Continuous Delivery to Production",
       scenario: "Automated CD pipeline deploys models via containers or APIs.",
       risk: "Lack of approval or rollback control.",
-      consequence: "Breach of internal governance (COBIT BAI06); unintended outputs to customers.",
+      consequence: "Unintended outputs to customers; breach of governance principles.",
       mitigation: "Enforce release-gate approvals; record model version + signature; test in staging before live promotion.",
-      severity: "critical"
+      severity: "critical",
+      nistFunction: "Manage"
     },
     {
       id: 5,
@@ -54,7 +58,8 @@ const CICDRiskFramework = () => {
       risk: "False assurance — tests pass without human interpretation.",
       consequence: "Overconfidence in 'green' models; exposure under Art. 15 (Robustness).",
       mitigation: "Add explainability review tasks; store test artefacts as audit evidence; require sign-off from Responsible AI Officer.",
-      severity: "high"
+      severity: "high",
+      nistFunction: "Measure / Manage"
     },
     {
       id: 6,
@@ -64,7 +69,8 @@ const CICDRiskFramework = () => {
       risk: "Alert fatigue or missing anomaly correlation.",
       consequence: "Delayed detection of performance degradation or discriminatory outcomes.",
       mitigation: "Define alert severity matrix; integrate monitoring with incident-response playbook; automate EU AI Act Art. 61 incident logging.",
-      severity: "medium"
+      severity: "medium",
+      nistFunction: "Manage"
     },
     {
       id: 7,
@@ -74,7 +80,8 @@ const CICDRiskFramework = () => {
       risk: "Incomplete technical documentation; failure under conformity assessment.",
       consequence: "Legal non-conformity; failed CE marking.",
       mitigation: "Link CI/CD documentation builds to Annex IV checklist; store PDF outputs in immutable evidence repo (Supabase / S3).",
-      severity: "high"
+      severity: "high",
+      nistFunction: "Govern"
     },
     {
       id: 8,
@@ -84,7 +91,8 @@ const CICDRiskFramework = () => {
       risk: "Configuration drift; inconsistent model behaviour.",
       consequence: "Inconsistent performance or bias by region.",
       mitigation: "Implement infrastructure-as-code with version control; enforce environment parity; continuous configuration compliance scans.",
-      severity: "medium"
+      severity: "medium",
+      nistFunction: "Govern / Manage"
     },
     {
       id: 9,
@@ -94,7 +102,8 @@ const CICDRiskFramework = () => {
       risk: "Loss of accountability under Art. 14 (Human Oversight).",
       consequence: "No traceable human review of critical decisions.",
       mitigation: "Enforce oversight sign-off in CI/CD pipeline; maintain reviewer logs; integrate with access-control system.",
-      severity: "critical"
+      severity: "critical",
+      nistFunction: "Govern"
     },
     {
       id: 10,
@@ -104,7 +113,8 @@ const CICDRiskFramework = () => {
       risk: "Loss of historical evidence for conformity assessments.",
       consequence: "Regulator may deem AI system non-compliant (Art. 71).",
       mitigation: "Configure immutable logging; time-stamped artefact archiving; define minimum retention (≥ 5 years).",
-      severity: "high"
+      severity: "high",
+      nistFunction: "Govern"
     }
   ];
 
@@ -256,20 +266,20 @@ const CICDRiskFramework = () => {
     {
       domain: "Tech",
       objective: "Secure, reproducible pipeline automation",
-      frameworks: "COBIT BAI06 / ISO 27001 / EU AI Annex IV",
-      example: "CI/CD Security & Rollback Controls"
+      nistFunction: "Govern / Manage",
+      evidence: "Pipeline definitions, signed artefacts, IaC logs"
     },
     {
       domain: "Data",
       objective: "Traceable, high-quality data lifecycle",
-      frameworks: "ISO/IEC 42001 §8.4 / EU AI Art. 10",
-      example: "Data Provenance & Validation Gates"
+      nistFunction: "Map / Measure",
+      evidence: "Dataset registry, validation reports"
     },
     {
       domain: "Risk",
       objective: "Continuous compliance & assurance",
-      frameworks: "NIST AI RMF / EU AI Art. 9–15 / Annex VII",
-      example: "Automated Risk Scoring + Audit Evidence Retention"
+      nistFunction: "Govern / Measure / Manage",
+      evidence: "Approval records, risk metrics, incident logs"
     }
   ];
 
@@ -295,17 +305,20 @@ const CICDRiskFramework = () => {
           <span className="text-sm text-accent font-medium">CI/CD Risk & Assurance</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          AI CI/CD Risk Framework
+          NIST-Aligned AI CI/CD Risk Framework
         </h2>
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-          Building confidence in continuous AI delivery through technology, data, and risk management controls
+          Reference: NIST AI RMF v1.0 | Supporting: ISO/IEC 42001, ISO 27001 | Functions: Govern • Map • Measure • Manage
         </p>
         <Card className="border-accent bg-accent/5 max-w-4xl mx-auto">
           <CardContent className="pt-6">
             <p className="text-sm text-muted-foreground">
-              <strong className="text-foreground">Asimov-AI's AI CI/CD Assurance Framework</strong> redefines DevOps pipelines as auditable compliance systems. 
-              Each pipeline run becomes a risk-managed event, generating structured evidence that satisfies EU AI Act Articles 9–15, 
-              Annex IV & VII, and NIST AI RMF's Govern–Measure–Manage cycle.
+              <strong className="text-foreground">Asimov-AI's NIST-Aligned CI/CD Audit Model</strong> ensures:
+              <strong className="text-foreground"> Govern</strong> — Policies embedded into automation; 
+              <strong className="text-foreground"> Map</strong> — Data, model, and system context documented; 
+              <strong className="text-foreground"> Measure</strong> — Automated testing quantifies risk and bias; 
+              <strong className="text-foreground"> Manage</strong> — Continuous monitoring closes the loop.
+              This creates an auditable, regulator-ready trail across every pipeline run.
             </p>
           </CardContent>
         </Card>
@@ -347,7 +360,7 @@ const CICDRiskFramework = () => {
             <CardHeader>
               <CardTitle className="text-2xl">Integrated Alignment Summary</CardTitle>
               <CardDescription>
-                Tech–Data–Risk controls mapped to frameworks and standards
+                Tech–Data–Risk controls mapped to NIST AI RMF functions
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -356,8 +369,8 @@ const CICDRiskFramework = () => {
                   <TableRow>
                     <TableHead className="font-semibold">Domain</TableHead>
                     <TableHead className="font-semibold">Objective</TableHead>
-                    <TableHead className="font-semibold">Framework Mapping</TableHead>
-                    <TableHead className="font-semibold">Asimov-AI Control Example</TableHead>
+                    <TableHead className="font-semibold">NIST Function</TableHead>
+                    <TableHead className="font-semibold">Typical Evidence</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -367,10 +380,10 @@ const CICDRiskFramework = () => {
                       <TableCell>{item.objective}</TableCell>
                       <TableCell>
                         <Badge variant="outline" className="font-mono text-xs">
-                          {item.frameworks}
+                          {item.nistFunction}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-sm">{item.example}</TableCell>
+                      <TableCell className="text-sm">{item.evidence}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -395,6 +408,11 @@ const CICDRiskFramework = () => {
                           <Badge variant={getSeverityColor(item.severity)}>
                             {item.severity.toUpperCase()}
                           </Badge>
+                          {item.nistFunction && (
+                            <Badge variant="outline" className="bg-blue-500/10 border-blue-500/30">
+                              NIST: {item.nistFunction}
+                            </Badge>
+                          )}
                         </div>
                         <CardDescription className="text-sm">
                           {item.scenario}
