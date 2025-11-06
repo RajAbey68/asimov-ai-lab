@@ -133,22 +133,24 @@ const Team = () => {
                   </div>
                 </div>
                 
-                <div className="flex gap-2">
-                  <Button 
-                    onClick={() => handleContactClick(member.name, "whatsapp", member.whatsapp)}
-                    className="flex-1 bg-[#25D366] hover:bg-[#20BA5A] text-white"
-                  >
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    WhatsApp
-                  </Button>
-                  <Button 
-                    onClick={() => handleContactClick(member.name, "telegram", member.telegram)}
-                    className="flex-1 bg-[#0088cc] hover:bg-[#0077b3] text-white"
-                  >
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    Telegram
-                  </Button>
-                </div>
+                {member.name === "Rajiv AB" && (
+                  <div className="flex gap-2">
+                    <Button 
+                      onClick={() => handleContactClick(member.name, "whatsapp", member.whatsapp)}
+                      className="flex-1 bg-[#25D366] hover:bg-[#20BA5A] text-white"
+                    >
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      WhatsApp
+                    </Button>
+                    <Button 
+                      onClick={() => handleContactClick(member.name, "telegram", member.telegram)}
+                      className="flex-1 bg-[#0088cc] hover:bg-[#0077b3] text-white"
+                    >
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      Telegram
+                    </Button>
+                  </div>
+                )}
               </div>
             </Card>
           ))}

@@ -110,6 +110,28 @@ export const ConsultationIntakeForm = () => {
 
       if (error) throw error;
 
+      // Send email notifications
+      try {
+        await supabase.functions.invoke("send-consultation-notification", {
+          body: {
+            full_name: data.full_name,
+            email: data.email,
+            organisation: data.organisation,
+            role: data.role,
+            country: data.country,
+            contact_number: data.contact_number,
+            session_type: data.session_type,
+            session_objective: data.session_objective,
+            ai_category: data.ai_category,
+            sector: data.sector,
+            use_case_description: data.use_case_description,
+          },
+        });
+      } catch (emailError) {
+        console.error("Email notification failed:", emailError);
+        // Don't fail the whole submission if email fails
+      }
+
       toast({
         title: "Consultation request submitted",
         description: "We'll be in touch shortly to schedule your session.",
