@@ -77,31 +77,31 @@ const Hero = () => {
 
           {/* Main Headline */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-6 leading-tight">
-            Purpose-Built Platform for
+            From Risk Assessment to
             <span className="block mt-2 bg-gradient-accent bg-clip-text text-transparent">
-              EU AI Act Compliance
+              Compliant AI Deployment
             </span>
           </h1>
 
           {/* Problem-First Subheadline */}
           <p className="text-xl md:text-2xl text-center text-muted-foreground max-w-3xl mx-auto mb-8">
-            Don't wait for regulators to knock. Navigate high-risk AI requirements with expert-led assessments, 
-            automated gap analysis, and compliance frameworks—built specifically for the EU AI Act.
+            We don't just assess—we execute. Navigate EU AI Act compliance with expert assessments, 
+            then deploy your AI systems with confidence through our end-to-end delivery management.
           </p>
 
           {/* Product Evidence Stats */}
           <div className="flex flex-wrap justify-center gap-8 mb-10">
             <div className="text-center">
-              <div className="text-3xl font-bold text-foreground mb-1">500+</div>
-              <div className="text-sm text-muted-foreground">Controls Mapped</div>
+              <div className="text-3xl font-bold text-foreground mb-1">Assessment</div>
+              <div className="text-sm text-muted-foreground">Risk & Gap Analysis</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-foreground mb-1">3</div>
-              <div className="text-sm text-muted-foreground">Major Frameworks</div>
+              <div className="text-3xl font-bold text-accent mb-1">→</div>
+              <div className="text-sm text-muted-foreground">Then</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-foreground mb-1">24hr</div>
-              <div className="text-sm text-muted-foreground">Initial Response</div>
+              <div className="text-3xl font-bold text-foreground mb-1">Delivery</div>
+              <div className="text-sm text-muted-foreground">Implementation & Launch</div>
             </div>
           </div>
 
@@ -116,18 +116,27 @@ const Hero = () => {
           </div>
 
           {/* Use Cases / Who It's For */}
-          <div className="grid md:grid-cols-3 gap-6 pt-8 border-t border-border/30">
-            {[
-              { icon: Shield, title: "High-Risk AI Systems", desc: "EU AI Act Annex III compliance for critical applications" },
-              { icon: Zap, title: "General Purpose AI", desc: "GPAI transparency and systemic risk assessments" },
-              { icon: Shield, title: "Cross-Border Deployment", desc: "Multi-jurisdiction regulatory alignment (EU/UK/US)" },
-            ].map((item, i) => (
-              <div key={i} className="text-center p-4">
-                <item.icon className="w-8 h-8 text-accent mb-3 mx-auto" />
-                <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.desc}</p>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-2 gap-8 pt-8 border-t border-border/30 max-w-4xl mx-auto">
+            <div className="text-center p-6 rounded-lg border border-accent/20 bg-card/50">
+              <Shield className="w-10 h-10 text-accent mb-4 mx-auto" />
+              <h3 className="font-semibold text-lg text-foreground mb-3">Assess & Plan</h3>
+              <ul className="text-sm text-muted-foreground space-y-2 text-left">
+                <li>• EU AI Act compliance gap analysis</li>
+                <li>• Risk profiling & classification</li>
+                <li>• Regulatory roadmap creation</li>
+                <li>• Expert consultation sessions</li>
+              </ul>
+            </div>
+            <div className="text-center p-6 rounded-lg border border-accent/20 bg-card/50">
+              <Zap className="w-10 h-10 text-accent mb-4 mx-auto" />
+              <h3 className="font-semibold text-lg text-foreground mb-3">Execute & Deliver</h3>
+              <ul className="text-sm text-muted-foreground space-y-2 text-left">
+                <li>• AI system development & integration</li>
+                <li>• Compliance documentation production</li>
+                <li>• Testing & validation management</li>
+                <li>• Launch & deployment support</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>

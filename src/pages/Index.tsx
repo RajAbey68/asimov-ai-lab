@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import RiskProfileSelector from "@/components/RiskProfileSelector";
+import ServiceTiers from "@/components/ServiceTiers";
 import Services from "@/components/Services";
 import AIAgentConsultancy from "@/components/AIAgentConsultancy";
 import Team from "@/components/Team";
@@ -17,6 +18,7 @@ const Index = () => {
       <div id="risk-profiles">
         <RiskProfileSelector />
       </div>
+      <ServiceTiers />
       <Services />
       <div id="ai-consultancy">
         <AIAgentConsultancy />
