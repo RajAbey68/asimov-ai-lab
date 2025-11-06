@@ -8,14 +8,14 @@ const ServiceTiers = () => {
       icon: Shield,
       name: "Asimov Assess™",
       tagline: "Know Your Risk. Build Your Roadmap.",
-      description: "Comprehensive AI risk assessment and regulatory gap analysis to understand where you stand.",
+      description: "Multi-framework assessment across EU AI Act, NIST, ISO 42001, PCI-DSS and more—with actionable roadmaps.",
       features: [
-        "EU AI Act compliance gap analysis",
-        "Risk classification & profiling",
-        "Multi-framework mapping (NIST, ISO 42001)",
-        "Executive summary & action plan",
-        "Expert consultation sessions",
-        "Regulatory roadmap creation"
+        "Multi-framework compliance assessment",
+        "EU AI Act, NIST AI RMF, ISO 42001",
+        "PCI-DSS, SOC 2, custom frameworks",
+        "Gap analysis & risk classification",
+        "Sprint-based implementation roadmap",
+        "Expert consultation & strategic planning"
       ],
       cta: "Start Assessment",
       highlight: false
@@ -24,14 +24,14 @@ const ServiceTiers = () => {
       icon: Rocket,
       name: "Asimov Comply™",
       tagline: "From Requirements to Reality.",
-      description: "End-to-end delivery management to build, document, and launch compliant AI systems.",
+      description: "Agile, demand-based delivery—turning your compliance roadmap into deployed AI systems.",
       features: [
-        "AI system development & integration",
-        "Technical documentation production",
-        "Compliance artifact creation",
-        "Testing & validation management",
-        "Deployment & launch support",
-        "Ongoing monitoring setup"
+        "Demand-based sprint planning",
+        "Agile development & integration",
+        "Compliance documentation production",
+        "Testing & validation protocols",
+        "Deployment & launch execution",
+        "Roadmap tracking & reporting"
       ],
       cta: "Get Started",
       highlight: true
@@ -62,7 +62,8 @@ const ServiceTiers = () => {
             Complete AI Compliance Journey
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            From initial assessment through deployment and beyond—we deliver at every stage of your AI compliance lifecycle.
+            Assess against any framework. Execute with agile roadmaps. Maintain compliance continuously—
+            all tailored to your industry and risk profile.
           </p>
         </div>
 

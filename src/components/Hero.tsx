@@ -71,22 +71,22 @@ const Hero = () => {
           <div className="flex justify-center mb-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
               <Shield className="w-4 h-4 text-accent" />
-              <span className="text-sm text-white font-medium">Trusted by enterprises across EU, UK & US</span>
+              <span className="text-sm text-white font-medium">EU AI Act • NIST • ISO 42001 • PCI-DSS • Multiple Frameworks</span>
             </div>
           </div>
 
           {/* Main Headline */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-6 leading-tight text-white">
-            From Risk Assessment to
+            Multi-Framework Assessment to
             <span className="block mt-2 bg-gradient-accent bg-clip-text text-transparent">
-              Compliant AI Deployment
+              Roadmap-Driven Delivery
             </span>
           </h1>
 
           {/* Problem-First Subheadline */}
           <p className="text-xl md:text-2xl text-center text-white/90 max-w-3xl mx-auto mb-8">
-            We don't just assess—we execute. Navigate EU AI Act compliance with expert assessments, 
-            then deploy your AI systems with confidence through our end-to-end delivery management.
+            Assess against EU AI Act, NIST, ISO 42001, PCI-DSS, and more. Then execute with demand-based roadmaps 
+            that turn compliance requirements into delivered AI systems.
           </p>
 
           {/* Product Evidence Stats */}
@@ -119,22 +119,22 @@ const Hero = () => {
           <div className="grid md:grid-cols-2 gap-8 pt-8 border-t border-white/20 max-w-4xl mx-auto">
             <div className="text-center p-6 rounded-lg border border-white/20 bg-white/5 backdrop-blur-sm">
               <Shield className="w-10 h-10 text-accent mb-4 mx-auto" />
-              <h3 className="font-semibold text-lg text-white mb-3">Assess & Plan</h3>
+              <h3 className="font-semibold text-lg text-white mb-3">Multi-Framework Assessment</h3>
               <ul className="text-sm text-white/80 space-y-2 text-left">
-                <li>• EU AI Act compliance gap analysis</li>
-                <li>• Risk profiling & classification</li>
+                <li>• EU AI Act, NIST AI RMF, ISO 42001</li>
+                <li>• PCI-DSS, SOC 2, custom frameworks</li>
+                <li>• Gap analysis & risk profiling</li>
                 <li>• Regulatory roadmap creation</li>
-                <li>• Expert consultation sessions</li>
               </ul>
             </div>
             <div className="text-center p-6 rounded-lg border border-white/20 bg-white/5 backdrop-blur-sm">
               <Zap className="w-10 h-10 text-accent mb-4 mx-auto" />
-              <h3 className="font-semibold text-lg text-white mb-3">Execute & Deliver</h3>
+              <h3 className="font-semibold text-lg text-white mb-3">Demand-Based Roadmaps</h3>
               <ul className="text-sm text-white/80 space-y-2 text-left">
-                <li>• AI system development & integration</li>
-                <li>• Compliance documentation production</li>
-                <li>• Testing & validation management</li>
-                <li>• Launch & deployment support</li>
+                <li>• Sprint-based implementation plans</li>
+                <li>• Prioritized backlog management</li>
+                <li>• Agile delivery & deployment</li>
+                <li>• Continuous compliance monitoring</li>
               </ul>
             </div>
           </div>
