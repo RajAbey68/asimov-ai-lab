@@ -408,6 +408,146 @@ export type Database = {
           },
         ]
       }
+      consultation_documents: {
+        Row: {
+          consultation_id: string | null
+          content_type: string | null
+          created_at: string | null
+          file_path: string
+          file_size: number | null
+          filename: string
+          id: string
+        }
+        Insert: {
+          consultation_id?: string | null
+          content_type?: string | null
+          created_at?: string | null
+          file_path: string
+          file_size?: number | null
+          filename: string
+          id?: string
+        }
+        Update: {
+          consultation_id?: string | null
+          content_type?: string | null
+          created_at?: string | null
+          file_path?: string
+          file_size?: number | null
+          filename?: string
+          id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "consultation_documents_consultation_id_fkey"
+            columns: ["consultation_id"]
+            isOneToOne: false
+            referencedRelation: "consultation_intake"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      consultation_intake: {
+        Row: {
+          ai_category: string
+          contact_number: string | null
+          country: string
+          created_at: string | null
+          data_consent: boolean
+          datasets_involved: string | null
+          email: string
+          expected_outcome: string[] | null
+          framework_alignment: string[] | null
+          full_name: string
+          future_interest: string[] | null
+          id: string
+          invoice_billing_contact: string | null
+          invoice_company_name: string | null
+          invoice_vat_number: string | null
+          maturity_level: string | null
+          meeting_mode: string | null
+          non_legal_ack: boolean
+          notes: string | null
+          organisation: string
+          participant_role: string | null
+          preferred_regulator: string | null
+          preferred_schedule: string | null
+          referral_source: string | null
+          risk_domain: string | null
+          role: string
+          sector: string
+          session_objective: string
+          session_type: string
+          status: string | null
+          use_case_description: string | null
+        }
+        Insert: {
+          ai_category: string
+          contact_number?: string | null
+          country: string
+          created_at?: string | null
+          data_consent?: boolean
+          datasets_involved?: string | null
+          email: string
+          expected_outcome?: string[] | null
+          framework_alignment?: string[] | null
+          full_name: string
+          future_interest?: string[] | null
+          id?: string
+          invoice_billing_contact?: string | null
+          invoice_company_name?: string | null
+          invoice_vat_number?: string | null
+          maturity_level?: string | null
+          meeting_mode?: string | null
+          non_legal_ack?: boolean
+          notes?: string | null
+          organisation: string
+          participant_role?: string | null
+          preferred_regulator?: string | null
+          preferred_schedule?: string | null
+          referral_source?: string | null
+          risk_domain?: string | null
+          role: string
+          sector: string
+          session_objective: string
+          session_type: string
+          status?: string | null
+          use_case_description?: string | null
+        }
+        Update: {
+          ai_category?: string
+          contact_number?: string | null
+          country?: string
+          created_at?: string | null
+          data_consent?: boolean
+          datasets_involved?: string | null
+          email?: string
+          expected_outcome?: string[] | null
+          framework_alignment?: string[] | null
+          full_name?: string
+          future_interest?: string[] | null
+          id?: string
+          invoice_billing_contact?: string | null
+          invoice_company_name?: string | null
+          invoice_vat_number?: string | null
+          maturity_level?: string | null
+          meeting_mode?: string | null
+          non_legal_ack?: boolean
+          notes?: string | null
+          organisation?: string
+          participant_role?: string | null
+          preferred_regulator?: string | null
+          preferred_schedule?: string | null
+          referral_source?: string | null
+          risk_domain?: string | null
+          role?: string
+          sector?: string
+          session_objective?: string
+          session_type?: string
+          status?: string | null
+          use_case_description?: string | null
+        }
+        Relationships: []
+      }
       consultation_requests: {
         Row: {
           company: string | null
