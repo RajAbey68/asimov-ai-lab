@@ -4,6 +4,7 @@ import RiskProfileSelector from "@/components/RiskProfileSelector";
 import Services from "@/components/Services";
 import AIAgentConsultancy from "@/components/AIAgentConsultancy";
 import Team from "@/components/Team";
+import BookConsultationSection from "@/components/BookConsultationSection";
 import FloatingCTA from "@/components/FloatingCTA";
 import Footer from "@/components/Footer";
 
@@ -21,6 +22,7 @@ const Index = () => {
         <AIAgentConsultancy />
       </div>
       <Team />
+      <BookConsultationSection />
       <Footer />
     </div>
   );

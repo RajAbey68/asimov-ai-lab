@@ -42,8 +42,8 @@ const FloatingCTA = () => {
           size="lg"
           className="bg-accent hover:bg-accent/90 shadow-xl hover:shadow-2xl transition-all text-base font-semibold pr-6"
         >
-          <a href="#request-form">
-            Free Risk Assessment <ArrowRight className="ml-2 w-5 h-5" />
+          <a href="#book-consultation">
+            Book Free Consultation <ArrowRight className="ml-2 w-5 h-5" />
           </a>
         </Button>
       </div>
