@@ -4,6 +4,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Lightbulb, Hammer, Settings, Users, AlertTriangle, Shield, Scale, Lock, Eye, CheckCircle, RefreshCw } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import CICDRiskFramework from "@/components/CICDRiskFramework";
 import aiRiskIllustration from "@/assets/ai-risk-illustration.jpg";
 import aiGovernance from "@/assets/ai-governance.jpg";
 import aiLifecycle from "@/assets/ai-lifecycle.jpg";
@@ -161,11 +163,19 @@ const Framework = () => {
               </p>
             </div>
 
-            {/* AI Risk Illustration */}
-            <div className="mb-16">
-              <Card className="border-border overflow-hidden">
-                <div className="relative h-[400px] md:h-[500px]">
-                  <img 
+            {/* Tabs for Framework Sections */}
+            <Tabs defaultValue="lifecycle" className="w-full">
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-12">
+                <TabsTrigger value="lifecycle">Lifecycle Framework</TabsTrigger>
+                <TabsTrigger value="cicd">CI/CD Risk</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="lifecycle" className="space-y-16">
+                {/* AI Risk Illustration */}
+                <div>
+                  <Card className="border-border overflow-hidden">
+                    <div className="relative h-[400px] md:h-[500px]">
+                      <img
                     src={aiRiskIllustration} 
                     alt="AI Risk Management illustration showing neural network with warning symbols, data bias, security shields, and privacy protection" 
                     className="w-full h-full object-cover"
@@ -867,6 +877,12 @@ const Framework = () => {
                 </div>
               </CardContent>
             </Card>
+                </TabsContent>
+
+                <TabsContent value="cicd">
+                  <CICDRiskFramework />
+                </TabsContent>
+              </Tabs>
           </div>
         </div>
       </div>
