@@ -62,66 +62,70 @@ const Hero = () => {
             style={{ backgroundImage: `url(${heroBg})` }}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-primary/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/98 via-background/95 to-background/90" />
       </div>
 
       <div className="container mx-auto px-4 py-32 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 backdrop-blur-sm">
-            <Shield className="w-4 h-4 text-accent" />
-            <span className="text-sm text-accent font-medium">EU AI Act • NIST • ISO/IEC 42001 Compliance</span>
+        <div className="max-w-5xl mx-auto">
+          {/* Trust Badge */}
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20">
+              <Shield className="w-4 h-4 text-accent" />
+              <span className="text-sm text-accent font-medium">Trusted by enterprises across EU, UK & US</span>
+            </div>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground leading-tight">
-            Is Your AI System a<br />
-            <span className="bg-gradient-accent bg-clip-text text-transparent">
-              Ticking Regulatory Time Bomb?
+          {/* Main Headline */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-6 leading-tight">
+            Purpose-Built Platform for
+            <span className="block mt-2 bg-gradient-accent bg-clip-text text-transparent">
+              EU AI Act Compliance
             </span>
           </h1>
 
-          <div className="space-y-6 text-xl md:text-2xl text-primary-foreground/90 max-w-3xl mx-auto">
-            <p className="font-medium">Ask yourself:</p>
-            <ul className="space-y-3 text-left max-w-2xl mx-auto">
-              <li className="flex items-start gap-3">
-                <span className="text-accent text-2xl">→</span>
-                <span><strong>Why</strong> should your board care about AI risk <em>right now?</em></span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-accent text-2xl">→</span>
-                <span><strong>What risks</strong> could shut down your AI project tomorrow?</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-accent text-2xl">→</span>
-                <span><strong>What consequences</strong> could you face personally?</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-accent text-2xl">→</span>
-                <span><strong>Who</strong> in your organization needs to act—and when?</span>
-              </li>
-            </ul>
+          {/* Problem-First Subheadline */}
+          <p className="text-xl md:text-2xl text-center text-muted-foreground max-w-3xl mx-auto mb-8">
+            Don't wait for regulators to knock. Navigate high-risk AI requirements with expert-led assessments, 
+            automated gap analysis, and compliance frameworks—built specifically for the EU AI Act.
+          </p>
+
+          {/* Product Evidence Stats */}
+          <div className="flex flex-wrap justify-center gap-8 mb-10">
+            <div className="text-center">
+              <div className="text-3xl font-bold text-foreground mb-1">500+</div>
+              <div className="text-sm text-muted-foreground">Controls Mapped</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-foreground mb-1">3</div>
+              <div className="text-sm text-muted-foreground">Major Frameworks</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold text-foreground mb-1">24hr</div>
+              <div className="text-sm text-muted-foreground">Initial Response</div>
+            </div>
           </div>
 
-          <div className="pt-6">
-            <p className="text-lg text-primary-foreground/80 mb-6">
-              The answers depend on <strong>your role</strong>. Find your risk profile below.
-            </p>
-            <Button asChild size="lg" variant="outline" className="text-lg border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10">
-              <a href="#risk-profiles">
-                Find Your Risk Profile <ArrowRight className="ml-2 w-5 h-5" />
+          {/* Single Primary CTA */}
+          <div className="flex flex-col items-center gap-4 mb-12">
+            <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-lg h-14 px-10 shadow-lg">
+              <a href="#book-consultation">
+                Book Your Risk Assessment <ArrowRight className="ml-2 w-5 h-5" />
               </a>
             </Button>
+            <p className="text-sm text-muted-foreground">Free initial consultation • No credit card required</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 pt-12">
+          {/* Use Cases / Who It's For */}
+          <div className="grid md:grid-cols-3 gap-6 pt-8 border-t border-border/30">
             {[
-              { icon: Shield, title: "Risk Assessment", desc: "Identify and mitigate AI risks" },
-              { icon: Zap, title: "Rapid Deployment", desc: "Fast-track your AI initiatives" },
-              { icon: Shield, title: "Expert Delivery", desc: "End-to-end project execution" },
+              { icon: Shield, title: "High-Risk AI Systems", desc: "EU AI Act Annex III compliance for critical applications" },
+              { icon: Zap, title: "General Purpose AI", desc: "GPAI transparency and systemic risk assessments" },
+              { icon: Shield, title: "Cross-Border Deployment", desc: "Multi-jurisdiction regulatory alignment (EU/UK/US)" },
             ].map((item, i) => (
-              <div key={i} className="p-6 rounded-xl bg-card/10 backdrop-blur-sm border border-border/20 hover:border-accent/30 transition-all">
+              <div key={i} className="text-center p-4">
                 <item.icon className="w-8 h-8 text-accent mb-3 mx-auto" />
-                <h3 className="font-semibold text-primary-foreground mb-2">{item.title}</h3>
-                <p className="text-sm text-primary-foreground/70">{item.desc}</p>
+                <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
+                <p className="text-sm text-muted-foreground">{item.desc}</p>
               </div>
             ))}
           </div>
