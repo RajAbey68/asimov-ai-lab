@@ -153,12 +153,15 @@ export type Database = {
           control_id: number
           created_at: string | null
           evaluation_status: string | null
+          evidence_access_notes: string | null
           evidence_date: string | null
           evidence_notes: string | null
           evidence_text: string | null
           id: number
+          onsite_review_requested: boolean | null
           response_score: number | null
           response_status: string
+          self_assessed: boolean | null
           session_id: string
           updated_at: string | null
         }
@@ -170,12 +173,15 @@ export type Database = {
           control_id: number
           created_at?: string | null
           evaluation_status?: string | null
+          evidence_access_notes?: string | null
           evidence_date?: string | null
           evidence_notes?: string | null
           evidence_text?: string | null
           id?: number
+          onsite_review_requested?: boolean | null
           response_score?: number | null
           response_status: string
+          self_assessed?: boolean | null
           session_id: string
           updated_at?: string | null
         }
@@ -187,12 +193,15 @@ export type Database = {
           control_id?: number
           created_at?: string | null
           evaluation_status?: string | null
+          evidence_access_notes?: string | null
           evidence_date?: string | null
           evidence_notes?: string | null
           evidence_text?: string | null
           id?: number
+          onsite_review_requested?: boolean | null
           response_score?: number | null
           response_status?: string
+          self_assessed?: boolean | null
           session_id?: string
           updated_at?: string | null
         }

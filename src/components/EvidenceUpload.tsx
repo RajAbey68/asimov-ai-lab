@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Upload, Link as LinkIcon, FileText, X, CheckCircle2, Loader2 } from "lucide-react";
+import { Upload, Link as LinkIcon, FileText, X, CheckCircle2, Loader2, Building2, ClipboardCheck } from "lucide-react";
 
 interface EvidenceFile {
   id: number;
@@ -35,7 +36,49 @@ export const EvidenceUpload = ({ responseId, onEvidenceAdded }: EvidenceUploadPr
   const [noteInput, setNoteInput] = useState("");
   const [files, setFiles] = useState<EvidenceFile[]>([]);
   const [urls, setUrls] = useState<EvidenceUrl[]>([]);
+  const [selfAssessed, setSelfAssessed] = useState(false);
+  const [onsiteReviewRequested, setOnsiteReviewRequested] = useState(false);
+  const [evidenceAccessNotes, setEvidenceAccessNotes] = useState("");
   const { toast } = useToast();
+
+  // Load existing settings
+  useEffect(() => {
+    if (!responseId) return;
+
+    const loadSettings = async () => {
+      const { data, error } = await supabase
+        .from("assessment_responses")
+        .select("self_assessed, onsite_review_requested, evidence_access_notes")
+        .eq("id", responseId)
+        .single();
+
+      if (data && !error) {
+        setSelfAssessed(data.self_assessed || false);
+        setOnsiteReviewRequested(data.onsite_review_requested || false);
+        setEvidenceAccessNotes(data.evidence_access_notes || "");
+      }
+    };
+
+    loadSettings();
+  }, [responseId]);
+
+  // Save settings when they change
+  const saveSettings = async (field: string, value: boolean | string) => {
+    if (!responseId) return;
+
+    const { error } = await supabase
+      .from("assessment_responses")
+      .update({ [field]: value })
+      .eq("id", responseId);
+
+    if (error) {
+      toast({
+        variant: "destructive",
+        title: "Save failed",
+        description: "Failed to save settings",
+      });
+    }
+  };
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files || !responseId) return;
@@ -192,15 +235,93 @@ export const EvidenceUpload = ({ responseId, onEvidenceAdded }: EvidenceUploadPr
 
   return (
     <div className="space-y-4">
+      {/* Evidence Access Options */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-lg">
+            <ClipboardCheck className="w-5 h-5" />
+            Evidence Access Options
+          </CardTitle>
+          <CardDescription>
+            Choose how to handle evidence for this control
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex items-start space-x-3 p-4 border rounded-lg">
+            <Checkbox
+              id="self-assessed"
+              checked={selfAssessed}
+              onCheckedChange={(checked) => {
+                setSelfAssessed(checked as boolean);
+                saveSettings("self_assessed", checked as boolean);
+              }}
+              disabled={!responseId}
+            />
+            <div className="space-y-1 flex-1">
+              <Label
+                htmlFor="self-assessed"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+              >
+                Artifacts reviewed internally (self-assessed)
+              </Label>
+              <p className="text-sm text-muted-foreground">
+                Evidence exists but cannot be uploaded due to organizational policies or data sensitivity
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start space-x-3 p-4 border rounded-lg">
+            <Checkbox
+              id="onsite-review"
+              checked={onsiteReviewRequested}
+              onCheckedChange={(checked) => {
+                setOnsiteReviewRequested(checked as boolean);
+                saveSettings("onsite_review_requested", checked as boolean);
+              }}
+              disabled={!responseId}
+            />
+            <div className="space-y-1 flex-1">
+              <Label
+                htmlFor="onsite-review"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer flex items-center gap-2"
+              >
+                <Building2 className="w-4 h-4" />
+                Request on-site review by ASIMOV
+              </Label>
+              <p className="text-sm text-muted-foreground">
+                Artifacts available on-premise only. Request ASIMOV team to visit, review, and enhance documentation
+              </p>
+            </div>
+          </div>
+
+          {(selfAssessed || onsiteReviewRequested) && (
+            <div className="space-y-2">
+              <Label htmlFor="access-notes">Evidence Access Notes</Label>
+              <Textarea
+                id="access-notes"
+                placeholder="Describe evidence location, access restrictions, or on-site review requirements..."
+                value={evidenceAccessNotes}
+                onChange={(e) => {
+                  setEvidenceAccessNotes(e.target.value);
+                }}
+                onBlur={() => saveSettings("evidence_access_notes", evidenceAccessNotes)}
+                rows={3}
+                disabled={!responseId}
+              />
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
       {/* File Upload */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-lg">
             <Upload className="w-5 h-5" />
-            Upload Evidence Files
+            Upload Evidence Files (Optional)
           </CardTitle>
           <CardDescription>
-            Upload documents, PDFs, images, or other files (max 20MB)
+            Upload documents, PDFs, images, or other files if available (max 20MB)
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -271,10 +392,10 @@ export const EvidenceUpload = ({ responseId, onEvidenceAdded }: EvidenceUploadPr
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-lg">
             <LinkIcon className="w-5 h-5" />
-            Add Evidence URLs
+            Add Evidence URLs (Optional)
           </CardTitle>
           <CardDescription>
-            Link to external documentation, policies, or resources
+            Link to external documentation, policies, or resources if accessible
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
