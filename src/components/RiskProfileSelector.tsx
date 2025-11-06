@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { AlertTriangle, Shield, Scale, Target, Code, ArrowRight } from "lucide-react";
+import { AlertTriangle, Shield, Scale, Target, Code, ArrowRight, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
@@ -95,6 +95,24 @@ const riskProfiles = [
     whoActs: "AI/ML Engineers, Data Scientists, ML Ops, QA Teams",
     assessment: "Technical Validation & Model Risk Assessment",
     assessmentDesc: "Hands-on evaluation of model performance, bias detection, testing coverage, and technical documentation."
+  },
+  {
+    id: "operations",
+    icon: Zap,
+    title: "Sales & Operations Leaders",
+    subtitle: "Efficiency & Automation Risk",
+    badge: "Operations",
+    whyYou: "You're driving operational excellence and revenue growth through AI agents, but face risks from automation failures and customer experience issues.",
+    risks: [
+      "AI agent errors damaging customer relationships",
+      "Compliance violations in automated sales/service interactions",
+      "Performance failures during high-volume periods",
+      "Insufficient oversight of automated decision-making"
+    ],
+    consequences: "Customer churn. Revenue loss. Regulatory penalties. Brand damage. Sales team distrust of AI tools.",
+    whoActs: "VP Sales, COO, Head of Operations, Customer Service Director, Revenue Operations",
+    assessment: "AI Automation & Efficiency Risk Review",
+    assessmentDesc: "Evaluation of AI agent deployments (conversational AI, voice agents, sales automation) for compliance, performance, and operational resilience."
   }
 ];
 
