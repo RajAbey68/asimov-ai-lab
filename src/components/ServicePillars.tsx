@@ -1,10 +1,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Shield, Target, Cpu, Mic } from "lucide-react";
 import servicesBg from "@/assets/services-bg.jpg";
-import riskAssessmentImg from "@/assets/risk-assessment-team.jpg";
+import riskAssessmentImg from "@/assets/risk-assessment-ai.png";
 import projectDeliveryImg from "@/assets/project-delivery.jpg";
 import aiLifecycleImg from "@/assets/ai-ml-lifecycle.png";
-import expertConsultationImg from "@/assets/expert-consultation.jpg";
+import voiceAgentImg from "@/assets/voice-agent-ai.png";
 
 const ServicePillars = () => {
   const pillars = [
@@ -61,7 +61,7 @@ const ServicePillars = () => {
         "GPT-based and Relevance AI agent clusters",
         "Branded AI personalities with security controls"
       ],
-      image: expertConsultationImg
+      image: voiceAgentImg
     }
   ];
 
