@@ -7,6 +7,16 @@ import { Button } from "@/components/ui/button";
 import { FileText, Video, ExternalLink, Download } from "lucide-react";
 
 const Resources = () => {
+  const news = [
+    {
+      title: "AI regulation and safety developments",
+      description: "Latest news and updates on AI regulation, safety, and industry developments",
+      source: "BBC News",
+      date: "2025",
+      url: "https://www.bbc.co.uk/news/articles/cly97lj0nddo",
+    },
+  ];
+
   const papers = [
     {
       title: "EU AI Act v5 vs COBIT/NIST: Legal Framework Analysis",
@@ -71,11 +81,44 @@ const Resources = () => {
               </p>
             </div>
 
-            <Tabs defaultValue="videos" className="space-y-8">
-              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
+            <Tabs defaultValue="news" className="space-y-8">
+              <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3">
+                <TabsTrigger value="news">News</TabsTrigger>
                 <TabsTrigger value="videos">Videos</TabsTrigger>
                 <TabsTrigger value="papers">Papers & RFCs</TabsTrigger>
               </TabsList>
+
+              <TabsContent value="news" className="space-y-6">
+                <div className="grid gap-6">
+                  {news.map((item, index) => (
+                    <Card key={index} className="border-border hover:border-accent/50 transition-all group">
+                      <CardHeader>
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <FileText className="w-6 h-6 text-accent-foreground" />
+                          </div>
+                          <div className="flex-1">
+                            <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
+                            <CardDescription>{item.description}</CardDescription>
+                            <div className="flex items-center gap-4 mt-4">
+                              <span className="text-sm font-medium text-accent">{item.source}</span>
+                              <span className="text-sm text-muted-foreground">{item.date}</span>
+                            </div>
+                          </div>
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            className="gap-2"
+                            onClick={() => window.open(item.url, '_blank')}
+                          >
+                            Read <ExternalLink className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      </CardHeader>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
 
               <TabsContent value="videos" className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
