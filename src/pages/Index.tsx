@@ -19,7 +19,6 @@ const Index = () => {
         <RiskProfileSelector />
       </div>
       <ServiceTiers />
-      <ServicePillars />
       <AsimovMethodology />
       <Team />
       <BookConsultationSection />

@@ -64,9 +64,12 @@ const Team = () => {
     <section className="py-24 bg-gradient-to-br from-background via-muted/20 to-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Meet Our Expert Team</h2>
+          <div className="inline-block mb-4">
+            <span className="text-sm font-semibold text-accent uppercase tracking-wider">Expert Practitioners</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">Meet Your Consulting Team</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Industry-leading professionals dedicated to guiding your organization through AI governance and risk management
+            Senior practitioners with real-world experience in AI governance, cybersecurity, legal compliance, and enterprise technology delivery.
           </p>
         </div>
 

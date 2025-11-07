@@ -85,7 +85,7 @@ const Hero = () => {
 
           {/* Core Purpose */}
           <p className="text-xl md:text-2xl text-center text-white/90 max-w-3xl mx-auto mb-8">
-            We help leadership teams understand, design, and deploy AI responsibly — balancing innovation with compliance, ethics, and long-term enterprise value.
+            A boutique AI consultancy helping leadership teams navigate the full AI lifecycle—from risk assessment to production deployment—with compliance built in from day one.
           </p>
 
           {/* Core Value Props */}
