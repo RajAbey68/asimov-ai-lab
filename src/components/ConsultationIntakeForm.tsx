@@ -59,7 +59,11 @@ const consultationIntakeSchema = z.object({
 
 type ConsultationIntakeFormData = z.infer<typeof consultationIntakeSchema>;
 
-export const ConsultationIntakeForm = () => {
+interface ConsultationIntakeFormProps {
+  onSuccess?: () => void;
+}
+
+export const ConsultationIntakeForm = ({ onSuccess }: ConsultationIntakeFormProps = {}) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -138,6 +142,7 @@ export const ConsultationIntakeForm = () => {
       });
 
       form.reset();
+      onSuccess?.();
     } catch (error) {
       console.error("Submission error:", error);
       toast({
