@@ -18,6 +18,16 @@ interface ConsultationRequest {
   ai_category: string;
   sector: string;
   use_case_description?: string;
+  framework_alignment?: string[];
+  risk_domain?: string;
+  maturity_level?: string;
+  participant_role?: string;
+  meeting_mode?: string;
+  datasets_involved?: string;
+  preferred_regulator?: string;
+  expected_outcome?: string[];
+  referral_source?: string;
+  preferred_schedule?: string;
 }
 
 const sendEmail = async (to: string[], subject: string, html: string) => {
@@ -58,9 +68,10 @@ const handler = async (req: Request): Promise<Response> => {
     // Send notification to admin
     const adminEmailResult = await sendEmail(
       ["Rajiv@ASIMOV-AI.ORG"],
-      `New Consultation Request from ${data.full_name}`,
+      `New Consultation Request from ${data.full_name} - ${data.session_type}`,
       `
-        <h2>New Consultation Request</h2>
+        <h2 style="color: #2563eb;">New Consultation Request</h2>
+        
         <h3>Contact Information</h3>
         <ul>
           <li><strong>Name:</strong> ${data.full_name}</li>
@@ -69,6 +80,7 @@ const handler = async (req: Request): Promise<Response> => {
           <li><strong>Role:</strong> ${data.role}</li>
           <li><strong>Country:</strong> ${data.country}</li>
           ${data.contact_number ? `<li><strong>Contact Number:</strong> ${data.contact_number}</li>` : ''}
+          ${data.participant_role ? `<li><strong>Participant Role:</strong> ${data.participant_role}</li>` : ''}
         </ul>
         
         <h3>Consultation Details</h3>
@@ -77,14 +89,41 @@ const handler = async (req: Request): Promise<Response> => {
           <li><strong>Objective:</strong> ${data.session_objective}</li>
           <li><strong>AI Category:</strong> ${data.ai_category}</li>
           <li><strong>Sector:</strong> ${data.sector}</li>
+          ${data.risk_domain ? `<li><strong>Risk Focus:</strong> ${data.risk_domain}</li>` : ''}
+          ${data.maturity_level ? `<li><strong>Maturity Level:</strong> ${data.maturity_level}</li>` : ''}
+          ${data.meeting_mode ? `<li><strong>Meeting Mode:</strong> ${data.meeting_mode}</li>` : ''}
         </ul>
+        
+        ${data.framework_alignment && data.framework_alignment.length > 0 ? `
+          <h3>Framework Alignment</h3>
+          <ul>
+            ${data.framework_alignment.map(f => `<li>${f}</li>`).join('')}
+          </ul>
+        ` : ''}
+        
+        ${data.expected_outcome && data.expected_outcome.length > 0 ? `
+          <h3>Expected Outcomes</h3>
+          <ul>
+            ${data.expected_outcome.map(o => `<li>${o}</li>`).join('')}
+          </ul>
+        ` : ''}
         
         ${data.use_case_description ? `
           <h3>Use Case Description</h3>
-          <p>${data.use_case_description}</p>
+          <p>${data.use_case_description.replace(/\n/g, '<br>')}</p>
         ` : ''}
         
-        <p><em>Check your database for the complete submission details.</em></p>
+        ${data.datasets_involved ? `
+          <h3>Datasets Involved</h3>
+          <p>${data.datasets_involved.replace(/\n/g, '<br>')}</p>
+        ` : ''}
+        
+        ${data.preferred_regulator ? `<p><strong>Preferred Regulator:</strong> ${data.preferred_regulator}</p>` : ''}
+        ${data.preferred_schedule ? `<p><strong>Preferred Schedule:</strong> ${data.preferred_schedule}</p>` : ''}
+        ${data.referral_source ? `<p><strong>Referral Source:</strong> ${data.referral_source}</p>` : ''}
+        
+        <hr style="margin: 20px 0;">
+        <p><strong>View full details in the <a href="https://lovable.dev" style="color: #2563eb;">Admin Dashboard</a></strong></p>
       `
     );
 

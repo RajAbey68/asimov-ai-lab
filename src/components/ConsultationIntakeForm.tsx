@@ -129,6 +129,16 @@ export const ConsultationIntakeForm = ({ onSuccess }: ConsultationIntakeFormProp
             ai_category: data.ai_category,
             sector: data.sector,
             use_case_description: data.use_case_description,
+            framework_alignment: data.framework_alignment,
+            risk_domain: data.risk_domain,
+            maturity_level: data.maturity_level,
+            participant_role: data.participant_role,
+            meeting_mode: data.meeting_mode,
+            datasets_involved: data.datasets_involved,
+            preferred_regulator: data.preferred_regulator,
+            expected_outcome: data.expected_outcome,
+            referral_source: data.referral_source,
+            preferred_schedule: data.preferred_schedule,
           },
         });
       } catch (emailError) {
