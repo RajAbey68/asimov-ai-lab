@@ -2,8 +2,8 @@ import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import RiskProfileSelector from "@/components/RiskProfileSelector";
 import ServiceTiers from "@/components/ServiceTiers";
-import Services from "@/components/Services";
-import AIAgentConsultancy from "@/components/AIAgentConsultancy";
+import ServicePillars from "@/components/ServicePillars";
+import AsimovMethodology from "@/components/AsimovMethodology";
 import Team from "@/components/Team";
 import BookConsultationSection from "@/components/BookConsultationSection";
 import FloatingCTA from "@/components/FloatingCTA";
@@ -19,10 +19,8 @@ const Index = () => {
         <RiskProfileSelector />
       </div>
       <ServiceTiers />
-      <Services />
-      <div id="ai-consultancy">
-        <AIAgentConsultancy />
-      </div>
+      <ServicePillars />
+      <AsimovMethodology />
       <Team />
       <BookConsultationSection />
       <Footer />
