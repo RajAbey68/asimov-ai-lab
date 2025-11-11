@@ -13,6 +13,7 @@ import AssessmentInfo from "./pages/AssessmentInfo";
 import Resources from "./pages/Resources";
 import Framework from "./pages/Framework";
 import TeamPage from "./pages/Team";
+import Sectors from "./pages/Sectors";
 import AdminMedia from "./pages/AdminMedia";
 import AdminControlsImport from "./pages/AdminControlsImport";
 import AdminConsultations from "./pages/AdminConsultations";
@@ -64,6 +65,7 @@ const App = () => (
         } />
             <Route path="/framework" element={<Framework />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="/sectors" element={<Sectors />} />
             <Route path="/team" element={<TeamPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

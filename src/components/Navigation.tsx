@@ -24,6 +24,9 @@ const Navigation = () => {
             <Link to="/framework" className="text-foreground hover:text-accent transition-colors">
               Framework
             </Link>
+            <Link to="/sectors" className="text-foreground hover:text-accent transition-colors">
+              Sectors
+            </Link>
             <Link to="/team" className="text-foreground hover:text-accent transition-colors">
               Team
             </Link>
