@@ -84,9 +84,16 @@ const Hero = () => {
           </h1>
 
           {/* Core Purpose */}
-          <p className="text-xl md:text-2xl text-center text-white/90 max-w-3xl mx-auto mb-8">
+          <p className="text-xl md:text-2xl text-center text-white/90 max-w-3xl mx-auto mb-4">
             A boutique AI consultancy helping leadership teams navigate the full AI lifecycle—from risk assessment to production deployment—with compliance built in from day one.
           </p>
+          
+          {/* Proof Point */}
+          <div className="text-center mb-8">
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
+              <span className="font-semibold text-accent">27 years of delivery expertise</span> • 2× faster compliance • 35% audit improvement • Trusted by finance, healthcare & public sector
+            </p>
+          </div>
 
           {/* Core Value Props */}
           <div className="flex flex-wrap justify-center gap-8 mb-10">
