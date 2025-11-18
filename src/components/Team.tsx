@@ -25,8 +25,8 @@ const teamMembers = [
   {
     name: "Rajiv AB",
     title: "Co-founder, Asimov-AI RISK",
-    bio: "AI governance expert and creator of the ASIMOV-AI Risk Method. Specializes in EU AI Act compliance, responsible AI frameworks, and strategic transformation programs with 25+ years of experience across global enterprises.",
-    specialties: "AI Application Delivery, Platform Migration, Data Migration, and CI/CD Implementation for AI Platforms",
+    bio: "Strategic AI consultant with 27 years' experience transforming legacy applications into AI-ready platforms. Co-creator of the ASIMOV-AI Risk Method achieving 2× faster compliance, 35% audit improvement, and 40% technical debt reduction. Former Program Strategist at VMware Tanzu Labs and Technical Lead at Computacenter, delivering measurable outcomes across finance, healthcare, and public sector.",
+    specialties: "AI Governance & Compliance • Application Modernization • Data Migration • EU AI Act, NIST AI RMF, ISO/IEC 42001",
     linkedin: "https://www.linkedin.com/in/rajivab/",
     image: rajivAbeysingheImg,
     whatsapp: "+447733393956",
