@@ -1,4 +1,6 @@
 import RiskDiagram from "./RiskDiagram";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const MethodologyComparisonDiagram = () => {
   return (
@@ -228,95 +230,261 @@ const MethodologyComparisonDiagram = () => {
         </div>
 
         {/* Detailed Comparison Table */}
-        <div className="overflow-x-auto">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="border-b-2 border-border">
-                <th className="text-left p-3 font-semibold">Methodology</th>
-                <th className="text-left p-3 font-semibold">Core Focus</th>
-                <th className="text-left p-3 font-semibold">Relationship to ASIMOV-AI</th>
-                <th className="text-left p-3 font-semibold">Integration Points</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-border">
-                <td className="p-3 font-medium text-primary">ASIMOV-AI</td>
-                <td className="p-3">AI Governance & Risk Management</td>
-                <td className="p-3 text-muted-foreground">Foundation Layer</td>
-                <td className="p-3">Provides governance framework for all other methods</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="p-3 font-medium">BMAD Method</td>
-                <td className="p-3">Agent-Driven Modular Development</td>
-                <td className="p-3 text-muted-foreground">Orthogonal (Development)</td>
-                <td className="p-3">Development process operates within ASIMOV-AI governance controls</td>
-              </tr>
-              <tr className="border-b border-border">
-                <td className="p-3 font-medium">Morningside AI</td>
-                <td className="p-3">AI Automation Agency Business Model</td>
-                <td className="p-3 text-muted-foreground">Complementary (Business)</td>
-                <td className="p-3">Business model benefits from ASIMOV-AI compliance credibility</td>
-              </tr>
-              <tr>
-                <td className="p-3 font-medium">MAD Landscape</td>
-                <td className="p-3">AI/ML/Data Tool Ecosystem Mapping</td>
-                <td className="p-3 text-muted-foreground">Contextual (Market Intel)</td>
-                <td className="p-3">Market research informs tool selection within governance framework</td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="mt-8 space-y-4">
+          <h3 className="text-2xl font-semibold">Detailed Methodology Comparison</h3>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse border border-border">
+              <thead>
+                <tr className="bg-muted">
+                  <th className="border border-border p-3 text-left">Methodology</th>
+                  <th className="border border-border p-3 text-left">Core Focus</th>
+                  <th className="border border-border p-3 text-left">Unique Aspects</th>
+                  <th className="border border-border p-3 text-left">Main Contributors</th>
+                  <th className="border border-border p-3 text-left">Integration with ASIMOV-AI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-border p-3 font-semibold">ASIMOV-AI</td>
+                  <td className="border border-border p-3">AI Governance & Risk Management</td>
+                  <td className="border border-border p-3">EU AI Act compliance, risk assessment, lifecycle controls</td>
+                  <td className="border border-border p-3">Asimov Nexus</td>
+                  <td className="border border-border p-3">Foundation Layer - Provides compliance baseline for all AI initiatives</td>
+                </tr>
+                <tr>
+                  <td className="border border-border p-3 font-semibold">BMAD Method</td>
+                  <td className="border border-border p-3">Modular agentic build</td>
+                  <td className="border border-border p-3">Agent-driven planning (Analyst, PM, Architect), context-rich PRDs, Scrum Master story files, strict workflow</td>
+                  <td className="border border-border p-3">BMad Code team, community</td>
+                  <td className="border border-border p-3">Development process operates within ASIMOV-AI governance controls and compliance requirements</td>
+                </tr>
+                <tr>
+                  <td className="border border-border p-3 font-semibold">Morningside AI</td>
+                  <td className="border border-border p-3">Practical agency build</td>
+                  <td className="border border-border p-3">6-Month AAA Roadmap, hands-on business automation, avatar systems, YouTube analysis engines</td>
+                  <td className="border border-border p-3">Liam Ottley, Morningside AI</td>
+                  <td className="border border-border p-3">Agency business model benefits from ASIMOV-AI compliance credibility and client trust</td>
+                </tr>
+                <tr>
+                  <td className="border border-border p-3 font-semibold">MAD Landscape</td>
+                  <td className="border border-border p-3">Industry landscape</td>
+                  <td className="border border-border p-3">Benchmarking tools/systems, ML/AI/Data ecosystem mapping, market research focus</td>
+                  <td className="border border-border p-3">Industry analysts (Matt Turck et al.)</td>
+                  <td className="border border-border p-3">Market intelligence informs compliant tool selection and technology stack decisions</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Detailed Methodology Descriptions */}
+        <div className="mt-8 space-y-6">
+          <h3 className="text-2xl font-semibold">Detailed Methodology Descriptions</h3>
+          
+          <div className="grid gap-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>BMAD (Breakthrough Method for Agile AI Development)</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground">
+                  A modular, agent-driven approach designed for rapid and structured AI system development.
+                </p>
+                <div>
+                  <h5 className="font-semibold text-sm mb-2">Key Features:</h5>
+                  <ul className="space-y-1 text-sm text-muted-foreground">
+                    <li>• Specialized planning agents (Analyst, Project Manager, Architect) develop context-rich PRDs and architecture diagrams</li>
+                    <li>• Scrum Master agent converts plans into detailed 'story files' with architectural context</li>
+                    <li>• Eliminates context loss and confusion for developer and QA agents</li>
+                    <li>• Emphasizes incremental, modular builds with strict, context-aware workflows</li>
+                    <li>• Real-world integration with OpenAI, Qwen, Claude, and more</li>
+                  </ul>
+                </div>
+                <div className="pt-2">
+                  <Badge variant="secondary">Development Process</Badge>
+                  <Badge variant="outline" className="ml-2">Orthogonal to ASIMOV-AI</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>Morningside AI (Liam Ottley's Approach)</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground">
+                  A step-by-step agency build roadmap focusing on building AI Automation Agencies (AAA).
+                </p>
+                <div>
+                  <h5 className="font-semibold text-sm mb-2">Key Features:</h5>
+                  <ul className="space-y-1 text-sm text-muted-foreground">
+                    <li>• 6-Month AI Automation Agency Roadmap for launching successful AI-driven businesses</li>
+                    <li>• Emphasizes practical skill-building, marketing, operations, and project delivery</li>
+                    <li>• Draws from experience scaling Morningside AI</li>
+                    <li>• Example projects: avatar systems for content creation, AI-driven YouTube channel analysis</li>
+                    <li>• Focus on building AI workflows for real business outcomes</li>
+                  </ul>
+                </div>
+                <div className="pt-2">
+                  <Badge variant="secondary">Business Model</Badge>
+                  <Badge variant="outline" className="ml-2">Complementary to ASIMOV-AI</Badge>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle>MAD (Machine Learning, AI & Data)</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-muted-foreground">
+                  A frequently updated mapping and framework capturing the ML, AI, and data tool ecosystem.
+                </p>
+                <div>
+                  <h5 className="font-semibold text-sm mb-2">Key Features:</h5>
+                  <ul className="space-y-1 text-sm text-muted-foreground">
+                    <li>• Comprehensive landscape mapping of ML/AI/Data tools and products</li>
+                    <li>• Used for benchmarking tools, products, and build methodologies</li>
+                    <li>• Blends market research with engineering approaches</li>
+                    <li>• Regular updates reflecting the evolving AI ecosystem</li>
+                    <li>• Helps organizations navigate tool selection and technology decisions</li>
+                  </ul>
+                </div>
+                <div className="pt-2">
+                  <Badge variant="secondary">Market Intelligence</Badge>
+                  <Badge variant="outline" className="ml-2">Contextual to ASIMOV-AI</Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         {/* Key Integration Insights */}
-        <div className="grid md:grid-cols-2 gap-4 mt-6">
-          <div className="p-4 border border-border rounded-lg bg-card">
-            <h4 className="font-semibold mb-2 text-primary">Why ASIMOV-AI is Foundational</h4>
-            <ul className="text-sm space-y-2 text-muted-foreground">
-              <li>• Addresses regulatory compliance (EU AI Act, GDPR)</li>
-              <li>• Provides risk assessment framework (NIST AI RMF)</li>
-              <li>• Enables audit readiness and governance</li>
-              <li>• Required regardless of development methodology</li>
-            </ul>
-          </div>
-          <div className="p-4 border border-border rounded-lg bg-card">
-            <h4 className="font-semibold mb-2 text-primary">Positioning Strategy</h4>
-            <ul className="text-sm space-y-2 text-muted-foreground">
-              <li>• BMAD/Morningside: "How to build" → ASIMOV-AI: "How to govern"</li>
-              <li>• MAD: "What tools exist" → ASIMOV-AI: "Which comply"</li>
-              <li>• None conflict → All need governance</li>
-              <li>• ASIMOV-AI makes any build method compliant</li>
-            </ul>
+        <div className="mt-8 space-y-4">
+          <h3 className="text-2xl font-semibold">Key Insights</h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            <Card>
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Why ASIMOV-AI is Foundational</h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Addresses regulatory compliance before market entry</li>
+                  <li>• Provides risk management framework for all development</li>
+                  <li>• Creates competitive advantage through certified compliance</li>
+                  <li>• Required regardless of development methodology or business model</li>
+                  <li>• Enables BMAD builds to be compliant by design</li>
+                  <li>• Gives Morningside agencies credibility and client trust</li>
+                  <li>• Guides MAD tool selection toward compliant options</li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardContent className="pt-6">
+                <h4 className="font-semibold mb-2">Integration Strategy</h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• BMAD: Development workflows operate within governance controls</li>
+                  <li>• Morningside: Agency services backed by compliance framework</li>
+                  <li>• MAD: Market intelligence informs compliant technology choices</li>
+                  <li>• All three can coexist with ASIMOV-AI as foundation</li>
+                  <li>• Not competing - addressing different layers of AI implementation</li>
+                </ul>
+              </CardContent>
+            </Card>
           </div>
         </div>
 
         {/* Prompts for External Tools */}
-        <div className="mt-8 p-6 border-2 border-primary/20 rounded-lg bg-muted/30">
-          <h3 className="text-xl font-bold mb-4">Infographic Generation Prompts</h3>
+        <div className="mt-8 p-6 bg-muted rounded-lg">
+          <h3 className="text-2xl font-semibold mb-4">Infographic Generation Prompts</h3>
           <p className="text-sm text-muted-foreground mb-4">
-            Use these prompts in Google Gemini, Perplexity, or other AI tools to generate professional infographics:
+            Copy these detailed prompts into Google's Gemini, Perplexity AI, or other AI image generation tools to create professional infographics:
           </p>
           
-          <div className="space-y-4">
-            <div className="p-4 bg-background rounded border border-border">
-              <h4 className="font-semibold mb-2 text-sm">Prompt 1: Relationship Diagram</h4>
-              <code className="text-xs block p-2 bg-muted rounded">
-                Create a professional infographic showing the relationship between four AI methodologies: ASIMOV-AI (governance & risk foundation at center), BMAD Method (agent-driven development, orthogonal relationship), Morningside AI (agency business model, complementary relationship), and MAD Landscape (market intelligence, contextual relationship). Use a hub-and-spoke layout with ASIMOV-AI at center. Include connecting lines labeled with relationship types. Style: Modern, professional, corporate colors (blue/teal primary).
-              </code>
+          <div className="space-y-6">
+            <div className="p-4 bg-card rounded border border-border">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-xs">1</span>
+                Foundation Layer Architecture
+              </h4>
+              <p className="text-sm text-muted-foreground mb-2 font-mono bg-muted p-3 rounded">
+                "Create a professional business infographic showing AI methodology relationships. Bottom layer: ASIMOV-AI as the foundation (governance & risk management, EU AI Act compliance). 
+                Three pillars on top: 1) BMAD Method (agent-driven development with Analyst, PM, Architect agents, modular builds), 2) Morningside AI (6-month agency roadmap, AAA business model, client acquisition), 
+                3) MAD Landscape (ML/AI/Data ecosystem mapping, tool benchmarking). Use corporate blue for ASIMOV-AI foundation, green for BMAD, orange for Morningside, purple for MAD. 
+                Include connecting arrows showing integration points. Clean, modern design with icons for each methodology. Style: McKinsey/Deloitte consulting deck aesthetic."
+              </p>
             </div>
 
-            <div className="p-4 bg-background rounded border border-border">
-              <h4 className="font-semibold mb-2 text-sm">Prompt 2: Comparison Matrix</h4>
-              <code className="text-xs block p-2 bg-muted rounded">
-                Design a comparison matrix infographic with 4 columns (ASIMOV-AI, BMAD, Morningside AI, MAD) and 4 rows (Core Focus, Primary Value, Integration Point, Best Used For). ASIMOV-AI focuses on governance & risk (EU AI Act, NIST AI RMF, ISO/IEC 42001). BMAD focuses on modular development. Morningside AI focuses on agency business models. MAD focuses on market tool mapping. Use icons and visual hierarchy. Professional corporate style.
-              </code>
+            <div className="p-4 bg-card rounded border border-border">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-xs">2</span>
+                Detailed Comparison Matrix
+              </h4>
+              <p className="text-sm text-muted-foreground mb-2 font-mono bg-muted p-3 rounded">
+                "Design a detailed comparison table infographic for AI methodologies: ASIMOV-AI, BMAD Method, Morningside AI, MAD Landscape. 
+                Columns: Methodology name with icon. Rows: Core Focus, Unique Aspects (bullet points), Main Contributors, Integration Type. 
+                ASIMOV-AI: Governance/compliance, EU AI Act framework, Asimov Nexus, Foundation. 
+                BMAD: Modular builds, agent planning (Analyst/PM/Architect), BMad Code team, Orthogonal. 
+                Morningside: Agency roadmap, 6-month AAA program, Liam Ottley, Complementary. 
+                MAD: Tool mapping, ecosystem benchmarking, Matt Turck/analysts, Contextual. 
+                Professional color coding, clean typography, business presentation style."
+              </p>
             </div>
 
-            <div className="p-4 bg-background rounded border border-border">
-              <h4 className="font-semibold mb-2 text-sm">Prompt 3: Integration Flow</h4>
-              <code className="text-xs block p-2 bg-muted rounded">
-                Create a workflow infographic showing AI project lifecycle: Start with MAD Landscape (market research), choose development method (BMAD or Morningside AI approach), implement ASIMOV-AI governance controls throughout, achieve regulatory compliance (EU AI Act, NIST AI RMF). Show this as a sequential flow with ASIMOV-AI as a foundational layer underneath all stages. Include compliance checkpoints. Modern, clean design with teal/blue accent colors.
-              </code>
+            <div className="p-4 bg-card rounded border border-border">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-xs">3</span>
+                Integration Journey Map
+              </h4>
+              <p className="text-sm text-muted-foreground mb-2 font-mono bg-muted p-3 rounded">
+                "Create a user journey infographic showing how AI teams use methodologies together. Center: ASIMOV-AI (governance hub). 
+                Three branches radiating outward: 1) BMAD path - shows sprint planning with AI agents, context-rich PRDs, modular development; 
+                2) Morningside path - shows agency growth stages (month 1-6), client acquisition, revenue milestones; 
+                3) MAD path - shows tool selection workflow, ecosystem mapping, technology decisions. 
+                Each path shows specific milestones and deliverables. All paths start from ASIMOV-AI compliance baseline. 
+                Use flowchart style with icons, progressive disclosure, modern tech aesthetic with gradients and clean lines."
+              </p>
             </div>
+
+            <div className="p-4 bg-card rounded border border-border">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-xs">4</span>
+                Venn Diagram Relationships
+              </h4>
+              <p className="text-sm text-muted-foreground mb-2 font-mono bg-muted p-3 rounded">
+                "Design a Venn diagram infographic showing methodology overlap and unique value. Four circles: ASIMOV-AI (largest, underlaying all), 
+                BMAD Method, Morningside AI, MAD Landscape. Show overlap areas: BMAD+ASIMOV='Compliant Development', Morningside+ASIMOV='Trusted Agency', 
+                MAD+ASIMOV='Compliant Tool Selection', Center (all four)='Comprehensive AI Excellence'. 
+                Each methodology circle lists 3-4 unique features. Use transparent overlays, distinct colors, labels with key terms. 
+                Modern, clean design suitable for executive presentations."
+              </p>
+            </div>
+
+            <div className="p-4 bg-card rounded border border-border">
+              <h4 className="font-semibold mb-2 flex items-center gap-2">
+                <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-xs">5</span>
+                Timeline Integration Roadmap
+              </h4>
+              <p className="text-sm text-muted-foreground mb-2 font-mono bg-muted p-3 rounded">
+                "Create a timeline roadmap infographic for AI project methodology adoption. Horizontal timeline with phases: 
+                Phase 0 (Foundation): ASIMOV-AI governance setup, risk assessment, compliance baseline. 
+                Phase 1-3 (Parallel tracks): BMAD track shows sprint cycles with agent workflows, Morningside track shows months 1-6 agency milestones, MAD track shows quarterly tool evaluations. 
+                Each track has specific deliverables and checkpoints. All tracks reference ASIMOV-AI compliance gates. 
+                Use swim lanes, milestone markers, color-coded phases. Include icons for each methodology. 
+                Professional project management style with clear visual hierarchy."
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-6 p-4 bg-primary/10 rounded border border-primary/20">
+            <h4 className="font-semibold mb-2 text-sm">💡 Pro Tips for Best Results:</h4>
+            <ul className="text-sm text-muted-foreground space-y-1">
+              <li>• Copy the full prompt text including all details for best accuracy</li>
+              <li>• Request "16:9 aspect ratio" or "landscape orientation" for presentation slides</li>
+              <li>• Add "high resolution, professional quality" to prompts for print-ready output</li>
+              <li>• Iterate with "make it more [modern/corporate/colorful/minimal]" for style adjustments</li>
+              <li>• For Google Gemini: Use Gemini Advanced or Gemini 2.0 for best image generation</li>
+              <li>• For Perplexity: Use Pro mode with image generation enabled</li>
+            </ul>
           </div>
         </div>
       </div>
