@@ -1,14 +1,97 @@
 import RiskDiagram from "./RiskDiagram";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
+import { jsPDF } from "jspdf";
+import { toast } from "sonner";
 
 const MethodologyComparisonDiagram = () => {
+  const generatePDFEssay = () => {
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const margin = 20;
+    const maxWidth = pageWidth - 2 * margin;
+    let yPosition = 20;
+
+    // Title
+    doc.setFontSize(18);
+    doc.setFont("helvetica", "bold");
+    doc.text("AI Development Methodologies: A Comprehensive Comparison", margin, yPosition);
+    yPosition += 15;
+
+    // Essay content
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "normal");
+    
+    const essay = `The landscape of artificial intelligence development has evolved rapidly, giving rise to diverse methodologies that address different aspects of AI system creation, deployment, and governance. This essay examines four prominent frameworks: ASIMOV-AI, BMAD, Morningside AI, and the MAD landscape, exploring how they complement each other to provide comprehensive solutions for modern AI development challenges.
+
+ASIMOV-AI: The Governance Foundation
+
+ASIMOV-AI serves as a foundational governance and risk management framework specifically designed for AI systems. Named after the science fiction author Isaac Asimov, this methodology emphasizes ethical AI development through structured governance processes. It focuses on establishing robust policies, procedures, and controls that ensure AI systems are developed and deployed responsibly. The framework addresses critical concerns around AI safety, transparency, accountability, and compliance with emerging regulations such as the EU AI Act.
+
+The strength of ASIMOV-AI lies in its comprehensive approach to AI governance, providing organizations with clear pathways to assess and mitigate risks throughout the AI lifecycle. It emphasizes continuous monitoring, stakeholder engagement, and iterative improvement, making it particularly valuable for organizations operating in regulated industries or those handling sensitive data. The methodology's focus on compliance and risk management makes it an essential baseline for any serious AI development effort.
+
+BMAD: Agile Agent-Driven Development
+
+The BMAD (Breakthrough Method for Agile AI Development) methodology represents a paradigm shift in how AI systems are built. This modular, agent-driven approach leverages specialized AI agents for different phases of development planning and execution. The methodology employs planning agents including Analysts, Project Managers, and Architects to create highly structured product requirement documents, architectural diagrams, and user experience guidelines.
+
+What distinguishes BMAD is its use of a Scrum Master agent that converts strategic plans into detailed story files, complete with architectural context and implementation guidelines. This approach eliminates context loss between planning and execution phases, a common challenge in traditional development workflows. The method's emphasis on incremental, modular builds and strict context-aware workflows enables rapid iteration while maintaining coherence across the development lifecycle. BMAD integrates seamlessly with modern AI tools including OpenAI, Claude, and Qwen, making it highly practical for current development environments.
+
+Morningside AI: The Business-First Approach
+
+Liam Ottley's Morningside AI methodology takes a distinctly entrepreneurial approach to AI development. Rather than focusing solely on technical implementation, Morningside AI provides a comprehensive roadmap for building AI Automation Agencies. The 6-Month AI Automation Agency Roadmap emphasizes practical skill-building, marketing, operations, and project delivery, drawing from real-world experience in scaling AI-driven businesses.
+
+This methodology bridges the gap between technical capability and business value, teaching practitioners not just how to build AI systems, but how to package and deliver them as viable business solutions. Example projects like avatar systems for content creation and AI-driven analytics engines demonstrate the hands-on, outcome-focused nature of this approach. Morningside AI is particularly valuable for entrepreneurs and agencies seeking to monetize AI capabilities, providing both technical frameworks and business development strategies.
+
+MAD: Industry Intelligence and Benchmarking
+
+The MAD (Machine Learning, AI & Data) landscape serves a different but complementary purpose. Rather than prescribing development methodologies, MAD provides comprehensive mapping and benchmarking of the AI tool ecosystem. This framework helps organizations understand the competitive landscape, evaluate tools and platforms, and make informed technology selection decisions. The MAD landscape blends market research with engineering considerations, offering insights into emerging trends, mature solutions, and gaps in the current ecosystem.
+
+Integration and Synergy
+
+The true power of these methodologies emerges when they are integrated strategically. ASIMOV-AI provides the governance foundation and risk management framework that ensures responsible AI development. BMAD offers the tactical development methodology for rapid, structured implementation. Morningside AI contributes the business context and delivery framework that ensures commercial viability. The MAD landscape provides the market intelligence needed to make informed technology choices.
+
+Organizations can adopt ASIMOV-AI as their baseline governance framework, implementing BMAD's agent-driven approach for technical development while following Morningside AI's business roadmap for go-to-market strategy. Throughout this process, the MAD landscape serves as a reference for tool selection and competitive positioning.
+
+Practical Application
+
+In practice, a comprehensive AI development strategy might begin with ASIMOV-AI governance assessment to understand regulatory requirements and risk tolerance. BMAD's planning agents would then create detailed technical specifications aligned with these governance requirements. Development would proceed using BMAD's modular approach, while business development follows Morningside AI's agency roadmap. Tool selection throughout would reference the MAD landscape for best-in-class solutions.
+
+This integrated approach addresses the full spectrum of AI development challenges: governance and compliance through ASIMOV-AI, technical excellence through BMAD, business viability through Morningside AI, and informed technology choices through MAD. Organizations need not choose one methodology over another; rather, they can leverage each framework's strengths to build a comprehensive AI development capability.
+
+Conclusion
+
+The evolution of AI development methodologies reflects the maturing of the AI industry itself. As AI systems become more complex and consequential, organizations need frameworks that address technical, governance, and business dimensions simultaneously. ASIMOV-AI, BMAD, Morningside AI, and MAD each contribute unique value, and their integration represents the state of the art in comprehensive AI development practice. Organizations that successfully combine these approaches position themselves to build AI systems that are technically sophisticated, ethically sound, and commercially successful.`;
+
+    const lines = doc.splitTextToSize(essay, maxWidth);
+    
+    lines.forEach((line: string) => {
+      if (yPosition > 270) {
+        doc.addPage();
+        yPosition = 20;
+      }
+      doc.text(line, margin, yPosition);
+      yPosition += 6;
+    });
+
+    // Save the PDF
+    doc.save("ai-methodologies-comparison.pdf");
+    toast.success("PDF essay downloaded successfully");
+  };
+
   return (
     <RiskDiagram
       title="AI Methodology Landscape: How ASIMOV-AI Fits"
       description="Understanding the relationships between leading AI development and governance methodologies"
     >
       <div className="space-y-8">
+        <div className="flex justify-end">
+          <Button onClick={generatePDFEssay} className="gap-2">
+            <Download className="h-4 w-4" />
+            Export as PDF Essay
+          </Button>
+        </div>
         {/* Visual Diagram */}
         <div className="w-full max-w-4xl mx-auto">
           <svg viewBox="0 0 800 600" className="w-full h-auto">
