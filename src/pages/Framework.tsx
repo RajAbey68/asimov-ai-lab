@@ -7,6 +7,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CICDRiskFramework from "@/components/CICDRiskFramework";
 import MethodologyComparisonDiagram from "@/components/MethodologyComparisonDiagram";
+import MethodologySelector from "@/components/MethodologySelector";
 import aiRiskIllustration from "@/assets/ai-risk-illustration.jpg";
 import aiGovernance from "@/assets/ai-governance.jpg";
 import aiLifecycle from "@/assets/ai-lifecycle.jpg";
@@ -166,10 +167,11 @@ const Framework = () => {
 
             {/* Tabs for Framework Sections */}
             <Tabs defaultValue="lifecycle" className="w-full">
-              <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-3 mb-12">
+              <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-4 mb-12">
                 <TabsTrigger value="lifecycle">Lifecycle Framework</TabsTrigger>
                 <TabsTrigger value="cicd">CI/CD Risk</TabsTrigger>
                 <TabsTrigger value="methodologies">Methodology Map</TabsTrigger>
+                <TabsTrigger value="selector">Selector</TabsTrigger>
               </TabsList>
 
               <TabsContent value="lifecycle" className="space-y-16">
@@ -887,6 +889,10 @@ const Framework = () => {
 
                 <TabsContent value="methodologies">
                   <MethodologyComparisonDiagram />
+                </TabsContent>
+
+                <TabsContent value="selector">
+                  <MethodologySelector />
                 </TabsContent>
               </Tabs>
           </div>
