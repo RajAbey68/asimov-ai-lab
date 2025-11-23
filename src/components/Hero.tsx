@@ -73,8 +73,8 @@ const Hero = () => {
           {/* Brand Badge */}
           <div className="flex justify-center mb-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
-              <Shield className="w-4 h-4 text-accent" />
-              <span className="text-sm text-white font-medium">Strategic AI, Responsibly Delivered</span>
+              <Shield className="w-4 h-4 text-accent" aria-hidden="true" />
+              <span className="text-sm text-white font-medium">A Consultative Approach to AI Governance</span>
             </div>
           </div>
 
@@ -83,70 +83,103 @@ const Hero = () => {
             id="hero-heading"
             className="text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-6 leading-tight text-white"
           >
-            Design. Govern. Deploy
+            Not Sure Where Your
             <span className="block mt-2 bg-gradient-accent bg-clip-text text-transparent">
-              AI with Confidence
+              AI Compliance Starts?
             </span>
           </h1>
 
-          {/* Core Purpose */}
-          <p className="text-xl md:text-2xl text-center text-white/90 max-w-3xl mx-auto mb-4">
-            A boutique AI consultancy helping leadership teams navigate the full AI lifecycle—from risk assessment to production deployment—with compliance built in from day one.
+          {/* Core Purpose - Discovery Oriented */}
+          <p className="text-xl md:text-2xl text-center text-white/90 max-w-3xl mx-auto mb-8">
+            Let&apos;s discover it together. You know your business. We know AI governance frameworks. Together, we&apos;ll map your path forward.
           </p>
           
-          {/* Proof Point */}
-          <div className="text-center mb-8">
-            <p className="text-lg text-white/80 max-w-2xl mx-auto">
-              <span className="font-semibold text-accent">27 years of delivery expertise</span> • 2× faster compliance • 35% audit improvement • Trusted by finance, healthcare & public sector
+          {/* Discovery Questions */}
+          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-8 max-w-3xl mx-auto mb-10">
+            <p className="text-lg text-white/90 mb-4 font-medium">Most organizations are asking:</p>
+            <ul className="space-y-3 text-left text-white/80">
+              <li className="flex items-start gap-3">
+                <span className="text-accent mt-1">•</span>
+                <span>Which AI regulations actually apply to us?</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-accent mt-1">•</span>
+                <span>How do we classify our AI systems by risk level?</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-accent mt-1">•</span>
+                <span>What evidence do auditors actually need to see?</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-accent mt-1">•</span>
+                <span>How do we build AI without creating compliance debt?</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Methodology - Observations → Decisions → Sprints */}
+          <div className="max-w-4xl mx-auto mb-10">
+            <p className="text-center text-white/90 mb-6 text-lg">
+              Our collaborative process:
             </p>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+                <div className="text-2xl font-bold text-accent mb-2">1. Observe</div>
+                <div className="text-white/80 text-sm">
+                  We start by understanding your current state—no assumptions, just discovery of where you actually are.
+                </div>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+                <div className="text-2xl font-bold text-accent mb-2">2. Orient</div>
+                <div className="text-white/80 text-sm">
+                  Together, we map your observations to frameworks (EU AI Act, ISO 42001, NIST) and make informed decisions.
+                </div>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+                <div className="text-2xl font-bold text-accent mb-2">3. Sprint</div>
+                <div className="text-white/80 text-sm">
+                  We execute rapid, focused sprints—building controls, documentation, and deployments that stick.
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Core Value Props */}
-          <div className="flex flex-wrap justify-center gap-8 mb-10">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-1">Assess</div>
-              <div className="text-sm text-white/70">Know Your Risks</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-1">→</div>
-              <div className="text-sm text-white/70">Build</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-1">Deploy</div>
-              <div className="text-sm text-white/70">With Confidence</div>
-            </div>
-          </div>
-
-          {/* Single Primary CTA */}
+          {/* Primary CTA - Discovery Oriented */}
           <div className="flex flex-col items-center gap-4 mb-12">
             <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-lg h-14 px-10 shadow-lg">
-              <a href="#book-consultation" aria-label="Start your AI journey with a free consultation">
-                Start Your AI Journey <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
+              <a href="#book-consultation" aria-label="Start with a discovery consultation">
+                Start with Discovery <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
               </a>
             </Button>
-            <p className="text-sm text-white/80">Free consultation • Show the future, not the fear</p>
+            <p className="text-sm text-white/80">Free consultation • No sales pitch, just conversation</p>
           </div>
 
-          {/* Key Capabilities */}
+          {/* What We Help You Discover */}
           <div className="grid md:grid-cols-2 gap-8 pt-8 border-t border-white/20 max-w-4xl mx-auto">
             <div className="text-center p-6 rounded-lg border border-white/20 bg-white/5 backdrop-blur-sm">
-              <Shield className="w-10 h-10 text-accent mb-4 mx-auto" />
-              <h3 className="font-semibold text-lg text-white mb-3">Governance & Compliance</h3>
+              <Shield className="w-10 h-10 text-accent mb-4 mx-auto" aria-hidden="true" />
+              <h3 className="font-semibold text-lg text-white mb-3">Governance Readiness</h3>
+              <p className="text-sm text-white/80 text-left mb-3">
+                We help you discover your current position relative to:
+              </p>
               <ul className="text-sm text-white/80 space-y-2 text-left">
                 <li>• EU AI Act, ISO/IEC 42001, NIST AI RMF</li>
-                <li>• Risk assessment & classification</li>
-                <li>• Control frameworks & policies</li>
-                <li>• Audit-ready documentation</li>
+                <li>• Risk classification requirements</li>
+                <li>• Control implementation gaps</li>
+                <li>• Audit preparation needs</li>
               </ul>
             </div>
             <div className="text-center p-6 rounded-lg border border-white/20 bg-white/5 backdrop-blur-sm">
-              <Zap className="w-10 h-10 text-accent mb-4 mx-auto" />
-              <h3 className="font-semibold text-lg text-white mb-3">Build & Deploy AI</h3>
+              <Zap className="w-10 h-10 text-accent mb-4 mx-auto" aria-hidden="true" />
+              <h3 className="font-semibold text-lg text-white mb-3">Implementation Pathways</h3>
+              <p className="text-sm text-white/80 text-left mb-3">
+                Then we map practical routes to:
+              </p>
               <ul className="text-sm text-white/80 space-y-2 text-left">
-                <li>• Custom AI agents & applications</li>
-                <li>• Voice, vision & multi-agent systems</li>
-                <li>• No-code/low-code automations</li>
-                <li>• Production-ready deployments</li>
+                <li>• Deploy compliant AI systems</li>
+                <li>• Build custom agents & automations</li>
+                <li>• Integrate governance into workflows</li>
+                <li>• Sprint toward production readiness</li>
               </ul>
             </div>
           </div>
