@@ -118,11 +118,11 @@ const Hero = () => {
           </div>
 
           {/* Methodology - Observations → Decisions → Sprints */}
-          <div className="max-w-4xl mx-auto mb-10">
+          <div className="max-w-5xl mx-auto mb-10">
             <p className="text-center text-white/90 mb-6 text-lg">
               Our collaborative process:
             </p>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg p-6">
                 <div className="text-2xl font-bold text-accent mb-2">1. Observe</div>
                 <div className="text-white/80 text-sm">
@@ -132,13 +132,19 @@ const Hero = () => {
               <div className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg p-6">
                 <div className="text-2xl font-bold text-accent mb-2">2. Orient</div>
                 <div className="text-white/80 text-sm">
-                  Together, we map your observations to frameworks (EU AI Act, ISO 42001, NIST) and make informed decisions.
+                  Together, we map your observations to frameworks (EU AI Act, ISO 42001, NIST) and identify gaps.
                 </div>
               </div>
               <div className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg p-6">
-                <div className="text-2xl font-bold text-accent mb-2">3. Sprint</div>
+                <div className="text-2xl font-bold text-accent mb-2">3. Decide</div>
                 <div className="text-white/80 text-sm">
-                  We execute rapid, focused sprints—building controls, documentation, and deployments that stick.
+                  We jointly agree on priorities, measurable outcomes, business benefits, and acceptable risks before any sprint begins.
+                </div>
+              </div>
+              <div className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg p-6">
+                <div className="text-2xl font-bold text-accent mb-2">4. Sprint</div>
+                <div className="text-white/80 text-sm">
+                  We execute focused sprints—designing, delivering, and operationalizing controls and deployments that stick.
                 </div>
               </div>
             </div>
