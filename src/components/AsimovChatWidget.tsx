@@ -16,7 +16,7 @@ const AsimovChatWidget = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hello! I'm the ASIMOV-AI Assistant. How can we help your leadership team with AI governance, compliance, or strategy today?"
+      content: "Hello! I'm the ASIMOV-AI Assistant. I'm here to help you understand your AI governance and compliance needs. To get started, could you tell me: What kind of AI system are you using or planning to build?"
     }
   ]);
   const [input, setInput] = useState("");
