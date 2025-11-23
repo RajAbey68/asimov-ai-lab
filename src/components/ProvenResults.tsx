@@ -1,42 +1,36 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { TrendingUp, Shield, Zap, Award, DollarSign, Clock } from "lucide-react";
 
-const metrics = [
+const goals = [
   {
     icon: TrendingUp,
-    value: "2×",
-    label: "Faster Compliance",
-    description: "Assessment cycles accelerated through structured evidence mapping"
+    label: "Accelerate Compliance",
+    description: "We aim to streamline your assessment cycles through structured evidence mapping and clear frameworks"
   },
   {
     icon: Shield,
-    value: "35%",
-    label: "Audit Improvement",
-    description: "Higher audit scores via bias controls and privacy frameworks"
+    label: "Strengthen Audit Readiness",
+    description: "Our goal is to help you build robust controls and privacy frameworks that stand up to scrutiny"
   },
   {
     icon: Zap,
-    value: "40%",
-    label: "Technical Debt Cut",
-    description: "Reduced through strategic application refactoring"
+    label: "Reduce Technical Debt",
+    description: "We work to identify and eliminate complexity through strategic refactoring and governance integration"
   },
   {
     icon: DollarSign,
-    value: "20%",
-    label: "Cost Reduction",
-    description: "Infrastructure costs cut through modernization"
+    label: "Optimize Resources",
+    description: "We aim to help you deploy AI efficiently, avoiding costly compliance mistakes and rework"
   },
   {
     icon: Clock,
-    value: "25%",
-    label: "Faster Delivery",
-    description: "Proof-of-concept to production cycles accelerated"
+    label: "Speed to Production",
+    description: "Our focus is reducing the gap between proof-of-concept and compliant production deployment"
   },
   {
     icon: Award,
-    value: "98%",
-    label: "On-Time Delivery",
-    description: "Cross-functional teams achieving delivery excellence"
+    label: "Deliver with Confidence",
+    description: "We strive to ensure your AI projects launch on schedule with governance built in from day one"
   }
 ];
 
@@ -47,38 +41,35 @@ const ProvenResults = () => {
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
             <span className="text-sm font-semibold text-accent uppercase tracking-wider">
-              Measurable Impact
+              Our Commitments
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Proven Results Across{" "}
+            What We{" "}
             <span className="bg-gradient-accent bg-clip-text text-transparent">
-              27 Years
+              Aim to Achieve
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Real outcomes achieved across financial services, healthcare, and public sector organisations—from compliance acceleration to operational excellence.
+            Clear goals that guide our work with organizations across finance, healthcare, and the public sector.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {metrics.map((metric, index) => (
+          {goals.map((goal, index) => (
             <Card 
               key={index}
               className="group hover:shadow-xl transition-all duration-300 border-border/50 bg-card"
             >
-              <CardContent className="p-8 text-center">
+              <CardContent className="p-8">
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-accent mb-6 group-hover:scale-110 transition-transform">
-                  <metric.icon className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-5xl font-bold mb-2 bg-gradient-accent bg-clip-text text-transparent">
-                  {metric.value}
+                  <goal.icon className="w-8 h-8 text-white" aria-hidden="true" />
                 </div>
                 <div className="text-xl font-semibold mb-3">
-                  {metric.label}
+                  {goal.label}
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  {metric.description}
+                  {goal.description}
                 </p>
               </CardContent>
             </Card>
@@ -89,13 +80,15 @@ const ProvenResults = () => {
           <Card className="max-w-4xl mx-auto border-accent/20 bg-gradient-subtle">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold mb-4">
-                The ASIMOV-AI Difference
+                Our Approach
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Our governance framework aligns with <span className="font-semibold text-foreground">EU AI Act</span>, 
-                <span className="font-semibold text-foreground"> NIST AI RMF</span>, 
-                <span className="font-semibold text-foreground"> ISO/IEC 42001</span>, and 
-                <span className="font-semibold text-foreground"> GDPR</span>—adopted as a reference model for AI readiness maturity by organisations across finance, healthcare, and the public sector.
+                We help organizations align with established frameworks including{" "}
+                <span className="font-semibold text-foreground">EU AI Act</span>,{" "}
+                <span className="font-semibold text-foreground">NIST AI RMF</span>,{" "}
+                <span className="font-semibold text-foreground">ISO/IEC 42001</span>, and{" "}
+                <span className="font-semibold text-foreground">GDPR</span>. Our goal is to make AI governance 
+                practical and integrated into your existing workflows—not a compliance burden bolted on afterward.
               </p>
             </CardContent>
           </Card>
