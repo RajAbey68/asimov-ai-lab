@@ -10,6 +10,7 @@ import TestimonialCarousel from "@/components/TestimonialCarousel";
 import Team from "@/components/Team";
 import BookConsultationSection from "@/components/BookConsultationSection";
 import FloatingCTA from "@/components/FloatingCTA";
+import AsimovChatWidget from "@/components/AsimovChatWidget";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -17,6 +18,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Navigation />
       <FloatingCTA />
+      <AsimovChatWidget />
       <Hero />
       <ProvenResults />
       <div id="risk-profiles">
