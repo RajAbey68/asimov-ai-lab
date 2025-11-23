@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { TrendingUp, Shield, Zap, Award, DollarSign, Clock } from "lucide-react";
+import { TrendingUp, Shield, Zap, Award, DollarSign, Clock, ArrowUpRight, CheckCircle2 } from "lucide-react";
 
 const goals = [
   {
@@ -59,18 +59,31 @@ const ProvenResults = () => {
           {goals.map((goal, index) => (
             <Card 
               key={index}
-              className="group hover:shadow-xl transition-all duration-300 border-border/50 bg-card"
+              className="group hover:shadow-xl transition-all duration-300 border-border/50 bg-card hover:border-accent/50 relative overflow-hidden"
             >
-              <CardContent className="p-8">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-accent mb-6 group-hover:scale-110 transition-transform">
-                  <goal.icon className="w-8 h-8 text-white" aria-hidden="true" />
+              {/* Gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/0 via-accent/0 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
+              
+              <CardContent className="p-8 relative z-10">
+                <div className="flex items-start justify-between mb-6">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-accent group-hover:scale-110 transition-transform shadow-lg">
+                    <goal.icon className="w-8 h-8 text-white" aria-hidden="true" />
+                  </div>
+                  <ArrowUpRight className="w-5 h-5 text-accent opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
                 </div>
-                <div className="text-xl font-semibold mb-3">
+                
+                <div className="text-xl font-bold mb-3 group-hover:text-accent transition-colors">
                   {goal.label}
                 </div>
-                <p className="text-sm text-muted-foreground">
+                
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                   {goal.description}
                 </p>
+
+                <div className="flex items-center gap-2 text-xs font-semibold text-accent opacity-0 group-hover:opacity-100 transition-opacity">
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span>Goal-driven approach</span>
+                </div>
               </CardContent>
             </Card>
           ))}
