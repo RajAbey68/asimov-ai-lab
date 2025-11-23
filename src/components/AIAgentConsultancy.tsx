@@ -159,7 +159,7 @@ const AIAgentConsultancy = () => {
               >
                 {pkg.popular && (
                   <div className="bg-gradient-accent text-accent-foreground text-center py-2 text-sm font-semibold">
-                    MOST POPULAR
+                    OPTIMAL FOR BUSINESS VALUE
                   </div>
                 )}
                 <CardHeader>
@@ -201,8 +201,20 @@ const AIAgentConsultancy = () => {
           </div>
         </div>
 
+        {/* Collaboration Note */}
+        <div className="mt-16 max-w-4xl mx-auto">
+          <Card className="border-border/50 bg-muted/30">
+            <CardContent className="pt-6 pb-6">
+              <h4 className="text-lg font-semibold mb-3 text-center">Working in Partnership</h4>
+              <p className="text-sm text-muted-foreground text-center leading-relaxed">
+                We collaborate closely with your internal teams, existing consultants, and specialist subject matter experts throughout every engagement. Our role is to complement your organization's strengths with governance expertise and technical delivery—ensuring knowledge transfer, capability building, and outcomes you can sustain independently.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* CTA Section */}
-        <div className="mt-20 text-center max-w-3xl mx-auto">
+        <div className="mt-12 text-center max-w-3xl mx-auto">
           <Card className="border-accent/50 bg-gradient-to-br from-accent/5 to-background">
             <CardContent className="pt-8 pb-8">
               <h3 className="text-2xl font-bold mb-4">
