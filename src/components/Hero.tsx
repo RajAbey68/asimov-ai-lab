@@ -37,8 +37,11 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
+    <section 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      aria-labelledby="hero-heading"
+    >
+      <div className="absolute inset-0 z-0" aria-hidden="true">
         {heroMedia && mediaUrl ? (
           heroMedia.media_type === "video" ? (
             <video
@@ -66,7 +69,7 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 py-32 relative z-10">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto" role="main">
           {/* Brand Badge */}
           <div className="flex justify-center mb-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm">
@@ -76,7 +79,10 @@ const Hero = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-6 leading-tight text-white">
+          <h1 
+            id="hero-heading"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-6 leading-tight text-white"
+          >
             Design. Govern. Deploy
             <span className="block mt-2 bg-gradient-accent bg-clip-text text-transparent">
               AI with Confidence
@@ -114,8 +120,8 @@ const Hero = () => {
           {/* Single Primary CTA */}
           <div className="flex flex-col items-center gap-4 mb-12">
             <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-lg h-14 px-10 shadow-lg">
-              <a href="#book-consultation">
-                Start Your AI Journey <ArrowRight className="ml-2 w-5 h-5" />
+              <a href="#book-consultation" aria-label="Start your AI journey with a free consultation">
+                Start Your AI Journey <ArrowRight className="ml-2 w-5 h-5" aria-hidden="true" />
               </a>
             </Button>
             <p className="text-sm text-white/80">Free consultation • Show the future, not the fear</p>
