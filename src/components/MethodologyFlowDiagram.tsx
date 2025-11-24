@@ -70,25 +70,61 @@ const MethodologyFlowDiagram = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h3 className="text-3xl md:text-4xl font-bold mb-4">
-            Our Process: Observe → Orient → Decide → Sprint
+            Our Iterative Process: Observe → Orient → Decide → Sprint → 
+            <span className="text-accent"> Repeat</span>
           </h3>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            A collaborative, iterative methodology that combines discovery, analysis, joint decision-making, and delivery
+            A collaborative, <span className="font-semibold text-foreground">cyclical methodology</span> that continuously combines discovery, analysis, joint decision-making, and delivery
           </p>
         </div>
 
         {/* Desktop Flow View */}
         <div className="hidden lg:block max-w-7xl mx-auto">
           <div className="relative">
-            {/* Connection Line */}
+            {/* Forward Connection Line */}
             <div className="absolute top-20 left-0 right-0 h-1 bg-gradient-to-r from-blue-500/30 via-purple-500/30 via-amber-500/30 to-green-500/30 z-0" 
                  style={{ top: "5rem" }} 
                  aria-hidden="true" />
             
+            {/* Return Arrow - Curved line from Sprint back to Observe */}
+            <svg className="absolute w-full h-32 -bottom-16 left-0 z-0 pointer-events-none" aria-hidden="true">
+              <defs>
+                <linearGradient id="returnGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="hsl(var(--accent) / 0.3)" />
+                  <stop offset="50%" stopColor="hsl(var(--accent) / 0.4)" />
+                  <stop offset="100%" stopColor="hsl(var(--accent) / 0.3)" />
+                </linearGradient>
+                <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+                  <polygon points="0 0, 10 3, 0 6" fill="hsl(var(--accent))" />
+                </marker>
+              </defs>
+              <path 
+                d="M 85% 10 Q 50% 100, 15% 10" 
+                stroke="url(#returnGradient)" 
+                strokeWidth="2" 
+                fill="none" 
+                markerEnd="url(#arrowhead)"
+                strokeDasharray="8,4"
+                className="animate-[dash_20s_linear_infinite]"
+                style={{
+                  strokeDasharray: '8 4',
+                  animation: 'dash 20s linear infinite'
+                }}
+              />
+            </svg>
+
+            <style>{`
+              @keyframes dash {
+                to {
+                  stroke-dashoffset: -100;
+                }
+              }
+            `}</style>
+            
             <div className="grid grid-cols-4 gap-4 relative z-10">
               {steps.map((step, index) => (
-                <div key={index} className="relative">
-                  <Card className={`border-border hover:border-accent/50 transition-all hover:shadow-lg bg-gradient-to-br ${step.color}`}>
+                <div key={index} className="relative animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <Card className={`border-border hover:border-accent/50 transition-all hover:shadow-lg hover-scale bg-gradient-to-br ${step.color}`}>
                     <CardContent className="pt-6 pb-6">
                       {/* Icon */}
                       <div className={`w-20 h-20 mx-auto mb-4 rounded-2xl ${step.iconBg} flex items-center justify-center`}>
@@ -184,15 +220,36 @@ const MethodologyFlowDiagram = () => {
           ))}
         </div>
 
+        {/* Iteration Cycle Indicator */}
+        <div className="mt-16 mb-8 text-center">
+          <div className="inline-flex items-center gap-3 px-6 py-3 bg-accent/10 border-2 border-accent/30 rounded-full">
+            <div className="w-8 h-8 rounded-full bg-gradient-accent flex items-center justify-center animate-pulse">
+              <ArrowRight className="w-4 h-4 text-accent-foreground rotate-180" />
+            </div>
+            <span className="text-lg font-bold text-accent">Continuous Iteration Cycle</span>
+            <div className="w-8 h-8 rounded-full bg-gradient-accent flex items-center justify-center animate-pulse">
+              <ArrowRight className="w-4 h-4 text-accent-foreground" />
+            </div>
+          </div>
+        </div>
+
         {/* Iteration Note */}
-        <Card className="mt-12 max-w-4xl mx-auto border-accent/50 bg-gradient-to-br from-accent/5 to-background">
+        <Card className="max-w-4xl mx-auto border-2 border-accent/50 bg-gradient-to-br from-accent/10 to-background shadow-lg">
           <CardContent className="pt-6 pb-6 text-center">
-            <h4 className="text-xl font-bold mb-3">Continuous Iteration</h4>
-            <p className="text-muted-foreground leading-relaxed">
-              This isn't a waterfall process. We cycle through these phases in focused sprints, refining our understanding 
-              and implementation with each iteration. Early wins build confidence, while continuous validation ensures we stay aligned 
-              with your business goals and regulatory requirements.
+            <h4 className="text-2xl font-bold mb-3 flex items-center justify-center gap-2">
+              <span className="text-3xl">🔄</span>
+              We Work in Cycles, Not Waterfalls
+            </h4>
+            <p className="text-muted-foreground leading-relaxed text-lg">
+              After each <span className="font-semibold text-accent">Sprint</span>, we return to <span className="font-semibold text-accent">Observe</span> with new insights. 
+              Each iteration refines our understanding, strengthens controls, and delivers measurable outcomes. 
+              Early wins build confidence, continuous validation keeps you compliant, and regular cycles ensure 
+              we adapt as your AI systems and regulations evolve.
             </p>
+            <div className="mt-4 inline-flex items-center gap-2 text-sm text-accent font-semibold">
+              <span>Sprint Duration:</span>
+              <span className="px-3 py-1 bg-accent/20 rounded-full">2-4 weeks</span>
+            </div>
           </CardContent>
         </Card>
       </div>
