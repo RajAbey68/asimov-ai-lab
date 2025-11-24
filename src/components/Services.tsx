@@ -55,46 +55,29 @@ const Services = () => {
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <img src={servicesBg} alt="" className="w-full h-full object-cover opacity-30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/85 to-background/75" />
-      </div>
-      <div className="container mx-auto px-4 relative z-10">
+    <section className="py-20 bg-muted/30">
+      <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive AI solutions tailored to your organization's unique needs and challenges
+          <h2 className="text-4xl font-bold text-foreground mb-4">Strategic AI Advisory Services</h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Comprehensive governance solutions designed for senior leadership teams navigating the complex AI landscape
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="border-border hover:border-accent/50 transition-all hover:shadow-lg group overflow-hidden">
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={service.image} 
-                  alt={`${service.title} - Professional visualization of AI services`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-                <div className="absolute bottom-4 left-4 w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center shadow-lg">
-                  <service.icon className="w-6 h-6 text-accent-foreground" />
-                </div>
+            <Card key={index} className="bg-card rounded-xl shadow-lg hover:shadow-xl transition-shadow p-8 border-l-4 border-primary">
+              <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-6">
+                <service.icon className="w-6 h-6 text-primary-foreground" />
               </div>
-              <CardHeader>
-                <CardTitle className="text-xl">{service.title}</CardTitle>
-                <CardDescription className="text-base">{service.description}</CardDescription>
+              <CardHeader className="p-0 mb-4">
+                <CardTitle className="text-xl font-bold">{service.title}</CardTitle>
+                <CardDescription className="text-base text-muted-foreground">{service.description}</CardDescription>
               </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 rounded-full bg-accent" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
+              <CardContent className="p-0">
+                <a href="#" className="text-primary font-semibold hover:text-primary/80 transition-colors">
+                  Learn More →
+                </a>
               </CardContent>
             </Card>
           ))}
