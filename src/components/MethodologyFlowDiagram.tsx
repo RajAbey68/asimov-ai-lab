@@ -220,15 +220,15 @@ const MethodologyFlowDiagram = () => {
           ))}
         </div>
 
-        {/* Iteration Cycle Indicator */}
-        <div className="mt-16 mb-8 text-center">
-          <div className="inline-flex items-center gap-3 px-6 py-3 bg-accent/10 border-2 border-accent/30 rounded-full">
-            <div className="w-8 h-8 rounded-full bg-gradient-accent flex items-center justify-center animate-pulse">
-              <ArrowRight className="w-4 h-4 text-accent-foreground rotate-180" />
+        {/* Iteration Cycle Indicator - Enhanced Prominence */}
+        <div className="mt-20 mb-12 text-center">
+          <div className="inline-flex items-center gap-4 px-10 py-6 bg-gradient-to-r from-accent/20 via-accent/10 to-accent/20 border-4 border-accent rounded-2xl shadow-2xl hover:scale-105 transition-transform">
+            <div className="w-14 h-14 rounded-full bg-gradient-accent flex items-center justify-center animate-pulse shadow-lg">
+              <ArrowRight className="w-7 h-7 text-accent-foreground rotate-180" />
             </div>
-            <span className="text-lg font-bold text-accent">Continuous Iteration Cycle</span>
-            <div className="w-8 h-8 rounded-full bg-gradient-accent flex items-center justify-center animate-pulse">
-              <ArrowRight className="w-4 h-4 text-accent-foreground" />
+            <span className="text-3xl font-black text-accent tracking-wide">Continuous Iteration Cycle</span>
+            <div className="w-14 h-14 rounded-full bg-gradient-accent flex items-center justify-center animate-pulse shadow-lg">
+              <ArrowRight className="w-7 h-7 text-accent-foreground" />
             </div>
           </div>
         </div>
