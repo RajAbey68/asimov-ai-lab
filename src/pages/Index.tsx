@@ -12,10 +12,12 @@ import BookConsultationSection from "@/components/BookConsultationSection";
 import FloatingCTA from "@/components/FloatingCTA";
 import AsimovChatWidget from "@/components/AsimovChatWidget";
 import Footer from "@/components/Footer";
+import StructuredData from "@/components/StructuredData";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <StructuredData />
       <Navigation />
       <FloatingCTA />
       <AsimovChatWidget />
