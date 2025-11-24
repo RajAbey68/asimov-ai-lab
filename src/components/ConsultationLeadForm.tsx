@@ -95,6 +95,7 @@ export const ConsultationLeadForm = () => {
               <SelectItem value="governance">Governance Framework</SelectItem>
               <SelectItem value="compliance">Compliance Audit</SelectItem>
               <SelectItem value="ip-strategy">IP Strategy</SelectItem>
+              <SelectItem value="data-provenance">Data Provenance & IP Protection</SelectItem>
               <SelectItem value="expert-consultation">Expert Consultation</SelectItem>
               <SelectItem value="integration-support">Integration Support</SelectItem>
               <SelectItem value="continuous-monitoring">Continuous Monitoring</SelectItem>
