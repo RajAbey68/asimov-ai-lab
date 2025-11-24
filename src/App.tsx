@@ -19,6 +19,7 @@ import AdminMedia from "./pages/AdminMedia";
 import AdminControlsImport from "./pages/AdminControlsImport";
 import AdminConsultations from "./pages/AdminConsultations";
 import ControlsViewer from "./pages/ControlsViewer";
+import DesignAudit from "./pages/DesignAudit";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -58,6 +59,11 @@ const App = () => (
         <Route path="/admin/consultations" element={
           <ProtectedRoute>
             <AdminConsultations />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/design-audit" element={
+          <ProtectedRoute>
+            <DesignAudit />
           </ProtectedRoute>
         } />
         <Route path="/controls" element={
