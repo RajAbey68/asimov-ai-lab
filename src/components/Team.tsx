@@ -5,6 +5,7 @@ import { Linkedin, MessageCircle } from "lucide-react";
 import nickLockettImg from "@/assets/nick-lockett.png";
 import sushilaNairImg from "@/assets/sushila-nair.png";
 import rajivAbeysingheImg from "@/assets/rajiv-abeysinghe.png";
+import teamBg from "@/assets/team-consultation-bg.jpg";
 import ConsultationIntakeDialog from "@/components/ConsultationIntakeDialog";
 
 const teamMembers = [
@@ -61,8 +62,12 @@ const Team = () => {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-background via-muted/20 to-background">
-      <div className="container mx-auto px-4">
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <img src={teamBg} alt="" className="w-full h-full object-cover opacity-20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/90 via-background/95 to-background/90" />
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <div className="inline-block mb-4">
             <span className="text-sm font-semibold text-accent uppercase tracking-wider">Expert Practitioners</span>

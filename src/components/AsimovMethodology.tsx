@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle2, Users, FileText, GitBranch, Target, Shield, ArrowRight } from "lucide-react";
+import methodologyDiagram from "@/assets/methodology-cycle-diagram.jpg";
 
 const AsimovMethodology = () => {
   const phases = [
@@ -123,18 +124,27 @@ const AsimovMethodology = () => {
             ))}
           </div>
 
-          <Card className="mt-12 border-accent/50 bg-gradient-to-br from-background to-muted/30">
-            <CardContent className="pt-8 pb-8">
-              <div className="text-center">
-                <h3 className="text-2xl font-bold mb-4">
-                  Professional but Creative. Enterprise Trust with Experimentation.
-                </h3>
-                <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Our methodology mirrors Morningside AI's clarity and credibility — showing the future, not the fear. 
-                  We balance compliance-grade governance with real-world innovation velocity.
-                </p>
+          <Card className="mt-12 border-accent/50 bg-gradient-to-br from-background to-muted/30 overflow-hidden">
+            <div className="grid md:grid-cols-2 gap-6 items-center">
+              <div className="order-2 md:order-1">
+                <img 
+                  src={methodologyDiagram} 
+                  alt="ASIMOV-AI Iterative Methodology Cycle" 
+                  className="w-full h-full object-cover"
+                />
               </div>
-            </CardContent>
+              <CardContent className="pt-8 pb-8 order-1 md:order-2">
+                <div className="text-center md:text-left">
+                  <h3 className="text-2xl font-bold mb-4">
+                    Professional but Creative. Enterprise Trust with Experimentation.
+                  </h3>
+                  <p className="text-muted-foreground">
+                    Our methodology mirrors Morningside AI's clarity and credibility — showing the future, not the fear. 
+                    We balance compliance-grade governance with real-world innovation velocity through continuous iteration.
+                  </p>
+                </div>
+              </CardContent>
+            </div>
           </Card>
         </div>
 

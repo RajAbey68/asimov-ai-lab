@@ -5,11 +5,15 @@ import riskAssessmentImg from "@/assets/risk-assessment-ai.png";
 import projectDeliveryImg from "@/assets/project-delivery.jpg";
 import aiLifecycleImg from "@/assets/ai-ml-lifecycle.png";
 import voiceAgentImg from "@/assets/voice-agent-ai.png";
+import complianceIcon from "@/assets/service-compliance.png";
+import mlopsIcon from "@/assets/service-mlops.png";
+import governanceIcon from "@/assets/service-governance.png";
 
 const ServicePillars = () => {
   const pillars = [
     {
       icon: Shield,
+      iconImg: complianceIcon,
       title: "AI Risk & Readiness Assessment",
       tagline: "Before you build, know your risks.",
       description: "We evaluate your organization's AI maturity, governance, and exposure under frameworks such as EU AI Act, ISO/IEC 42001, NIST AI RMF, COBIT 2019, and GDPR.",
@@ -23,6 +27,7 @@ const ServicePillars = () => {
     },
     {
       icon: Target,
+      iconImg: governanceIcon,
       title: "AI Strategy & Implementation Planning",
       tagline: "From compliance to capability.",
       description: "We translate business ambition into practical AI strategy, identifying high-impact, low-risk opportunities and establishing robust governance models.",
@@ -37,6 +42,7 @@ const ServicePillars = () => {
     },
     {
       icon: Cpu,
+      iconImg: mlopsIcon,
       title: "Build AI Applications & AI Agents",
       tagline: "Where strategy becomes reality.",
       description: "Hands-on design, prototyping, and deployment of AI-powered solutions. We combine compliance-grade governance with real-world build capabilities.",
@@ -89,8 +95,12 @@ const ServicePillars = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
-                <div className="absolute bottom-4 left-4 w-14 h-14 rounded-lg bg-gradient-accent flex items-center justify-center shadow-lg">
-                  <pillar.icon className="w-7 h-7 text-accent-foreground" />
+                <div className="absolute bottom-4 left-4 w-14 h-14 rounded-lg bg-white flex items-center justify-center shadow-lg p-2">
+                  {pillar.iconImg ? (
+                    <img src={pillar.iconImg} alt={pillar.title} className="w-full h-full object-contain" />
+                  ) : (
+                    <pillar.icon className="w-7 h-7 text-primary" />
+                  )}
                 </div>
               </div>
               <CardHeader>
