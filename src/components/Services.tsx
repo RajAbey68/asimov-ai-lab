@@ -75,7 +75,14 @@ const Services = () => {
                 <CardDescription className="text-base text-muted-foreground">{service.description}</CardDescription>
               </CardHeader>
               <CardContent className="p-0">
-                <a href="#" className="text-primary font-semibold hover:text-primary/80 transition-colors">
+                <a 
+                  href="#book-consultation" 
+                  className="text-primary font-semibold hover:text-primary/80 transition-colors inline-flex items-center gap-1"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('book-consultation')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
                   Learn More →
                 </a>
               </CardContent>
