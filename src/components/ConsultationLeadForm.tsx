@@ -90,9 +90,15 @@ export const ConsultationLeadForm = () => {
             </SelectTrigger>
             <SelectContent>
               <SelectItem value="risk-assessment">AI Risk Assessment</SelectItem>
+              <SelectItem value="project-delivery">AI Project Delivery</SelectItem>
+              <SelectItem value="rapid-assessment">Rapid Assessment</SelectItem>
               <SelectItem value="governance">Governance Framework</SelectItem>
               <SelectItem value="compliance">Compliance Audit</SelectItem>
               <SelectItem value="ip-strategy">IP Strategy</SelectItem>
+              <SelectItem value="expert-consultation">Expert Consultation</SelectItem>
+              <SelectItem value="integration-support">Integration Support</SelectItem>
+              <SelectItem value="continuous-monitoring">Continuous Monitoring</SelectItem>
+              <SelectItem value="implementation-risk">Implementation Risk Management</SelectItem>
             </SelectContent>
           </Select>
         </div>
