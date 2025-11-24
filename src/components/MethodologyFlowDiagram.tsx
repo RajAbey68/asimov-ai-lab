@@ -7,12 +7,12 @@ const MethodologyFlowDiagram = () => {
       icon: Eye,
       phase: "Observe",
       title: "Discovery & Understanding",
-      description: "What AI systems exist? What risks are present?",
+      description: "What AI systems exist? What risks are present? Include business strategy leveraging AI Business Analysis.",
       activities: [
         "AI system inventory",
         "Stakeholder interviews",
-        "Risk identification",
-        "Current state assessment"
+        "Identify domain experts",
+        "Risk identification"
       ],
       color: "from-blue-500/20 to-blue-600/20",
       iconBg: "bg-blue-500/20",
