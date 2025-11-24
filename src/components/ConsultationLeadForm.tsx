@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import AsimovChatWidget from "./AsimovChatWidget";
 
 export const ConsultationLeadForm = () => {
   const [formData, setFormData] = useState({
@@ -49,6 +50,12 @@ export const ConsultationLeadForm = () => {
         <h3 className="text-2xl font-bold mb-2">Get Strategic Guidance</h3>
         <p className="text-muted-foreground">Schedule a consultation with our AI governance experts</p>
       </div>
+      
+      {/* AI Chat Assistant */}
+      <div className="mb-6">
+        <AsimovChatWidget />
+      </div>
+      
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <Input
