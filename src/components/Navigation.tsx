@@ -81,10 +81,15 @@ const Navigation = () => {
             </div>
           </div>
 
-          <Button asChild className="bg-accent hover:bg-accent/90">
-            <a href="/#book-consultation" aria-label="Book a consultation with our team">
-              Book Consultation
-            </a>
+          <Button 
+            className="bg-accent hover:bg-accent/90"
+            onClick={() => {
+              const element = document.getElementById('book-consultation');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            aria-label="Book a consultation with our team"
+          >
+            Book Consultation
           </Button>
         </div>
       </div>
