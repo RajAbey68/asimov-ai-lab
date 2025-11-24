@@ -124,6 +124,34 @@ const Hero = () => {
                 <span className="text-sm font-medium text-white">COBIT 2019</span>
               </div>
             </div>
+
+            {/* Core Offerings */}
+            <div className="space-y-4 pt-8">
+              <h3 className="text-2xl font-bold text-white mb-4">Our Core Offerings</h3>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                  <Shield className="w-6 h-6 text-accent shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-white mb-1">Regulatory Compliance Pillars</h4>
+                    <p className="text-sm text-white/80">Achieving EU AI Act Readiness and GDPR Compliant systems through comprehensive risk mapping.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                  <Zap className="w-6 h-6 text-accent shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-white mb-1">MLOps Security Modules</h4>
+                    <p className="text-sm text-white/80">Hardening your CI/CD pipelines with audits informed by OWASP and threat modeling using MITRE ATLAS.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                  <CheckCircle2 className="w-6 h-6 text-accent shrink-0 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-white mb-1">Governance & Audit Deliverables</h4>
+                    <p className="text-sm text-white/80">Implementing controls based on NIST AI RMF and COBIT 2019 to ensure clear board oversight.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Lead Form */}

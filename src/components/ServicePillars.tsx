@@ -14,13 +14,14 @@ const ServicePillars = () => {
     {
       icon: Shield,
       iconImg: complianceIcon,
-      title: "AI Risk & Readiness Assessment",
-      tagline: "Before you build, know your risks.",
-      description: "We evaluate your organization's AI maturity, governance, and exposure under frameworks such as EU AI Act, ISO/IEC 42001, NIST AI RMF, COBIT 2019, and GDPR.",
+      title: "Regulatory Compliance Pillars",
+      tagline: "Achieving EU AI Act Readiness and GDPR Compliant systems",
+      description: "Comprehensive risk mapping across legal, ethical, and operational domains. We evaluate your organization's AI maturity and exposure under EU AI Act, ISO/IEC 42001, NIST AI RMF, COBIT 2019, and GDPR—delivering board-ready compliance roadmaps.",
       deliverables: [
-        "AI System Inventory & Classification",
-        "Risk Heatmaps & Readiness Reports",
-        "Governance Roadmaps and Control Frameworks",
+        "AI System Inventory & Risk Classification",
+        "EU AI Act Conformity Assessment Preparation",
+        "GDPR Data Protection Impact Assessments",
+        "Risk Heatmaps & Governance Roadmaps",
         "Executive Briefings for Board & CISO"
       ],
       image: riskAssessmentImg
@@ -28,30 +29,30 @@ const ServicePillars = () => {
     {
       icon: Target,
       iconImg: governanceIcon,
-      title: "AI Strategy & Implementation Planning",
-      tagline: "From compliance to capability.",
-      description: "We translate business ambition into practical AI strategy, identifying high-impact, low-risk opportunities and establishing robust governance models.",
+      title: "Governance & Audit Deliverables",
+      tagline: "Implementing controls for clear board oversight",
+      description: "Structured governance frameworks based on NIST AI RMF and COBIT 2019. We establish board-level oversight mechanisms, control registers, and audit-ready documentation that withstand regulatory scrutiny and demonstrate accountability.",
       deliverables: [
-        "High-impact AI opportunity identification",
-        "Internal AI governance & human oversight models",
-        "Procurement and vendor risk frameworks",
-        "Responsible AI operating model definition",
-        "EU AI Act conformity assessment preparation"
+        "NIST AI RMF Control Implementation",
+        "COBIT 2019 AI Governance Framework",
+        "Board-Level AI Risk Reporting Dashboard",
+        "Internal Audit & Assurance Programs",
+        "Third-Party Vendor Risk Management"
       ],
       image: aiLifecycleImg
     },
     {
       icon: Cpu,
       iconImg: mlopsIcon,
-      title: "Build AI Applications & AI Agents",
-      tagline: "Where strategy becomes reality.",
-      description: "Hands-on design, prototyping, and deployment of AI-powered solutions. We combine compliance-grade governance with real-world build capabilities.",
+      title: "MLOps Security Modules",
+      tagline: "Hardening CI/CD pipelines with threat-informed audits",
+      description: "Security-first approach to AI operations. We conduct audits informed by OWASP Top 10 for LLMs and threat modeling using MITRE ATLAS framework, ensuring your AI deployment pipelines are resilient against adversarial attacks and supply chain vulnerabilities.",
       deliverables: [
-        "AI-powered web apps and dashboards",
-        "Custom AI agents and copilots",
-        "No-code and low-code automations",
-        "ChatGPT, Claude, and Gemini integrations",
-        "AI-driven data pipelines and workflow systems"
+        "CI/CD Pipeline Security Audits",
+        "OWASP AI Security Risk Assessment",
+        "MITRE ATLAS Threat Modeling",
+        "Model Registry & Artifact Validation",
+        "Supply Chain Security Controls"
       ],
       image: projectDeliveryImg
     },
