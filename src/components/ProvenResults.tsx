@@ -47,11 +47,11 @@ const ProvenResults = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             What We{" "}
             <span className="bg-gradient-accent bg-clip-text text-transparent">
-              Aim to Achieve
+              Achieve
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Clear goals that guide our work with organizations across finance, healthcare, and the public sector.
+            Clear goals that guide our work with organizations operating in regulated sectors, those managing reputation risk, and enterprises navigating intellectual property and legal complexities.
           </p>
         </div>
 
