@@ -18,66 +18,76 @@ const Navigation = () => {
             </span>
           </Link>
           
-          <div className="hidden md:flex items-center gap-6" role="menubar" aria-label="Primary navigation">
-            <Link 
-              to="/" 
-              className="text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
-              role="menuitem"
-            >
-              Home
-            </Link>
-            <Link 
-              to="/assessment" 
-              className="text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
-              role="menuitem"
-            >
-              AI Assessment
-            </Link>
-            <Link 
-              to="/framework" 
-              className="text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
-              role="menuitem"
-            >
-              Framework
-            </Link>
-            <Link 
-              to="/sectors" 
-              className="text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
-              role="menuitem"
-            >
-              Sectors
-            </Link>
-            <Link 
-              to="/team" 
-              className="text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
-              role="menuitem"
-            >
-              Team
-            </Link>
-            <Link 
-              to="/resources" 
-              className="text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
-              role="menuitem"
-            >
-              Resources
-            </Link>
-            <div className="flex items-center gap-4 ml-4 pl-4 border-l border-border" role="group" aria-label="Contact information">
-              <a 
-                href="mailto:info@asimov-ai.org" 
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
-                aria-label="Email us at info@asimov-ai.org"
+          <div className="hidden md:flex flex-col gap-3" role="menubar" aria-label="Primary navigation">
+            {/* Top Row - Main Navigation (Double Size) */}
+            <div className="flex items-center gap-8">
+              <Link 
+                to="/" 
+                className="text-2xl text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
+                role="menuitem"
               >
-                <Mail className="w-4 h-4" aria-hidden="true" />
-                <span className="hidden lg:inline">info@asimov-ai.org</span>
-              </a>
-              <a 
-                href="tel:+447733393956" 
-                className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
-                aria-label="Call or message us on WhatsApp or Telegram at +44 7733 393956"
+                Home
+              </Link>
+              <Link 
+                to="/assessment" 
+                className="text-2xl text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
+                role="menuitem"
               >
-                <Phone className="w-4 h-4" aria-hidden="true" />
-                <span className="hidden lg:inline">+44 7733 393956 (WhatsApp/Telegram)</span>
-              </a>
+                AI Assessment
+              </Link>
+              <Link 
+                to="/team" 
+                className="text-2xl text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
+                role="menuitem"
+              >
+                Practice Leads
+              </Link>
+              <Link 
+                to="/framework" 
+                className="text-2xl text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
+                role="menuitem"
+              >
+                Frameworks Covered
+              </Link>
+              <Link 
+                to="/sectors" 
+                className="text-2xl text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
+                role="menuitem"
+              >
+                Sectors
+              </Link>
+            </div>
+
+            {/* Second Row - Resources & Coming Soon */}
+            <div className="flex items-center gap-6">
+              <Link 
+                to="/resources" 
+                className="text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
+                role="menuitem"
+              >
+                Resources
+              </Link>
+              <span className="text-muted-foreground px-2 py-1">Coming Soon</span>
+              <span className="text-muted-foreground px-2 py-1">Coming Soon</span>
+              
+              <div className="flex items-center gap-4 ml-4 pl-4 border-l border-border" role="group" aria-label="Contact information">
+                <a 
+                  href="mailto:info@asimov-ai.org" 
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
+                  aria-label="Email us at info@asimov-ai.org"
+                >
+                  <Mail className="w-4 h-4" aria-hidden="true" />
+                  <span className="hidden lg:inline">info@asimov-ai.org</span>
+                </a>
+                <a 
+                  href="tel:+447733393956" 
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
+                  aria-label="Call or message us on WhatsApp or Telegram at +44 7733 393956"
+                >
+                  <Phone className="w-4 h-4" aria-hidden="true" />
+                  <span className="hidden lg:inline">+44 7733 393956 (WhatsApp/Telegram)</span>
+                </a>
+              </div>
             </div>
           </div>
 
