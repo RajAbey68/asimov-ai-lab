@@ -91,7 +91,7 @@ const Hero = () => {
                 <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
                   <CheckCircle2 className="w-5 h-5 text-primary" />
                 </div>
-                <span className="text-sm font-medium text-white">ISACA Certified</span>
+                <span className="text-sm font-medium text-white">ISACA Guided</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
@@ -104,6 +104,24 @@ const Hero = () => {
                   <CheckCircle2 className="w-5 h-5 text-primary" />
                 </div>
                 <span className="text-sm font-medium text-white">GDPR Compliant</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                </div>
+                <span className="text-sm font-medium text-white">ISO/IEC 42001</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                </div>
+                <span className="text-sm font-medium text-white">NIST AI RMF Aligned</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                </div>
+                <span className="text-sm font-medium text-white">COBIT 2019</span>
               </div>
             </div>
           </div>
