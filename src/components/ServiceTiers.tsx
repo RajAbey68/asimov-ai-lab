@@ -102,7 +102,7 @@ const ServiceTiers = () => {
             >
               {service.highlight && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground px-4 py-1 rounded-full text-sm font-semibold shadow-lg">
-                  Best for Measurable Outcomes
+                  Measurable Outcomes
                 </div>
               )}
               
