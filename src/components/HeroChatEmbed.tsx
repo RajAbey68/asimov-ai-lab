@@ -3,8 +3,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, Loader2, User, Bot, Sparkles } from "lucide-react";
+import { Send, Loader2, User, Bot, Sparkles, Calendar } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import ConsultationIntakeDialog from "@/components/ConsultationIntakeDialog";
 
 interface Message {
   role: "user" | "assistant";
@@ -20,6 +21,7 @@ const HeroChatEmbed = () => {
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
@@ -174,13 +176,14 @@ const HeroChatEmbed = () => {
   };
 
   return (
-    <Card className="w-full h-[500px] shadow-xl flex flex-col border-2 border-accent/30 bg-card/95 backdrop-blur-sm">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 border-b bg-gradient-accent">
-        <CardTitle className="text-lg font-bold text-accent-foreground flex items-center gap-2">
-          <Sparkles className="w-5 h-5" />
-          ASIMOV-AI Risk Assessment Guide
-        </CardTitle>
-      </CardHeader>
+    <>
+      <Card className="w-full h-[500px] shadow-xl flex flex-col border-2 border-accent/30 bg-card/95 backdrop-blur-sm">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 border-b bg-gradient-accent">
+          <CardTitle className="text-lg font-bold text-accent-foreground flex items-center gap-2">
+            <Sparkles className="w-5 h-5" />
+            ASIMOV-AI Risk Assessment Guide
+          </CardTitle>
+        </CardHeader>
 
       <CardContent className="flex-1 flex flex-col p-0 overflow-hidden">
         <ScrollArea className="flex-1 p-4" ref={scrollRef}>
@@ -231,7 +234,7 @@ const HeroChatEmbed = () => {
           </div>
         </ScrollArea>
 
-        <div className="p-4 border-t bg-background/95">
+        <div className="p-4 border-t bg-background/95 space-y-3">
           <div className="flex gap-2">
             <Input
               value={input}
@@ -251,12 +254,32 @@ const HeroChatEmbed = () => {
               <Send className="w-4 h-4" />
             </Button>
           </div>
-          <p className="text-xs text-muted-foreground mt-2 text-center">
+          <p className="text-xs text-muted-foreground text-center">
             Powered by ASIMOV-AI Expertise
           </p>
         </div>
       </CardContent>
     </Card>
+    
+    <div className="mt-4 text-center space-y-2">
+      <Button
+        onClick={() => setDialogOpen(true)}
+        size="lg"
+        className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg"
+      >
+        <Calendar className="w-5 h-5 mr-2" />
+        Request a Consultation
+      </Button>
+      <p className="text-sm text-muted-foreground">
+        If you don't need immediate contact, use <strong>Stay in Touch</strong> to receive updates on reports and news
+      </p>
+    </div>
+
+    <ConsultationIntakeDialog
+      open={dialogOpen}
+      onOpenChange={setDialogOpen}
+    />
+  </>
   );
 };
 
