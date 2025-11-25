@@ -16,7 +16,7 @@ const HeroChatEmbed = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Welcome! Ask me questions to guide you on your RISK assessment journey. I'll help you understand your AI governance needs and match you with the right services. What would you like to know?"
+      content: "Hello, I'm SIMO — Structured Insights for Meaningful Outcomes. I'm dedicated to providing you with clear, accurate, and reliable guidance on AI governance and compliance, always grounded in facts without any guesswork. How can I assist you today?"
     }
   ]);
   const [input, setInput] = useState("");
@@ -179,10 +179,13 @@ const HeroChatEmbed = () => {
     <>
       <Card className="w-full h-[500px] shadow-xl flex flex-col border-2 border-accent/30 bg-card/95 backdrop-blur-sm">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 border-b bg-gradient-accent">
-          <CardTitle className="text-lg font-bold text-accent-foreground flex items-center gap-2">
-            <Sparkles className="w-5 h-5" />
-            ASIMOV-AI Risk Assessment Guide
-          </CardTitle>
+          <div className="flex flex-col">
+            <CardTitle className="text-lg font-bold text-accent-foreground flex items-center gap-2">
+              <Sparkles className="w-5 h-5" />
+              SIMO
+            </CardTitle>
+            <p className="text-xs text-accent-foreground/80 mt-1">Structured Insights for Meaningful Outcomes</p>
+          </div>
         </CardHeader>
 
       <CardContent className="flex-1 flex flex-col p-0 overflow-hidden">
@@ -263,9 +266,9 @@ const HeroChatEmbed = () => {
             <MessageSquare className="w-4 h-4 mr-2" />
             Request Human Callback
           </Button>
-          <p className="text-xs text-muted-foreground text-center">
-            Powered by ASIMOV-AI Expertise
-          </p>
+        <p className="text-xs text-muted-foreground text-center">
+          SIMO — Powered by ASIMOV-AI Expertise
+        </p>
         </div>
       </CardContent>
     </Card>

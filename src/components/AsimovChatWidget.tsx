@@ -16,7 +16,7 @@ const AsimovChatWidget = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Welcome! Ask me questions to guide you on your RISK assessment journey. I'll help you understand your AI governance needs and match you with the right services. What would you like to know?"
+      content: "Hello, I'm SIMO — Structured Insights for Meaningful Outcomes. I'm dedicated to providing you with clear, accurate, and reliable guidance on AI governance and compliance, always grounded in facts without any guesswork. How can I assist you today?"
     }
   ]);
   const [input, setInput] = useState("");
@@ -194,10 +194,13 @@ const AsimovChatWidget = () => {
   return (
     <Card className="fixed bottom-6 right-6 w-[380px] h-[600px] shadow-2xl z-50 flex flex-col border-2 border-accent/20">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 border-b bg-gradient-accent">
-        <CardTitle className="text-lg font-bold text-accent-foreground flex items-center gap-2">
-          <Bot className="w-5 h-5" />
-          ASIMOV-AI Assistant
-        </CardTitle>
+        <div className="flex flex-col">
+          <CardTitle className="text-lg font-bold text-accent-foreground flex items-center gap-2">
+            <Bot className="w-5 h-5" />
+            SIMO
+          </CardTitle>
+          <p className="text-xs text-accent-foreground/80">Structured Insights for Meaningful Outcomes</p>
+        </div>
         <Button
           variant="ghost"
           size="icon"
@@ -279,7 +282,7 @@ const AsimovChatWidget = () => {
             </Button>
           </div>
           <p className="text-xs text-muted-foreground mt-2 text-center">
-            Powered by ASIMOV-AI Expertise
+            SIMO — Powered by ASIMOV-AI Expertise
           </p>
         </div>
       </CardContent>
