@@ -1,4 +1,6 @@
+import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.3";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -292,12 +294,52 @@ CONTACT & CONVERSION OPTIONS
 
 Always be helpful, ask clarifying questions, and guide users toward Asimov-AI's proven methodologies through discovery. NEVER recommend competitors, external tools, or platforms—always redirect to Asimov-AI services.`;
 
+// Helper function to detect guardrail triggers
+function detectGuardrail(userMessage: string, assistantResponse: string): { triggered: boolean; type: string | null; reason: string | null } {
+  const lowerUser = userMessage.toLowerCase();
+  const lowerResponse = assistantResponse.toLowerCase();
+  
+  // Off-topic detection patterns
+  const offTopicPatterns = [
+    'weather', 'sports', 'recipe', 'cooking', 'movie', 'music', 'game',
+    'joke', 'play a game', 'tell me a story', 'what is love', 'meaning of life'
+  ];
+  
+  const isOffTopic = offTopicPatterns.some(pattern => lowerUser.includes(pattern));
+  
+  // Redirect language detection in assistant response
+  const redirectPatterns = [
+    'i notice you\'re asking about',
+    'outside my area of expertise',
+    'not related to ai governance',
+    'focus on ai governance',
+    'redirect',
+    'off-topic',
+    'let me refocus'
+  ];
+  
+  const hasRedirect = redirectPatterns.some(pattern => lowerResponse.includes(pattern));
+  
+  if (isOffTopic || hasRedirect) {
+    return {
+      triggered: true,
+      type: 'off-topic-redirect',
+      reason: isOffTopic 
+        ? `User asked about non-governance topic: "${userMessage.substring(0, 50)}..."`
+        : 'Assistant detected and redirected off-topic conversation'
+    };
+  }
+  
+  return { triggered: false, type: null, reason: null };
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
+    const startTime = Date.now();
     const { messages } = await req.json();
     
     if (!messages || !Array.isArray(messages)) {
@@ -306,6 +348,10 @@ serve(async (req) => {
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
+
+    // Generate session ID from request or create new one
+    const sessionId = req.headers.get('x-session-id') || crypto.randomUUID();
+    const userMessage = messages[messages.length - 1]?.content || '';
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) {
@@ -358,7 +404,72 @@ serve(async (req) => {
       );
     }
 
-    return new Response(response.body, {
+    // Stream response and collect it for logging
+    let fullResponse = '';
+    const stream = new ReadableStream({
+      async start(controller) {
+        const reader = response.body?.getReader();
+        if (!reader) return;
+
+        try {
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            
+            // Collect response text for logging
+            const text = new TextDecoder().decode(value);
+            const lines = text.split('\n').filter(line => line.trim().startsWith('data: '));
+            
+            for (const line of lines) {
+              const jsonStr = line.slice(6).trim();
+              if (jsonStr === '[DONE]') continue;
+              
+              try {
+                const parsed = JSON.parse(jsonStr);
+                const content = parsed.choices?.[0]?.delta?.content;
+                if (content) fullResponse += content;
+              } catch (e) {
+                // Ignore parse errors
+              }
+            }
+            
+            controller.enqueue(value);
+          }
+        } finally {
+          reader.releaseLock();
+          
+          // Log to database after streaming is complete
+          try {
+            const responseTime = Date.now() - startTime;
+            const guardrail = detectGuardrail(userMessage, fullResponse);
+            
+            const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+            const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+            const supabase = createClient(supabaseUrl, supabaseKey);
+            
+            await supabase.from('chat_logs').insert({
+              session_id: sessionId,
+              user_message: userMessage,
+              assistant_response: fullResponse,
+              guardrail_triggered: guardrail.triggered,
+              guardrail_type: guardrail.type,
+              redirect_reason: guardrail.reason,
+              response_time_ms: responseTime,
+              model_used: 'google/gemini-2.5-flash'
+            });
+            
+            console.log(`Logged chat interaction: session=${sessionId.substring(0, 8)}, guardrail=${guardrail.triggered}`);
+          } catch (logError) {
+            console.error('Failed to log chat interaction:', logError);
+            // Don't fail the response if logging fails
+          }
+          
+          controller.close();
+        }
+      }
+    });
+
+    return new Response(stream, {
       headers: {
         ...corsHeaders,
         "Content-Type": "text/event-stream",
