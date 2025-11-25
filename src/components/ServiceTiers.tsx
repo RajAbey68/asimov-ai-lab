@@ -54,7 +54,7 @@ const ServiceTiers = () => {
       icon: LifeBuoy,
       name: "AI Agents & Voice Assistants",
       tagline: "The new human-AI interface.",
-      description: "Specialized design and deployment of conversational AI, voice interfaces, and multi-agent systems with enterprise-grade security.",
+      description: "Specialised design and deployment of conversational AI, voice interfaces, and multi-agent systems with enterprise-grade security.",
       capabilities: [
         "AI voice assistants (Bland AI, VAPI, SynthFlow)",
         "Branded AI personalities & copilots",

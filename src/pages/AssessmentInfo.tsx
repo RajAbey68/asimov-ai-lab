@@ -83,9 +83,9 @@ const Assessment = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent flex items-end">
                     <div className="p-8 w-full">
                       <h2 className="text-2xl md:text-3xl font-bold mb-2">Comprehensive Risk Assessment</h2>
-                      <p className="text-muted-foreground max-w-3xl">
-                        Our methodology provides systematic evaluation across legal, ethical, and technical dimensions to ensure AI systems meet regulatory requirements and organizational standards.
-                      </p>
+                <p className="text-muted-foreground max-w-3xl">
+                  Our methodology provides systematic evaluation across legal, ethical, and technical dimensions to ensure AI systems meet regulatory requirements and organisational standards.
+                </p>
                     </div>
                   </div>
                 </div>

@@ -16,7 +16,7 @@ const ServicePillars = () => {
       iconImg: complianceIcon,
       title: "Regulatory Compliance Pillars",
       tagline: "Achieving EU AI Act Readiness and GDPR Compliant systems",
-      description: "Comprehensive risk mapping across legal, ethical, and operational domains. We evaluate your organization's AI maturity and exposure under EU AI Act, ISO/IEC 42001, NIST AI RMF, COBIT 2019, and GDPR—delivering board-ready compliance roadmaps.",
+      description: "Comprehensive risk mapping across legal, ethical, and operational domains. We evaluate your organisation's AI maturity and exposure under EU AI Act, ISO/IEC 42001, NIST AI RMF, COBIT 2019, and GDPR—delivering board-ready compliance roadmaps.",
       deliverables: [
         "AI System Inventory & Risk Classification",
         "EU AI Act Conformity Assessment Preparation",
@@ -60,7 +60,7 @@ const ServicePillars = () => {
       icon: Mic,
       title: "Voice, Vision & Multi-Agent Systems",
       tagline: "The new human interface.",
-      description: "Specializing in cutting-edge AI interfaces that enable organizations to launch branded AI personalities and automated advisory tools without compromising governance.",
+      description: "Specialising in cutting-edge AI interfaces that enable organisations to launch branded AI personalities and automated advisory tools without compromising governance.",
       deliverables: [
         "AI voice interfaces (Bland AI, SynthFlow, VAPI)",
         "AI video and avatar automation (HeyGen, Runway)",

@@ -30,7 +30,7 @@ ASIMOV-AI: The Governance Foundation
 
 ASIMOV-AI serves as a foundational governance and risk management framework specifically designed for AI systems. Named after the science fiction author Isaac Asimov, this methodology emphasizes ethical AI development through structured governance processes. It focuses on establishing robust policies, procedures, and controls that ensure AI systems are developed and deployed responsibly. The framework addresses critical concerns around AI safety, transparency, accountability, and compliance with emerging regulations such as the EU AI Act.
 
-The strength of ASIMOV-AI lies in its comprehensive approach to AI governance, providing organizations with clear pathways to assess and mitigate risks throughout the AI lifecycle. It emphasizes continuous monitoring, stakeholder engagement, and iterative improvement, making it particularly valuable for organizations operating in regulated industries or those handling sensitive data. The methodology's focus on compliance and risk management makes it an essential baseline for any serious AI development effort.
+The strength of ASIMOV-AI lies in its comprehensive approach to AI governance, providing organisations with clear pathways to assess and mitigate risks throughout the AI lifecycle. It emphasises continuous monitoring, stakeholder engagement, and iterative improvement, making it particularly valuable for organisations operating in regulated industries or those handling sensitive data. The methodology's focus on compliance and risk management makes it an essential baseline for any serious AI development effort.
 
 BMAD: Agile Agent-Driven Development
 
@@ -46,23 +46,23 @@ This methodology bridges the gap between technical capability and business value
 
 MAD: Industry Intelligence and Benchmarking
 
-The MAD (Machine Learning, AI & Data) landscape serves a different but complementary purpose. Rather than prescribing development methodologies, MAD provides comprehensive mapping and benchmarking of the AI tool ecosystem. This framework helps organizations understand the competitive landscape, evaluate tools and platforms, and make informed technology selection decisions. The MAD landscape blends market research with engineering considerations, offering insights into emerging trends, mature solutions, and gaps in the current ecosystem.
+The MAD (Machine Learning, AI & Data) landscape serves a different but complementary purpose. Rather than prescribing development methodologies, MAD provides comprehensive mapping and benchmarking of the AI tool ecosystem. This framework helps organisations understand the competitive landscape, evaluate tools and platforms, and make informed technology selection decisions. The MAD landscape blends market research with engineering considerations, offering insights into emerging trends, mature solutions, and gaps in the current ecosystem.
 
 Integration and Synergy
 
 The true power of these methodologies emerges when they are integrated strategically. ASIMOV-AI provides the governance foundation and risk management framework that ensures responsible AI development. BMAD offers the tactical development methodology for rapid, structured implementation. Morningside AI contributes the business context and delivery framework that ensures commercial viability. The MAD landscape provides the market intelligence needed to make informed technology choices.
 
-Organizations can adopt ASIMOV-AI as their baseline governance framework, implementing BMAD's agent-driven approach for technical development while following Morningside AI's business roadmap for go-to-market strategy. Throughout this process, the MAD landscape serves as a reference for tool selection and competitive positioning.
+Organisations can adopt ASIMOV-AI as their baseline governance framework, implementing BMAD's agent-driven approach for technical development while following Morningside AI's business roadmap for go-to-market strategy. Throughout this process, the MAD landscape serves as a reference for tool selection and competitive positioning.
 
 Practical Application
 
 In practice, a comprehensive AI development strategy might begin with ASIMOV-AI governance assessment to understand regulatory requirements and risk tolerance. BMAD's planning agents would then create detailed technical specifications aligned with these governance requirements. Development would proceed using BMAD's modular approach, while business development follows Morningside AI's agency roadmap. Tool selection throughout would reference the MAD landscape for best-in-class solutions.
 
-This integrated approach addresses the full spectrum of AI development challenges: governance and compliance through ASIMOV-AI, technical excellence through BMAD, business viability through Morningside AI, and informed technology choices through MAD. Organizations need not choose one methodology over another; rather, they can leverage each framework's strengths to build a comprehensive AI development capability.
+This integrated approach addresses the full spectrum of AI development challenges: governance and compliance through ASIMOV-AI, technical excellence through BMAD, business viability through Morningside AI, and informed technology choices through MAD. Organisations need not choose one methodology over another; rather, they can leverage each framework's strengths to build a comprehensive AI development capability.
 
 Conclusion
 
-The evolution of AI development methodologies reflects the maturing of the AI industry itself. As AI systems become more complex and consequential, organizations need frameworks that address technical, governance, and business dimensions simultaneously. ASIMOV-AI, BMAD, Morningside AI, and MAD each contribute unique value, and their integration represents the state of the art in comprehensive AI development practice. Organizations that successfully combine these approaches position themselves to build AI systems that are technically sophisticated, ethically sound, and commercially successful.`;
+The evolution of AI development methodologies reflects the maturing of the AI industry itself. As AI systems become more complex and consequential, organisations need frameworks that address technical, governance, and business dimensions simultaneously. ASIMOV-AI, BMAD, Morningside AI, and MAD each contribute unique value, and their integration represents the state of the art in comprehensive AI development practice. Organisations that successfully combine these approaches position themselves to build AI systems that are technically sophisticated, ethically sound, and commercially successful.`;
 
     const lines = doc.splitTextToSize(essay, maxWidth);
     

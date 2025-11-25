@@ -117,7 +117,7 @@ export const ConsultationLeadForm = () => {
               <SelectItem value="governance">
                 <div className="space-y-1">
                   <div className="font-medium">Governance Framework</div>
-                  <div className="text-xs text-muted-foreground">Establish policies, controls, and oversight structures for responsible AI deployment across your organization.</div>
+                  <div className="text-xs text-muted-foreground">Establish policies, controls, and oversight structures for responsible AI deployment across your organisation.</div>
                 </div>
               </SelectItem>
               <SelectItem value="compliance">
@@ -159,7 +159,7 @@ export const ConsultationLeadForm = () => {
               <SelectItem value="implementation-risk">
                 <div className="space-y-1">
                   <div className="font-medium">Implementation Risk Management</div>
-                  <div className="text-xs text-muted-foreground">Identify and mitigate risks during AI system deployment, rollout, and organizational change.</div>
+                  <div className="text-xs text-muted-foreground">Identify and mitigate risks during AI system deployment, rollout, and organisational change.</div>
                 </div>
               </SelectItem>
             </SelectContent>

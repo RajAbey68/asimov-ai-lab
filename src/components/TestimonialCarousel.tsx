@@ -7,7 +7,7 @@ interface Testimonial {
   quote: string;
   author: string;
   role: string;
-  organization: string;
+  organisation: string;
   outcome: string;
 }
 
@@ -16,28 +16,28 @@ const testimonials: Testimonial[] = [
     quote: "The structured ASIMOV methodology transformed our AI governance from reactive compliance to proactive risk management. We now have full traceability and audit-ready documentation.",
     author: "Dr. Sarah Mitchell",
     role: "Chief Data Officer",
-    organization: "Global Financial Services",
+    organisation: "Global Financial Services",
     outcome: "Achieved ISO 42001 certification in 6 months"
   },
   {
     quote: "Working with ASIMOV-AI Lab gave us confidence to deploy AI in production knowing we met regulatory requirements. Their discovery process identified risks we hadn't considered.",
     author: "Marcus Chen",
     role: "VP of Engineering",
-    organization: "Healthcare Technology",
+    organisation: "Healthcare Technology",
     outcome: "Reduced compliance review time by 60%"
   },
   {
     quote: "The collaborative approach meant our internal teams learned the governance framework while building it. We now have sustainable AI governance capabilities in-house.",
     author: "Emma Thompson",
     role: "Head of Legal & Compliance",
-    organization: "Manufacturing Enterprise",
+    organisation: "Manufacturing Enterprise",
     outcome: "Built internal AI governance capability"
   },
   {
     quote: "Their expertise in EU AI Act requirements was invaluable. They translated complex regulations into practical controls we could implement without slowing down innovation.",
     author: "James Rodriguez",
     role: "Chief Innovation Officer",
-    organization: "Legal Services Firm",
+    organisation: "Legal Services Firm",
     outcome: "EU AI Act conformity assessment prepared"
   }
 ];
@@ -89,7 +89,7 @@ const TestimonialCarousel = () => {
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Organizations that have transformed their AI governance with ASIMOV-AI
+            Organisations that have transformed their AI governance with ASIMOV-AI
           </p>
         </div>
 
@@ -109,7 +109,7 @@ const TestimonialCarousel = () => {
                       <div>
                         <div className="font-bold text-lg">{currentTestimonial.author}</div>
                         <div className="text-sm text-muted-foreground">{currentTestimonial.role}</div>
-                        <div className="text-sm font-semibold text-accent">{currentTestimonial.organization}</div>
+                        <div className="text-sm font-semibold text-accent">{currentTestimonial.organisation}</div>
                       </div>
 
                       <div className="inline-block px-4 py-2 rounded-lg bg-accent/10 border border-accent/20">
