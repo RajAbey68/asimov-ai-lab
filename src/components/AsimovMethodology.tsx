@@ -139,7 +139,7 @@ const AsimovMethodology = () => {
                     Professional but Creative. Enterprise Trust with Experimentation.
                   </h3>
                   <p className="text-muted-foreground">
-                    Our methodology mirrors Morningside AI's clarity and credibility — showing the future, not the fear. 
+                    Our methodology mirrors best practice to achieve AI&apos;s clarity and credibility — showing the future, not the fear. 
                     We balance compliance-grade governance with real-world innovation velocity through continuous iteration.
                   </p>
                 </div>
