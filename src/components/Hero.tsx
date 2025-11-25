@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Zap, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Shield, Zap, CheckCircle2, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import heroBg from "@/assets/hero-governance-network.jpg";
 import { ConsultationLeadForm } from "./ConsultationLeadForm";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 interface HeroMedia {
   id: number;
@@ -15,6 +20,7 @@ interface HeroMedia {
 const Hero = () => {
   const [heroMedia, setHeroMedia] = useState<HeroMedia | null>(null);
   const [mediaUrl, setMediaUrl] = useState<string>("");
+  const [isFrameworksOpen, setIsFrameworksOpen] = useState(false);
 
   useEffect(() => {
     fetchHeroMedia();
@@ -124,6 +130,60 @@ const Hero = () => {
                 <span className="text-sm font-medium text-white">Continuous Monitoring (Governance-Integrated)</span>
               </div>
             </div>
+
+            {/* Framework Mapping Expandable Section */}
+            <Collapsible 
+              open={isFrameworksOpen} 
+              onOpenChange={setIsFrameworksOpen}
+              className="pt-4"
+            >
+              <CollapsibleTrigger asChild>
+                <Button 
+                  variant="ghost" 
+                  className="flex items-center gap-2 text-white hover:text-accent hover:bg-white/10 p-3 w-full justify-center"
+                >
+                  <span className="text-sm font-medium">View Framework Alignment</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isFrameworksOpen ? 'rotate-180' : ''}`} />
+                </Button>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="pt-4">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 space-y-4">
+                  <h4 className="text-lg font-semibold text-white mb-4">Standards-Aligned Delivery Activities</h4>
+                  
+                  <div className="space-y-3 text-sm">
+                    <div className="bg-white/5 rounded p-3">
+                      <p className="font-semibold text-accent mb-1">Risk Mapping (Standards-Aligned)</p>
+                      <p className="text-white/80">Guided by: EU AI Act (Articles 9-13), NIST AI RMF (Govern, Map), ISO/IEC 42001</p>
+                    </div>
+                    
+                    <div className="bg-white/5 rounded p-3">
+                      <p className="font-semibold text-accent mb-1">Control Implementation (Framework-Based)</p>
+                      <p className="text-white/80">Guided by: COBIT 2019, ISO/IEC 27001, NIST AI RMF (Measure, Manage)</p>
+                    </div>
+                    
+                    <div className="bg-white/5 rounded p-3">
+                      <p className="font-semibold text-accent mb-1">Audit Preparation (Compliance-Ready)</p>
+                      <p className="text-white/80">Guided by: ISACA Audit Framework, GDPR (Articles 35, 58), EU AI Act (Annex IV)</p>
+                    </div>
+                    
+                    <div className="bg-white/5 rounded p-3">
+                      <p className="font-semibold text-accent mb-1">Documentation (Traceable)</p>
+                      <p className="text-white/80">Guided by: EU AI Act (Article 11), ISO/IEC 42001 (Documentation Controls), NIST AI RMF</p>
+                    </div>
+                    
+                    <div className="bg-white/5 rounded p-3">
+                      <p className="font-semibold text-accent mb-1">Test-Driven Validation</p>
+                      <p className="text-white/80">Guided by: OWASP AI Security, MITRE ATLAS, ISO/IEC 27001 (Testing Controls)</p>
+                    </div>
+                    
+                    <div className="bg-white/5 rounded p-3">
+                      <p className="font-semibold text-accent mb-1">Continuous Monitoring (Governance-Integrated)</p>
+                      <p className="text-white/80">Guided by: COBIT 2019 (MEA domain), NIST AI RMF, EU AI Act (Article 61)</p>
+                    </div>
+                  </div>
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
 
             {/* Core Offerings */}
             <div className="space-y-4 pt-8">
