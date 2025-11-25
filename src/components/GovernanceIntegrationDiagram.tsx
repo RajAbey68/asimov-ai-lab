@@ -426,7 +426,7 @@ const GovernanceIntegrationDiagram = () => {
                         <ul className="space-y-1">
                           <li>• Black box models</li>
                           <li>• Unexplainable decisions</li>
-                          <li>• Hidden model behavior</li>
+                          <li>• Hidden model behaviour</li>
                         </ul>
                       </td>
                       <td className="p-3">
