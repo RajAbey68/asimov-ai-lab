@@ -22,7 +22,6 @@ const Index = () => {
       <StructuredData />
       <Navigation />
       <FloatingCTA />
-      <AsimovChatWidget />
       <Hero />
       <Services />
       <ProvenResults />

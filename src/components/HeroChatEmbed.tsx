@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { MessageCircle, X, Send, Loader2, User, Bot } from "lucide-react";
+import { Send, Loader2, User, Bot, Sparkles } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface Message {
@@ -11,8 +11,7 @@ interface Message {
   content: string;
 }
 
-const AsimovChatWidget = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const HeroChatEmbed = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
@@ -75,7 +74,6 @@ const AsimovChatWidget = () => {
       let assistantContent = "";
       let streamDone = false;
 
-      // Add empty assistant message that we'll update
       setMessages(prev => [...prev, { role: "assistant", content: "" }]);
 
       while (!streamDone) {
@@ -115,14 +113,12 @@ const AsimovChatWidget = () => {
               });
             }
           } catch (e) {
-            // Incomplete JSON, put it back
             textBuffer = line + "\n" + textBuffer;
             break;
           }
         }
       }
 
-      // Final flush
       if (textBuffer.trim()) {
         for (let raw of textBuffer.split("\n")) {
           if (!raw || !raw.startsWith("data: ")) continue;
@@ -154,7 +150,6 @@ const AsimovChatWidget = () => {
         description: "Failed to send message. Please try again.",
         variant: "destructive",
       });
-      // Remove the empty assistant message on error
       setMessages(prev => prev.slice(0, -1));
     }
   };
@@ -178,35 +173,13 @@ const AsimovChatWidget = () => {
     }
   };
 
-  if (!isOpen) {
-    return (
-      <Button
-        onClick={() => setIsOpen(true)}
-        size="lg"
-        className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-all z-50"
-        aria-label="Open chat assistant"
-      >
-        <MessageCircle className="w-6 h-6" />
-      </Button>
-    );
-  }
-
   return (
-    <Card className="fixed bottom-6 right-6 w-[380px] h-[600px] shadow-2xl z-50 flex flex-col border-2 border-accent/20">
+    <Card className="w-full h-[500px] shadow-xl flex flex-col border-2 border-accent/30 bg-card/95 backdrop-blur-sm">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 border-b bg-gradient-accent">
         <CardTitle className="text-lg font-bold text-accent-foreground flex items-center gap-2">
-          <Bot className="w-5 h-5" />
-          ASIMOV-AI Assistant
+          <Sparkles className="w-5 h-5" />
+          ASIMOV-AI Risk Assessment Guide
         </CardTitle>
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setIsOpen(false)}
-          className="hover:bg-accent-foreground/10"
-          aria-label="Close chat"
-        >
-          <X className="w-5 h-5 text-accent-foreground" />
-        </Button>
       </CardHeader>
 
       <CardContent className="flex-1 flex flex-col p-0 overflow-hidden">
@@ -233,7 +206,7 @@ const AsimovChatWidget = () => {
                   )}
                 </div>
                 <div
-                  className={`rounded-2xl px-4 py-3 max-w-[80%] ${
+                  className={`rounded-2xl px-4 py-3 max-w-[85%] ${
                     message.role === "user"
                       ? "bg-primary text-primary-foreground"
                       : "bg-muted text-foreground"
@@ -258,13 +231,13 @@ const AsimovChatWidget = () => {
           </div>
         </ScrollArea>
 
-        <div className="p-4 border-t bg-background">
+        <div className="p-4 border-t bg-background/95">
           <div className="flex gap-2">
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyPress}
-              placeholder="Ask about AI governance..."
+              placeholder="Ask about your AI governance needs..."
               disabled={isLoading}
               className="flex-1"
             />
@@ -287,4 +260,4 @@ const AsimovChatWidget = () => {
   );
 };
 
-export default AsimovChatWidget;
+export default HeroChatEmbed;

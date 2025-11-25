@@ -4,7 +4,7 @@ import { ArrowRight, Shield, Zap, CheckCircle2, ChevronDown } from "lucide-react
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import heroBg from "@/assets/hero-governance-network.jpg";
-import { ConsultationLeadForm } from "./ConsultationLeadForm";
+import HeroChatEmbed from "./HeroChatEmbed";
 import {
   Collapsible,
   CollapsibleContent,
@@ -75,7 +75,7 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto px-4 py-24 lg:py-32 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto" role="main">
+        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto" role="main">
           <div className="space-y-8">
             {/* Main Headline */}
             <div className="space-y-4">
@@ -214,8 +214,8 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Lead Form */}
-          <ConsultationLeadForm />
+          {/* AI Risk Assessment Chat */}
+          <HeroChatEmbed />
         </div>
       </div>
     </section>
