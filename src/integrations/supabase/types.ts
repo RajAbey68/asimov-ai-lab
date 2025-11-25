@@ -408,6 +408,45 @@ export type Database = {
           },
         ]
       }
+      chat_logs: {
+        Row: {
+          assistant_response: string
+          created_at: string | null
+          guardrail_triggered: boolean | null
+          guardrail_type: string | null
+          id: string
+          model_used: string | null
+          redirect_reason: string | null
+          response_time_ms: number | null
+          session_id: string
+          user_message: string
+        }
+        Insert: {
+          assistant_response: string
+          created_at?: string | null
+          guardrail_triggered?: boolean | null
+          guardrail_type?: string | null
+          id?: string
+          model_used?: string | null
+          redirect_reason?: string | null
+          response_time_ms?: number | null
+          session_id: string
+          user_message: string
+        }
+        Update: {
+          assistant_response?: string
+          created_at?: string | null
+          guardrail_triggered?: boolean | null
+          guardrail_type?: string | null
+          id?: string
+          model_used?: string | null
+          redirect_reason?: string | null
+          response_time_ms?: number | null
+          session_id?: string
+          user_message?: string
+        }
+        Relationships: []
+      }
       consultation_documents: {
         Row: {
           consultation_id: string | null
