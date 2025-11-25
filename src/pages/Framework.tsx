@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CICDRiskFramework from "@/components/CICDRiskFramework";
 import MethodologyComparisonDiagram from "@/components/MethodologyComparisonDiagram";
 import MethodologySelector from "@/components/MethodologySelector";
+import IntegratedDeliveryCycleDiagram from "@/components/IntegratedDeliveryCycleDiagram";
 import aiRiskIllustration from "@/assets/ai-risk-illustration.jpg";
 import aiGovernance from "@/assets/ai-governance.jpg";
 import aiLifecycle from "@/assets/ai-lifecycle.jpg";
@@ -900,13 +901,18 @@ const Framework = () => {
                       <span className="text-sm text-primary font-medium">Tactical Development Excellence</span>
                     </div>
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">BMAD Method Integration</h2>
-                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                      BMAD Method provides the tactical development framework that complements Asimov-AI's governance foundation, ensuring both technical excellence and regulatory compliance
-                    </p>
-                  </div>
+                  <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    BMAD Method provides the tactical development framework that complements Asimov-AI's governance foundation, ensuring both technical excellence and regulatory compliance
+                  </p>
+                </div>
 
-                  {/* Integration Philosophy */}
-                  <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10">
+                {/* Visual Workflow Diagram */}
+                <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-lg p-8 border-2 border-primary/20 mb-12">
+                  <IntegratedDeliveryCycleDiagram />
+                </div>
+
+                {/* Integration Philosophy */}
+                <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10">
                     <CardHeader>
                       <CardTitle className="text-2xl flex items-center gap-3">
                         <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
