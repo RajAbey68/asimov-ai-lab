@@ -1190,6 +1190,145 @@ const Framework = () => {
                     </CardContent>
                   </Card>
 
+                  {/* TDD Benefits Section */}
+                  <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10">
+                    <CardHeader>
+                      <CardTitle className="text-2xl text-center flex items-center justify-center gap-3">
+                        <CheckCircle className="w-7 h-7 text-primary" />
+                        Test-Driven Development: Governance Validation at Speed
+                      </CardTitle>
+                      <CardDescription className="text-center max-w-3xl mx-auto text-base">
+                        TDD provides executable verification that governance controls work as intended—turning compliance requirements into automated, regression-proof validation
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-4">
+                          <h4 className="font-semibold text-lg flex items-center gap-2">
+                            <Shield className="w-5 h-5 text-accent" />
+                            Governance Benefits
+                          </h4>
+                          <ul className="space-y-3">
+                            <li className="flex gap-3">
+                              <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                              <div>
+                                <p className="font-medium">Testable Controls</p>
+                                <p className="text-sm text-muted-foreground">Every governance requirement becomes a verifiable test—bias detection, data privacy, explainability thresholds</p>
+                              </div>
+                            </li>
+                            <li className="flex gap-3">
+                              <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                              <div>
+                                <p className="font-medium">Regression Prevention</p>
+                                <p className="text-sm text-muted-foreground">Changes can't break compliance—tests fail before unsafe code reaches production</p>
+                              </div>
+                            </li>
+                            <li className="flex gap-3">
+                              <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                              <div>
+                                <p className="font-medium">Living Documentation</p>
+                                <p className="text-sm text-muted-foreground">Test suites serve as executable audit evidence showing controls work across versions</p>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="space-y-4">
+                          <h4 className="font-semibold text-lg flex items-center gap-2">
+                            <Zap className="w-5 h-5 text-accent" />
+                            Development Benefits
+                          </h4>
+                          <ul className="space-y-3">
+                            <li className="flex gap-3">
+                              <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                              <div>
+                                <p className="font-medium">Faster Debugging</p>
+                                <p className="text-sm text-muted-foreground">Tests pinpoint exactly where governance failures occur—no manual auditing required</p>
+                              </div>
+                            </li>
+                            <li className="flex gap-3">
+                              <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                              <div>
+                                <p className="font-medium">Confident Refactoring</p>
+                                <p className="text-sm text-muted-foreground">Improve architecture without breaking compliance—test suite validates every change</p>
+                              </div>
+                            </li>
+                            <li className="flex gap-3">
+                              <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                              <div>
+                                <p className="font-medium">Continuous Validation</p>
+                                <p className="text-sm text-muted-foreground">CI/CD pipelines automatically verify controls on every commit—governance at DevOps speed</p>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+
+                      {/* TDD Workflow Integration */}
+                      <div className="mt-8 p-6 rounded-lg bg-background border-2 border-accent/30">
+                        <h4 className="font-semibold text-lg mb-4 flex items-center gap-2">
+                          <GitBranch className="w-5 h-5 text-accent" />
+                          TDD in the BMAD + Asimov-AI Workflow
+                        </h4>
+                        <div className="space-y-4">
+                          <div className="flex items-start gap-4">
+                            <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold flex-shrink-0">1</div>
+                            <div>
+                              <p className="font-medium">Governance Requirement Identified (Observe/Orient)</p>
+                              <p className="text-sm text-muted-foreground">Example: "AI system must not exhibit &gt;5% demographic parity difference in loan approvals"</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start gap-4">
+                            <div className="w-8 h-8 rounded-lg bg-purple-600 text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
+                            <div>
+                              <p className="font-medium">Test Written First (Decide)</p>
+                              <p className="text-sm text-muted-foreground">Architect agent defines test: <code className="text-xs bg-muted px-1 rounded">test_demographic_parity_threshold()</code> expecting pass at &le;5% difference</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start gap-4">
+                            <div className="w-8 h-8 rounded-lg bg-green-600 text-white flex items-center justify-center font-bold flex-shrink-0">3</div>
+                            <div>
+                              <p className="font-medium">Control Implemented (Sprint)</p>
+                              <p className="text-sm text-muted-foreground">Developer agent implements bias mitigation code until test passes—compliance verified automatically</p>
+                            </div>
+                          </div>
+                          <div className="flex items-start gap-4">
+                            <div className="w-8 h-8 rounded-lg bg-accent text-accent-foreground flex items-center justify-center font-bold flex-shrink-0">4</div>
+                            <div>
+                              <p className="font-medium">Continuous Monitoring (Iterate)</p>
+                              <p className="text-sm text-muted-foreground">Test runs on every commit and in production monitoring—instant alert if fairness threshold breached</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Example Tests */}
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="p-4 rounded-lg bg-background border border-border">
+                          <h5 className="font-semibold mb-2 text-sm">Example: EU AI Act Transparency</h5>
+                          <code className="text-xs text-muted-foreground">
+                            test_model_card_completeness()<br/>
+                            test_decision_explanation_available()<br/>
+                            test_human_oversight_workflow()
+                          </code>
+                        </div>
+                        <div className="p-4 rounded-lg bg-background border border-border">
+                          <h5 className="font-semibold mb-2 text-sm">Example: GDPR Data Protection</h5>
+                          <code className="text-xs text-muted-foreground">
+                            test_data_minimization_enforced()<br/>
+                            test_right_to_erasure_functional()<br/>
+                            test_consent_audit_trail_complete()
+                          </code>
+                        </div>
+                      </div>
+
+                      <div className="mt-6 p-4 rounded-lg bg-accent/10 border border-accent/30">
+                        <p className="text-sm text-center">
+                          <strong>Key Insight:</strong> TDD transforms governance from documentation exercise into executable, version-controlled validation—making compliance as verifiable as feature functionality
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
                   {/* Resources */}
                   <Card className="border-border">
                     <CardHeader>
