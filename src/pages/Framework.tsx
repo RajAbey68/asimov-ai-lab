@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Lightbulb, Hammer, Settings, Users, AlertTriangle, Shield, Scale, Lock, Eye, CheckCircle, RefreshCw } from "lucide-react";
+import { Lightbulb, Hammer, Settings, Users, AlertTriangle, Shield, Scale, Lock, Eye, CheckCircle, RefreshCw, Layers, Zap, GitBranch } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CICDRiskFramework from "@/components/CICDRiskFramework";
@@ -167,10 +167,11 @@ const Framework = () => {
 
             {/* Tabs for Framework Sections */}
             <Tabs defaultValue="lifecycle" className="w-full">
-              <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-4 mb-12">
+              <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-5 mb-12">
                 <TabsTrigger value="lifecycle">Lifecycle Framework</TabsTrigger>
                 <TabsTrigger value="cicd">CI/CD Risk</TabsTrigger>
                 <TabsTrigger value="methodologies">Methodology Map</TabsTrigger>
+                <TabsTrigger value="bmad">BMAD Integration</TabsTrigger>
                 <TabsTrigger value="selector">Selector</TabsTrigger>
               </TabsList>
 
@@ -889,6 +890,328 @@ const Framework = () => {
 
                 <TabsContent value="methodologies">
                   <MethodologyComparisonDiagram />
+                </TabsContent>
+
+                <TabsContent value="bmad" className="space-y-12">
+                  {/* BMAD Integration Hero */}
+                  <div className="text-center mb-12">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
+                      <Layers className="w-4 h-4 text-primary" />
+                      <span className="text-sm text-primary font-medium">Tactical Development Excellence</span>
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">BMAD Method Integration</h2>
+                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                      BMAD Method provides the tactical development framework that complements Asimov-AI's governance foundation, ensuring both technical excellence and regulatory compliance
+                    </p>
+                  </div>
+
+                  {/* Integration Philosophy */}
+                  <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10">
+                    <CardHeader>
+                      <CardTitle className="text-2xl flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                          <GitBranch className="w-5 h-5 text-primary" />
+                        </div>
+                        Integration Philosophy
+                      </CardTitle>
+                      <CardDescription className="text-base">
+                        How BMAD tactical development complements Asimov-AI governance foundations
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-4">
+                          <div className="flex items-start gap-3">
+                            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center flex-shrink-0">
+                              <Shield className="w-4 h-4 text-accent-foreground" />
+                            </div>
+                            <div>
+                              <h4 className="font-semibold mb-1">Asimov-AI Ensures</h4>
+                              <ul className="text-sm text-muted-foreground space-y-1">
+                                <li>• Governance frameworks</li>
+                                <li>• Risk management</li>
+                                <li>• Regulatory compliance</li>
+                                <li>• Audit readiness</li>
+                                <li>• Policy alignment</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="space-y-4">
+                          <div className="flex items-start gap-3">
+                            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center flex-shrink-0">
+                              <Zap className="w-4 h-4 text-primary-foreground" />
+                            </div>
+                            <div>
+                              <h4 className="font-semibold mb-1">BMAD Ensures</h4>
+                              <ul className="text-sm text-muted-foreground space-y-1">
+                                <li>• Technical excellence</li>
+                                <li>• Context-rich development</li>
+                                <li>• Agile delivery</li>
+                                <li>• Zero context loss</li>
+                                <li>• Structured workflows</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-4 rounded-lg bg-background/50 border border-border">
+                        <p className="text-sm">
+                          <strong className="text-primary">Result:</strong> {" "}
+                          AI systems that are both technically sound AND governance-ready, with governance embedded at every phase of development rather than bolted on as an afterthought.
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Phase Integration */}
+                  <div>
+                    <h3 className="text-2xl font-bold text-center mb-8">Phase-by-Phase Integration</h3>
+                    <div className="space-y-6">
+                      {/* Phase 1: Observe */}
+                      <Card className="border-blue-500/30 bg-gradient-to-br from-blue-500/10 to-blue-600/10">
+                        <CardHeader>
+                          <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold">1</div>
+                            <div>
+                              <CardTitle className="text-xl">Phase 1: Observe (Discovery)</CardTitle>
+                              <CardDescription>Business context meets governance requirements</CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="grid md:grid-cols-2 gap-6">
+                            <div>
+                              <h4 className="font-semibold mb-3 flex items-center gap-2">
+                                <Layers className="w-4 h-4 text-blue-600" />
+                                BMAD Artifacts
+                              </h4>
+                              <ul className="text-sm text-muted-foreground space-y-2">
+                                <li>• Analyst agent gathers business context</li>
+                                <li>• Stakeholder interviews</li>
+                                <li>• Domain research</li>
+                                <li>• Business requirements documentation</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h4 className="font-semibold mb-3 flex items-center gap-2">
+                                <Shield className="w-4 h-4 text-accent" />
+                                Asimov-AI Layer
+                              </h4>
+                              <ul className="text-sm text-muted-foreground space-y-2">
+                                <li>• AI system inventory</li>
+                                <li>• Risk classification</li>
+                                <li>• Regulatory landscape mapping</li>
+                                <li>• Framework selection (EU AI Act, NIST, ISO)</li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="mt-4 p-3 rounded-lg bg-background border border-border">
+                            <p className="text-sm"><strong>Joint Deliverable:</strong> Integrated discovery document with technical AND governance context</p>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      {/* Phase 2: Orient */}
+                      <Card className="border-purple-500/30 bg-gradient-to-br from-purple-500/10 to-purple-600/10">
+                        <CardHeader>
+                          <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-lg bg-purple-600 text-white flex items-center justify-center font-bold">2</div>
+                            <div>
+                              <CardTitle className="text-xl">Phase 2: Orient (Planning)</CardTitle>
+                              <CardDescription>Feature prioritization with embedded risk scoring</CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="grid md:grid-cols-2 gap-6">
+                            <div>
+                              <h4 className="font-semibold mb-3 flex items-center gap-2">
+                                <Layers className="w-4 h-4 text-purple-600" />
+                                BMAD Artifacts
+                              </h4>
+                              <ul className="text-sm text-muted-foreground space-y-2">
+                                <li>• Product Requirements Documents (PRDs)</li>
+                                <li>• PM agent creates feature backlog</li>
+                                <li>• User story prioritization</li>
+                                <li>• Sprint planning</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h4 className="font-semibold mb-3 flex items-center gap-2">
+                                <Shield className="w-4 h-4 text-accent" />
+                                Asimov-AI Layer
+                              </h4>
+                              <ul className="text-sm text-muted-foreground space-y-2">
+                                <li>• Risk mapping per feature</li>
+                                <li>• Compliance requirements identification</li>
+                                <li>• Control selection (preventive, detective, corrective)</li>
+                                <li>• Evidence planning</li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="mt-4 p-3 rounded-lg bg-background border border-border">
+                            <p className="text-sm"><strong>Joint Deliverable:</strong> Prioritized backlog with risk scoring and compliance requirements mapped to each story</p>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      {/* Phase 3: Decide */}
+                      <Card className="border-green-500/30 bg-gradient-to-br from-green-500/10 to-green-600/10">
+                        <CardHeader>
+                          <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-lg bg-green-600 text-white flex items-center justify-center font-bold">3</div>
+                            <div>
+                              <CardTitle className="text-xl">Phase 3: Decide (Architecture)</CardTitle>
+                              <CardDescription>Technical design with governance controls integrated</CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="grid md:grid-cols-2 gap-6">
+                            <div>
+                              <h4 className="font-semibold mb-3 flex items-center gap-2">
+                                <Layers className="w-4 h-4 text-green-600" />
+                                BMAD Artifacts
+                              </h4>
+                              <ul className="text-sm text-muted-foreground space-y-2">
+                                <li>• Architect agent designs system architecture</li>
+                                <li>• Data flow diagrams</li>
+                                <li>• API specifications</li>
+                                <li>• Technology stack selection</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h4 className="font-semibold mb-3 flex items-center gap-2">
+                                <Shield className="w-4 h-4 text-accent" />
+                                Asimov-AI Layer
+                              </h4>
+                              <ul className="text-sm text-muted-foreground space-y-2">
+                                <li>• Audit logging architecture</li>
+                                <li>• Explainability layers</li>
+                                <li>• Human oversight checkpoints</li>
+                                <li>• Data lineage and provenance tracking</li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="mt-4 p-3 rounded-lg bg-background border border-border">
+                            <p className="text-sm"><strong>Joint Deliverable:</strong> Architecture blueprint with governance controls, security measures, and audit mechanisms built-in</p>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      {/* Phase 4: Sprint */}
+                      <Card className="border-orange-500/30 bg-gradient-to-br from-orange-500/10 to-orange-600/10">
+                        <CardHeader>
+                          <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 rounded-lg bg-orange-600 text-white flex items-center justify-center font-bold">4</div>
+                            <div>
+                              <CardTitle className="text-xl">Phase 4: Sprint (Implementation)</CardTitle>
+                              <CardDescription>Context-rich development with continuous compliance validation</CardDescription>
+                            </div>
+                          </div>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="grid md:grid-cols-2 gap-6">
+                            <div>
+                              <h4 className="font-semibold mb-3 flex items-center gap-2">
+                                <Layers className="w-4 h-4 text-orange-600" />
+                                BMAD Artifacts
+                              </h4>
+                              <ul className="text-sm text-muted-foreground space-y-2">
+                                <li>• SM agent generates context-rich story files</li>
+                                <li>• Developer implements with embedded context</li>
+                                <li>• QA agent validates functionality</li>
+                                <li>• Sprint retrospectives</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h4 className="font-semibold mb-3 flex items-center gap-2">
+                                <Shield className="w-4 h-4 text-accent" />
+                                Asimov-AI Layer
+                              </h4>
+                              <ul className="text-sm text-muted-foreground space-y-2">
+                                <li>• Compliance validation (bias testing, explainability)</li>
+                                <li>• Evidence artifact collection</li>
+                                <li>• Audit trail maintenance</li>
+                                <li>• Continuous monitoring setup</li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="mt-4 p-3 rounded-lg bg-background border border-border">
+                            <p className="text-sm"><strong>Joint Deliverable:</strong> Working software with complete audit trail and evidence bundle ready for regulatory review</p>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+
+                  {/* Key Benefits */}
+                  <Card className="border-accent/30 bg-gradient-accent">
+                    <CardHeader>
+                      <CardTitle className="text-2xl text-center">Key Benefits of Integration</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid md:grid-cols-3 gap-6">
+                        <div className="text-center space-y-3">
+                          <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mx-auto">
+                            <CheckCircle className="w-6 h-6 text-accent" />
+                          </div>
+                          <h4 className="font-semibold">Zero Context Loss</h4>
+                          <p className="text-sm text-muted-foreground">
+                            Every developer and auditor has the same information through BMAD's context-engineered story files with embedded governance requirements
+                          </p>
+                        </div>
+                        <div className="text-center space-y-3">
+                          <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mx-auto">
+                            <Zap className="w-6 h-6 text-accent" />
+                          </div>
+                          <h4 className="font-semibold">Accelerated Delivery</h4>
+                          <p className="text-sm text-muted-foreground">
+                            BMAD's agentic workflows speed up development while Asimov-AI ensures compliance at every checkpoint
+                          </p>
+                        </div>
+                        <div className="text-center space-y-3">
+                          <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mx-auto">
+                            <Scale className="w-6 h-6 text-accent" />
+                          </div>
+                          <h4 className="font-semibold">Governance by Design</h4>
+                          <p className="text-sm text-muted-foreground">
+                            Compliance is embedded from day one, not bolted on later—reducing rework and audit risk
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Resources */}
+                  <Card className="border-border">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Eye className="w-5 h-5 text-primary" />
+                        Learn More About BMAD Integration
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <p className="text-sm text-muted-foreground">
+                        For comprehensive details on BMAD Method artifacts, expansion packs, and practical implementation workflows, refer to our detailed integration documentation.
+                      </p>
+                      <div className="flex flex-wrap gap-3">
+                        <Badge variant="outline" className="text-sm">
+                          Agentic Planning Framework
+                        </Badge>
+                        <Badge variant="outline" className="text-sm">
+                          Context-Engineered Story Files
+                        </Badge>
+                        <Badge variant="outline" className="text-sm">
+                          Party Mode Collaboration
+                        </Badge>
+                        <Badge variant="outline" className="text-sm">
+                          Scale Adaptive Architecture
+                        </Badge>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </TabsContent>
 
                 <TabsContent value="selector">
