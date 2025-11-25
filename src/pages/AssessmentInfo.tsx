@@ -309,7 +309,7 @@ const Assessment = () => {
                 {/* Introduction */}
                 <div className="bg-accent/10 border border-accent/30 rounded-lg p-6">
                   <p className="text-muted-foreground leading-relaxed">
-                    AI CI/CD fundamentally transforms compliance from a <strong>point-in-time audit exercise into a continuous, automated governance process</strong> embedded throughout the ML lifecycle. This shift is critical because AI models are non-deterministic and their behavior emerges from training data, prompts, and user interactions—making traditional "check-the-box" compliance dangerously inadequate.
+                    AI CI/CD fundamentally transforms compliance from a <strong>point-in-time audit exercise into a continuous, automated governance process</strong> embedded throughout the ML lifecycle. This shift is critical because AI models are non-deterministic and their behaviour emerges from training data, prompts, and user interactions—making traditional "check-the-box" compliance dangerously inadequate.
                   </p>
                 </div>
 

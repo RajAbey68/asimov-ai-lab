@@ -58,7 +58,7 @@ UI/UX DESIGN EVALUATION KNOWLEDGE BASE
 When users ask about website design, AI interface usability, or user experience, reference these criteria:
 
 🎨 **VISUAL DESIGN PRINCIPLES:**
-- **Color Contrast**: Ensure sufficient contrast ratios (WCAG AA: 4.5:1 for text, 3:1 for UI components)
+- **Colour Contrast**: Ensure sufficient contrast ratios (WCAG AA: 4.5:1 for text, 3:1 for UI components)
 - **Typography**: Use readable font sizes (minimum 16px body text), clear hierarchy, appropriate line height (1.5-1.8)
 - **White Space**: Balance content density with breathing room, avoid cluttered layouts
 - **Visual Hierarchy**: Guide user attention through size, color, positioning, and spacing
