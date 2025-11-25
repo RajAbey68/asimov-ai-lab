@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Send, Loader2, User, Bot, Sparkles, Calendar } from "lucide-react";
+import { Send, Loader2, User, Bot, Sparkles, Calendar, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import ConsultationIntakeDialog from "@/components/ConsultationIntakeDialog";
 
@@ -254,6 +254,15 @@ const HeroChatEmbed = () => {
               <Send className="w-4 h-4" />
             </Button>
           </div>
+          <Button
+            onClick={() => setDialogOpen(true)}
+            variant="outline"
+            size="sm"
+            className="w-full"
+          >
+            <MessageSquare className="w-4 h-4 mr-2" />
+            Request Human Callback
+          </Button>
           <p className="text-xs text-muted-foreground text-center">
             Powered by ASIMOV-AI Expertise
           </p>
