@@ -5,6 +5,7 @@ import ProvenResults from "@/components/ProvenResults";
 import RiskProfileSelector from "@/components/RiskProfileSelector";
 import ServiceTiers from "@/components/ServiceTiers";
 import ServicePillars from "@/components/ServicePillars";
+import DeliveryPackages from "@/components/DeliveryPackages";
 import AsimovMethodology from "@/components/AsimovMethodology";
 import MethodologyFlowDiagram from "@/components/MethodologyFlowDiagram";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
@@ -29,6 +30,7 @@ const Index = () => {
         <RiskProfileSelector />
       </div>
       <ServiceTiers />
+      <DeliveryPackages />
       <AsimovMethodology />
       <MethodologyFlowDiagram />
       <TestimonialCarousel />
