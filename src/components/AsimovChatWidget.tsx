@@ -21,6 +21,7 @@ const AsimovChatWidget = () => {
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [sessionId] = useState(() => crypto.randomUUID());
   const scrollRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
@@ -39,6 +40,7 @@ const AsimovChatWidget = () => {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          "x-session-id": sessionId,
         },
         body: JSON.stringify({ messages: [...messages, userMessage] }),
       });

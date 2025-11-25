@@ -19,6 +19,7 @@ import AdminMedia from "./pages/AdminMedia";
 import AdminControlsImport from "./pages/AdminControlsImport";
 import AdminConsultations from "./pages/AdminConsultations";
 import AdminChatLogs from "./pages/AdminChatLogs";
+import AdminAnalytics from "./pages/AdminAnalytics";
 import ControlsViewer from "./pages/ControlsViewer";
 import DesignAudit from "./pages/DesignAudit";
 import NotFound from "./pages/NotFound";
@@ -65,6 +66,11 @@ const App = () => (
         <Route path="/admin/chat-logs" element={
           <ProtectedRoute>
             <AdminChatLogs />
+          </ProtectedRoute>
+        } />
+        <Route path="/admin/analytics" element={
+          <ProtectedRoute>
+            <AdminAnalytics />
           </ProtectedRoute>
         } />
         <Route path="/admin/design-audit" element={

@@ -4,11 +4,13 @@ import { ConsultationIntakeForm } from "@/components/ConsultationIntakeForm";
 interface ConsultationIntakeDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  chatSessionId?: string;
 }
 
 export default function ConsultationIntakeDialog({
   open,
   onOpenChange,
+  chatSessionId,
 }: ConsultationIntakeDialogProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -16,7 +18,10 @@ export default function ConsultationIntakeDialog({
         <DialogHeader>
           <DialogTitle>Request a Consultation</DialogTitle>
         </DialogHeader>
-        <ConsultationIntakeForm onSuccess={() => onOpenChange(false)} />
+        <ConsultationIntakeForm 
+          onSuccess={() => onOpenChange(false)} 
+          chatSessionId={chatSessionId}
+        />
       </DialogContent>
     </Dialog>
   );
