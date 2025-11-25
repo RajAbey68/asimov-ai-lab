@@ -144,21 +144,29 @@ const IntegratedDeliveryCycleDiagram = () => {
       </div>
 
       {/* Key Benefits Below */}
-      <div className="mt-24 grid md:grid-cols-3 gap-6">
-        <div className="bg-card border border-border rounded-lg p-6 text-center">
-          <Shield className="w-10 h-10 mx-auto mb-3 text-primary" />
-          <h4 className="font-bold mb-2 text-foreground">Zero Context Loss</h4>
-          <p className="text-sm text-muted-foreground">Governance constraints embedded in every story file—agents never forget regulatory requirements</p>
-        </div>
-        <div className="bg-card border border-border rounded-lg p-6 text-center">
-          <FileText className="w-10 h-10 mx-auto mb-3 text-primary" />
-          <h4 className="font-bold mb-2 text-foreground">Traceable = Auditable</h4>
-          <p className="text-sm text-muted-foreground">Every code output aligns with defined governance requirements—full audit trail from risk to deployment</p>
-        </div>
-        <div className="bg-card border border-border rounded-lg p-6 text-center">
-          <GitBranch className="w-10 h-10 mx-auto mb-3 text-primary" />
-          <h4 className="font-bold mb-2 text-foreground">Orchestrated, Not Chaotic</h4>
-          <p className="text-sm text-muted-foreground">Virtual team of specialized agents working within governance guardrails—discipline at AI speed</p>
+      <div className="mt-24 space-y-8">
+        <h3 className="text-2xl font-bold text-center text-foreground">Why This Approach Works</h3>
+        <div className="grid md:grid-cols-4 gap-6">
+          <div className="bg-card border border-border rounded-lg p-6 text-center">
+            <Shield className="w-10 h-10 mx-auto mb-3 text-primary" />
+            <h4 className="font-bold mb-2 text-foreground">Zero Context Loss</h4>
+            <p className="text-sm text-muted-foreground">Governance constraints embedded in every story file—agents never forget regulatory requirements</p>
+          </div>
+          <div className="bg-card border border-border rounded-lg p-6 text-center">
+            <FileText className="w-10 h-10 mx-auto mb-3 text-primary" />
+            <h4 className="font-bold mb-2 text-foreground">Traceable = Auditable</h4>
+            <p className="text-sm text-muted-foreground">Every code output aligns with defined governance requirements—full audit trail from risk to deployment</p>
+          </div>
+          <div className="bg-card border border-border rounded-lg p-6 text-center">
+            <GitBranch className="w-10 h-10 mx-auto mb-3 text-primary" />
+            <h4 className="font-bold mb-2 text-foreground">Orchestrated, Not Chaotic</h4>
+            <p className="text-sm text-muted-foreground">Virtual team of specialized agents working within governance guardrails—discipline at AI speed</p>
+          </div>
+          <div className="bg-card border border-border rounded-lg p-6 text-center">
+            <CheckCircle2 className="w-10 h-10 mx-auto mb-3 text-primary" />
+            <h4 className="font-bold mb-2 text-foreground">Test-Driven Compliance</h4>
+            <p className="text-sm text-muted-foreground">Governance controls become automated tests—regression-proof validation with every commit</p>
+          </div>
         </div>
       </div>
     </div>
