@@ -1,4 +1,7 @@
 project_id = "yzygqapiftlykxfihxec"
 
+[functions.asimov-chat]
+verify_jwt = false
+
 [functions.generate-insight]
 verify_jwt = false
