@@ -16,7 +16,7 @@ const HeroChatEmbed = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hello, I'm SIMO — Structured Insights for Meaningful Outcomes. I'm dedicated to providing you with clear, accurate, and reliable guidance on AI governance and compliance, always grounded in facts without any guesswork. How can I assist you today?"
+      content: "Hello, I'm SIMO — Structured Insights for Meaningful Outcomes.\nI aim to provide clear, accurate, and reliable guidance on AI governance and compliance, based on publicly available information and established frameworks. I am continually learning and may occasionally misunderstand or make errors.\nPlease review my responses carefully and consult a qualified human professional whenever needed.\n\nHow can I assist you today?"
     }
   ]);
   const [input, setInput] = useState("");
