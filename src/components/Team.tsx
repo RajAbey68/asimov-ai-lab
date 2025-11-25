@@ -39,9 +39,9 @@ const teamMembers = [
     }
   },
   {
-    name: "Nick Lockett",
-    title: "Founder, CAAIRO & Managing Partner, ADL Solicitors",
-    bio: "Technology lawyer and founder of CAAIRO London Centre for the Assessment of AI Risk & Opportunity. CEO Managing Partner at ADL Solicitors specializing in AI governance, intellectual property, commercial technology law, and regulatory compliance for technology businesses.",
+    name: "Dr Nick Lockett",
+    title: "Barrister & Solicitor | Partner Associate, Asimov-AI",
+    bio: "Recognized Barrister & Solicitor and Partner Associate in Asimov-AI. Founder of CAAIRO London Centre for the Assessment of AI Risk & Opportunity. His advocate and legal work continues through ADL Legal, his law practice, specializing in AI governance, intellectual property, commercial technology law, and regulatory compliance for technology businesses.",
     specialties: "AI Legal Frameworks, Regulatory Compliance, and Intellectual Property",
     linkedin: "https://www.linkedin.com/in/nicklockett/",
     image: nickLockettImg,
