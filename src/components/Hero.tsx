@@ -85,43 +85,43 @@ const Hero = () => {
               </p>
             </div>
 
-            {/* Trust Badges */}
+            {/* Delivery Phase Activities */}
             <div className="flex flex-wrap items-center gap-6 pt-4">
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
                   <CheckCircle2 className="w-5 h-5 text-primary" />
                 </div>
-                <span className="text-sm font-medium text-white">ISACA Guided</span>
+                <span className="text-sm font-medium text-white">Risk Mapping (Standards-Aligned)</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
                   <CheckCircle2 className="w-5 h-5 text-primary" />
                 </div>
-                <span className="text-sm font-medium text-white">EU AI Act Ready</span>
+                <span className="text-sm font-medium text-white">Control Implementation (Framework-Based)</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
                   <CheckCircle2 className="w-5 h-5 text-primary" />
                 </div>
-                <span className="text-sm font-medium text-white">GDPR Compliant</span>
+                <span className="text-sm font-medium text-white">Audit Preparation (Compliance-Ready)</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
                   <CheckCircle2 className="w-5 h-5 text-primary" />
                 </div>
-                <span className="text-sm font-medium text-white">ISO/IEC 42001</span>
+                <span className="text-sm font-medium text-white">Documentation (Traceable)</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
                   <CheckCircle2 className="w-5 h-5 text-primary" />
                 </div>
-                <span className="text-sm font-medium text-white">NIST AI RMF Aligned</span>
+                <span className="text-sm font-medium text-white">Test-Driven Validation</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
                   <CheckCircle2 className="w-5 h-5 text-primary" />
                 </div>
-                <span className="text-sm font-medium text-white">COBIT 2019</span>
+                <span className="text-sm font-medium text-white">Continuous Monitoring (Governance-Integrated)</span>
               </div>
             </div>
 
