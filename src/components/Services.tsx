@@ -21,7 +21,7 @@ const Services = () => {
       icon: Rocket,
       title: "AI Project Delivery",
       description: "End-to-end execution of AI initiatives from strategy to deployment, ensuring quality, speed, and alignment with business goals.",
-      features: ["Strategy Development", "Model Development", "Integration Services", "Performance Optimization"],
+      features: ["Strategy Development", "Model Development", "Integration Services", "Performance Optimisation"],
       image: projectDeliveryImg
     },
     {

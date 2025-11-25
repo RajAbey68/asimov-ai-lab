@@ -174,7 +174,7 @@ export const ConsultationIntakeForm = ({ onSuccess, chatSessionId }: Consultatio
         <Card>
           <CardHeader>
             <CardTitle>Your Information</CardTitle>
-            <CardDescription>Basic contact and organization details</CardDescription>
+            <CardDescription>Basic contact and organisation details</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <FormField

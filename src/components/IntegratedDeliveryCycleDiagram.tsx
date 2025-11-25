@@ -45,7 +45,7 @@ const IntegratedDeliveryCycleDiagram = () => {
         </div>
         <h3 className="text-3xl font-bold mb-4 text-foreground">Stop Prompting. Start Orchestrating.</h3>
         <p className="text-muted-foreground max-w-3xl mx-auto mb-2">
-          Asimov-AI governance orchestrates BMAD's virtual team of specialized AI agents—preventing context loss while embedding compliance in every story file
+          Asimov-AI governance orchestrates BMAD's virtual team of specialised AI agents—preventing context loss while embedding compliance in every story file
         </p>
         <p className="text-sm text-accent font-medium">
           From chaos to compliance: Speed of AI generation + Precision of seasoned engineering + Embedded governance
@@ -160,7 +160,7 @@ const IntegratedDeliveryCycleDiagram = () => {
           <div className="bg-card border border-border rounded-lg p-6 text-center">
             <GitBranch className="w-10 h-10 mx-auto mb-3 text-primary" />
             <h4 className="font-bold mb-2 text-foreground">Orchestrated, Not Chaotic</h4>
-            <p className="text-sm text-muted-foreground">Virtual team of specialized agents working within governance guardrails—discipline at AI speed</p>
+            <p className="text-sm text-muted-foreground">Virtual team of specialised agents working within governance guardrails—discipline at AI speed</p>
           </div>
           <div className="bg-card border border-border rounded-lg p-6 text-center">
             <CheckCircle2 className="w-10 h-10 mx-auto mb-3 text-primary" />

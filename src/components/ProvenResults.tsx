@@ -19,7 +19,7 @@ const goals = [
   },
   {
     icon: DollarSign,
-    label: "Optimize Resources",
+    label: "Optimise Resources",
     description: "We aim to help you deploy AI efficiently, avoiding costly compliance mistakes and rework"
   },
   {
