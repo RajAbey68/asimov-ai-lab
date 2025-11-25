@@ -197,6 +197,9 @@ const AdminChatLogs = () => {
             <p className="text-muted-foreground">Monitor AI assistant conversations and guardrail triggers</p>
           </div>
           <div className="flex gap-2">
+            <Button onClick={() => navigate("/admin/analytics")} variant="outline">
+              View Analytics
+            </Button>
             <Button onClick={fetchLogs} variant="outline">
               <RefreshCw className="w-4 h-4 mr-2" />
               Refresh

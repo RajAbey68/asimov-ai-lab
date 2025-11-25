@@ -488,6 +488,7 @@ export type Database = {
       consultation_intake: {
         Row: {
           ai_category: string
+          chat_session_id: string | null
           contact_number: string | null
           country: string
           created_at: string | null
@@ -521,6 +522,7 @@ export type Database = {
         }
         Insert: {
           ai_category: string
+          chat_session_id?: string | null
           contact_number?: string | null
           country: string
           created_at?: string | null
@@ -554,6 +556,7 @@ export type Database = {
         }
         Update: {
           ai_category?: string
+          chat_session_id?: string | null
           contact_number?: string | null
           country?: string
           created_at?: string | null

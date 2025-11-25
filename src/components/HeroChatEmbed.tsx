@@ -22,6 +22,7 @@ const HeroChatEmbed = () => {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [sessionId] = useState(() => crypto.randomUUID());
   const scrollRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
@@ -40,6 +41,7 @@ const HeroChatEmbed = () => {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          "x-session-id": sessionId,
         },
         body: JSON.stringify({ messages: [...messages, userMessage] }),
       });
@@ -290,6 +292,7 @@ const HeroChatEmbed = () => {
     <ConsultationIntakeDialog
       open={dialogOpen}
       onOpenChange={setDialogOpen}
+      chatSessionId={sessionId}
     />
   </>
   );

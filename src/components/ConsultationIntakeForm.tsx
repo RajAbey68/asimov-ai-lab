@@ -61,9 +61,10 @@ type ConsultationIntakeFormData = z.infer<typeof consultationIntakeSchema>;
 
 interface ConsultationIntakeFormProps {
   onSuccess?: () => void;
+  chatSessionId?: string;
 }
 
-export const ConsultationIntakeForm = ({ onSuccess }: ConsultationIntakeFormProps = {}) => {
+export const ConsultationIntakeForm = ({ onSuccess, chatSessionId }: ConsultationIntakeFormProps = {}) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -110,6 +111,7 @@ export const ConsultationIntakeForm = ({ onSuccess }: ConsultationIntakeFormProp
         invoice_billing_contact: data.invoice_billing_contact,
         data_consent: data.data_consent,
         non_legal_ack: data.non_legal_ack,
+        chat_session_id: chatSessionId || null,
       });
 
       if (error) throw error;
