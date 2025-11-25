@@ -2,36 +2,36 @@ import { Shield, Target, Lightbulb, Rocket, CheckCircle2, GitBranch, FileText, U
 
 const IntegratedDeliveryCycleDiagram = () => {
   const phases = [
-    {
+      {
       asimov: "OBSERVE",
-      bmad: "Discovery",
+      bmad: "Discovery (Analyst Agent)",
       icon: Target,
-      activities: ["System Inventory", "Stakeholder Interviews", "Risk Identification", "Context Gathering"],
-      governance: "Risk Register Created",
+      activities: ["System Inventory", "Market Research", "Risk Identification", "Concept Validation"],
+      governance: "Risk Register + Context",
       color: "from-blue-900 to-blue-800"
     },
     {
       asimov: "ORIENT",
-      bmad: "Planning",
+      bmad: "Planning (PM Agent)",
       icon: Lightbulb,
-      activities: ["Risk Assessment", "Framework Alignment", "Agentic Planning", "Story File Creation"],
-      governance: "Compliance Mapping",
+      activities: ["Compliance Mapping", "PRD with Governance", "User Stories + Controls", "Acceptance Criteria"],
+      governance: "Governance-Aware PRD",
       color: "from-blue-800 to-blue-700"
     },
     {
       asimov: "DECIDE",
-      bmad: "Solutioning",
+      bmad: "Solutioning (Architect Agent)",
       icon: GitBranch,
-      activities: ["Architecture Design", "Control Selection", "Risk Mitigation", "Technical Planning"],
-      governance: "Control Framework Approved",
+      activities: ["Security by Design", "Privacy Architecture", "Control Selection", "Stack + Data Flows"],
+      governance: "Blueprint with Controls",
       color: "from-blue-700 to-blue-600"
     },
     {
       asimov: "SPRINT",
-      bmad: "Implementation",
+      bmad: "Implementation (Scrum Master + Developer)",
       icon: Rocket,
-      activities: ["Context-Engineered Dev", "Control Implementation", "Testing & Validation", "Documentation"],
-      governance: "Audit Evidence Generated",
+      activities: ["Story Files with Context", "Zero Context Loss", "Traceable Code", "Audit Evidence"],
+      governance: "Compliant Code + Evidence",
       color: "from-blue-600 to-primary"
     }
   ];
@@ -39,9 +39,16 @@ const IntegratedDeliveryCycleDiagram = () => {
   return (
     <div className="w-full max-w-6xl mx-auto py-12">
       <div className="text-center mb-12">
-        <h3 className="text-3xl font-bold mb-4 text-foreground">Integrated Delivery Cycle</h3>
-        <p className="text-muted-foreground max-w-3xl mx-auto">
-          Asimov-AI governance and BMAD tactical development working in continuous, iterative cycles
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-4">
+          <Users className="w-4 h-4 text-primary" />
+          <span className="text-sm text-primary font-medium">Orchestrated Virtual Team Approach</span>
+        </div>
+        <h3 className="text-3xl font-bold mb-4 text-foreground">Stop Prompting. Start Orchestrating.</h3>
+        <p className="text-muted-foreground max-w-3xl mx-auto mb-2">
+          Asimov-AI governance orchestrates BMAD's virtual team of specialized AI agents—preventing context loss while embedding compliance in every story file
+        </p>
+        <p className="text-sm text-accent font-medium">
+          From chaos to compliance: Speed of AI generation + Precision of seasoned engineering + Embedded governance
         </p>
       </div>
 
@@ -52,8 +59,8 @@ const IntegratedDeliveryCycleDiagram = () => {
           <div className="bg-accent/20 border-4 border-accent rounded-full w-40 h-40 flex items-center justify-center">
             <div className="text-center">
               <Shield className="w-12 h-12 mx-auto mb-2 text-accent" />
-              <p className="font-bold text-sm text-foreground">Continuous</p>
-              <p className="font-bold text-sm text-foreground">Governance</p>
+              <p className="font-bold text-sm text-foreground">Zero</p>
+              <p className="font-bold text-sm text-foreground">Context Loss</p>
             </div>
           </div>
         </div>
@@ -140,18 +147,18 @@ const IntegratedDeliveryCycleDiagram = () => {
       <div className="mt-24 grid md:grid-cols-3 gap-6">
         <div className="bg-card border border-border rounded-lg p-6 text-center">
           <Shield className="w-10 h-10 mx-auto mb-3 text-primary" />
-          <h4 className="font-bold mb-2 text-foreground">Continuous Compliance</h4>
-          <p className="text-sm text-muted-foreground">Governance checkpoints embedded at every phase</p>
+          <h4 className="font-bold mb-2 text-foreground">Zero Context Loss</h4>
+          <p className="text-sm text-muted-foreground">Governance constraints embedded in every story file—agents never forget regulatory requirements</p>
         </div>
         <div className="bg-card border border-border rounded-lg p-6 text-center">
           <FileText className="w-10 h-10 mx-auto mb-3 text-primary" />
-          <h4 className="font-bold mb-2 text-foreground">Audit-Ready Documentation</h4>
-          <p className="text-sm text-muted-foreground">Evidence generated automatically throughout delivery</p>
+          <h4 className="font-bold mb-2 text-foreground">Traceable = Auditable</h4>
+          <p className="text-sm text-muted-foreground">Every code output aligns with defined governance requirements—full audit trail from risk to deployment</p>
         </div>
         <div className="bg-card border border-border rounded-lg p-6 text-center">
           <GitBranch className="w-10 h-10 mx-auto mb-3 text-primary" />
-          <h4 className="font-bold mb-2 text-foreground">Adaptive & Iterative</h4>
-          <p className="text-sm text-muted-foreground">Flexible cycles respond to emerging risks and requirements</p>
+          <h4 className="font-bold mb-2 text-foreground">Orchestrated, Not Chaotic</h4>
+          <p className="text-sm text-muted-foreground">Virtual team of specialized agents working within governance guardrails—discipline at AI speed</p>
         </div>
       </div>
     </div>
