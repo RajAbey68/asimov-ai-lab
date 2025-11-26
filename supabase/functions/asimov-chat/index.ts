@@ -369,7 +369,7 @@ serve(async (req) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
+        model: "google/gemini-3-pro-preview",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           ...messages,
@@ -455,7 +455,7 @@ serve(async (req) => {
               guardrail_type: guardrail.type,
               redirect_reason: guardrail.reason,
               response_time_ms: responseTime,
-              model_used: 'google/gemini-2.5-flash'
+              model_used: 'google/gemini-3-pro-preview'
             });
             
             console.log(`Logged chat interaction: session=${sessionId.substring(0, 8)}, guardrail=${guardrail.triggered}`);
