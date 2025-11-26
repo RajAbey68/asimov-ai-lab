@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, Loader2, User, Bot, Sparkles, Calendar, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 import ConsultationIntakeDialog from "@/components/ConsultationIntakeDialog";
 import LanguageSelector from "@/components/LanguageSelector";
 import VoiceRecorder from "@/components/VoiceRecorder";
@@ -37,28 +38,22 @@ const HeroChatEmbed = () => {
   }, [messages]);
 
   const streamChat = async (userMessage: Message) => {
-    const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/asimov-chat`;
-    
     // Add language context to first message
     const messagesWithLanguage = messages.length === 1 // Only initial greeting
       ? [{ role: "system" as const, content: `User's preferred language: ${language}` }, userMessage]
       : [...messages, userMessage];
     
     try {
-      const response = await fetch(CHAT_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-          "x-session-id": sessionId,
-        },
-        body: JSON.stringify({ messages: messagesWithLanguage }),
+      // Use Supabase client for more reliable edge function calls
+      const { data, error } = await supabase.functions.invoke('asimov-chat', {
+        body: { messages: messagesWithLanguage },
+        headers: { 'x-session-id': sessionId }
       });
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
+      if (error) {
+        console.error("Chat error:", error);
         
-        if (response.status === 429) {
+        if (error.message?.includes('429') || error.message?.includes('rate limit')) {
           toast({
             title: "High Demand",
             description: "Our AI assistant is experiencing high demand. Please try again in a moment.",
@@ -67,7 +62,7 @@ const HeroChatEmbed = () => {
           return;
         }
         
-        if (response.status === 402) {
+        if (error.message?.includes('402') || error.message?.includes('payment')) {
           toast({
             title: "Service Unavailable",
             description: "AI service temporarily unavailable. Please contact us directly.",
@@ -76,7 +71,27 @@ const HeroChatEmbed = () => {
           return;
         }
         
-        throw new Error(errorData.error || "Failed to get response");
+        throw error;
+      }
+
+      // For streaming, we need to use the response stream
+      // Note: supabase.functions.invoke doesn't support streaming directly
+      // So we'll fall back to fetch for streaming support
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/asimov-chat`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            "x-session-id": sessionId,
+          },
+          body: JSON.stringify({ messages: messagesWithLanguage }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
       }
 
       if (!response.body) throw new Error("No response body");
