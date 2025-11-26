@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, Loader2, User, Bot, Sparkles, Calendar, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { supabase } from "@/integrations/supabase/client";
 import ConsultationIntakeDialog from "@/components/ConsultationIntakeDialog";
 import LanguageSelector from "@/components/LanguageSelector";
 import VoiceRecorder from "@/components/VoiceRecorder";
@@ -44,45 +43,13 @@ const HeroChatEmbed = () => {
       : [...messages, userMessage];
     
     try {
-      // Use Supabase client for more reliable edge function calls
-      const { data, error } = await supabase.functions.invoke('asimov-chat', {
-        body: { messages: messagesWithLanguage },
-        headers: { 'x-session-id': sessionId }
-      });
-
-      if (error) {
-        console.error("Chat error:", error);
-        
-        if (error.message?.includes('429') || error.message?.includes('rate limit')) {
-          toast({
-            title: "High Demand",
-            description: "Our AI assistant is experiencing high demand. Please try again in a moment.",
-            variant: "destructive",
-          });
-          return;
-        }
-        
-        if (error.message?.includes('402') || error.message?.includes('payment')) {
-          toast({
-            title: "Service Unavailable",
-            description: "AI service temporarily unavailable. Please contact us directly.",
-            variant: "destructive",
-          });
-          return;
-        }
-        
-        throw error;
-      }
-
-      // For streaming, we need to use the response stream
-      // Note: supabase.functions.invoke doesn't support streaming directly
-      // So we'll fall back to fetch for streaming support
       const response = await fetch(
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/asimov-chat`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "apikey": import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
             "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
             "x-session-id": sessionId,
           },
@@ -91,7 +58,28 @@ const HeroChatEmbed = () => {
       );
 
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
+        const errorText = await response.text();
+        console.error("Edge function error:", response.status, errorText);
+        
+        if (response.status === 429) {
+          toast({
+            title: "High Demand",
+            description: "Our AI assistant is experiencing high demand. Please try again in a moment.",
+            variant: "destructive",
+          });
+          return;
+        }
+        
+        if (response.status === 402) {
+          toast({
+            title: "Service Unavailable",
+            description: "AI service temporarily unavailable. Please contact us directly.",
+            variant: "destructive",
+          });
+          return;
+        }
+        
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
       }
 
       if (!response.body) throw new Error("No response body");
@@ -175,7 +163,7 @@ const HeroChatEmbed = () => {
       console.error("Chat error:", error);
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: error instanceof Error ? error.message : "Failed to send message. Please try again.",
         variant: "destructive",
       });
       setMessages(prev => prev.slice(0, -1));
