@@ -6,6 +6,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Send, Loader2, User, Bot, Sparkles, Calendar, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import ConsultationIntakeDialog from "@/components/ConsultationIntakeDialog";
+import LanguageSelector from "@/components/LanguageSelector";
+import VoiceRecorder from "@/components/VoiceRecorder";
 
 interface Message {
   role: "user" | "assistant";
@@ -23,6 +25,8 @@ const HeroChatEmbed = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [sessionId] = useState(() => crypto.randomUUID());
+  const [language, setLanguage] = useState("en");
+  const [showLanguageSelector, setShowLanguageSelector] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
 
@@ -35,6 +39,11 @@ const HeroChatEmbed = () => {
   const streamChat = async (userMessage: Message) => {
     const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/asimov-chat`;
     
+    // Add language context to first message
+    const messagesWithLanguage = messages.length === 1 // Only initial greeting
+      ? [{ role: "system" as const, content: `User's preferred language: ${language}` }, userMessage]
+      : [...messages, userMessage];
+    
     try {
       const response = await fetch(CHAT_URL, {
         method: "POST",
@@ -43,7 +52,7 @@ const HeroChatEmbed = () => {
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
           "x-session-id": sessionId,
         },
-        body: JSON.stringify({ messages: [...messages, userMessage] }),
+        body: JSON.stringify({ messages: messagesWithLanguage }),
       });
 
       if (!response.ok) {
@@ -161,6 +170,11 @@ const HeroChatEmbed = () => {
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
 
+    // Hide language selector after first message
+    if (showLanguageSelector) {
+      setShowLanguageSelector(false);
+    }
+
     const userMessage: Message = { role: "user", content: input.trim() };
     setMessages(prev => [...prev, userMessage]);
     setInput("");
@@ -168,6 +182,10 @@ const HeroChatEmbed = () => {
 
     await streamChat(userMessage);
     setIsLoading(false);
+  };
+
+  const handleVoiceTranscription = (text: string) => {
+    setInput(text);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -193,6 +211,14 @@ const HeroChatEmbed = () => {
       <CardContent className="flex-1 flex flex-col p-0 overflow-hidden">
         <ScrollArea className="flex-1 p-4" ref={scrollRef}>
           <div className="space-y-4">
+            {showLanguageSelector && messages.length === 1 && (
+              <div className="mb-4 p-4 bg-muted/50 rounded-lg">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Please select your preferred language:
+                </p>
+                <LanguageSelector value={language} onChange={setLanguage} />
+              </div>
+            )}
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -241,6 +267,11 @@ const HeroChatEmbed = () => {
 
         <div className="p-4 border-t bg-background/95 space-y-3">
           <div className="flex gap-2">
+            <VoiceRecorder
+              onTranscription={handleVoiceTranscription}
+              language={language}
+              disabled={isLoading}
+            />
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}

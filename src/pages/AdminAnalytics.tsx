@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, TrendingUp, Clock, MessageSquare, Users, Target } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { ArrowLeft, TrendingUp, Clock, MessageSquare, Users, Target, Brain, Globe, Shield } from "lucide-react";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, PieChart, Pie, Cell } from "recharts";
 
 interface ChatLog {
@@ -236,8 +237,8 @@ const AdminAnalytics = () => {
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Chat Logs
             </Button>
-            <h1 className="text-3xl font-bold">SIMO Analytics Dashboard</h1>
-            <p className="text-muted-foreground">Usage insights and conversion metrics</p>
+        <h1 className="text-3xl font-bold">SIMO Analytics & Learning Dashboard</h1>
+            <p className="text-muted-foreground">Usage insights, patterns, and continuous learning metrics</p>
           </div>
           <Select value={dateRange} onValueChange={setDateRange}>
             <SelectTrigger className="w-40">
@@ -397,90 +398,181 @@ const AdminAnalytics = () => {
         </div>
 
         {/* Charts Row 2: Topics & Conversion */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <MessageSquare className="w-5 h-5" />
-                Popular Topics
-              </CardTitle>
-              <CardDescription>Most frequently discussed keywords</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ResponsiveContainer width="100%" height={300}>
-                <BarChart data={topicStats} layout="horizontal">
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis type="number" />
-                  <YAxis 
-                    dataKey="topic" 
-                    type="category" 
-                    width={100}
-                    tick={{ fontSize: 12 }}
-                  />
-                  <Tooltip />
-                  <Bar dataKey="count" fill="#8b5cf6" name="Mentions" />
-                </BarChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
+        <Tabs defaultValue="usage" className="space-y-6">
+          <TabsList className="grid w-full max-w-md grid-cols-2">
+            <TabsTrigger value="usage">Usage Analytics</TabsTrigger>
+            <TabsTrigger value="learning">Learning Insights</TabsTrigger>
+          </TabsList>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Target className="w-5 h-5" />
-                Conversion Funnel
-              </CardTitle>
-              <CardDescription>Chat sessions to consultation bookings</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Users className="w-6 h-6 text-primary" />
+          <TabsContent value="usage" className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <MessageSquare className="w-5 h-5" />
+                    Popular Topics
+                  </CardTitle>
+                  <CardDescription>Most frequently discussed keywords</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <BarChart data={topicStats} layout="horizontal">
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis type="number" />
+                      <YAxis 
+                        dataKey="topic" 
+                        type="category" 
+                        width={100}
+                        tick={{ fontSize: 12 }}
+                      />
+                      <Tooltip />
+                      <Bar dataKey="count" fill="#8b5cf6" name="Mentions" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Target className="w-5 h-5" />
+                    Conversion Funnel
+                  </CardTitle>
+                  <CardDescription>Chat sessions to consultation bookings</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                          <Users className="w-6 h-6 text-primary" />
+                        </div>
+                        <div>
+                          <p className="font-semibold">Started Chat</p>
+                          <p className="text-sm text-muted-foreground">{totalSessions} sessions</p>
+                        </div>
+                      </div>
+                      <div className="text-2xl font-bold text-primary">100%</div>
                     </div>
-                    <div>
-                      <p className="font-semibold">Started Chat</p>
-                      <p className="text-sm text-muted-foreground">{totalSessions} sessions</p>
+
+                    <div className="h-px bg-border my-2" />
+
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center">
+                          <Target className="w-6 h-6 text-green-500" />
+                        </div>
+                        <div>
+                          <p className="font-semibold">Booked Consultation</p>
+                          <p className="text-sm text-muted-foreground">{consultations.length} conversions</p>
+                        </div>
+                      </div>
+                      <div className="text-2xl font-bold text-green-500">
+                        {conversionRate.toFixed(1)}%
+                      </div>
+                    </div>
+
+                    <div className="mt-6 p-4 bg-muted rounded-lg">
+                      <p className="text-sm text-muted-foreground mb-2">Conversion Insights</p>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span>Drop-off rate:</span>
+                          <span className="font-semibold">{(100 - conversionRate).toFixed(1)}%</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span>Avg session length:</span>
+                          <span className="font-semibold">{avgSessionLength.toFixed(1)} messages</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="text-2xl font-bold text-primary">100%</div>
+                </CardContent>
+              </Card>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="learning" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Brain className="w-5 h-5" />
+                  Learning Insights
+                </CardTitle>
+                <CardDescription>Key patterns for continuous improvement of SIMO</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="p-4 bg-muted/50 rounded-lg border">
+                    <div className="flex items-center gap-2 mb-3">
+                      <MessageSquare className="w-5 h-5 text-primary" />
+                      <h4 className="font-semibold">Top User Concerns</h4>
+                    </div>
+                    <ul className="space-y-2 text-sm">
+                      {topicStats.slice(0, 5).map((topic) => (
+                        <li key={topic.topic} className="flex justify-between">
+                          <span className="capitalize">{topic.topic}</span>
+                          <span className="font-medium text-primary">{topic.count} mentions</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="p-4 bg-muted/50 rounded-lg border">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Shield className="w-5 h-5 text-green-600" />
+                      <h4 className="font-semibold">Guardrail Effectiveness</h4>
+                    </div>
+                    <div className="space-y-2 text-sm">
+                      <p>
+                        {logs.filter(l => l.guardrail_triggered).length} of {logs.length} conversations 
+                        triggered guardrails ({((logs.filter(l => l.guardrail_triggered).length / logs.length) * 100).toFixed(1)}%)
+                      </p>
+                      <p className="text-muted-foreground">
+                        Guardrails are actively protecting against out-of-scope queries and ensuring 
+                        SIMO stays focused on AI governance topics.
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="h-px bg-border my-2" />
-
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center">
-                      <Target className="w-6 h-6 text-green-500" />
-                    </div>
-                    <div>
-                      <p className="font-semibold">Booked Consultation</p>
-                      <p className="text-sm text-muted-foreground">{consultations.length} conversions</p>
-                    </div>
+                <div className="p-4 bg-muted/50 rounded-lg border">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Globe className="w-5 h-5 text-blue-600" />
+                    <h4 className="font-semibold">International Reach & Accessibility</h4>
                   </div>
-                  <div className="text-2xl font-bold text-green-500">
-                    {conversionRate.toFixed(1)}%
-                  </div>
+                  <p className="text-sm">
+                    SIMO now supports multilingual interactions with language selection at chat start. 
+                    This enables AI governance guidance across global, diverse audiences and reinforces 
+                    Asimov-AI's commitment to inclusive, ethical AI practices.
+                  </p>
                 </div>
 
-                <div className="mt-6 p-4 bg-muted rounded-lg">
-                  <p className="text-sm text-muted-foreground mb-2">Conversion Insights</p>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between">
-                      <span>Drop-off rate:</span>
-                      <span className="font-semibold">{(100 - conversionRate).toFixed(1)}%</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Avg session length:</span>
-                      <span className="font-semibold">{avgSessionLength.toFixed(1)} messages</span>
-                    </div>
+                <div className="p-4 bg-muted/50 rounded-lg border">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Target className="w-5 h-5 text-orange-600" />
+                    <h4 className="font-semibold">Improvement Recommendations</h4>
                   </div>
+                  <ul className="space-y-2 text-sm list-disc list-inside">
+                    <li>
+                      <strong>High-frequency topics</strong>: Consider creating dedicated guides for 
+                      top 3 topics ({topicStats.slice(0, 3).map(t => t.topic).join(', ')})
+                    </li>
+                    <li>
+                      <strong>Conversion optimization</strong>: Current rate is {conversionRate.toFixed(1)}%. 
+                      Analyze drop-off patterns to identify friction points in consultation booking flow.
+                    </li>
+                    <li>
+                      <strong>Peak usage support</strong>: Usage peaks at {hourlyStats.length > 0 
+                        ? `${hourlyStats.reduce((max, h) => h.count > max.count ? h : max).hour}:00`
+                        : "N/A"
+                      }. Ensure adequate monitoring and response capacity during peak hours.
+                    </li>
+                  </ul>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );
