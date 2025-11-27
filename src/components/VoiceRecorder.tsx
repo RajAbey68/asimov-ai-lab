@@ -13,6 +13,7 @@ interface VoiceRecorderProps {
 export default function VoiceRecorder({ onTranscription, language, disabled }: VoiceRecorderProps) {
   const [isRecording, setIsRecording] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [isAvailable, setIsAvailable] = useState(true);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
   const { toast } = useToast();
@@ -77,10 +78,23 @@ export default function VoiceRecorder({ onTranscription, language, disabled }: V
         body: { audio: base64Audio, language }
       });
 
-      if (error) throw error;
+      if (error) {
+        // Check if it's a configuration error
+        if (error.message?.includes('API_KEY_NOT_CONFIGURED')) {
+          console.log('Voice feature not available - API key not configured');
+          setIsAvailable(false);
+          return; // Silently disable without showing error toast
+        }
+        throw error;
+      }
 
       if (data?.text) {
         onTranscription(data.text);
+      } else if (data?.error?.code === 'API_KEY_NOT_CONFIGURED') {
+        // Service not available
+        console.log('Voice feature not available');
+        setIsAvailable(false);
+        return; // Silently disable
       } else {
         throw new Error('No transcription received');
       }
@@ -95,6 +109,11 @@ export default function VoiceRecorder({ onTranscription, language, disabled }: V
       setIsProcessing(false);
     }
   };
+
+  // Hide button if service is not available
+  if (!isAvailable) {
+    return null;
+  }
 
   return (
     <Button

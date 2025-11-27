@@ -42,6 +42,22 @@ serve(async (req) => {
   }
 
   try {
+    // Check if OpenAI API key is configured
+    const apiKey = Deno.env.get('OPENAI_API_KEY');
+    if (!apiKey) {
+      console.log('OPENAI_API_KEY not configured');
+      return new Response(
+        JSON.stringify({ 
+          error: 'Voice transcription requires OpenAI API key configuration',
+          code: 'API_KEY_NOT_CONFIGURED'
+        }),
+        {
+          status: 503,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
+      );
+    }
+
     const { audio, language } = await req.json();
     
     if (!audio) {
