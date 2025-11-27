@@ -30,7 +30,7 @@ const IntegratedDeliveryCycleDiagram = () => {
       asimov: "SPRINT",
       bmad: "Implementation (Scrum Master + Developer)",
       icon: Rocket,
-      activities: ["Story Files with Context", "Zero Context Loss", "Traceable Code", "Audit Evidence"],
+      activities: ["Context-Engineered Story Files", "Zero Context Loss", "Traceable Code", "Audit Evidence"],
       governance: "Compliant Code + Evidence",
       color: "from-blue-600 to-primary"
     }
@@ -149,8 +149,8 @@ const IntegratedDeliveryCycleDiagram = () => {
         <div className="grid md:grid-cols-4 gap-6">
           <div className="bg-card border border-border rounded-lg p-6 text-center">
             <Shield className="w-10 h-10 mx-auto mb-3 text-primary" />
-            <h4 className="font-bold mb-2 text-foreground">Zero Context Loss</h4>
-            <p className="text-sm text-muted-foreground">Governance constraints embedded in every story file—agents never forget regulatory requirements</p>
+            <h4 className="font-bold mb-2 text-foreground">Context Engineering</h4>
+            <p className="text-sm text-muted-foreground">Right information, right tools, right format—governance constraints embedded in every story file ensure agents never forget regulatory requirements</p>
           </div>
           <div className="bg-card border border-border rounded-lg p-6 text-center">
             <FileText className="w-10 h-10 mx-auto mb-3 text-primary" />
