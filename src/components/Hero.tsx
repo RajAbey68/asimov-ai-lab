@@ -113,15 +113,15 @@ const Hero = () => {
               <div className="grid gap-3">
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-1" />
-                  <p className="text-white/90">Navigate complex regulatory requirements without slowing down innovation</p>
+                  <p className="text-white/90">Navigate complex AI regulatory requirements without slowing down innovation</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-1" />
-                  <p className="text-white/90">Build audit-ready documentation and controls that satisfy board oversight</p>
+                  <p className="text-white/90">Build audit-ready documentation and controls for AI systems, AI Agents, and Voice Agents that satisfy board oversight</p>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-1" />
-                  <p className="text-white/90">Implement governance that scales with your AI systems—from prototype to production</p>
+                  <p className="text-white/90">Implement AI governance that scales with your Artificial Intelligence systems—from prototype to production</p>
                 </div>
               </div>
             </div>
