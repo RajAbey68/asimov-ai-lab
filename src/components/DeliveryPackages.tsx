@@ -45,6 +45,20 @@ const DeliveryPackages = () => {
         "Validation Dashboards"
       ],
       duration: "2-3 weeks"
+    },
+    {
+      icon: Activity,
+      name: "Context Engineering for AI Agents",
+      description: "Design and implementation of governance-aware context systems that provide AI agents with the right information and tools in the right format for reliable task execution.",
+      activities: ["Documentation (Traceable)", "Control Implementation (Framework-Based)"],
+      deliverables: [
+        "Context Source Inventory with Sensitivity Classification",
+        "Context Architecture Blueprint",
+        "RAG Strategy & Knowledge Base Design",
+        "Audit Logging for Context Access",
+        "Observability Dashboards"
+      ],
+      duration: "3-5 weeks"
     }
   ];
 
