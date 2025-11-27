@@ -77,140 +77,97 @@ const Hero = () => {
       <div className="container mx-auto px-4 py-24 lg:py-32 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-start max-w-7xl mx-auto" role="main">
           <div className="space-y-8">
-            {/* Main Headline */}
-            <div className="space-y-4">
+            {/* Mission Statement */}
+            <div className="space-y-6">
+              <div className="inline-block">
+                <span className="text-accent text-sm font-semibold tracking-wider uppercase bg-accent/10 px-4 py-2 rounded-full">
+                  AI Governance & Compliance
+                </span>
+              </div>
+              
               <h1 
                 id="hero-heading"
                 className="text-4xl lg:text-6xl font-bold leading-tight text-white"
               >
-                Navigate AI Governance with{" "}
-                <span className="text-accent">Confidence</span>
+                Make AI Governance{" "}
+                <span className="text-accent">Practical</span>{" "}
+                Not a Burden
               </h1>
-              <p className="text-xl lg:text-2xl text-white/80 leading-relaxed">
-                Strategic advisory for senior leadership teams managing AI risk, compliance, and ethical implementation across enterprise environments.
+              
+              <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">
+                We help organisations align with established frameworks including{" "}
+                <span className="font-semibold text-accent">EU AI Act</span>,{" "}
+                <span className="font-semibold text-accent">NIST AI RMF</span>,{" "}
+                <span className="font-semibold text-accent">ISO/IEC 42001</span>, and{" "}
+                <span className="font-semibold text-accent">GDPR</span>.
+              </p>
+
+              <p className="text-lg text-white/80 leading-relaxed border-l-4 border-accent pl-6 italic">
+                Our goal is to make AI governance practical and integrated into your existing workflows—not a compliance burden bolted on afterward.
               </p>
             </div>
 
-            {/* Delivery Phase Activities */}
-            <div className="flex flex-wrap items-center gap-6 pt-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
-                  <CheckCircle2 className="w-5 h-5 text-primary" />
+            {/* What We Solve */}
+            <div className="space-y-4 pt-6">
+              <h3 className="text-xl font-bold text-white">What We Solve</h3>
+              <div className="grid gap-3">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-1" />
+                  <p className="text-white/90">Navigate complex regulatory requirements without slowing down innovation</p>
                 </div>
-                <span className="text-sm font-medium text-white">Risk Mapping (Standards-Aligned)</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
-                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-1" />
+                  <p className="text-white/90">Build audit-ready documentation and controls that satisfy board oversight</p>
                 </div>
-                <span className="text-sm font-medium text-white">Control Implementation (Framework-Based)</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
-                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-1" />
+                  <p className="text-white/90">Implement governance that scales with your AI systems—from prototype to production</p>
                 </div>
-                <span className="text-sm font-medium text-white">Audit Preparation (Compliance-Ready)</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
-                  <CheckCircle2 className="w-5 h-5 text-primary" />
-                </div>
-                <span className="text-sm font-medium text-white">Documentation (Traceable)</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
-                  <CheckCircle2 className="w-5 h-5 text-primary" />
-                </div>
-                <span className="text-sm font-medium text-white">Test-Driven Validation</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
-                  <CheckCircle2 className="w-5 h-5 text-primary" />
-                </div>
-                <span className="text-sm font-medium text-white">Continuous Monitoring (Governance-Integrated)</span>
               </div>
             </div>
 
-            {/* Framework Mapping Expandable Section */}
-            <Collapsible 
-              open={isFrameworksOpen} 
-              onOpenChange={setIsFrameworksOpen}
-              className="pt-4"
-            >
-              <CollapsibleTrigger asChild>
-                <Button 
-                  variant="ghost" 
-                  className="flex items-center gap-2 text-white hover:text-accent hover:bg-white/10 p-3 w-full justify-center"
-                >
-                  <span className="text-sm font-medium">View Framework Alignment</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform ${isFrameworksOpen ? 'rotate-180' : ''}`} />
-                </Button>
-              </CollapsibleTrigger>
-              <CollapsibleContent className="pt-4">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20 space-y-4">
-                  <h4 className="text-lg font-semibold text-white mb-4">Standards-Aligned Delivery Activities</h4>
-                  
-                  <div className="space-y-3 text-sm">
-                    <div className="bg-white/5 rounded p-3">
-                      <p className="font-semibold text-accent mb-1">Risk Mapping (Standards-Aligned)</p>
-                      <p className="text-white/80">Guided by: EU AI Act (Articles 9-13), NIST AI RMF (Govern, Map), ISO/IEC 42001</p>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-3">
-                      <p className="font-semibold text-accent mb-1">Control Implementation (Framework-Based)</p>
-                      <p className="text-white/80">Guided by: COBIT 2019, ISO/IEC 27001, NIST AI RMF (Measure, Manage)</p>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-3">
-                      <p className="font-semibold text-accent mb-1">Audit Preparation (Compliance-Ready)</p>
-                      <p className="text-white/80">Guided by: ISACA Audit Framework, GDPR (Articles 35, 58), EU AI Act (Annex IV)</p>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-3">
-                      <p className="font-semibold text-accent mb-1">Documentation (Traceable)</p>
-                      <p className="text-white/80">Guided by: EU AI Act (Article 11), ISO/IEC 42001 (Documentation Controls), NIST AI RMF</p>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-3">
-                      <p className="font-semibold text-accent mb-1">Test-Driven Validation</p>
-                      <p className="text-white/80">Guided by: OWASP AI Security, MITRE ATLAS, ISO/IEC 27001 (Testing Controls)</p>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-3">
-                      <p className="font-semibold text-accent mb-1">Continuous Monitoring (Governance-Integrated)</p>
-                      <p className="text-white/80">Guided by: COBIT 2019 (MEA domain), NIST AI RMF, EU AI Act (Article 61)</p>
-                    </div>
-                  </div>
+            {/* Core Delivery Activities */}
+            <div className="space-y-4 pt-4">
+              <h3 className="text-xl font-bold text-white">Core Delivery Activities</h3>
+              <div className="grid grid-cols-2 gap-3">
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
+                  <span className="text-sm font-medium text-white">Risk Mapping</span>
                 </div>
-              </CollapsibleContent>
-            </Collapsible>
-
-            {/* Core Offerings */}
-            <div className="space-y-4 pt-8">
-              <h3 className="text-2xl font-bold text-white mb-4">Our Core Offerings</h3>
-              <div className="space-y-3">
-                <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <Shield className="w-6 h-6 text-accent shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-white mb-1">Regulatory Compliance Pillars</h4>
-                    <p className="text-sm text-white/80">Achieving EU AI Act Readiness and GDPR Compliant systems through comprehensive risk mapping.</p>
-                  </div>
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
+                  <span className="text-sm font-medium text-white">Control Implementation</span>
                 </div>
-                <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <Zap className="w-6 h-6 text-accent shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-white mb-1">MLOps Security Modules</h4>
-                    <p className="text-sm text-white/80">Hardening your CI/CD pipelines with audits informed by OWASP and threat modeling using MITRE ATLAS.</p>
-                  </div>
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
+                  <span className="text-sm font-medium text-white">Audit Preparation</span>
                 </div>
-                <div className="flex items-start gap-3 bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-                  <CheckCircle2 className="w-6 h-6 text-accent shrink-0 mt-1" />
-                  <div>
-                    <h4 className="font-semibold text-white mb-1">Governance & Audit Deliverables</h4>
-                    <p className="text-sm text-white/80">Implementing controls based on NIST AI RMF and COBIT 2019 to ensure clear board oversight.</p>
-                  </div>
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
+                  <span className="text-sm font-medium text-white">Documentation</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
+                  <span className="text-sm font-medium text-white">Test-Driven Validation</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
+                  <span className="text-sm font-medium text-white">Continuous Monitoring</span>
                 </div>
               </div>
+            </div>
+
+            {/* CTA */}
+            <div className="pt-6">
+              <Link to="/ai-assessment">
+                <Button 
+                  size="lg" 
+                  className="bg-accent text-primary hover:bg-accent/90 font-semibold text-lg px-8 py-6"
+                >
+                  Start Your AI Assessment
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
             </div>
           </div>
 
