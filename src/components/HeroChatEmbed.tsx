@@ -227,7 +227,7 @@ const HeroChatEmbed = () => {
 
   return (
     <>
-      <Card className="w-full h-[650px] shadow-xl flex flex-col border-2 border-accent/30 bg-card/95 backdrop-blur-sm">
+      <Card className="w-full h-[800px] shadow-xl flex flex-col border-2 border-accent/30 bg-card/95 backdrop-blur-sm">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 border-b bg-gradient-accent">
           <div className="flex flex-col">
             <CardTitle className="text-lg font-bold text-accent-foreground flex items-center gap-2">
@@ -308,7 +308,7 @@ const HeroChatEmbed = () => {
               onKeyDown={handleKeyPress}
               placeholder="Type your AI governance question here..."
               disabled={isLoading}
-              className="flex-1 h-12 text-base border-0 focus-visible:ring-0 bg-transparent"
+              className="flex-1 h-14 text-lg border-0 focus-visible:ring-0 bg-transparent placeholder:font-bold placeholder:text-muted-foreground"
             />
             <Button
               onClick={handleSend}
