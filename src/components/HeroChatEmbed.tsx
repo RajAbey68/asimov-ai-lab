@@ -59,6 +59,7 @@ const HeroChatEmbed = () => {
     try {
       const chatUrl = `${supabaseUrl}/functions/v1/asimov-chat`;
       console.log("Calling chat endpoint:", chatUrl);
+      console.log("With payload:", { messages: messagesWithLanguage });
       
       const response = await fetch(chatUrl, {
         method: "POST",
@@ -69,8 +70,12 @@ const HeroChatEmbed = () => {
           "x-session-id": sessionId,
         },
         body: JSON.stringify({ messages: messagesWithLanguage }),
+        signal: AbortSignal.timeout(60000), // 60 second timeout
       });
 
+      console.log("Response status:", response.status);
+      console.log("Response headers:", Object.fromEntries(response.headers.entries()));
+      
       if (!response.ok) {
         const errorText = await response.text();
         console.error("Edge function error:", response.status, errorText);
@@ -96,7 +101,12 @@ const HeroChatEmbed = () => {
         throw new Error(`HTTP ${response.status}: ${errorText}`);
       }
 
-      if (!response.body) throw new Error("No response body");
+      if (!response.body) {
+        console.error("No response body received");
+        throw new Error("No response body");
+      }
+      
+      console.log("Starting stream processing...");
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
@@ -176,13 +186,17 @@ const HeroChatEmbed = () => {
     } catch (error) {
       console.error("Chat error details:", {
         error,
+        errorName: error instanceof Error ? error.name : typeof error,
         message: error instanceof Error ? error.message : "Unknown error",
-        stack: error instanceof Error ? error.stack : undefined
+        stack: error instanceof Error ? error.stack : undefined,
+        type: error instanceof TypeError ? "TypeError" : error instanceof Error ? "Error" : "Unknown"
       });
       
       let errorMessage = "Failed to send message. Please try again.";
       
-      if (error instanceof TypeError && error.message.includes("fetch")) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        errorMessage = "Request timed out. Please try again.";
+      } else if (error instanceof TypeError && error.message.includes("fetch")) {
         errorMessage = "Unable to connect to chat service. Please check your internet connection.";
       } else if (error instanceof Error) {
         errorMessage = error.message;
