@@ -32,14 +32,30 @@ const AsimovChatWidget = () => {
   }, [messages]);
 
   const streamChat = async (userMessage: Message) => {
-    const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/asimov-chat`;
+    // Verify environment variables
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+    
+    if (!supabaseUrl || !supabaseKey) {
+      console.error("Missing environment variables:", { supabaseUrl, supabaseKey });
+      toast({
+        title: "Configuration Error",
+        description: "Chat service is not properly configured. Please contact support.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const chatUrl = `${supabaseUrl}/functions/v1/asimov-chat`;
+    console.log("Calling chat endpoint:", chatUrl);
     
     try {
-      const response = await fetch(CHAT_URL, {
+      const response = await fetch(chatUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          "apikey": supabaseKey,
+          "Authorization": `Bearer ${supabaseKey}`,
           "x-session-id": sessionId,
         },
         body: JSON.stringify({ messages: [...messages, userMessage] }),
@@ -150,10 +166,23 @@ const AsimovChatWidget = () => {
       }
 
     } catch (error) {
-      console.error("Chat error:", error);
+      console.error("Chat error details:", {
+        error,
+        message: error instanceof Error ? error.message : "Unknown error",
+        stack: error instanceof Error ? error.stack : undefined
+      });
+      
+      let errorMessage = "Failed to send message. Please try again.";
+      
+      if (error instanceof TypeError && error.message.includes("fetch")) {
+        errorMessage = "Unable to connect to chat service. Please check your internet connection.";
+      } else if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      
       toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
+        title: "Connection Error",
+        description: errorMessage,
         variant: "destructive",
       });
       // Remove the empty assistant message on error

@@ -37,25 +37,39 @@ const HeroChatEmbed = () => {
   }, [messages]);
 
   const streamChat = async (userMessage: Message) => {
+    // Verify environment variables
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+    
+    if (!supabaseUrl || !supabaseKey) {
+      console.error("Missing environment variables:", { supabaseUrl, supabaseKey });
+      toast({
+        title: "Configuration Error",
+        description: "Chat service is not properly configured. Please contact support.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     // Add language context to first message
     const messagesWithLanguage = messages.length === 1 // Only initial greeting
       ? [{ role: "system" as const, content: `User's preferred language: ${language}` }, userMessage]
       : [...messages, userMessage];
     
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/asimov-chat`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "apikey": import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-            "Authorization": `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
-            "x-session-id": sessionId,
-          },
-          body: JSON.stringify({ messages: messagesWithLanguage }),
-        }
-      );
+      const chatUrl = `${supabaseUrl}/functions/v1/asimov-chat`;
+      console.log("Calling chat endpoint:", chatUrl);
+      
+      const response = await fetch(chatUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": supabaseKey,
+          "Authorization": `Bearer ${supabaseKey}`,
+          "x-session-id": sessionId,
+        },
+        body: JSON.stringify({ messages: messagesWithLanguage }),
+      });
 
       if (!response.ok) {
         const errorText = await response.text();
@@ -160,10 +174,23 @@ const HeroChatEmbed = () => {
       }
 
     } catch (error) {
-      console.error("Chat error:", error);
+      console.error("Chat error details:", {
+        error,
+        message: error instanceof Error ? error.message : "Unknown error",
+        stack: error instanceof Error ? error.stack : undefined
+      });
+      
+      let errorMessage = "Failed to send message. Please try again.";
+      
+      if (error instanceof TypeError && error.message.includes("fetch")) {
+        errorMessage = "Unable to connect to chat service. Please check your internet connection.";
+      } else if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+      
       toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "Failed to send message. Please try again.",
+        title: "Connection Error",
+        description: errorMessage,
         variant: "destructive",
       });
       setMessages(prev => prev.slice(0, -1));
