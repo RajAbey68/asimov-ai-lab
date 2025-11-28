@@ -227,7 +227,7 @@ const HeroChatEmbed = () => {
 
   return (
     <>
-      <Card className="w-full h-[500px] shadow-xl flex flex-col border-2 border-accent/30 bg-card/95 backdrop-blur-sm">
+      <Card className="w-full h-[650px] shadow-xl flex flex-col border-2 border-accent/30 bg-card/95 backdrop-blur-sm">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4 border-b bg-gradient-accent">
           <div className="flex flex-col">
             <CardTitle className="text-lg font-bold text-accent-foreground flex items-center gap-2">
@@ -295,8 +295,8 @@ const HeroChatEmbed = () => {
           </div>
         </ScrollArea>
 
-        <div className="p-4 border-t bg-background/95 space-y-3">
-          <div className="flex gap-2">
+        <div className="p-4 border-t-2 bg-accent/5 space-y-3 border-accent/20">
+          <div className="flex gap-2 p-3 rounded-lg bg-background border-2 border-accent/40 shadow-sm hover:border-accent/60 transition-colors">
             <VoiceRecorder
               onTranscription={handleVoiceTranscription}
               language={language}
@@ -306,18 +306,18 @@ const HeroChatEmbed = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyPress}
-              placeholder="Ask about your AI governance needs..."
+              placeholder="Type your AI governance question here..."
               disabled={isLoading}
-              className="flex-1"
+              className="flex-1 h-12 text-base border-0 focus-visible:ring-0 bg-transparent"
             />
             <Button
               onClick={handleSend}
               disabled={!input.trim() || isLoading}
               size="icon"
-              className="shrink-0"
+              className="shrink-0 h-12 w-12"
               aria-label="Send message"
             >
-              <Send className="w-4 h-4" />
+              <Send className="w-5 h-5" />
             </Button>
           </div>
           <Button
