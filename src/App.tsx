@@ -451,7 +451,7 @@ function App() {
           </div>
 
           <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 Asimov-AI. All rights reserved. | Funded by <a href="https://www.fame.so/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">FAME</a></p>
+            <p>&copy; 2025 Asimov-AI. All rights reserved. | Funded by <a href="https://www.fame.so/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">FAME</a> | v2.1.0 (Priestley Edition)</p>
           </div>
         </div>
       </footer>
