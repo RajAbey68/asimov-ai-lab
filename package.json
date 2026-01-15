@@ -8,8 +8,9 @@
     "dev": "vite",
     "prebuild": "rm -rf dist .next node_modules/.vite",
     "build": "tsc && vite build",
+    "build:gh-pages": "tsc && vite build --base=/asimov-ai-lab/",
     "preview": "vite preview",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:gh-pages",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
