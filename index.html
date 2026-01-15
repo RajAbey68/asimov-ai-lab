@@ -15,6 +15,14 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@AsimovAI" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+
+    <!-- Security Hardening -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+    <!-- CSP: Allow scripts from self and Lovable/Supabase; styles from self/Google Fonts; fonts from Google; images from * (for flexibility) -->
+    <!-- Note: 'unsafe-inline' is often needed for styled-components/Vite dev, using strict CSP often requires hashes/nonces which is hard in static GH pages without build tooling support. We will try a reasonable policy. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.supabase.co https://*.supabase.in; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.lovable.dev; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://*.supabase.co https://*.supabase.in https://api.iconify.design; frame-src 'self' https://*.lovable.dev;" />
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
