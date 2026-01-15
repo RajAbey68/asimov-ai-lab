@@ -1,85 +1,73 @@
-# AI Advisory & Consulting Website
+# Welcome to your Lovable project
 
-A modern, responsive website for Asimov-AI, showcasing AI advisory and consulting services with a focus on governance, risk management, and compliance.
+## Project info
 
-## Features
+**URL**: https://lovable.dev/projects/f88cd766-bce8-40a0-838c-1b6d0a3b0bdb
 
-- **Modern UI**: Built with React, TypeScript, and TailwindCSS
-- **Responsive Design**: Mobile-first approach that works on all devices
-- **Beautiful Animations**: Smooth transitions and hover effects
-- **SEO Optimized**: Semantic HTML and meta tags for better discoverability
-- **Accessible**: Following WCAG guidelines for accessibility
+## How can I edit this code?
 
-## Tech Stack
+There are several ways of editing your application.
 
-- React 18
-- TypeScript
-- Vite
-- TailwindCSS
-- Lucide React (Icons)
+**Use Lovable**
 
-## Getting Started
+Simply visit the [Lovable Project](https://lovable.dev/projects/f88cd766-bce8-40a0-838c-1b6d0a3b0bdb) and start prompting.
 
-### Prerequisites
+Changes made via Lovable will be committed automatically to this repo.
 
-- Node.js (v18 or higher)
-- npm or yarn
+**Use your preferred IDE**
 
-### Installation
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-```bash
-# Install dependencies
-npm install
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-# Start development server
+Follow these steps:
+
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
+
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
 ```
 
-## Project Structure
+**Edit a file directly in GitHub**
 
-```
-├── src/
-│   ├── App.tsx          # Main application component
-│   ├── main.tsx         # Entry point
-│   └── index.css        # Global styles with TailwindCSS
-├── public/              # Static assets
-├── index.html           # HTML template
-└── package.json         # Dependencies and scripts
-```
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
 
-## Sections
+**Use GitHub Codespaces**
 
-- **Hero**: Eye-catching introduction with call-to-action
-- **About**: Overview of the company and expertise
-- **Methodology**: Asimov-AI Risk Methodology (Risk, Readiness, Returns)
-- **Team**: Core team members and their expertise
-- **Sectors**: Industries served
-- **Contact**: Get in touch section
-- **Footer**: Additional links and information
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
 
-## Customization
+## What technologies are used for this project?
 
-To customize the website:
+This project is built with:
 
-1. Update content in `src/App.tsx`
-2. Modify colors in `tailwind.config.js`
-3. Add new sections as needed
-4. Update contact information and links
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
 
-## Deployment
+## How can I deploy this project?
 
-This project can be deployed to:
-- Netlify
-- Vercel
-- GitHub Pages
-- Any static hosting service
+Simply open [Lovable](https://lovable.dev/projects/f88cd766-bce8-40a0-838c-1b6d0a3b0bdb) and click on Share -> Publish.
 
-## License
+## Can I connect a custom domain to my Lovable project?
 
-Copyright © 2025 Asimov-AI. All rights reserved.
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)

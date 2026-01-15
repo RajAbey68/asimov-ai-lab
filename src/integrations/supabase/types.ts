@@ -846,30 +846,6 @@ export type Database = {
         }
         Relationships: []
       }
-      newsletter_subscribers: {
-        Row: {
-          created_at: string | null
-          email: string
-          full_name: string
-          id: string
-          subscribed: boolean | null
-        }
-        Insert: {
-          created_at?: string | null
-          email: string
-          full_name: string
-          id?: string
-          subscribed?: boolean | null
-        }
-        Update: {
-          created_at?: string | null
-          email?: string
-          full_name?: string
-          id?: string
-          subscribed?: boolean | null
-        }
-        Relationships: []
-      }
       regions: {
         Row: {
           code: string
