@@ -1,14 +1,19 @@
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import HeroSection from "@/components/home/HeroSection";
+import ServicesSection from "@/components/home/ServicesSection";
+import CTASection from "@/components/home/CTASection";
+
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-foreground mb-4">
-          Welcome to Asimov AI Lab
-        </h1>
-        <p className="text-muted-foreground">
-          Your AI governance and compliance platform
-        </p>
-      </div>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-1">
+        <HeroSection />
+        <ServicesSection />
+        <CTASection />
+      </main>
+      <Footer />
     </div>
   );
 };
