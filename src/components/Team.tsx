@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Linkedin, MessageCircle } from "lucide-react";
+import { Linkedin, MessageCircle, Youtube } from "lucide-react";
 import nickLockettImg from "@/assets/nick-lockett.png";
 import sushilaNairImg from "@/assets/sushila-nair.png";
 import rajivAbeysingheImg from "@/assets/rajiv-abeysinghe.png";
@@ -11,10 +12,11 @@ import ConsultationIntakeDialog from "@/components/ConsultationIntakeDialog";
 const teamMembers = [
   {
     name: "Sushila Nair",
-    title: "Independent Cybersecurity Consultant",
+    title: "Cybersecurity Consultant",
     bio: "Former Vice President of Cybersecurity Services at Capgemini and NTT DATA. Award-winning security leader with deep expertise in enterprise security architecture, regulatory compliance (NIST, ISO 27001, PCI-DSS), and global security program development.",
     specialties: "Cybersecurity, AI Security, and Regulatory Audit",
     linkedin: "https://www.linkedin.com/in/sushilanair/",
+    youtube: "https://www.youtube.com/@cyberneticllc",
     image: sushilaNairImg,
     whatsapp: "+447733393956",
     telegram: "@SushilaNair",
@@ -56,6 +58,7 @@ const teamMembers = [
 
 const Team = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleContactClick = () => {
     setDialogOpen(true);
@@ -80,8 +83,8 @@ const Team = () => {
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {teamMembers.map((member, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="p-6 hover:shadow-xl transition-all duration-300 bg-card border-border/50"
             >
               <div className="text-center">
@@ -92,32 +95,47 @@ const Team = () => {
                     className="w-32 h-32 rounded-full mx-auto object-cover border-4 border-accent/20"
                   />
                 </div>
-                
+
                 <h3 className="text-2xl font-bold mb-2">{member.name}</h3>
-                
-                <a 
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent/80 transition-colors mb-3"
-                >
-                  <Linkedin className="w-4 h-4" />
-                  LinkedIn Profile
-                </a>
-                
+
+                <div className="flex flex-col items-center gap-2 mb-3">
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent/80 transition-colors"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                    LinkedIn Profile
+                  </a>
+                  {/* @ts-ignore */}
+                  {member.youtube && (
+                    <a
+                      /* @ts-ignore */
+                      href={member.youtube}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm text-accent hover:text-accent/80 transition-colors"
+                    >
+                      <Youtube className="w-4 h-4" />
+                      YouTube Channel
+                    </a>
+                  )}
+                </div>
+
                 <p className="text-lg font-semibold text-muted-foreground mb-3">
                   {member.title}
                 </p>
-                
+
                 <p className="text-sm text-muted-foreground mb-4">
                   {member.bio}
                 </p>
-                
+
                 <div className="mb-6 p-3 bg-accent/10 rounded-lg border border-accent/20">
                   <h4 className="text-xs font-semibold mb-2 text-accent uppercase tracking-wide">Specialties</h4>
                   <p className="text-sm text-foreground">{member.specialties}</p>
                 </div>
-                
+
                 <div className="mb-6 p-4 bg-muted/50 rounded-lg border border-border/50">
                   <h4 className="text-sm font-semibold mb-3 text-foreground">Online Consultation Rates</h4>
                   <p className="text-xs text-muted-foreground mb-3">
@@ -134,14 +152,25 @@ const Team = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 {member.name === "Rajiv AB" && (
-                  <Button 
+                  <Button
                     onClick={handleContactClick}
                     className="w-full"
                   >
                     <MessageCircle className="w-4 h-4 mr-2" />
                     Request Consultation
+                  </Button>
+                )}
+
+                {member.name === "Sushila Nair" && (
+                  <Button
+                    variant="outline"
+                    className="w-full border-accent text-accent hover:bg-accent hover:text-white"
+                    onClick={() => navigate('/sushi')}
+                  >
+                    <Youtube className="w-4 h-4 mr-2" />
+                    View AI Risk Session
                   </Button>
                 )}
               </div>

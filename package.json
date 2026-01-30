@@ -6,9 +6,9 @@
   "homepage": "https://RajAbey68.github.io/asimov-ai-lab",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "tsc && vite build --base=/ && cp dist/index.html dist/404.html",
     "build:dev": "vite build --mode development",
-    "build:gh-pages": "tsc && vite build --base=/asimov-ai-lab/",
+    "build:gh-pages": "tsc && vite build --base=/",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build:gh-pages",

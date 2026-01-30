@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import resourcesBg from "@/assets/resources-bg.jpg";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import { FileText, Video, ExternalLink, Download } from "lucide-react";
+import { FileText, Video, ExternalLink, Download, Notebook } from "lucide-react";
 
 const Resources = () => {
   const news = [
@@ -63,10 +63,25 @@ const Resources = () => {
     },
   ];
 
+  const notebooks = [
+    {
+      title: "Asimov AI Lab - Research Notebook",
+      description: "Interactive research assistant powered by Google's NotebookLM. Ask questions about our framework, methodology, and AI safety principles.",
+      source: "Google NotebookLM",
+      url: "https://notebooklm.google.com/notebook/960f1b5d-6ae4-4c97-b21c-ddfa3d0ee582",
+    },
+    {
+      title: "Asimov AI Lab - Research Notebook (Secondary)",
+      description: "Additional interactive analysis and reference materials for ongoing research tracks.",
+      source: "Google NotebookLM",
+      url: "https://notebooklm.google.com/notebook/b9e999f2-b602-4c3c-b794-5b3f8ca5570b",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <div className="pt-24 pb-16 relative">
         <div className="absolute inset-0 z-0">
           <img src={resourcesBg} alt="" className="w-full h-full object-cover opacity-40" />
@@ -82,10 +97,11 @@ const Resources = () => {
             </div>
 
             <Tabs defaultValue="news" className="space-y-8">
-              <TabsList className="grid w-full max-w-3xl mx-auto grid-cols-3">
+              <TabsList className="grid w-full max-w-4xl mx-auto grid-cols-4">
                 <TabsTrigger value="news">News</TabsTrigger>
                 <TabsTrigger value="videos">Videos</TabsTrigger>
                 <TabsTrigger value="papers">Papers & RFCs</TabsTrigger>
+                <TabsTrigger value="notebooks">Notebooks</TabsTrigger>
               </TabsList>
 
               <TabsContent value="news" className="space-y-6">
@@ -105,9 +121,9 @@ const Resources = () => {
                               <span className="text-sm text-muted-foreground">{item.date}</span>
                             </div>
                           </div>
-                          <Button 
-                            variant="outline" 
-                            size="sm" 
+                          <Button
+                            variant="outline"
+                            size="sm"
                             className="gap-2"
                             onClick={() => window.open(item.url, '_blank')}
                           >
@@ -176,7 +192,7 @@ const Resources = () => {
                           <div className="prose prose-sm max-w-none text-muted-foreground space-y-6">
                             <div>
                               <h3 className="text-lg font-semibold text-foreground mb-3">Part 1: How the EU AI Act v5 (Legal) Differs from COBIT/NIST (Frameworks)</h3>
-                              
+
                               <div className="space-y-4">
                                 <div>
                                   <h4 className="font-semibold text-foreground mb-2">1) Source of Authority</h4>
@@ -319,6 +335,37 @@ const Resources = () => {
                           </div>
                         </CardContent>
                       )}
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="notebooks" className="space-y-6">
+                <div className="grid gap-6">
+                  {notebooks.map((item, index) => (
+                    <Card key={index} className="border-border hover:border-accent/50 transition-all group">
+                      <CardHeader>
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 rounded-lg bg-gradient-accent flex items-center justify-center group-hover:scale-110 transition-transform">
+                            <Notebook className="w-6 h-6 text-accent-foreground" />
+                          </div>
+                          <div className="flex-1">
+                            <CardTitle className="text-xl mb-2">{item.title}</CardTitle>
+                            <CardDescription>{item.description}</CardDescription>
+                            <div className="flex items-center gap-4 mt-4">
+                              <span className="text-sm font-medium text-accent">{item.source}</span>
+                            </div>
+                          </div>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="gap-2"
+                            onClick={() => window.open(item.url, '_blank')}
+                          >
+                            Open Notebook <ExternalLink className="w-4 h-4" />
+                          </Button>
+                        </div>
+                      </CardHeader>
                     </Card>
                   ))}
                 </div>

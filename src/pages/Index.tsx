@@ -6,8 +6,7 @@ import RiskProfileSelector from "@/components/RiskProfileSelector";
 import ServiceTiers from "@/components/ServiceTiers";
 import ServicePillars from "@/components/ServicePillars";
 import DeliveryPackages from "@/components/DeliveryPackages";
-import AsimovMethodology from "@/components/AsimovMethodology";
-import MethodologyFlowDiagram from "@/components/MethodologyFlowDiagram";
+import RajivMethodology from "@/components/RajivMethodology";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import Team from "@/components/Team";
 import BookConsultationSection from "@/components/BookConsultationSection";
@@ -31,8 +30,7 @@ const Index = () => {
       </div>
       <ServiceTiers />
       <DeliveryPackages />
-      <AsimovMethodology />
-      <MethodologyFlowDiagram />
+      <RajivMethodology />
       <TestimonialCarousel />
       <CTARibbon />
       <Team />

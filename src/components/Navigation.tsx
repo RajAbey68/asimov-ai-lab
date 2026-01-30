@@ -4,8 +4,8 @@ import { Brain, Mail, Phone } from "lucide-react";
 
 const Navigation = () => {
   return (
-    <nav 
-      role="navigation" 
+    <nav
+      role="navigation"
       aria-label="Main navigation"
       className="fixed top-0 w-full bg-background/80 backdrop-blur-lg border-b border-border z-50"
     >
@@ -17,40 +17,40 @@ const Navigation = () => {
               Asimov AI
             </span>
           </Link>
-          
+
           <div className="hidden md:flex flex-col gap-3" role="menubar" aria-label="Primary navigation">
             {/* Top Row - Main Navigation (Double Size) */}
             <div className="flex items-center gap-8">
-              <Link 
-                to="/" 
+              <Link
+                to="/"
                 className="text-2xl text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
                 role="menuitem"
               >
                 Home
               </Link>
-              <Link 
-                to="/assessment" 
+              <Link
+                to="/assessment"
                 className="text-2xl text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
                 role="menuitem"
               >
                 AI Assessment
               </Link>
-              <Link 
-                to="/team" 
+              <Link
+                to="/team"
                 className="text-2xl text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
                 role="menuitem"
               >
                 Practice Leads
               </Link>
-              <Link 
-                to="/framework" 
+              <Link
+                to="/framework"
                 className="text-2xl text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
                 role="menuitem"
               >
                 Frameworks Covered
               </Link>
-              <Link 
-                to="/sectors" 
+              <Link
+                to="/sectors"
                 className="text-2xl text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
                 role="menuitem"
               >
@@ -60,27 +60,33 @@ const Navigation = () => {
 
             {/* Second Row - Resources & Coming Soon */}
             <div className="flex items-center gap-6">
-              <Link 
-                to="/resources" 
+              <Link
+                to="/resources"
                 className="text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
                 role="menuitem"
               >
                 Resources
               </Link>
+              <Link
+                to="/sushi"
+                className="text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
+                role="menuitem"
+              >
+                AI Risk Session
+              </Link>
               <span className="text-muted-foreground px-2 py-1">Coming Soon</span>
-              <span className="text-muted-foreground px-2 py-1">Coming Soon</span>
-              
+
               <div className="flex items-center gap-4 ml-4 pl-4 border-l border-border" role="group" aria-label="Contact information">
-                <a 
-                  href="mailto:info@asimov-ai.org" 
+                <a
+                  href="mailto:info@asimov-ai.org"
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
                   aria-label="Email us at info@asimov-ai.org"
                 >
                   <Mail className="w-4 h-4" aria-hidden="true" />
                   <span className="hidden lg:inline">info@asimov-ai.org</span>
                 </a>
-                <a 
-                  href="tel:+447733393956" 
+                <a
+                  href="tel:+447733393956"
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
                   aria-label="Call or message us on WhatsApp or Telegram at +44 7733 393956"
                 >
@@ -91,7 +97,7 @@ const Navigation = () => {
             </div>
           </div>
 
-          <Button 
+          <Button
             className="bg-accent hover:bg-accent/90"
             onClick={() => {
               const element = document.getElementById('book-consultation');

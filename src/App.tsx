@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -14,6 +14,7 @@ import AssessmentInfo from "./pages/AssessmentInfo";
 import Resources from "./pages/Resources";
 import Framework from "./pages/Framework";
 import TeamPage from "./pages/Team";
+import Sushi from "./pages/Sushi";
 import Sectors from "./pages/Sectors";
 import AdminMedia from "./pages/AdminMedia";
 import AdminControlsImport from "./pages/AdminControlsImport";
@@ -32,7 +33,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <HashRouter>
           <AuthProvider>
             <Routes>
               <Route path="/" element={<Index />} />
@@ -87,11 +88,12 @@ const App = () => (
               <Route path="/resources" element={<Resources />} />
               <Route path="/sectors" element={<Sectors />} />
               <Route path="/team" element={<TeamPage />} />
+              <Route path="/sushi" element={<Sushi />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AuthProvider>
-        </BrowserRouter>
+        </HashRouter>
       </TooltipProvider>
     </QueryClientProvider>
   </ErrorBoundary>
