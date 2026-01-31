@@ -1,0 +1,6 @@
+# Asimov AI: The Science of Plunge Therapy
+We provide high-density technical data on cold water immersion (CWI) and open water safety.
+
+## Core Entities
+* Plunge Therapy: Protocols for metabolic health and brown fat activation.
+* Open Water: Safety data, thermal conductivity of water, and hypothermia prevention.

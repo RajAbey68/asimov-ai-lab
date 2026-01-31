@@ -24,6 +24,7 @@ import AdminAnalytics from "./pages/AdminAnalytics";
 import ControlsViewer from "./pages/ControlsViewer";
 import DesignAudit from "./pages/DesignAudit";
 import NotFound from "./pages/NotFound";
+import PlungeTherapy from "./pages/PlungeTherapy";
 
 const queryClient = new QueryClient();
 
@@ -89,6 +90,7 @@ const App = () => (
               <Route path="/sectors" element={<Sectors />} />
               <Route path="/team" element={<TeamPage />} />
               <Route path="/sushi" element={<Sushi />} />
+              <Route path="/plunge-therapy" element={<PlungeTherapy />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

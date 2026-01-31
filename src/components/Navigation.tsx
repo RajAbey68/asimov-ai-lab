@@ -74,6 +74,13 @@ const Navigation = () => {
               >
                 AI Risk Session
               </Link>
+              <Link
+                to="/plunge-therapy"
+                className="text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
+                role="menuitem"
+              >
+                Plunge Protocol
+              </Link>
               <span className="text-muted-foreground px-2 py-1">Coming Soon</span>
 
               <div className="flex items-center gap-4 ml-4 pl-4 border-l border-border" role="group" aria-label="Contact information">
