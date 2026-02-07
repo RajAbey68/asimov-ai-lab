@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info:
+  title: Asimov Service API
+  version: 1.0.0
+  description: Core API for AI agent orchestration and semantic retrieval.
+paths:
+  /healthz:
+    get:
+      summary: Liveness/Readiness probe
+      responses:
+        '200':
+          description: Service is healthy
+  /v1/agents/search:
+    post:
+      summary: Perform semantic search via Asimov
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                top_k:
+                  type: integer
+                  default: 5
+      responses:
+        '200':
+          description: Search results retrieved successfully
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

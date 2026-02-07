@@ -23,11 +23,11 @@ const Index = () => {
       <Navigation />
       <FloatingCTA />
       <Hero />
-      <Services />
-      <ProvenResults />
       <div id="risk-profiles">
         <RiskProfileSelector />
       </div>
+      <Services />
+      <ProvenResults />
       <ServiceTiers />
       <DeliveryPackages />
       <RajivMethodology />

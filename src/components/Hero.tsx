@@ -44,7 +44,7 @@ const Hero = () => {
   };
 
   return (
-    <section 
+    <section
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero"
       aria-labelledby="hero-heading"
     >
@@ -80,89 +80,74 @@ const Hero = () => {
             {/* Mission Statement */}
             <div className="space-y-6">
               <div className="inline-block">
-                <span className="text-accent text-sm font-semibold tracking-wider uppercase bg-accent/10 px-4 py-2 rounded-full">
+                <span className="text-brand-blue text-sm font-bold tracking-wider uppercase bg-blue-50 px-4 py-2 rounded-full border border-blue-100">
                   AI Governance & Compliance
                 </span>
               </div>
-              
-              <h1 
+
+              <h1
                 id="hero-heading"
-                className="text-4xl lg:text-6xl font-bold leading-tight text-white"
+                className="text-4xl lg:text-6xl font-medium leading-tight text-slate-900 font-display"
               >
                 Make AI Governance{" "}
-                <span className="text-accent">Practical</span>{" "}
+                <span className="text-brand-blue">Practical</span>{" "}
                 Not a Burden
               </h1>
-              
-              <p className="text-xl lg:text-2xl text-white/90 leading-relaxed">
+
+              <p className="text-xl lg:text-2xl text-slate-600 leading-relaxed font-sans">
                 We help organisations align with established frameworks including{" "}
-                <span className="font-semibold text-accent">EU AI Act</span>,{" "}
-                <span className="font-semibold text-accent">NIST AI RMF</span>,{" "}
-                <span className="font-semibold text-accent">ISO/IEC 42001</span>, and{" "}
-                <span className="font-semibold text-accent">GDPR</span>.
+                <span className="font-semibold text-brand-blue">EU AI Act</span>,{" "}
+                <span className="font-semibold text-brand-blue">NIST AI RMF</span>,{" "}
+                <span className="font-semibold text-brand-blue">ISO/IEC 42001</span>, and{" "}
+                <span className="font-semibold text-brand-blue">GDPR</span>.
               </p>
 
-              <p className="text-lg text-white/80 leading-relaxed border-l-4 border-accent pl-6 italic">
+              <p className="text-lg text-slate-500 leading-relaxed border-l-4 border-brand-blue pl-6 italic">
                 Our goal is to make AI governance practical and integrated into your existing workflows—not a compliance burden bolted on afterward.
               </p>
             </div>
 
             {/* What We Solve */}
             <div className="space-y-4 pt-6">
-              <h3 className="text-xl font-bold text-white">What We Solve</h3>
+              <h3 className="text-xl font-bold text-slate-900 font-display">What We Solve</h3>
               <div className="grid gap-3">
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-1" />
-                  <p className="text-white/90">Navigate complex AI regulatory requirements without slowing down innovation</p>
+                  <CheckCircle2 className="w-5 h-5 text-brand-blue shrink-0 mt-1" />
+                  <p className="text-slate-600">Navigate complex AI regulatory requirements without slowing down innovation</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-1" />
-                  <p className="text-white/90">Build audit-ready documentation and controls for AI systems, AI Agents, and Voice Agents that satisfy board oversight</p>
+                  <CheckCircle2 className="w-5 h-5 text-brand-blue shrink-0 mt-1" />
+                  <p className="text-slate-600">Build audit-ready documentation and controls for AI systems, AI Agents, and Voice Agents that satisfy board oversight</p>
                 </div>
                 <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-accent shrink-0 mt-1" />
-                  <p className="text-white/90">Implement AI governance that scales with your Artificial Intelligence systems—from prototype to production</p>
+                  <CheckCircle2 className="w-5 h-5 text-brand-blue shrink-0 mt-1" />
+                  <p className="text-slate-600">Implement AI governance that scales with your Artificial Intelligence systems—from prototype to production</p>
                 </div>
               </div>
             </div>
 
             {/* Core Delivery Activities */}
             <div className="space-y-4 pt-4">
-              <h3 className="text-xl font-bold text-white">Core Delivery Activities</h3>
+              <h3 className="text-xl font-bold text-slate-900 font-display">Core Delivery Activities</h3>
               <div className="grid grid-cols-2 gap-3">
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span className="text-sm font-medium text-white">Risk Mapping</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span className="text-sm font-medium text-white">Control Implementation</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span className="text-sm font-medium text-white">Audit Preparation</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span className="text-sm font-medium text-white">Documentation</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span className="text-sm font-medium text-white">Test-Driven Validation</span>
-                </div>
-                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span className="text-sm font-medium text-white">Continuous Monitoring</span>
-                </div>
+                {[
+                  "Risk Mapping", "Control Implementation", "Audit Preparation",
+                  "Documentation", "Test-Driven Validation", "Continuous Monitoring"
+                ].map((activity, i) => (
+                  <div key={i} className="flex items-center gap-2 bg-white rounded-lg px-4 py-3 border border-slate-200 shadow-sm">
+                    <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
+                    <span className="text-sm font-medium text-slate-700">{activity}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
             {/* CTA */}
             <div className="pt-6">
               <Link to="/ai-assessment">
-                <Button 
-                  size="lg" 
-                  className="bg-accent text-primary hover:bg-accent/90 font-semibold text-lg px-8 py-6"
+                <Button
+                  size="lg"
+                  className="bg-brand-blue text-white hover:bg-blue-600 font-semibold text-lg px-8 py-6 shadow-lg shadow-brand-blue/20"
                 >
                   Start Your AI Assessment
                   <ArrowRight className="ml-2 h-5 w-5" />

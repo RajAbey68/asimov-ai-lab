@@ -13,7 +13,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Open Sans', 'system-ui', 'sans-serif'],
+        "display": ["Playfair Display", "serif"],
+        "sans": ["Inter", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -21,10 +22,13 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+        "primary": {
+          DEFAULT: "#135bec",
+          foreground: "#ffffff",
         },
+        "brand-blue": "#0052FF",
+        "off-white": "#f8f9fb",
+        "neutral-gray": "#f1f3f5",
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",

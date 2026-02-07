@@ -29,7 +29,7 @@ const Navigation = () => {
                 Home
               </Link>
               <Link
-                to="/assessment"
+                to="/assessment-info"
                 className="text-2xl text-foreground hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 rounded-sm px-2 py-1"
                 role="menuitem"
               >

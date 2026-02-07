@@ -9,42 +9,38 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 223 63% 33%;
+    --foreground: 222 47% 11%; /* Slate 900 */
 
     --card: 0 0% 100%;
-    --card-foreground: 223 63% 33%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 223 63% 33%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 223 63% 33%;
+    --primary: 221 100% 50%; /* Asimov Blue #0052FF */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96%;
-    --secondary-foreground: 223 63% 33%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 45 100% 51%;
-    --accent-foreground: 223 63% 33%;
+    --accent: 221 100% 50%; /* Asimov Blue (No Gold) */
+    --accent-foreground: 0 0% 100%;
 
-    --warning: 45 100% 51%;
-    --warning-foreground: 223 63% 33%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 100% 50%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 45 100% 51%;
+    --radius: 0.5rem;
 
-    --radius: 0.75rem;
-
-    --gradient-primary: linear-gradient(135deg, hsl(223 63% 33%) 0%, hsl(223 63% 40%) 100%);
-    --gradient-hero: linear-gradient(to bottom right, hsl(223 63% 33%) 0%, hsl(223 55% 38%) 50%, hsl(223 63% 33%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(45 100% 51%) 0%, hsl(38 100% 48%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 14% 98%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(221 100% 50%) 0%, hsl(221 100% 40%) 100%);
+    --gradient-hero: linear-gradient(to bottom, #ffffff 0%, #f1f5f9 100%); /* White/Slate-50 subtle gradient */
+    --gradient-accent: linear-gradient(135deg, hsl(221 100% 50%) 0%, hsl(221 100% 40%) 100%);
   }
 
   .dark {

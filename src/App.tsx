@@ -24,6 +24,9 @@ import AdminAnalytics from "./pages/AdminAnalytics";
 import ControlsViewer from "./pages/ControlsViewer";
 import DesignAudit from "./pages/DesignAudit";
 import NotFound from "./pages/NotFound";
+import StrategicDelivery from "./pages/StrategicDelivery";
+import StyleGuide from "./pages/StyleGuide";
+import Insights from "./pages/Insights";
 
 
 const queryClient = new QueryClient();
@@ -90,6 +93,9 @@ const App = () => (
               <Route path="/sectors" element={<Sectors />} />
               <Route path="/team" element={<TeamPage />} />
               <Route path="/sushi" element={<Sushi />} />
+              <Route path="/strategic-delivery" element={<StrategicDelivery />} />
+              <Route path="/style-guide" element={<StyleGuide />} />
+              <Route path="/insights" element={<Insights />} />
 
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
