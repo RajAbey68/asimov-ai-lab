@@ -41,7 +41,7 @@ const Assessment = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <FloatingCTA />
-      
+
       <div className="pt-24 pb-16 relative">
         <div className="absolute inset-0 z-0">
           <img src={assessmentBg} alt="" className="w-full h-full object-cover opacity-40" />
@@ -49,47 +49,49 @@ const Assessment = () => {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-7xl mx-auto">
-            {/* Hero Section */}
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
-                <Shield className="w-4 h-4 text-accent" />
-                <span className="text-sm text-accent font-medium">Expert AI Risk Assessment & Compliance</span>
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">AI Governance Starts with Clarity: Assess, Align, Decide, Deliver.</h1>
-              <p className="text-lg text-accent/90 max-w-3xl mx-auto mb-2 italic">
-                Subtly reinterprets the OODA loop for strategic leadership in AI risk.
-              </p>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                Our proven framework helps you identify, assess, and mitigate AI risks to achieve compliance with EU AI Act, NIST, and ISO/IEC 42001 standards
-              </p>
-              <div className="mt-8">
-                <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-lg shadow-lg">
-                  <a href="#request-form">
-                    Request free Initial call <ArrowRight className="ml-2 w-5 h-5" />
-                  </a>
-                </Button>
-              </div>
-            </div>
-
-            {/* Compliance Illustration */}
-            <div className="mb-12">
-              <Card className="border-border overflow-hidden">
-                <div className="relative h-[400px]">
-                  <img 
-                    src={aiCompliance} 
-                    alt="AI Compliance and Assessment showing checklists, risk matrices, regulatory documents, and compliance badges" 
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent flex items-end">
-                    <div className="p-8 w-full">
-                      <h2 className="text-2xl md:text-3xl font-bold mb-2">Comprehensive Risk Assessment</h2>
-                <p className="text-muted-foreground max-w-3xl">
-                  Our methodology provides systematic evaluation across legal, ethical, and technical dimensions to ensure AI systems meet regulatory requirements and organisational standards.
-                </p>
-                    </div>
-                  </div>
+            {/* Hero Section with Video */}
+            <div className="grid lg:grid-cols-2 gap-12 mb-16 items-center">
+              <div className="text-left">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
+                  <Shield className="w-4 h-4 text-accent" />
+                  <span className="text-sm text-accent font-medium">Expert AI Risk Assessment & Compliance</span>
                 </div>
-              </Card>
+                <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">AI Governance Starts with Clarity: Assess, Align, Decide, Deliver.</h1>
+                <p className="text-lg text-accent/90 mb-4 italic">
+                  Subtly reinterprets the OODA loop for strategic leadership in AI risk.
+                </p>
+                <p className="text-xl text-muted-foreground mb-8">
+                  Our proven framework helps you identify, assess, and mitigate AI risks to achieve compliance with EU AI Act, NIST, and ISO/IEC 42001 standards
+                </p>
+                <div>
+                  <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-lg shadow-lg">
+                    <a href="#request-form">
+                      Request free Initial call <ArrowRight className="ml-2 w-5 h-5" />
+                    </a>
+                  </Button>
+                </div>
+              </div>
+
+              {/* Video Card */}
+              <div className="w-full">
+                <Card className="border-border overflow-hidden shadow-xl">
+                  <div className="aspect-video w-full">
+                    <iframe
+                      className="w-full h-full"
+                      src="https://www.youtube.com/embed/5pZtNmQL9aY"
+                      title="ISACA GWDC Insights - AI in the Crosshairs"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                  <div className="p-4 bg-card">
+                    <h2 className="text-xl font-bold mb-1">ISACA GWDC Insights: AI in the Crosshairs</h2>
+                    <p className="text-sm text-muted-foreground">
+                      Join cybersecurity strategist Sushila Nair and technology lawyer Nick Lockett for a candid discussion on AI risk.
+                    </p>
+                  </div>
+                </Card>
+              </div>
             </div>
 
             {/* Overview Section */}
@@ -198,9 +200,9 @@ const Assessment = () => {
 
                 {/* Lifecycle Diagram */}
                 <div className="flex justify-center my-8">
-                  <img 
-                    src={aiMlLifecycle} 
-                    alt="AI/ML Lifecycle showing continuous flow between Data Collection, Training, Validation, Inference, Monitoring, and Deployment phases with alternating quantitative and qualitative gates" 
+                  <img
+                    src={aiMlLifecycle}
+                    alt="AI/ML Lifecycle showing continuous flow between Data Collection, Training, Validation, Inference, Monitoring, and Deployment phases with alternating quantitative and qualitative gates"
                     className="max-w-md w-full h-auto"
                   />
                 </div>
@@ -211,7 +213,7 @@ const Assessment = () => {
                   <p className="text-muted-foreground text-center mb-6">
                     Here are practical examples of quantitative and qualitative phase gates for each stage in the AI/ML lifecycle:
                   </p>
-                  
+
                   <div className="overflow-x-auto">
                     <table className="w-full border-collapse">
                       <thead>
@@ -394,7 +396,7 @@ const Assessment = () => {
                         Financial services must comply with Basel III capital requirements, Fair Lending Act provisions for credit decisioning, and SEC AI risk disclosure guidelines. MLOps frameworks embed model risk management (MRM) practices including independent validation, back-testing, and stress testing directly into CI/CD workflows.
                       </p>
                     </div>
-                    
+
                     <div className="p-5 rounded-lg bg-green-500/5 border border-green-500/20">
                       <div className="flex items-start gap-3 mb-3">
                         <Heart className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" />
@@ -404,7 +406,7 @@ const Assessment = () => {
                         Healthcare and life sciences face HIPAA privacy requirements, FDA regulations for AI-powered diagnostics, and EU AI Act high-risk classification. Pre-Cert Cybersecurity Plans (PCCP) and Total Product Lifecycle (TPLC) frameworks integrate with CI/CD to enable compliant adaptive ML models that can update post-deployment.
                       </p>
                     </div>
-                    
+
                     <div className="p-5 rounded-lg bg-orange-500/5 border border-orange-500/20">
                       <div className="flex items-start gap-3 mb-3">
                         <Shield className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
@@ -629,153 +631,153 @@ const Assessment = () => {
                     Help us understand your current situation so we can assign the best subject matter and domain experts for your consultation call. We'll discuss your observations, agree on orientation, make decisions, and define next actions.
                   </CardDescription>
                 </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Contact Information */}
-                  <div className="grid md:grid-cols-2 gap-4">
+                <CardContent>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Contact Information */}
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="name">Full Name *</Label>
+                        <Input
+                          id="name"
+                          placeholder="Your name"
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          required
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="email">Email Address *</Label>
+                        <Input
+                          id="email"
+                          type="email"
+                          placeholder="your.email@company.com"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input
+                          id="phone"
+                          type="tel"
+                          placeholder="+1 (555) 000-0000"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="organization">Organization/Company *</Label>
+                        <Input
+                          id="organization"
+                          placeholder="Your organization name"
+                          value={formData.organization}
+                          onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    {/* Industry & AI System Details */}
                     <div className="space-y-2">
-                      <Label htmlFor="name">Full Name *</Label>
-                      <Input
-                        id="name"
-                        placeholder="Your name"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      <Label htmlFor="industry">Industry/Sector *</Label>
+                      <Select
+                        value={formData.industry}
+                        onValueChange={(value) => setFormData({ ...formData, industry: value })}
+                        required
+                      >
+                        <SelectTrigger id="industry">
+                          <SelectValue placeholder="Select your industry" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="financial">Financial Services & Banking</SelectItem>
+                          <SelectItem value="healthcare">Healthcare & Life Sciences</SelectItem>
+                          <SelectItem value="government">Government & Public Sector</SelectItem>
+                          <SelectItem value="critical-infrastructure">Critical Infrastructure & Defense</SelectItem>
+                          <SelectItem value="technology">Technology & Software</SelectItem>
+                          <SelectItem value="retail">Retail & E-commerce</SelectItem>
+                          <SelectItem value="manufacturing">Manufacturing & Industrial</SelectItem>
+                          <SelectItem value="education">Education & Research</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="aiSystemType">AI System Type *</Label>
+                      <Select
+                        value={formData.aiSystemType}
+                        onValueChange={(value) => setFormData({ ...formData, aiSystemType: value })}
+                        required
+                      >
+                        <SelectTrigger id="aiSystemType">
+                          <SelectValue placeholder="Select AI system type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="generative-ai">Generative AI / LLMs</SelectItem>
+                          <SelectItem value="nlp">Natural Language Processing</SelectItem>
+                          <SelectItem value="computer-vision">Computer Vision</SelectItem>
+                          <SelectItem value="predictive">Predictive Analytics / ML</SelectItem>
+                          <SelectItem value="decision-making">Automated Decision-Making</SelectItem>
+                          <SelectItem value="recommendation">Recommendation Systems</SelectItem>
+                          <SelectItem value="robotics">Robotics / Autonomous Systems</SelectItem>
+                          <SelectItem value="other">Other AI Application</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="currentStage">Current Project Stage *</Label>
+                      <Select
+                        value={formData.currentStage}
+                        onValueChange={(value) => setFormData({ ...formData, currentStage: value })}
+                        required
+                      >
+                        <SelectTrigger id="currentStage">
+                          <SelectValue placeholder="Select current stage" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="planning">Planning / Concept Phase</SelectItem>
+                          <SelectItem value="development">Development / Training</SelectItem>
+                          <SelectItem value="testing">Testing / Validation</SelectItem>
+                          <SelectItem value="deployment">Ready for Deployment</SelectItem>
+                          <SelectItem value="production">In Production / Live</SelectItem>
+                          <SelectItem value="maintenance">Maintenance / Monitoring</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    {/* Main Concerns & Objectives */}
+                    <div className="space-y-2">
+                      <Label htmlFor="mainConcerns">Main Concerns & Objectives *</Label>
+                      <Textarea
+                        id="mainConcerns"
+                        placeholder="What are your main concerns? What do you hope to achieve from this consultation? (e.g., compliance requirements, risk assessment, ethical considerations, technical challenges...)"
+                        value={formData.mainConcerns}
+                        onChange={(e) => setFormData({ ...formData, mainConcerns: e.target.value })}
+                        rows={5}
                         required
                       />
                     </div>
+
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
+                      <Label htmlFor="preferredDate">Preferred Call Date/Time</Label>
                       <Input
-                        id="email"
-                        type="email"
-                        placeholder="your.email@company.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        required
+                        id="preferredDate"
+                        placeholder="e.g., Next week, Monday 2pm EST, or ASAP"
+                        value={formData.preferredDate}
+                        onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
                       />
                     </div>
-                  </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number</Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        placeholder="+1 (555) 000-0000"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="organization">Organization/Company *</Label>
-                      <Input
-                        id="organization"
-                        placeholder="Your organization name"
-                        value={formData.organization}
-                        onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  {/* Industry & AI System Details */}
-                  <div className="space-y-2">
-                    <Label htmlFor="industry">Industry/Sector *</Label>
-                    <Select
-                      value={formData.industry}
-                      onValueChange={(value) => setFormData({ ...formData, industry: value })}
-                      required
-                    >
-                      <SelectTrigger id="industry">
-                        <SelectValue placeholder="Select your industry" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="financial">Financial Services & Banking</SelectItem>
-                        <SelectItem value="healthcare">Healthcare & Life Sciences</SelectItem>
-                        <SelectItem value="government">Government & Public Sector</SelectItem>
-                        <SelectItem value="critical-infrastructure">Critical Infrastructure & Defense</SelectItem>
-                        <SelectItem value="technology">Technology & Software</SelectItem>
-                        <SelectItem value="retail">Retail & E-commerce</SelectItem>
-                        <SelectItem value="manufacturing">Manufacturing & Industrial</SelectItem>
-                        <SelectItem value="education">Education & Research</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="aiSystemType">AI System Type *</Label>
-                    <Select
-                      value={formData.aiSystemType}
-                      onValueChange={(value) => setFormData({ ...formData, aiSystemType: value })}
-                      required
-                    >
-                      <SelectTrigger id="aiSystemType">
-                        <SelectValue placeholder="Select AI system type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="generative-ai">Generative AI / LLMs</SelectItem>
-                        <SelectItem value="nlp">Natural Language Processing</SelectItem>
-                        <SelectItem value="computer-vision">Computer Vision</SelectItem>
-                        <SelectItem value="predictive">Predictive Analytics / ML</SelectItem>
-                        <SelectItem value="decision-making">Automated Decision-Making</SelectItem>
-                        <SelectItem value="recommendation">Recommendation Systems</SelectItem>
-                        <SelectItem value="robotics">Robotics / Autonomous Systems</SelectItem>
-                        <SelectItem value="other">Other AI Application</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="currentStage">Current Project Stage *</Label>
-                    <Select
-                      value={formData.currentStage}
-                      onValueChange={(value) => setFormData({ ...formData, currentStage: value })}
-                      required
-                    >
-                      <SelectTrigger id="currentStage">
-                        <SelectValue placeholder="Select current stage" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="planning">Planning / Concept Phase</SelectItem>
-                        <SelectItem value="development">Development / Training</SelectItem>
-                        <SelectItem value="testing">Testing / Validation</SelectItem>
-                        <SelectItem value="deployment">Ready for Deployment</SelectItem>
-                        <SelectItem value="production">In Production / Live</SelectItem>
-                        <SelectItem value="maintenance">Maintenance / Monitoring</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {/* Main Concerns & Objectives */}
-                  <div className="space-y-2">
-                    <Label htmlFor="mainConcerns">Main Concerns & Objectives *</Label>
-                    <Textarea
-                      id="mainConcerns"
-                      placeholder="What are your main concerns? What do you hope to achieve from this consultation? (e.g., compliance requirements, risk assessment, ethical considerations, technical challenges...)"
-                      value={formData.mainConcerns}
-                      onChange={(e) => setFormData({ ...formData, mainConcerns: e.target.value })}
-                      rows={5}
-                      required
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="preferredDate">Preferred Call Date/Time</Label>
-                    <Input
-                      id="preferredDate"
-                      placeholder="e.g., Next week, Monday 2pm EST, or ASAP"
-                      value={formData.preferredDate}
-                      onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-                    />
-                  </div>
-
-                  <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
-                    Request Initial Call
-                  </Button>
-                </form>
-              </CardContent>
+                    <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
+                      Request Initial Call
+                    </Button>
+                  </form>
+                </CardContent>
               </Card>
 
               {/* Contact Information */}

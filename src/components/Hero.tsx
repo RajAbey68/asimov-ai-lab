@@ -89,67 +89,49 @@ const Hero = () => {
                 id="hero-heading"
                 className="text-4xl lg:text-6xl font-medium leading-tight text-slate-900 font-display"
               >
-                Make AI Governance{" "}
-                <span className="text-brand-blue">Practical</span>{" "}
-                Not a Burden
+                We offer a governance framework to identify, assess & mitigate <span className="text-brand-blue">legal, ethical, technical & operational</span> AI risks — fast.
               </h1>
 
               <p className="text-xl lg:text-2xl text-slate-600 leading-relaxed font-sans">
-                We help organisations align with established frameworks including{" "}
-                <span className="font-semibold text-brand-blue">EU AI Act</span>,{" "}
-                <span className="font-semibold text-brand-blue">NIST AI RMF</span>,{" "}
-                <span className="font-semibold text-brand-blue">ISO/IEC 42001</span>, and{" "}
-                <span className="font-semibold text-brand-blue">GDPR</span>.
-              </p>
-
-              <p className="text-lg text-slate-500 leading-relaxed border-l-4 border-brand-blue pl-6 italic">
-                Our goal is to make AI governance practical and integrated into your existing workflows—not a compliance burden bolted on afterward.
+                Built for today’s AI reality:
               </p>
             </div>
 
-            {/* What We Solve */}
-            <div className="space-y-4 pt-6">
-              <h3 className="text-xl font-bold text-slate-900 font-display">What We Solve</h3>
+            {/* Built For... */}
+            <div className="space-y-4 pt-2">
               <div className="grid gap-3">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-brand-blue shrink-0 mt-1" />
-                  <p className="text-slate-600">Navigate complex AI regulatory requirements without slowing down innovation</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-brand-blue shrink-0 mt-1" />
-                  <p className="text-slate-600">Build audit-ready documentation and controls for AI systems, AI Agents, and Voice Agents that satisfy board oversight</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-brand-blue shrink-0 mt-1" />
-                  <p className="text-slate-600">Implement AI governance that scales with your Artificial Intelligence systems—from prototype to production</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Core Delivery Activities */}
-            <div className="space-y-4 pt-4">
-              <h3 className="text-xl font-bold text-slate-900 font-display">Core Delivery Activities</h3>
-              <div className="grid grid-cols-2 gap-3">
                 {[
-                  "Risk Mapping", "Control Implementation", "Audit Preparation",
-                  "Documentation", "Test-Driven Validation", "Continuous Monitoring"
-                ].map((activity, i) => (
-                  <div key={i} className="flex items-center gap-2 bg-white rounded-lg px-4 py-3 border border-slate-200 shadow-sm">
-                    <div className="w-2 h-2 bg-brand-blue rounded-full"></div>
-                    <span className="text-sm font-medium text-slate-700">{activity}</span>
+                  "Generative AI & LLMs",
+                  "Agentic & autonomous systems",
+                  "Real-time / edge AI (drones, vehicles, robotics)",
+                  "OSS integrations & BSS/OSS environments"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-brand-blue shrink-0 mt-1" />
+                    <p className="text-slate-900 font-medium">{item}</p>
                   </div>
                 ))}
               </div>
             </div>
 
+            {/* Compliance Statement */}
+            <div className="pt-6 space-y-4">
+              <p className="text-lg text-slate-600 leading-relaxed font-sans">
+                Fully aligned with <span className="font-semibold text-brand-blue">EU AI Act</span>, <span className="font-semibold text-brand-blue">NIST AI RMF</span>, <span className="font-semibold text-brand-blue">ISO/IEC 42001</span> — practical compliance without killing velocity.
+              </p>
+              <p className="text-xl font-bold text-slate-900 italic">
+                Get compliant. Stay agile. Scale safely.
+              </p>
+            </div>
+
             {/* CTA */}
             <div className="pt-6">
-              <Link to="/ai-assessment">
+              <Link to="/assessment-info">
                 <Button
                   size="lg"
                   className="bg-brand-blue text-white hover:bg-blue-600 font-semibold text-lg px-8 py-6 shadow-lg shadow-brand-blue/20"
                 >
-                  Start Your AI Assessment
+                  Request free initial call
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
