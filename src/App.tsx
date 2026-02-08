@@ -27,6 +27,7 @@ import NotFound from "./pages/NotFound";
 import StrategicDelivery from "./pages/StrategicDelivery";
 import StyleGuide from "./pages/StyleGuide";
 import Insights from "./pages/Insights";
+import PublicAssessment from "./pages/PublicAssessment";
 
 
 const queryClient = new QueryClient();
@@ -96,6 +97,7 @@ const App = () => (
               <Route path="/strategic-delivery" element={<StrategicDelivery />} />
               <Route path="/style-guide" element={<StyleGuide />} />
               <Route path="/insights" element={<Insights />} />
+              <Route path="/free-assessment" element={<PublicAssessment />} />
 
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

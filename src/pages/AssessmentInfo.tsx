@@ -63,10 +63,15 @@ const Assessment = () => {
                 <p className="text-xl text-muted-foreground mb-8">
                   Our proven framework helps you identify, assess, and mitigate AI risks to achieve compliance with EU AI Act, NIST, and ISO/IEC 42001 standards
                 </p>
-                <div>
+                <div className="flex flex-wrap gap-4">
                   <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-lg shadow-lg">
                     <a href="#request-form">
                       Request free Initial call <ArrowRight className="ml-2 w-5 h-5" />
+                    </a>
+                  </Button>
+                  <Button asChild size="lg" variant="outline" className="text-lg border-accent text-accent hover:bg-accent/10">
+                    <a href="/free-assessment">
+                      Take Free Risk Screener
                     </a>
                   </Button>
                 </div>
