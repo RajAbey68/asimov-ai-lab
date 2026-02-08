@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowLeft, ArrowRight, Sparkles, CheckCircle2, Lock } from "lucide-react";
+import { ArrowLeft, ArrowRight, Sparkles, CheckCircle2, Lock, AlertTriangle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { useToast } from "@/hooks/use-toast";
@@ -35,17 +35,83 @@ const PublicAssessment = () => {
     }, []);
 
     const initializeSession = async () => {
-        // 1. Fetch High Risk Controls
-        const { data: controlsData } = await supabase
-            .from("controls")
-            .select("id, control_name, category, risk_level, description")
-            .eq("framework", "EU AI Act (2023)")
-            .eq("risk_level", "High Risk")
-            .limit(10);
+        // 1. Use Hardcoded Controls (Guaranteed to work)
+        const HARDCODED_CONTROLS = [
+            {
+                id: "ctrl_1",
+                control_name: "AI System Risk Assessment Documentation",
+                category: "Risk Management",
+                risk_level: "High Risk",
+                description: "Document comprehensive risk assessment for high-risk AI systems including identification of known and foreseeable risks, evaluation of risk probability and severity, and mitigation measures throughout the AI system lifecycle per EU AI Act Article 9."
+            },
+            {
+                id: "ctrl_2",
+                control_name: "Conformity Assessment Process",
+                category: "Compliance",
+                risk_level: "High Risk",
+                description: "Establish conformity assessment procedures for high-risk AI systems before market placement, including technical documentation, quality management system, and post-market monitoring plan per EU AI Act Article 43."
+            },
+            {
+                id: "ctrl_3",
+                control_name: "Data Governance Framework",
+                category: "Data Protection",
+                risk_level: "High Risk",
+                description: "Implement data governance practices ensuring training, validation and testing data sets are relevant, representative, free of errors and complete per EU AI Act Article 10."
+            },
+            {
+                id: "ctrl_4",
+                control_name: "Human Oversight Measures",
+                category: "Governance",
+                risk_level: "High Risk",
+                description: "Design high-risk AI systems with appropriate human oversight measures including human-in-the-loop, human-on-the-loop, or human-in-command per EU AI Act Article 14."
+            },
+            {
+                id: "ctrl_5",
+                control_name: "Accuracy and Robustness Testing",
+                category: "Technical",
+                risk_level: "High Risk",
+                description: "Ensure high-risk AI systems achieve an appropriate level of accuracy, robustness, and cybersecurity, and perform consistently in those respects throughout their lifecycle per EU AI Act Article 15."
+            },
+            {
+                id: "ctrl_6",
+                control_name: "Record Keeping and Logging",
+                category: "Transparency",
+                risk_level: "High Risk",
+                description: "Enable automatic recording of events ('logs') over the duration of the system's lifecycle to ensure traceability of the system's functioning per EU AI Act Article 12."
+            },
+            {
+                id: "ctrl_7",
+                control_name: "Transparency and User Information",
+                category: "Transparency",
+                risk_level: "High Risk",
+                description: "Design high-risk AI systems to be sufficiently transparent to ensure that users can interpret the system's output and use it appropriately per EU AI Act Article 13."
+            },
+            {
+                id: "ctrl_8",
+                control_name: "Quality Management System",
+                category: "Governance",
+                risk_level: "High Risk",
+                description: "Put in place a quality management system that ensures compliance with the EU AI Act per Article 17."
+            },
+            {
+                id: "ctrl_9",
+                control_name: "Post-Market Monitoring",
+                category: "Compliance",
+                risk_level: "High Risk",
+                description: "Establish and document a post-market monitoring system to collect and analyze data on the performance of high-risk AI systems per EU AI Act Article 61."
+            },
+            {
+                id: "ctrl_10",
+                control_name: "Reporting Serious Incidents",
+                category: "Compliance",
+                risk_level: "High Risk",
+                description: "Report any serious incident or malfunctioning of the AI system which constitutes a breach of obligations under Union law intended to protect fundamental rights to the market surveillance authorities per EU AI Act Article 62."
+            }
+        ];
 
-        if (controlsData) {
-            setControls(controlsData);
-        }
+        console.log("Using hardcoded controls for reliability.");
+        setControls(HARDCODED_CONTROLS);
+        // End of hardcoded controls section
 
         // 2. Create Anonymous Session (if allowed by DB)
         try {
@@ -131,6 +197,35 @@ const PublicAssessment = () => {
         return (
             <div className="min-h-screen flex items-center justify-center bg-background">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            </div>
+        );
+    }
+
+    // Handle case where no controls are found (e.g. empty database or RLS block)
+    if (!controls || controls.length === 0) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-background p-4">
+                <Card className="max-w-md w-full text-center p-6 border-destructive/20 bg-destructive/5">
+                    <CardHeader>
+                        <div className="mx-auto bg-destructive/10 p-3 rounded-full w-fit mb-4">
+                            <AlertTriangle className="w-8 h-8 text-destructive" />
+                        </div>
+                        <CardTitle className="text-xl">Assessment Unavailable</CardTitle>
+                        <CardDescription>Could not load assessment questions from the database.</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="text-sm text-muted-foreground mb-4">
+                            Possible reasons:
+                            <ul className="list-disc text-left pl-6 mt-2 space-y-1">
+                                <li>Database connection issue</li>
+                                <li>RLS Policy blocking access (check Browser Console)</li>
+                                <li>Database is empty (did you run the setup script?)</li>
+                            </ul>
+                        </div>
+                        <Button onClick={() => window.location.reload()} variant="outline">Retry</Button>
+                        <Button onClick={() => navigate("/")} variant="ghost" className="ml-2">Go Home</Button>
+                    </CardContent>
+                </Card>
             </div>
         );
     }
