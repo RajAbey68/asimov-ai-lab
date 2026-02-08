@@ -78,7 +78,7 @@ const Assessment = () => {
                   <div className="aspect-video w-full">
                     <iframe
                       className="w-full h-full"
-                      src="https://www.youtube.com/embed/5pZtNmQL9aY"
+                      src="https://www.youtube.com/embed/5pZtNmQL9aY?rel=0&modestbranding=1&playsinline=1"
                       title="ISACA GWDC Insights - AI in the Crosshairs"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
