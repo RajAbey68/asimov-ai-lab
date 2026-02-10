@@ -43,52 +43,72 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
-              <Route path="/assessment" element={
-                <ProtectedRoute>
-                  <AssessmentDashboard />
-                </ProtectedRoute>
-              } />
-              <Route path="/assessment/:sessionId" element={
-                <ProtectedRoute>
-                  <AssessmentQuiz />
-                </ProtectedRoute>
-              } />
+              <Route
+                path="/assessment"
+                element={
+                  <ProtectedRoute>
+                    <AssessmentDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/assessment/:sessionId"
+                element={
+                  <ProtectedRoute>
+                    <AssessmentQuiz />
+                  </ProtectedRoute>
+                }
+              />
               <Route path="/assessment-info" element={<AssessmentInfo />} />
-              <Route path="/admin/media" element={
-                <ProtectedRoute>
-                  <AdminMedia />
-                </ProtectedRoute>
-              } />
-              <Route path="/admin/controls-import" element={
-                <ProtectedRoute>
-                  <AdminControlsImport />
-                </ProtectedRoute>
-              } />
-              <Route path="/admin/consultations" element={
-                <ProtectedRoute>
-                  <AdminConsultations />
-                </ProtectedRoute>
-              } />
-              <Route path="/admin/chat-logs" element={
-                <ProtectedRoute>
-                  <AdminChatLogs />
-                </ProtectedRoute>
-              } />
-              <Route path="/admin/analytics" element={
-                <ProtectedRoute>
-                  <AdminAnalytics />
-                </ProtectedRoute>
-              } />
-              <Route path="/admin/design-audit" element={
-                <ProtectedRoute>
-                  <DesignAudit />
-                </ProtectedRoute>
-              } />
-              <Route path="/controls" element={
-                <ProtectedRoute>
-                  <ControlsViewer />
-                </ProtectedRoute>
-              } />
+              <Route
+                path="/admin/media"
+                element={
+                  <ProtectedRoute>
+                    <AdminMedia />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/controls-import"
+                element={
+                  <ProtectedRoute>
+                    <AdminControlsImport />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/consultations"
+                element={
+                  <ProtectedRoute>
+                    <AdminConsultations />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/chat-logs"
+                element={
+                  <ProtectedRoute>
+                    <AdminChatLogs />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/analytics"
+                element={
+                  <ProtectedRoute>
+                    <AdminAnalytics />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/design-audit"
+                element={
+                  <ProtectedRoute>
+                    <DesignAudit />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/controls" element={<ControlsViewer />} />
               <Route path="/framework" element={<Framework />} />
               <Route path="/resources" element={<Resources />} />
               <Route path="/sectors" element={<Sectors />} />

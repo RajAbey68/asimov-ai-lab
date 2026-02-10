@@ -22,10 +22,10 @@ const Auth = () => {
     // Auto-fill forms
     const emailInputs = document.querySelectorAll<HTMLInputElement>('input[type="email"]');
     const passwordInputs = document.querySelectorAll<HTMLInputElement>('input[type="password"]');
-    
+
     emailInputs.forEach(input => input.value = DEV_EMAIL);
     passwordInputs.forEach(input => input.value = DEV_PASSWORD);
-    
+
     toast({
       title: "Dev credentials loaded",
       description: `Email: ${DEV_EMAIL}`,
@@ -61,7 +61,7 @@ const Auth = () => {
       return;
     }
 
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -77,11 +77,17 @@ const Auth = () => {
         title: "Sign up failed",
         description: error.message,
       });
+    } else if (data.user && !data.session) {
+      toast({
+        title: "Account created!",
+        description: "Please check your email to confirm your account before signing in.",
+      });
     } else {
       toast({
         title: "Account created!",
-        description: "You can now sign in and start your AI governance assessment.",
+        description: "You have been signed in successfully.",
       });
+      navigate("/assessment");
     }
   };
 
@@ -101,11 +107,19 @@ const Auth = () => {
     setLoading(false);
 
     if (error) {
-      toast({
-        variant: "destructive",
-        title: "Sign in failed",
-        description: error.message,
-      });
+      if (error.message.includes("Email not confirmed")) {
+        toast({
+          variant: "destructive",
+          title: "Email not confirmed",
+          description: "Please check your inbox and verify your email address.",
+        });
+      } else {
+        toast({
+          variant: "destructive",
+          title: "Sign in failed",
+          description: error.message,
+        });
+      }
     } else {
       navigate("/assessment");
     }
@@ -114,7 +128,7 @@ const Auth = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
       <Navigation />
-      
+
       <div className="container max-w-5xl mx-auto px-4 py-24">
         {/* Development Helper */}
         <div className="max-w-md mx-auto mb-6">

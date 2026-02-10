@@ -40,7 +40,7 @@ const HeroChatEmbed = () => {
     // Verify environment variables
     const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
     const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-    
+
     if (!supabaseUrl || !supabaseKey) {
       console.error("Missing environment variables:", { supabaseUrl, supabaseKey });
       toast({
@@ -55,12 +55,12 @@ const HeroChatEmbed = () => {
     const messagesWithLanguage = messages.length === 1 // Only initial greeting
       ? [{ role: "system" as const, content: `User's preferred language: ${language}` }, userMessage]
       : [...messages, userMessage];
-    
+
     try {
       const chatUrl = `${supabaseUrl}/functions/v1/asimov-chat`;
       console.log("Calling chat endpoint:", chatUrl);
       console.log("With payload:", { messages: messagesWithLanguage });
-      
+
       const response = await fetch(chatUrl, {
         method: "POST",
         headers: {
@@ -75,11 +75,11 @@ const HeroChatEmbed = () => {
 
       console.log("Response status:", response.status);
       console.log("Response headers:", Object.fromEntries(response.headers.entries()));
-      
+
       if (!response.ok) {
         const errorText = await response.text();
         console.error("Edge function error:", response.status, errorText);
-        
+
         if (response.status === 429) {
           toast({
             title: "High Demand",
@@ -88,7 +88,7 @@ const HeroChatEmbed = () => {
           });
           return;
         }
-        
+
         if (response.status === 402) {
           toast({
             title: "Service Unavailable",
@@ -97,7 +97,7 @@ const HeroChatEmbed = () => {
           });
           return;
         }
-        
+
         throw new Error(`HTTP ${response.status}: ${errorText}`);
       }
 
@@ -105,7 +105,7 @@ const HeroChatEmbed = () => {
         console.error("No response body received");
         throw new Error("No response body");
       }
-      
+
       console.log("Starting stream processing...");
 
       const reader = response.body.getReader();
@@ -119,7 +119,7 @@ const HeroChatEmbed = () => {
       while (!streamDone) {
         const { done, value } = await reader.read();
         if (done) break;
-        
+
         textBuffer += decoder.decode(value, { stream: true });
 
         let newlineIndex: number;
@@ -140,7 +140,7 @@ const HeroChatEmbed = () => {
           try {
             const parsed = JSON.parse(jsonStr);
             const content = parsed.choices?.[0]?.delta?.content as string | undefined;
-            
+
             if (content) {
               assistantContent += content;
               setMessages(prev => {
@@ -164,7 +164,7 @@ const HeroChatEmbed = () => {
           if (!raw || !raw.startsWith("data: ")) continue;
           const jsonStr = raw.slice(6).trim();
           if (jsonStr === "[DONE]") continue;
-          
+
           try {
             const parsed = JSON.parse(jsonStr);
             const content = parsed.choices?.[0]?.delta?.content as string | undefined;
@@ -191,9 +191,9 @@ const HeroChatEmbed = () => {
         stack: error instanceof Error ? error.stack : undefined,
         type: error instanceof TypeError ? "TypeError" : error instanceof Error ? "Error" : "Unknown"
       });
-      
+
       let errorMessage = "Failed to send message. Please try again.";
-      
+
       if (error instanceof DOMException && error.name === "AbortError") {
         errorMessage = "Request timed out. Please try again.";
       } else if (error instanceof TypeError && error.message.includes("fetch")) {
@@ -201,7 +201,7 @@ const HeroChatEmbed = () => {
       } else if (error instanceof Error) {
         errorMessage = error.message;
       }
-      
+
       toast({
         title: "Connection Error",
         description: errorMessage,
@@ -252,124 +252,109 @@ const HeroChatEmbed = () => {
           </div>
         </CardHeader>
 
-      <CardContent className="flex-1 flex flex-col p-0 overflow-hidden">
-        <ScrollArea className="flex-1 p-4" ref={scrollRef}>
-          <div className="space-y-4">
-            {showLanguageSelector && messages.length === 1 && (
-              <div className="mb-4 p-4 bg-muted/50 rounded-lg">
-                <p className="text-sm text-muted-foreground mb-3">
-                  Please select your preferred language:
-                </p>
-                <LanguageSelector value={language} onChange={setLanguage} />
-              </div>
-            )}
-            {messages.map((message, index) => (
-              <div
-                key={index}
-                className={`flex items-start gap-3 ${
-                  message.role === "user" ? "flex-row-reverse" : "flex-row"
-                }`}
-              >
-                <div
-                  className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${
-                    message.role === "user"
-                      ? "bg-primary"
-                      : "bg-gradient-accent"
-                  }`}
-                >
-                  {message.role === "user" ? (
-                    <User className="w-4 h-4 text-primary-foreground" />
-                  ) : (
-                    <Bot className="w-4 h-4 text-accent-foreground" />
-                  )}
-                </div>
-                <div
-                  className={`rounded-2xl px-4 py-3 max-w-[85%] ${
-                    message.role === "user"
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-foreground"
-                  }`}
-                >
-                  <p className="text-sm whitespace-pre-wrap leading-relaxed">
-                    {message.content}
+        <CardContent className="flex-1 flex flex-col p-0 overflow-hidden">
+          <ScrollArea className="flex-1 p-4" ref={scrollRef}>
+            <div className="space-y-4">
+              {showLanguageSelector && messages.length === 1 && (
+                <div className="mb-4 p-4 bg-muted/50 rounded-lg">
+                  <p className="text-sm text-muted-foreground mb-3">
+                    Please select your preferred language:
                   </p>
+                  <LanguageSelector value={language} onChange={setLanguage} />
                 </div>
-              </div>
-            ))}
-            {isLoading && (
-              <div className="flex items-start gap-3">
-                <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-gradient-accent">
-                  <Bot className="w-4 h-4 text-accent-foreground" />
+              )}
+              {messages.map((message, index) => (
+                <div
+                  key={index}
+                  className={`flex items-start gap-3 ${message.role === "user" ? "flex-row-reverse" : "flex-row"
+                    }`}
+                >
+                  <div
+                    className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${message.role === "user"
+                        ? "bg-primary"
+                        : "bg-gradient-accent"
+                      }`}
+                  >
+                    {message.role === "user" ? (
+                      <User className="w-4 h-4 text-primary-foreground" />
+                    ) : (
+                      <Bot className="w-4 h-4 text-accent-foreground" />
+                    )}
+                  </div>
+                  <div
+                    className={`rounded-2xl px-4 py-3 max-w-[85%] ${message.role === "user"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-foreground"
+                      }`}
+                  >
+                    <p className="text-sm whitespace-pre-wrap leading-relaxed">
+                      {message.content}
+                    </p>
+                  </div>
                 </div>
-                <div className="rounded-2xl px-4 py-3 bg-muted">
-                  <Loader2 className="w-5 h-5 animate-spin text-accent" />
+              ))}
+              {isLoading && (
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-gradient-accent">
+                    <Bot className="w-4 h-4 text-accent-foreground" />
+                  </div>
+                  <div className="rounded-2xl px-4 py-3 bg-muted">
+                    <Loader2 className="w-5 h-5 animate-spin text-accent" />
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
-        </ScrollArea>
+              )}
+            </div>
+          </ScrollArea>
 
-        <div className="p-4 border-t-2 bg-accent/5 space-y-3 border-accent/20">
-          <div className="flex gap-2 p-3 rounded-lg bg-background border-2 border-accent/40 shadow-sm hover:border-accent/60 transition-colors">
-            <VoiceRecorder
-              onTranscription={handleVoiceTranscription}
-              language={language}
-              disabled={isLoading}
-            />
-            <Input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyPress}
-              placeholder="Type your AI governance question here..."
-              disabled={isLoading}
-              className="flex-1 h-14 text-lg border-0 focus-visible:ring-0 bg-transparent placeholder:font-bold placeholder:text-muted-foreground"
-            />
+          <div className="p-4 border-t-2 bg-accent/5 space-y-3 border-accent/20">
+            <div className="flex gap-2 p-3 rounded-lg bg-background border-2 border-accent/40 shadow-sm hover:border-accent/60 transition-colors">
+              <VoiceRecorder
+                onTranscription={handleVoiceTranscription}
+                language={language}
+                disabled={isLoading}
+              />
+              <Input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyPress}
+                placeholder="Type your AI governance question here..."
+                disabled={isLoading}
+                className="flex-1 h-14 text-lg border-0 focus-visible:ring-0 bg-transparent placeholder:font-bold placeholder:text-muted-foreground"
+              />
+              <Button
+                onClick={handleSend}
+                disabled={!input.trim() || isLoading}
+                size="icon"
+                className="shrink-0 h-12 w-12"
+                aria-label="Send message"
+              >
+                <Send className="w-5 h-5" />
+              </Button>
+            </div>
             <Button
-              onClick={handleSend}
-              disabled={!input.trim() || isLoading}
-              size="icon"
-              className="shrink-0 h-12 w-12"
-              aria-label="Send message"
+              onClick={() => setDialogOpen(true)}
+              variant="outline"
+              size="sm"
+              className="w-full"
             >
-              <Send className="w-5 h-5" />
+              <MessageSquare className="w-4 h-4 mr-2" />
+              Request Human Callback
             </Button>
+            <p className="text-xs text-muted-foreground text-center">
+              SIMO — Powered by ASIMOV-AI Expertise
+            </p>
           </div>
-          <Button
-            onClick={() => setDialogOpen(true)}
-            variant="outline"
-            size="sm"
-            className="w-full"
-          >
-            <MessageSquare className="w-4 h-4 mr-2" />
-            Request Human Callback
-          </Button>
-        <p className="text-xs text-muted-foreground text-center">
-          SIMO — Powered by ASIMOV-AI Expertise
-        </p>
-        </div>
-      </CardContent>
-    </Card>
-    
-    <div className="mt-4 text-center space-y-2">
-      <Button
-        onClick={() => setDialogOpen(true)}
-        size="lg"
-        className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg"
-      >
-        <Calendar className="w-5 h-5 mr-2" />
-        Request a Consultation
-      </Button>
-      <p className="text-sm text-muted-foreground">
-        If you don't need immediate contact, use <strong>Stay in Touch</strong> to receive updates on reports and news
-      </p>
-    </div>
+        </CardContent>
+      </Card>
 
-    <ConsultationIntakeDialog
-      open={dialogOpen}
-      onOpenChange={setDialogOpen}
-      chatSessionId={sessionId}
-    />
-  </>
+
+
+      <ConsultationIntakeDialog
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+        chatSessionId={sessionId}
+      />
+    </>
   );
 };
 

@@ -7,6 +7,7 @@ import nickLockettImg from "@/assets/nick-lockett.png";
 import sushilaNairImg from "@/assets/sushila-nair.png";
 import rajivAbeysingheImg from "@/assets/rajiv-abeysinghe.png";
 import teamBg from "@/assets/team-consultation-bg.jpg";
+import aiRiskSessionThumb from "@/assets/ai-risk-session-thumb.png";
 import ConsultationIntakeDialog from "@/components/ConsultationIntakeDialog";
 
 const teamMembers = [
@@ -164,14 +165,34 @@ const Team = () => {
                 )}
 
                 {member.name === "Sushila Nair" && (
-                  <Button
-                    variant="outline"
-                    className="w-full border-accent text-accent hover:bg-accent hover:text-white"
+                  <div
                     onClick={() => navigate('/sushi')}
+                    className="mt-6 group cursor-pointer relative overflow-hidden rounded-xl border border-border/50 shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
                   >
-                    <Youtube className="w-4 h-4 mr-2" />
-                    View AI Risk Session
-                  </Button>
+                    {/* Thumbnail Image */}
+                    <div className="relative aspect-video w-full overflow-hidden">
+                      <img
+                        src={aiRiskSessionThumb}
+                        alt="AI Risk Session"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out brightness-90 group-hover:brightness-100"
+                      />
+
+                      {/* Play Button Overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/10 transition-colors">
+                        <div className="bg-white/90 rounded-full p-3 pl-4 shadow-xl transform scale-90 group-hover:scale-100 transition-all duration-300 group-hover:bg-red-600 group-hover:text-white">
+                          <Youtube className="w-8 h-8 text-red-600 fill-current group-hover:text-white" />
+                        </div>
+                      </div>
+
+                      {/* Label Overlay */}
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 pt-6 text-white">
+                        <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider">
+                          <span className="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span>
+                          Watch Session
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 )}
               </div>
             </Card>

@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Zap, CheckCircle2, ChevronDown } from "lucide-react";
+import { ArrowRight, Shield, Zap, CheckCircle2, ChevronDown, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import heroBg from "@/assets/hero-governance-network.jpg";
 import HeroChatEmbed from "./HeroChatEmbed";
+import ConsultationIntakeDialog from "@/components/ConsultationIntakeDialog";
 import {
   Collapsible,
   CollapsibleContent,
@@ -21,6 +22,7 @@ const Hero = () => {
   const [heroMedia, setHeroMedia] = useState<HeroMedia | null>(null);
   const [mediaUrl, setMediaUrl] = useState<string>("");
   const [isFrameworksOpen, setIsFrameworksOpen] = useState(false);
+  const [isConsultationOpen, setIsConsultationOpen] = useState(false);
 
   useEffect(() => {
     fetchHeroMedia();
@@ -125,17 +127,42 @@ const Hero = () => {
             </div>
 
             {/* CTA */}
-            <div className="pt-6">
-              <Link to="/assessment-info">
+            <div className="pt-8 grid gap-6 sm:grid-cols-2">
+              <div className="flex flex-col gap-3">
+                <Link to="/assessment-info" className="w-full">
+                  <Button
+                    size="lg"
+                    className="w-full bg-brand-blue text-white hover:bg-blue-600 font-semibold text-lg px-8 py-6 shadow-lg shadow-brand-blue/20"
+                  >
+                    Request free initial call
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <p className="text-sm text-slate-600 text-center leading-relaxed px-2">
+                  <span className="font-semibold text-slate-900">Initial Feasibility Call.</span> A preliminary discussion to scope your requirements and determine if our framework aligns with your needs.
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-3">
                 <Button
+                  onClick={() => setIsConsultationOpen(true)}
                   size="lg"
-                  className="bg-brand-blue text-white hover:bg-blue-600 font-semibold text-lg px-8 py-6 shadow-lg shadow-brand-blue/20"
+                  variant="outline"
+                  className="w-full border-brand-blue text-brand-blue hover:bg-blue-50 font-semibold text-lg px-8 py-6 shadow-md"
                 >
-                  Request free initial call
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <Calendar className="mr-2 h-5 w-5" />
+                  Request a Consultation
                 </Button>
-              </Link>
+                <p className="text-sm text-slate-600 text-center leading-relaxed px-2">
+                  <span className="font-semibold text-slate-900">Expert Advisory.</span> A chargeable session to resolve specific tactical or strategic delivery issues, legal questions, or compliance blockers.
+                </p>
+              </div>
             </div>
+
+            <ConsultationIntakeDialog
+              open={isConsultationOpen}
+              onOpenChange={setIsConsultationOpen}
+            />
           </div>
 
           {/* AI Risk Assessment Chat */}

@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Lightbulb, Hammer, Settings, Users, AlertTriangle, Shield, Scale, Lock, Eye, CheckCircle, RefreshCw, Layers, Zap, GitBranch } from "lucide-react";
+import { Lightbulb, Hammer, Settings, Users, AlertTriangle, Shield, Scale, Lock, Eye, CheckCircle, RefreshCw, Layers, Zap, GitBranch, Rocket } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CICDRiskFramework from "@/components/CICDRiskFramework";

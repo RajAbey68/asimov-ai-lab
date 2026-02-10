@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,16 @@ import sectorManufacturing from "@/assets/sector-manufacturing.jpg";
 import sectorAiRoom from "@/assets/sector-ai-room.jpg";
 
 const Sectors = () => {
+  const navigate = useNavigate();
+
+  const handleBookConsultation = () => {
+    navigate("/#book-consultation");
+    setTimeout(() => {
+      const element = document.getElementById('book-consultation');
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
   const sectors = [
     {
       icon: Building2,
@@ -93,10 +104,10 @@ const Sectors = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${sectorAiRoom})` }}
         >
@@ -111,7 +122,7 @@ const Sectors = () => {
               Tailored AI Compliance for SMEs
             </h1>
             <p className="text-xl text-muted-foreground">
-              Industry-specific AI risk management designed for small to medium enterprises 
+              Industry-specific AI risk management designed for small to medium enterprises
               facing sector-specific regulatory and operational challenges
             </p>
           </div>
@@ -127,8 +138,8 @@ const Sectors = () => {
                 <div className={`grid md:grid-cols-2 gap-8 ${index % 2 === 1 ? 'md:grid-flow-dense' : ''}`}>
                   {/* Image */}
                   <div className={`relative h-[400px] ${index % 2 === 1 ? 'md:col-start-2' : ''}`}>
-                    <img 
-                      src={sector.image} 
+                    <img
+                      src={sector.image}
                       alt={`${sector.name} crisis scenario`}
                       className="w-full h-full object-cover"
                     />
@@ -194,7 +205,7 @@ const Sectors = () => {
                         </div>
                       </div>
 
-                      <Button className="w-full sm:w-auto">
+                      <Button className="w-full sm:w-auto" onClick={handleBookConsultation}>
                         Request Sector Assessment
                       </Button>
                     </CardContent>
@@ -213,10 +224,10 @@ const Sectors = () => {
             Don't See Your Sector?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            We work with organizations across all industries. Contact us to discuss 
+            We work with organizations across all industries. Contact us to discuss
             your specific sector requirements and how we can tailor our AI risk management approach.
           </p>
-          <Button size="lg" className="gap-2">
+          <Button size="lg" className="gap-2" onClick={handleBookConsultation}>
             Schedule a Consultation
           </Button>
         </div>

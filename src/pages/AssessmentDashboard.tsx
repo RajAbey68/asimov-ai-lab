@@ -16,6 +16,7 @@ import { Plus, FileText, Calendar, CheckCircle2, Clock, TrendingUp, Shield, Aler
 import { Checkbox } from "@/components/ui/checkbox";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { RadialBarChart, RadialBar, PieChart as RechartPie, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { MOCK_CONTROLS } from "@/data/mockControls";
 
 interface AuditSession {
   id: string;
@@ -109,12 +110,17 @@ const AssessmentDashboard = () => {
   const fetchSessionStats = async (sessionIds: string[]) => {
     const statsPromises = sessionIds.map(async (sessionId) => {
       const session = sessions.find(s => s.id === sessionId);
-      
+
       // Get total controls count
-      const { count: totalControls } = await supabase
+      let { count: totalControls } = await supabase
         .from("controls")
         .select("*", { count: "exact", head: true })
         .eq("framework", "EU AI Act (2023)");
+
+      // Fallback to mock data if DB is empty
+      if (!totalControls || totalControls === 0) {
+        totalControls = MOCK_CONTROLS.length;
+      }
 
       // Get responses for this session
       const { data: responses } = await supabase
@@ -123,11 +129,13 @@ const AssessmentDashboard = () => {
         .eq("session_id", sessionId);
 
       // Get high risk controls
-      const { count: highRiskControls } = await supabase
+      const { count: dbHighRiskCount } = await supabase
         .from("controls")
         .select("*", { count: "exact", head: true })
         .eq("framework", "EU AI Act (2023)")
         .eq("risk_level", "High Risk");
+
+      const highRiskControls = dbHighRiskCount || MOCK_CONTROLS.filter(c => c.risk_level === 'High Risk').length;
 
       const answeredControls = responses?.length || 0;
       const averageScore = responses && responses.length > 0
@@ -200,10 +208,10 @@ const AssessmentDashboard = () => {
     const session_name = formData.get("session_name") as string;
     const sector_id = formData.get("sector") as string;
     const region_id = formData.get("region") as string;
-    
+
     // Handle multiple risk levels
-    const risk_level_filter = selectedRiskLevels.length > 0 
-      ? selectedRiskLevels.join(",") 
+    const risk_level_filter = selectedRiskLevels.length > 0
+      ? selectedRiskLevels.join(",")
       : null;
 
     const { data, error } = await supabase
@@ -269,7 +277,7 @@ const AssessmentDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5">
       <Navigation />
-      
+
       <div className="container max-w-7xl mx-auto px-4 py-24">
         <div className="flex items-center justify-between mb-8">
           <div>
@@ -479,23 +487,23 @@ const AssessmentDashboard = () => {
                   >
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={sessionStats.map(stat => ({
-                        name: stat.sessionName.length > 20 
-                          ? stat.sessionName.substring(0, 20) + '...' 
+                        name: stat.sessionName.length > 20
+                          ? stat.sessionName.substring(0, 20) + '...'
                           : stat.sessionName,
                         progress: Math.round((stat.answeredControls / stat.totalControls) * 100),
                         score: stat.averageScore,
                       }))}>
                         <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-                        <XAxis 
-                          dataKey="name" 
+                        <XAxis
+                          dataKey="name"
                           stroke="hsl(var(--muted-foreground))"
                           tick={{ fill: 'hsl(var(--muted-foreground))' }}
                         />
-                        <YAxis 
+                        <YAxis
                           stroke="hsl(var(--muted-foreground))"
                           tick={{ fill: 'hsl(var(--muted-foreground))' }}
                         />
-                        <Tooltip 
+                        <Tooltip
                           contentStyle={{
                             backgroundColor: 'hsl(var(--card))',
                             border: '1px solid hsl(var(--border))',
@@ -503,15 +511,15 @@ const AssessmentDashboard = () => {
                           }}
                         />
                         <Legend />
-                        <Bar 
-                          dataKey="progress" 
-                          fill="hsl(var(--accent))" 
+                        <Bar
+                          dataKey="progress"
+                          fill="hsl(var(--accent))"
                           radius={[8, 8, 0, 0]}
                           name="Progress %"
                         />
-                        <Bar 
-                          dataKey="score" 
-                          fill="hsl(142 76% 36%)" 
+                        <Bar
+                          dataKey="score"
+                          fill="hsl(142 76% 36%)"
                           radius={[8, 8, 0, 0]}
                           name="Avg Score"
                         />
@@ -529,8 +537,8 @@ const AssessmentDashboard = () => {
                 <CardDescription>Common tasks and shortcuts</CardDescription>
               </CardHeader>
               <CardContent className="grid md:grid-cols-3 gap-4">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="justify-start h-auto py-4"
                   onClick={() => navigate("/controls")}
                 >
@@ -540,8 +548,8 @@ const AssessmentDashboard = () => {
                     <p className="text-xs text-muted-foreground">Browse 251 AI controls</p>
                   </div>
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="justify-start h-auto py-4"
                   onClick={() => {
                     const tabs = document.querySelector('[value="create"]') as HTMLElement;
@@ -554,8 +562,8 @@ const AssessmentDashboard = () => {
                     <p className="text-xs text-muted-foreground">Start compliance audit</p>
                   </div>
                 </Button>
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   className="justify-start h-auto py-4"
                   onClick={() => navigate("/framework")}
                 >
@@ -573,7 +581,7 @@ const AssessmentDashboard = () => {
           <TabsContent value="sessions">
             <div>
               <h2 className="text-2xl font-bold mb-6">Your Assessment Sessions</h2>
-              
+
               {sessions.length === 0 ? (
                 <Card>
                   <CardContent className="py-12 text-center">
@@ -586,10 +594,10 @@ const AssessmentDashboard = () => {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {sessions.map((session) => {
                     const stat = sessionStats.find(s => s.sessionId === session.id);
-                    const progress = stat 
-                      ? (stat.answeredControls / stat.totalControls) * 100 
+                    const progress = stat
+                      ? (stat.answeredControls / stat.totalControls) * 100
                       : 0;
-                    
+
                     return (
                       <Card
                         key={session.id}

@@ -1,8 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Brain, Mail, Phone } from "lucide-react";
 
 const Navigation = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleBookConsultation = () => {
+    if (location.pathname === "/") {
+      const element = document.getElementById('book-consultation');
+      element?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate("/#book-consultation");
+      // Add a small timeout to allow navigation to complete before scrolling
+      setTimeout(() => {
+        const element = document.getElementById('book-consultation');
+        element?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+  };
+
   return (
     <nav
       role="navigation"
@@ -100,10 +117,7 @@ const Navigation = () => {
 
           <Button
             className="bg-accent hover:bg-accent/90"
-            onClick={() => {
-              const element = document.getElementById('book-consultation');
-              element?.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={handleBookConsultation}
             aria-label="Book a consultation with our team"
           >
             Book Consultation
