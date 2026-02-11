@@ -96,12 +96,16 @@ const Assessment = () => {
   const generateInsight = async (control: Control) => {
     setLoadingInsight(true);
     try {
-      const { data } = await supabase.functions.invoke('generate-insight', {
+      const { data, error } = await supabase.functions.invoke('generate-insight', {
         body: { control_name: control.control_name, category: control.category, risk_level: control.risk_level },
       });
+      if (error) throw error;
       if (data?.insight) setInsight(data.insight);
     } catch (error) {
-      setInsight("Insight generation temporarily unavailable.");
+      console.log("Insight generation fallback (likely CORS or demo mode):", error);
+      // Fallback mock insight
+      const mockInsight = `**AI Governance Insight (Simulated):**\n\nFor this ${control.risk_level} control in the ${control.category} category, the EU AI Act emphasizes documentation and traceability. \n\n**Key Recommendation:** Ensure that implementation evidence for "${control.control_name}" includes specific logs and policy documents. Auditors typically look for consistency between stated policy and technical enforcement.`;
+      setInsight(mockInsight);
     } finally {
       setLoadingInsight(false);
     }

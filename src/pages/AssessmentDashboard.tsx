@@ -554,6 +554,10 @@ const AssessmentDashboard = () => {
                   onClick={() => {
                     const tabs = document.querySelector('[value="create"]') as HTMLElement;
                     tabs?.click();
+                    setTimeout(() => {
+                      const createTab = document.querySelector('[data-state="active"][value="create"]');
+                      createTab?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
                   }}
                 >
                   <Plus className="w-5 h-5 mr-3" />
