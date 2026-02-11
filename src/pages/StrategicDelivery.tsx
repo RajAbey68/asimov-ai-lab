@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import BookConsultationSection from "@/components/BookConsultationSection";
+import bmadFrameworkImg from "@/assets/bmad-framework-halo.png";
 
 const StrategicDelivery = () => {
     return (
@@ -52,41 +53,107 @@ const StrategicDelivery = () => {
                 ))}
             </div>
 
-            {/* Methodology Section */}
-            <div className="bg-white py-12 px-6 border-y border-slate-200 mt-6">
-                <div className="mb-10">
-                    <h2 className="text-slate-900 text-2xl font-medium font-display">Our Methodology</h2>
-                    <p className="text-slate-500 text-sm mt-2 font-light">A rigorous framework for accelerated transformation.</p>
+
+            {/* BMAD Framework Section */}
+            <div className="bg-white py-16 px-6 border-y border-slate-200 mt-6">
+                <div className="max-w-4xl mx-auto mb-12 text-center">
+                    <h2 className="text-slate-900 text-3xl font-medium font-display mb-4">The BMAD Operating Model</h2>
+                    <p className="text-slate-500 text-lg font-light max-w-2xl mx-auto">
+                        Delivery ≠ just build. ASIMOV-AI integrates as the assurance spine running through the entire lifecycle, ensuring outcomes are legally defensible and strategically sound.
+                    </p>
                 </div>
-                <div className="flex flex-col gap-10 relative">
-                    <div className="absolute left-[11px] top-2 bottom-2 w-[1px] bg-gradient-to-b from-brand-blue to-brand-blue/5 opacity-20"></div>
+
+                {/* Framework Infographic */}
+                <div className="flex justify-center mb-12">
+                    <div className="relative w-full max-w-2xl rounded-2xl overflow-hidden shadow-xl border border-slate-100 bg-slate-50 p-2">
+                        <img
+                            src={bmadFrameworkImg}
+                            alt="BMAD Framework Lifecycle: Discover, Shape, Deliver, Validate, Operate with Core Principles"
+                            className="w-full h-auto object-cover rounded-xl"
+                        />
+                    </div>
+                </div>
+
+                <div className="text-center mb-12">
+                    <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">Core Principles (The Inner Halo)</p>
+                    <div className="flex flex-wrap justify-center gap-3">
+                        {["Ethics", "Fairness", "Security", "Transparency", "Accountability"].map((principle) => (
+                            <span key={principle} className="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-semibold border border-slate-200">
+                                {principle}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="flex flex-col gap-10 max-w-4xl mx-auto relative px-4">
+                    <div className="absolute left-[27px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-brand-blue via-brand-blue/20 to-transparent"></div>
 
                     {[
-                        { step: '1', title: 'Strategic Alignment', desc: 'Defining core objectives and legal-grade risk assessments.' },
-                        { step: '2', title: 'Rapid Prototyping', desc: 'Deploying functional RAD models to test hypotheses in real-world scenarios.' },
-                        { step: '3', title: 'Iterative Build', desc: 'Continuous delivery cycles that refine performance while maintaining integrity.' }
+                        {
+                            phase: 'DISCOVER',
+                            color: 'bg-emerald-500',
+                            role: 'AI Risk Strategist',
+                            goal: 'Clarify value, risk exposure, and operating model impact.',
+                            responsibilities: ['Classify AI use case risk (EU AI Act)', 'Identify prohibited categories', 'Define accountability owners']
+                        },
+                        {
+                            phase: 'SHAPE',
+                            color: 'bg-blue-600',
+                            role: 'AI Governance Architect',
+                            goal: 'Translate business intent into architecture + delivery plan.',
+                            responsibilities: ['Embed controls in architecture', 'Define human oversight model', 'Align to NIST / ISO standards']
+                        },
+                        {
+                            phase: 'DELIVER',
+                            color: 'bg-amber-500',
+                            role: 'AI Assurance Partner',
+                            goal: 'Build safely while maintaining delivery pace.',
+                            responsibilities: ['Validate sprint outcomes', 'Monitor shadow AI usage', 'Support PO & Architecture decisions']
+                        },
+                        {
+                            phase: 'VALIDATE',
+                            color: 'bg-orange-600',
+                            role: 'AI Risk Assurance Lead',
+                            goal: 'Prove the solution is defensible, not just functional.',
+                            responsibilities: ['Conduct readiness review', 'Verify human oversight', 'Assess auditability & evidence']
+                        },
+                        {
+                            phase: 'OPERATE',
+                            color: 'bg-purple-600',
+                            role: 'AI Governance Steward',
+                            goal: 'Ensure AI remains safe after deployment.',
+                            responsibilities: ['Monitor drift in governance', 'Re-assess risk posture', 'Support incident response']
+                        }
                     ].map((item, index) => (
-                        <div key={index} className="flex gap-6 relative z-10">
-                            <div className="size-[22px] rounded-full bg-brand-blue flex items-center justify-center text-white ring-8 ring-brand-blue/10 shrink-0">
-                                <span className="text-[9px] font-bold">{item.step}</span>
+                        <div key={index} className="flex gap-8 relative z-10 group">
+                            <div className={`mt-1 size-14 rounded-2xl ${item.color} flex flex-col items-center justify-center text-white shadow-lg ring-4 ring-white shrink-0 z-20`}>
+                                <span className="text-[10px] uppercase font-bold tracking-wider opacity-80">Phase</span>
+                                <span className="text-lg font-bold font-display">{index + 1}</span>
                             </div>
-                            <div className="flex flex-col -mt-1">
-                                <h3 className="text-slate-900 font-bold text-base font-display">{item.title}</h3>
-                                <p className="text-slate-500 text-sm mt-1 leading-relaxed">{item.desc}</p>
+
+                            <div className="flex flex-col pt-1 flex-1 bg-slate-50 rounded-xl p-6 border border-slate-100 hover:border-brand-blue/20 hover:shadow-md transition-all">
+                                <div className="flex flex-wrap items-baseline justify-between gap-2 mb-2">
+                                    <h3 className="text-slate-900 font-bold text-xl font-display">{item.phase}</h3>
+                                    <span className="text-brand-blue font-semibold text-sm bg-brand-blue/5 px-3 py-1 rounded-full border border-brand-blue/10">
+                                        Role: {item.role}
+                                    </span>
+                                </div>
+                                <p className="text-slate-600 font-medium mb-4 italic">"{item.goal}"</p>
+
+                                <div className="space-y-2">
+                                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Key Responsibilities</p>
+                                    <ul className="grid sm:grid-cols-2 gap-2">
+                                        {item.responsibilities.map((resp, i) => (
+                                            <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                                                <span className={`mt-1.5 size-1.5 rounded-full ${item.color}`}></span>
+                                                {resp}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     ))}
-
-                    {/* Final Step (Different Color) */}
-                    <div className="flex gap-6 relative z-10">
-                        <div className="size-[22px] rounded-full bg-slate-100 flex items-center justify-center text-slate-400 shrink-0">
-                            <span className="text-[9px] font-bold">4</span>
-                        </div>
-                        <div className="flex flex-col -mt-1">
-                            <h3 className="text-slate-900 font-bold text-base font-display">Outcome Verification</h3>
-                            <p className="text-slate-400 text-sm mt-1 leading-relaxed">Final validation against KPIs and seamless infrastructure integration.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
 
