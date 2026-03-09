@@ -46,6 +46,11 @@ const Footer = () => {
                   Resources
                 </Link>
               </li>
+              <li>
+                <Link to="/sectors" className="text-sm text-muted-foreground hover:text-accent transition-colors">
+                  Sectors
+                </Link>
+              </li>
             </ul>
           </div>
 

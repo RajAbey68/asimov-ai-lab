@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import { ProtectedRoute } from "./components/ProtectedRoute";
@@ -28,6 +29,8 @@ import StrategicDelivery from "./pages/StrategicDelivery";
 import StyleGuide from "./pages/StyleGuide";
 import Insights from "./pages/Insights";
 import PublicAssessment from "./pages/PublicAssessment";
+import LegacyModernisation from "./pages/LegacyModernisation";
+import ProfessionalServices from "./pages/ProfessionalServices";
 
 
 const queryClient = new QueryClient();
@@ -35,96 +38,100 @@ const queryClient = new QueryClient();
 const App = () => (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <AuthProvider>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route
-                path="/assessment"
-                element={
-                  <ProtectedRoute>
-                    <AssessmentDashboard />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/assessment/:sessionId"
-                element={
-                  <ProtectedRoute>
-                    <AssessmentQuiz />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="/assessment-info" element={<AssessmentInfo />} />
-              <Route
-                path="/admin/media"
-                element={
-                  <ProtectedRoute>
-                    <AdminMedia />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/admin/controls-import"
-                element={
-                  <ProtectedRoute>
-                    <AdminControlsImport />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/admin/consultations"
-                element={
-                  <ProtectedRoute>
-                    <AdminConsultations />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/admin/chat-logs"
-                element={
-                  <ProtectedRoute>
-                    <AdminChatLogs />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/admin/analytics"
-                element={
-                  <ProtectedRoute>
-                    <AdminAnalytics />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/admin/design-audit"
-                element={
-                  <ProtectedRoute>
-                    <DesignAudit />
-                  </ProtectedRoute>
-                }
-              />
-              <Route path="/controls" element={<ControlsViewer />} />
-              <Route path="/framework" element={<Framework />} />
-              <Route path="/resources" element={<Resources />} />
-              <Route path="/sectors" element={<Sectors />} />
-              <Route path="/team" element={<TeamPage />} />
-              <Route path="/sushi" element={<Sushi />} />
-              <Route path="/strategic-delivery" element={<StrategicDelivery />} />
-              <Route path="/style-guide" element={<StyleGuide />} />
-              <Route path="/insights" element={<Insights />} />
-              <Route path="/free-assessment" element={<PublicAssessment />} />
+      <HelmetProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <AuthProvider>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/auth" element={<Auth />} />
+                <Route
+                  path="/assessment"
+                  element={
+                    <ProtectedRoute>
+                      <AssessmentDashboard />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/assessment/:sessionId"
+                  element={
+                    <ProtectedRoute>
+                      <AssessmentQuiz />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="/assessment-info" element={<AssessmentInfo />} />
+                <Route
+                  path="/admin/media"
+                  element={
+                    <ProtectedRoute>
+                      <AdminMedia />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/controls-import"
+                  element={
+                    <ProtectedRoute>
+                      <AdminControlsImport />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/consultations"
+                  element={
+                    <ProtectedRoute>
+                      <AdminConsultations />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/chat-logs"
+                  element={
+                    <ProtectedRoute>
+                      <AdminChatLogs />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/analytics"
+                  element={
+                    <ProtectedRoute>
+                      <AdminAnalytics />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/design-audit"
+                  element={
+                    <ProtectedRoute>
+                      <DesignAudit />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="/controls" element={<ControlsViewer />} />
+                <Route path="/framework" element={<Framework />} />
+                <Route path="/resources" element={<Resources />} />
+                <Route path="/sectors" element={<Sectors />} />
+                <Route path="/team" element={<TeamPage />} />
+                <Route path="/sushi" element={<Sushi />} />
+                <Route path="/strategic-delivery" element={<StrategicDelivery />} />
+                <Route path="/style-guide" element={<StyleGuide />} />
+                <Route path="/insights" element={<Insights />} />
+                <Route path="/free-assessment" element={<PublicAssessment />} />
+                <Route path="/legacy-modernisation" element={<LegacyModernisation />} />
+                <Route path="/sectors/professional-services-ai-governance" element={<ProfessionalServices />} />
 
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </AuthProvider>
-        </BrowserRouter>
-      </TooltipProvider>
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </AuthProvider>
+          </BrowserRouter>
+        </TooltipProvider>
+      </HelmetProvider>
     </QueryClientProvider>
   </ErrorBoundary>
 );
