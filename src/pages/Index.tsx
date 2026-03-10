@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
+import SEO from "@/components/SEO";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
 import ProvenResults from "@/components/ProvenResults";
 import RiskProfileSelector from "@/components/RiskProfileSelector";
 import ServiceTiers from "@/components/ServiceTiers";
@@ -15,18 +15,25 @@ import AsimovChatWidget from "@/components/AsimovChatWidget";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
 import { CTARibbon } from "@/components/CTARibbon";
+import TrustBar from "@/components/TrustBar";
+import DataSovereignty from "@/components/DataSovereignty";
+import MBADLifecycle from "@/components/MBADLifecycle";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <SEO />
       <StructuredData />
       <Navigation />
       <FloatingCTA />
       <Hero />
+      <MBADLifecycle />
+      <TrustBar />
+      <DataSovereignty />
       <div id="risk-profiles">
         <RiskProfileSelector />
       </div>
-      <Services />
+      <ServicePillars />
       <ProvenResults />
       <ServiceTiers />
       <DeliveryPackages />

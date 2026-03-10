@@ -18,7 +18,7 @@ export const CTARibbon = () => {
               size="lg"
               className="bg-primary hover:bg-primary/90 text-primary-foreground"
             >
-              <Link to="/#book-consultation">Schedule Consultation</Link>
+              <Link to="/#book-consultation">Book Initial Discover Call</Link>
             </Button>
             <Button
               asChild

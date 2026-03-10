@@ -24,9 +24,8 @@ const FloatingCTA = () => {
 
   return (
     <div
-      className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
-      }`}
+      className={`fixed bottom-6 right-6 z-50 transition-all duration-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0 pointer-events-none'
+        }`}
     >
       <div className="relative">
         <Button
@@ -43,7 +42,7 @@ const FloatingCTA = () => {
           className="bg-accent hover:bg-accent/90 shadow-xl hover:shadow-2xl transition-all text-base font-semibold pr-6"
         >
           <a href="#book-consultation">
-            Book Free Consultation <ArrowRight className="ml-2 w-5 h-5" />
+            Book Initial Discover Call <ArrowRight className="ml-2 w-5 h-5" />
           </a>
         </Button>
       </div>

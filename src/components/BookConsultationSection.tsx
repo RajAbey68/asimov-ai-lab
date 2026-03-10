@@ -10,10 +10,10 @@ const BookConsultationSection = () => {
           {/* Header */}
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Schedule Your Consultation
+              Book Initial Discover Call
             </h2>
             <p className="text-xl text-muted-foreground">
-              Get expert guidance on AI risk assessment and regulatory compliance
+              Get an expert diagnostic on AI risk, security architecture, and regulatory compliance.
             </p>
           </div>
 

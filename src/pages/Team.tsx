@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import SEO from "@/components/SEO";
 import Team from "@/components/Team";
 import FloatingCTA from "@/components/FloatingCTA";
 import Footer from "@/components/Footer";
@@ -7,10 +8,14 @@ import { ConsultationIntakeForm } from "@/components/ConsultationIntakeForm";
 const TeamPage = () => {
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Our Team - Asimov AI"
+        description="Meet our team of AI Risk Leads, Governance Architects, and Legal Engineers dedicated to safe AI adoption."
+      />
       <Navigation />
       <FloatingCTA />
       <Team />
-      
+
       {/* Consultation Request Form */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
@@ -25,7 +30,7 @@ const TeamPage = () => {
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </div>
   );

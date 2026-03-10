@@ -1,10 +1,15 @@
 import Navigation from "@/components/Navigation";
+import SEO from "@/components/SEO";
 import BookConsultationSection from "@/components/BookConsultationSection";
 import bmadFrameworkImg from "@/assets/bmad-framework-halo.png";
 
 const StrategicDelivery = () => {
     return (
         <div className="relative flex h-auto min-h-screen w-full flex-col bg-off-white group/design-root overflow-x-hidden font-sans text-slate-900 pt-[72px]">
+            <SEO
+                title="Strategic Delivery - Asimov AI"
+                description="Bridging the authority of professional counsel with the speed of technical execution through our BMAD Delivery Framework."
+            />
             <Navigation />
 
             <div className="px-0">

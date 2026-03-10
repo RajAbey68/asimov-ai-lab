@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import BookConsultationSection from "@/components/BookConsultationSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 import {
     Shield,
     Scale,
@@ -22,6 +22,9 @@ import {
     PenTool,
     Layers,
     Clock,
+    Users,
+    Target,
+    Briefcase,
 } from "lucide-react";
 import sectorLegal from "@/assets/sector-legal.jpg";
 
@@ -187,6 +190,55 @@ const ProfessionalServices = () => {
                             is a governance-first AI advisory practice. We help professional
                             firms adopt AI with confidence — not by avoiding it, but by
                             managing it properly.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            {/* ================================================================ */}
+            {/* SECTION 2b — DESIGNED FOR PROFESSIONAL SERVICES FIRMS             */}
+            {/* ================================================================ */}
+            <section className="bg-slate-900 py-16 px-6">
+                <div className="max-w-4xl mx-auto">
+                    <div className="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10">
+                        <div className="flex items-center gap-3 mb-6">
+                            <div className="bg-brand-blue/20 size-12 rounded-xl flex items-center justify-center">
+                                <Briefcase className="w-6 h-6 text-brand-blue" />
+                            </div>
+                            <h2 className="text-white text-2xl md:text-3xl font-medium font-display">
+                                Designed for Professional Services Firms
+                            </h2>
+                        </div>
+
+                        <p className="text-slate-400 text-base mb-6">
+                            Suitable for:
+                        </p>
+
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
+                            {[
+                                "Solicitors",
+                                "Law firms",
+                                "Barristers' chambers",
+                                "Accountancy firms",
+                                "Architects",
+                                "Specialist consultancies",
+                            ].map((firm) => (
+                                <div
+                                    key={firm}
+                                    className="flex items-center gap-2 text-white text-sm"
+                                >
+                                    <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
+                                    <span>{firm}</span>
+                                </div>
+                            ))}
+                        </div>
+
+                        <Separator className="bg-white/10 mb-6" />
+
+                        <p className="text-slate-300 text-base leading-relaxed">
+                            Professional firms face unique AI risks due to confidentiality
+                            and regulatory obligations. The Asimov AI framework is
+                            specifically designed for these environments.
                         </p>
                     </div>
                 </div>
@@ -466,88 +518,184 @@ const ProfessionalServices = () => {
             </section>
 
             {/* ================================================================ */}
-            {/* SECTION 6 — AI GOVERNANCE STARTER PROGRAMME                      */}
+            {/* SECTION 6 — THE AI GOVERNANCE ACCELERATOR                        */}
             {/* ================================================================ */}
             <section className="bg-white py-20 px-6 border-b border-slate-200">
-                <div className="max-w-5xl mx-auto">
-                    <div className="text-center mb-14">
+                <div className="max-w-4xl mx-auto">
+                    <div className="text-center mb-6">
                         <div className="flex items-center justify-center gap-2 mb-3">
                             <div className="h-[1px] w-8 bg-brand-blue" />
                             <span className="text-brand-blue font-bold text-[10px] uppercase tracking-[0.2em]">
-                                Engagement
+                                Programme
                             </span>
                             <div className="h-[1px] w-8 bg-brand-blue" />
                         </div>
                         <h2 className="text-slate-900 text-3xl md:text-4xl font-medium font-display mb-4">
-                            AI Governance Starter Programme
+                            The AI Governance Accelerator
                         </h2>
-                        <p className="text-slate-500 text-lg max-w-2xl mx-auto">
-                            A focused engagement designed to take your firm from AI
-                            uncertainty to structured, compliant AI adoption.
+                        <p className="text-brand-blue font-semibold text-sm uppercase tracking-wider mb-6">
+                            A 6-Week Programme for Professional Firms
                         </p>
                     </div>
 
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                    {/* Priestley-style intro copy */}
+                    <div className="max-w-2xl mx-auto text-center mb-14">
+                        <p className="text-slate-600 text-lg leading-relaxed mb-4">
+                            Most law firms, accountants and architects are already
+                            experimenting with AI tools.
+                        </p>
+                        <p className="text-slate-900 text-lg font-semibold leading-relaxed mb-4">
+                            The risk is not that AI exists.
+                            <br />
+                            The risk is using AI without governance.
+                        </p>
+                        <p className="text-slate-600 text-lg leading-relaxed">
+                            The Asimov AI Governance Accelerator helps professional firms
+                            adopt AI safely while protecting client confidentiality and
+                            professional obligations.
+                        </p>
+                        <p className="text-slate-900 text-base font-medium mt-4">
+                            In six weeks we help you move from AI curiosity to controlled
+                            AI capability.
+                        </p>
+                    </div>
+
+                    {/* Weekly Timeline */}
+                    <div className="flex flex-col gap-0 relative max-w-3xl mx-auto">
+                        {/* Connecting line */}
+                        <div className="absolute left-[27px] top-8 bottom-8 w-[2px] bg-gradient-to-b from-brand-blue via-brand-blue/40 to-emerald-500" />
+
                         {[
                             {
-                                week: "Week 1–2",
-                                title: "AI Readiness Assessment",
-                                desc: "Evaluate current AI usage, risk exposure, data governance maturity, and regulatory obligations across the practice.",
+                                week: "Week 1",
+                                title: "AI Risk Discovery",
+                                desc: "We identify where AI is already being used across the firm and where risk may exist.",
+                                items: [
+                                    "Tools currently in use",
+                                    "Confidential data exposure",
+                                    "Document workflows",
+                                    "Client communication processes",
+                                ],
+                                outcome: "A clear view of AI risks and opportunities across the firm.",
                                 icon: Eye,
+                                colour: "bg-blue-600",
                             },
                             {
-                                week: "Week 2–3",
-                                title: "Risk & Compliance Review",
-                                desc: "Map AI risks against professional conduct rules, data protection requirements, and sector-specific regulations.",
+                                week: "Weeks 2–3",
+                                title: "Governance Framework",
+                                desc: "We implement a practical governance framework tailored to professional firms.",
+                                items: [
+                                    "AI usage policy",
+                                    "Data confidentiality rules",
+                                    "Risk register",
+                                    "Approved tool guidelines",
+                                ],
+                                frameworks: [
+                                    "NIST AI Risk Management Framework",
+                                    "ISO/IEC 42001",
+                                    "EU AI Act readiness",
+                                ],
+                                outcome: "A clear governance structure for responsible AI use.",
                                 icon: Shield,
+                                colour: "bg-emerald-600",
                             },
                             {
-                                week: "Week 3–4",
-                                title: "AI Policy & Governance Model",
-                                desc: "Develop organisation-specific AI acceptable use policy, human oversight model, and accountability framework.",
-                                icon: FileText,
-                            },
-                            {
-                                week: "Week 4–6",
-                                title: "Pilot Automation",
-                                desc: "Implement a controlled AI pilot in one practice area with monitoring, evaluation, and refinement protocols.",
+                                week: "Weeks 4–5",
+                                title: "Safe AI Pilot",
+                                desc: "We introduce controlled AI tools to improve productivity while maintaining professional standards.",
+                                items: [
+                                    "Document summarisation",
+                                    "Research assistance",
+                                    "Proposal drafting",
+                                    "Knowledge management",
+                                ],
+                                outcome: "Practical AI workflows operating within defined governance rules.",
                                 icon: Layers,
+                                colour: "bg-amber-500",
+                            },
+                            {
+                                week: "Week 6",
+                                title: "Operational Model",
+                                desc: "We establish how AI will be managed across the firm going forward.",
+                                items: [
+                                    "Monitoring and reporting",
+                                    "Governance oversight",
+                                    "Operational guidelines",
+                                ],
+                                outcome: "A sustainable AI Operating Model for the firm.",
+                                icon: Target,
+                                colour: "bg-purple-600",
                             },
                         ].map((phase, index) => (
-                            <Card
-                                key={index}
-                                className="border-slate-200 hover:border-brand-blue/30 hover:shadow-md transition-all bg-white relative overflow-hidden"
-                            >
-                                <div className="absolute top-0 left-0 w-full h-1 bg-brand-blue" />
-                                <CardContent className="p-6">
-                                    <div className="flex items-center gap-2 mb-4">
-                                        <Clock className="w-4 h-4 text-brand-blue" />
+                            <div key={index} className="flex gap-6 relative z-10 mb-6">
+                                <div
+                                    className={`mt-1 size-14 rounded-2xl ${phase.colour} flex flex-col items-center justify-center text-white shadow-lg ring-4 ring-white shrink-0 z-20`}
+                                >
+                                    <phase.icon className="w-6 h-6" />
+                                </div>
+
+                                <div className="flex-1 bg-white rounded-xl p-6 border border-slate-200 hover:border-brand-blue/20 hover:shadow-md transition-all">
+                                    <div className="flex items-center gap-3 mb-1">
                                         <span className="text-brand-blue text-xs font-bold uppercase tracking-wider">
                                             {phase.week}
                                         </span>
                                     </div>
-                                    <div className="text-brand-blue bg-brand-blue/5 size-10 rounded-lg flex items-center justify-center mb-4">
-                                        <phase.icon className="w-5 h-5" />
-                                    </div>
-                                    <h3 className="text-slate-900 text-base font-bold font-display mb-2">
+                                    <h3 className="text-slate-900 font-bold text-xl font-display mb-2">
                                         {phase.title}
                                     </h3>
-                                    <p className="text-slate-500 text-sm leading-relaxed">
+                                    <p className="text-slate-500 text-sm leading-relaxed mb-4">
                                         {phase.desc}
                                     </p>
-                                </CardContent>
-                            </Card>
+
+                                    <p className="text-slate-600 text-sm font-medium mb-2">We review:</p>
+                                    <ul className="space-y-1.5 mb-4">
+                                        {phase.items.map((item, i) => (
+                                            <li key={i} className="flex items-start gap-2 text-slate-600 text-sm">
+                                                <CheckCircle2 className="w-3.5 h-3.5 text-brand-blue mt-0.5 flex-shrink-0" />
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    {(phase as any).frameworks && (
+                                        <div className="mb-4">
+                                            <p className="text-slate-600 text-sm font-medium mb-2">
+                                                Frameworks aligned to recognised standards:
+                                            </p>
+                                            <div className="flex flex-wrap gap-2">
+                                                {(phase as any).frameworks.map((fw: string) => (
+                                                    <Badge
+                                                        key={fw}
+                                                        variant="outline"
+                                                        className="text-xs font-medium"
+                                                    >
+                                                        {fw}
+                                                    </Badge>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    <div className="bg-emerald-50 border border-emerald-200 rounded-lg px-4 py-3">
+                                        <p className="text-emerald-800 text-sm">
+                                            <span className="font-bold">Outcome:</span>{" "}
+                                            {phase.outcome}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         ))}
                     </div>
 
-                    <div className="bg-slate-50 rounded-xl border border-slate-200 p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    {/* Summary bar */}
+                    <div className="mt-10 bg-slate-50 rounded-xl border border-slate-200 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 max-w-3xl mx-auto">
                         <div>
                             <p className="text-slate-900 font-semibold font-display text-lg">
-                                Duration: 4–6 weeks
+                                6 weeks to controlled AI capability
                             </p>
                             <p className="text-slate-500 text-sm">
-                                Tailored to your firm's size, practice areas, and regulatory
-                                environment.
+                                Tailored to your firm's size, practice areas, and
+                                regulatory environment.
                             </p>
                         </div>
                         <Button
@@ -562,9 +710,56 @@ const ProfessionalServices = () => {
             </section>
 
             {/* ================================================================ */}
-            {/* SECTION 7 — CALL TO ACTION                                       */}
+            {/* SECTION 7 — PRIESTLEY-STYLE ASSESSMENT CTA                       */}
             {/* ================================================================ */}
-            <BookConsultationSection />
+            <section className="bg-slate-900 py-20 px-6">
+                <div className="max-w-3xl mx-auto text-center">
+                    <div className="flex items-center justify-center gap-2 mb-3">
+                        <div className="h-[1px] w-8 bg-brand-blue" />
+                        <span className="text-brand-blue font-bold text-[10px] uppercase tracking-[0.2em]">
+                            Get Started
+                        </span>
+                        <div className="h-[1px] w-8 bg-brand-blue" />
+                    </div>
+
+                    <h2 className="text-white text-3xl md:text-4xl font-medium font-display mb-6">
+                        Start with the AI Readiness Assessment
+                    </h2>
+
+                    <p className="text-slate-300 text-lg leading-relaxed mb-4">
+                        Before firms adopt AI tools, they need to understand their risk
+                        exposure.
+                    </p>
+
+                    <p className="text-slate-400 text-base leading-relaxed mb-8">
+                        Our AI Readiness Assessment takes approximately 10 minutes and
+                        provides an initial view of AI usage risk, governance maturity,
+                        and opportunity areas.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+                        <Button
+                            size="lg"
+                            className="bg-brand-blue hover:bg-blue-600 text-white font-semibold px-10 rounded-full shadow-lg shadow-brand-blue/20 transition-all hover:scale-105 gap-2"
+                            onClick={handleAssessment}
+                        >
+                            Take the AI Assessment
+                            <ArrowRight className="w-4 h-4" />
+                        </Button>
+                    </div>
+
+                    <p className="text-slate-500 text-sm">
+                        Or{" "}
+                        <button
+                            className="text-brand-blue hover:underline font-medium"
+                            onClick={handleBookConsultation}
+                        >
+                            speak to our team
+                        </button>
+                        {" "}to discuss the AI Governance Accelerator.
+                    </p>
+                </div>
+            </section>
 
             <Footer />
         </div>

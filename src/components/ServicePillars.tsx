@@ -1,10 +1,11 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Target, Cpu, Mic } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Shield, Zap, Database, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import servicesBg from "@/assets/services-bg.jpg";
 import riskAssessmentImg from "@/assets/risk-assessment-ai.png";
 import projectDeliveryImg from "@/assets/project-delivery.jpg";
 import aiLifecycleImg from "@/assets/ai-ml-lifecycle.png";
-import voiceAgentImg from "@/assets/voice-agent-ai.png";
 import complianceIcon from "@/assets/service-compliance.png";
 import mlopsIcon from "@/assets/service-mlops.png";
 import governanceIcon from "@/assets/service-governance.png";
@@ -14,84 +15,78 @@ const ServicePillars = () => {
     {
       icon: Shield,
       iconImg: complianceIcon,
-      title: "Regulatory Compliance Pillars",
-      tagline: "Achieving EU AI Act Readiness and GDPR Compliant systems",
-      description: "Comprehensive risk mapping across legal, ethical, and operational domains. We evaluate your organisation's AI maturity and exposure under EU AI Act, ISO/IEC 42001, NIST AI RMF, COBIT 2019, and GDPR—delivering board-ready compliance roadmaps.",
+      title: "Step 1: The Audit",
+      link: "/assessment-info",
+      tagline: "\"Ghost in the Machine\"",
+      description: "70% of Enterprise AI fails due to 'Hallucination Risk'. See how our audit isolates your proprietary data from public model errors. We identify security gaps before you deploy.",
       deliverables: [
-        "AI System Inventory & Risk Classification",
-        "EU AI Act Conformity Assessment Preparation",
-        "GDPR Data Protection Impact Assessments",
-        "Risk Heatmaps & Governance Roadmaps",
-        "Executive Briefings for Board & CISO"
+        "30-Point AI Readiness Risk Assessment",
+        "Proprietary Data Isolation Strategy",
+        "Hallucination Risk Stress-Testing",
+        "EU AI Act & NIST Gap Analysis",
+        "Board-Level Risk Report"
       ],
       image: riskAssessmentImg
     },
     {
-      icon: Target,
-      iconImg: governanceIcon,
-      title: "Governance & Audit Deliverables",
-      tagline: "Implementing controls for clear board oversight",
-      description: "Structured governance frameworks based on NIST AI RMF and COBIT 2019. We establish board-level oversight mechanisms, control registers, and audit-ready documentation that withstand regulatory scrutiny and demonstrate accountability.",
-      deliverables: [
-        "NIST AI RMF Control Implementation",
-        "COBIT 2019 AI Governance Framework",
-        "Board-Level AI Risk Reporting Dashboard",
-        "Internal Audit & Assurance Programs",
-        "Third-Party Vendor Risk Management"
-      ],
-      image: aiLifecycleImg
-    },
-    {
-      icon: Cpu,
+      icon: Zap,
       iconImg: mlopsIcon,
-      title: "MLOps Security Modules",
-      tagline: "Hardening CI/CD pipelines with threat-informed audits",
-      description: "Security-first approach to AI operations. We conduct audits informed by OWASP Top 10 for LLMs and threat modeling using MITRE ATLAS framework, ensuring your AI deployment pipelines are resilient against adversarial attacks and supply chain vulnerabilities.",
+      title: "Step 2: The Prototype",
+      link: "/strategic-delivery",
+      tagline: "\"Cognitive Clarity\"",
+      description: "Stop building chat-bots. Build a Digital Intelligence Agency. See a prototype of your company’s 'Collective Brain' in 14 days. We bridge the gap between 'interesting tech' and de-risked business outcome.",
       deliverables: [
-        "CI/CD Pipeline Security Audits",
-        "OWASP AI Security Risk Assessment",
-        "MITRE ATLAS Threat Modeling",
-        "Model Registry & Artifact Validation",
-        "Supply Chain Security Controls"
+        "14-Day Rapid Prototype Build",
+        "RAG Pipeline with Guardrails",
+        "Voice/Agentic Interface Demo",
+        "Efficiency ROI Calculation",
+        "Technical Feasibility Validation"
       ],
       image: projectDeliveryImg
     },
     {
-      icon: Mic,
-      title: "Voice, Vision & Multi-Agent Systems",
-      tagline: "The new human interface.",
-      description: "Specialising in cutting-edge AI interfaces that enable organisations to launch branded AI personalities and automated advisory tools without compromising governance.",
+      icon: Database,
+      iconImg: governanceIcon,
+      title: "Step 3: Enterprise Scale",
+      link: "/strategic-delivery",
+      tagline: "Technical Sovereignty",
+      description: "Verifiable Knowledge Graphs & Cryptographic Provenance. Ensure your AI infrastructure is audit-ready with human-in-the-loop oversight and zero-data training policies.",
       deliverables: [
-        "AI voice interfaces (Bland AI, SynthFlow, VAPI)",
-        "AI video and avatar automation (HeyGen, Runway)",
-        "Multi-agent ecosystems for marketing & analytics",
-        "GPT-based and Relevance AI agent clusters",
-        "Branded AI personalities with security controls"
+        "Verifiable Knowledge Graph Architecture",
+        "Cryptographic Provenance Logging",
+        "Human-in-the-Loop Oversight Models",
+        "Zero-Data Training Policy Implementation",
+        "Continuous Governance Monitoring"
       ],
-      image: voiceAgentImg
+      image: aiLifecycleImg
     }
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id="services" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img src={servicesBg} alt="" className="w-full h-full object-cover opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/85 to-background/75" />
       </div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Service Pillars</h2>
+          <div className="inline-block mb-4">
+            <span className="text-sm font-semibold text-accent uppercase tracking-wider">
+              The Framework
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">The Audit & Delivery Framework</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Four integrated capabilities — from risk assessment to reality deployment
+            From "Ghost in the Machine" risks to Enterprise Scale. A structured path to operationalizing AI.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {pillars.map((pillar, index) => (
-            <Card key={index} className="border-border hover:border-accent/50 transition-all hover:shadow-lg group overflow-hidden">
-              <div className="relative h-56 overflow-hidden">
-                <img 
-                  src={pillar.image} 
+            <Card key={index} className="flex flex-col border-border hover:border-accent/50 transition-all hover:shadow-lg group overflow-hidden">
+              <div className="relative h-56 overflow-hidden shrink-0">
+                <img
+                  src={pillar.image}
                   alt={`${pillar.title} - ${pillar.tagline}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
@@ -105,16 +100,16 @@ const ServicePillars = () => {
                 </div>
               </div>
               <CardHeader>
-                <CardTitle className="text-2xl mb-2">{pillar.title}</CardTitle>
-                <CardDescription className="text-base font-semibold text-foreground">
+                <CardTitle className="text-2xl mb-1">{pillar.title}</CardTitle>
+                <CardDescription className="text-lg font-bold text-accent">
                   {pillar.tagline}
                 </CardDescription>
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
                   {pillar.description}
                 </p>
               </CardHeader>
-              <CardContent>
-                <h4 className="font-semibold text-sm mb-3 text-foreground">Key Deliverables:</h4>
+              <CardContent className="grow">
+                <h4 className="font-semibold text-sm mb-3 text-foreground uppercase tracking-wide opacity-80">Deliverables:</h4>
                 <ul className="space-y-2">
                   {pillar.deliverables.map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -124,6 +119,14 @@ const ServicePillars = () => {
                   ))}
                 </ul>
               </CardContent>
+              <CardFooter className="pt-0">
+                <Button asChild className="w-full group/btn" variant="outline">
+                  <Link to={pillar.link}>
+                    Details
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </CardFooter>
             </Card>
           ))}
         </div>

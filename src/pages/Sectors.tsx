@@ -28,6 +28,12 @@ const Sectors = () => {
       name: "Financial Services",
       tagline: "Protect Client Trust & Meet Regulatory Requirements",
       image: sectorFinancial,
+      scenario: {
+        crisis: "High-frequency trading algorithm runaway causes flash crash.",
+        team: "CTO, Head of Trading, Risk/Compliance Officer",
+        fear: "Regulatory fines (MiFID II), massive financial loss, reputational ruin",
+        environment: "Busy trading floor, multiple monitors, high stress"
+      },
       risks: [
         "Client financial data breaches",
         "Regulatory fines and compliance failures",
@@ -47,6 +53,12 @@ const Sectors = () => {
       name: "Healthcare & Medical",
       tagline: "Ensure HIPAA Compliance & Patient Safety",
       image: sectorMedical,
+      scenario: {
+        crisis: "AI diagnostic tool misdiagnoses rare condition leading to patient harm.",
+        team: "Chief Medical Officer, Hospital Admin, Legal Counsel",
+        fear: "Lawsuits, loss of medical license, patient safety compromise",
+        environment: "Hospital board room, sterile, white coats"
+      },
       risks: [
         "Patient PHI exposure and HIPAA violations",
         "Medical AI diagnostic errors affecting patient outcomes",
@@ -66,6 +78,12 @@ const Sectors = () => {
       name: "Legal Services",
       tagline: "Safeguard Privilege & Client Confidentiality",
       image: sectorLegal,
+      scenario: {
+        crisis: "Client confidentiality breach (attorney-client privilege compromised)",
+        team: "Senior Partner, Managing Partner, Associates, Paralegals, Office Manager",
+        fear: "Malpractice liability, disciplinary action, loss of client trust",
+        environment: "Traditional law office with case files, legal volumes, conference table"
+      },
       risks: [
         "Attorney-client privilege compromised by AI systems",
         "Criminal exposure from confidential data leaks",
@@ -85,6 +103,12 @@ const Sectors = () => {
       name: "Manufacturing",
       tagline: "Secure IP & Operational Technology",
       image: sectorManufacturing,
+      scenario: {
+        crisis: "Proprietary schematic leaked to competitor via generative design tool.",
+        team: "Head of R&D, Plant Manager, IP Lawyer",
+        fear: "Losing competitive edge, IP theft, revenue loss",
+        environment: "Factory floor office, blueprints, CAD screens"
+      },
       risks: [
         "Production data leaks to competitors",
         "Trade secret theft through AI systems",
@@ -159,6 +183,35 @@ const Sectors = () => {
                         </div>
                       </div>
                     </CardHeader>
+
+                    {/* Crisis Spotlight */}
+                    <div className="mb-8 bg-slate-900 rounded-lg p-6 text-white shadow-lg relative overflow-hidden group/crisis">
+                      <div className="absolute top-0 right-0 p-4 opacity-10 group-hover/crisis:opacity-20 transition-opacity">
+                        <AlertTriangle className="w-24 h-24" />
+                      </div>
+                      <div className="relative z-10">
+                        <div className="flex items-center gap-2 mb-3 text-red-400">
+                          <AlertTriangle className="w-5 h-5" />
+                          <h4 className="font-bold uppercase tracking-wider text-sm">Crisis Scenario</h4>
+                        </div>
+                        <p className="text-lg font-medium mb-4 leading-relaxed">"{sector.scenario.crisis}"</p>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-300">
+                          <div>
+                            <span className="text-slate-500 font-semibold block text-xs uppercase mb-1">Team Involved</span>
+                            {sector.scenario.team}
+                          </div>
+                          <div>
+                            <span className="text-slate-500 font-semibold block text-xs uppercase mb-1">Greatest Fear</span>
+                            <span className="text-white">{sector.scenario.fear}</span>
+                          </div>
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-slate-800">
+                          <span className="text-slate-500 font-semibold text-xs uppercase mr-2">Environment:</span>
+                          <span className="text-slate-300 italic">{sector.scenario.environment}</span>
+                        </div>
+                      </div>
+                    </div>
 
                     <CardContent className="p-0 space-y-6">
                       {/* Risks */}

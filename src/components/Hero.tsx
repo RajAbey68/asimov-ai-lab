@@ -83,7 +83,7 @@ const Hero = () => {
             <div className="space-y-6">
               <div className="inline-block">
                 <span className="text-brand-blue text-sm font-bold tracking-wider uppercase bg-blue-50 px-4 py-2 rounded-full border border-blue-100">
-                  AI Governance & Compliance
+                  Leadership Advisory
                 </span>
               </div>
 
@@ -91,70 +91,49 @@ const Hero = () => {
                 id="hero-heading"
                 className="text-4xl lg:text-6xl font-medium leading-tight text-slate-900 font-display"
               >
-                We offer a governance framework to identify, assess & mitigate <span className="text-brand-blue">legal, ethical, technical & operational</span> AI risks — fast.
+                Before regulators ask questions, <span className="text-brand-blue">leadership needs clear answers</span>.
               </h1>
 
               <p className="text-xl lg:text-2xl text-slate-600 leading-relaxed font-sans">
-                Built for today’s AI reality:
+                Is your organization's data ready for AI? Our <strong>30-Point AI Readiness Audit</strong> identifies security gaps before you deploy.
               </p>
             </div>
 
-            {/* Built For... */}
-            <div className="space-y-4 pt-2">
-              <div className="grid gap-3">
-                {[
-                  "Generative AI & LLMs",
-                  "Agentic & autonomous systems",
-                  "Real-time / edge AI (drones, vehicles, robotics)",
-                  "OSS integrations & BSS/OSS environments"
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-brand-blue shrink-0 mt-1" />
-                    <p className="text-slate-900 font-medium">{item}</p>
-                  </div>
-                ))}
+            {/* AI Risk Readiness Assessment Block */}
+            <div className="bg-white p-6 rounded-xl border border-blue-100 shadow-sm">
+              <div className="flex items-center gap-3 mb-3">
+                <Shield className="w-5 h-5 text-brand-blue" />
+                <h3 className="font-bold text-slate-900">AI Risk Readiness – 5 Minute Leadership Assessment</h3>
               </div>
+              <p className="text-sm text-slate-600 mb-4">
+                Receive a confidential Governance Maturity Score & Delivery Risk Profile.
+              </p>
+              <Link to="/assessment-info" className="text-brand-blue font-semibold text-sm hover:underline flex items-center gap-1">
+                Start Assessment <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
 
             {/* Compliance Statement */}
-            <div className="pt-6 space-y-4">
-              <p className="text-lg text-slate-600 leading-relaxed font-sans">
-                Fully aligned with <span className="font-semibold text-brand-blue">EU AI Act</span>, <span className="font-semibold text-brand-blue">NIST AI RMF</span>, <span className="font-semibold text-brand-blue">ISO/IEC 42001</span> — practical compliance without killing velocity.
-              </p>
-              <p className="text-xl font-bold text-slate-900 italic">
-                Get compliant. Stay agile. Scale safely.
+            <div className="pt-2 space-y-4">
+              <p className="text-sm text-slate-500 leading-relaxed font-sans">
+                Aligned with <span className="font-semibold text-slate-700">EU AI Act</span>, <span className="font-semibold text-slate-700">NIST AI RMF</span>, <span className="font-semibold text-slate-700">ISO/IEC 42001</span>.
               </p>
             </div>
 
             {/* CTA */}
-            <div className="pt-8 grid gap-6 sm:grid-cols-2">
+            <div className="pt-6 grid gap-6 sm:grid-cols-2">
               <div className="flex flex-col gap-3">
-                <Link to="/assessment-info" className="w-full">
+                <Link to="/#book-consultation" className="w-full">
                   <Button
                     size="lg"
                     className="w-full bg-brand-blue text-white hover:bg-blue-600 font-semibold text-lg px-8 py-6 shadow-lg shadow-brand-blue/20"
                   >
-                    Request free initial call
+                    Book Initial Discover Call
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
                 <p className="text-sm text-slate-600 text-center leading-relaxed px-2">
-                  <span className="font-semibold text-slate-900">Initial Feasibility Call.</span> A preliminary discussion to scope your requirements and determine if our framework aligns with your needs.
-                </p>
-              </div>
-
-              <div className="flex flex-col gap-3">
-                <Button
-                  onClick={() => setIsConsultationOpen(true)}
-                  size="lg"
-                  variant="outline"
-                  className="w-full border-brand-blue text-brand-blue hover:bg-blue-50 font-semibold text-lg px-8 py-6 shadow-md"
-                >
-                  <Calendar className="mr-2 h-5 w-5" />
-                  Request a Consultation
-                </Button>
-                <p className="text-sm text-slate-600 text-center leading-relaxed px-2">
-                  <span className="font-semibold text-slate-900">Expert Advisory.</span> A chargeable session to resolve specific tactical or strategic delivery issues, legal questions, or compliance blockers.
+                  <span className="font-semibold text-slate-900">Leadership Briefing.</span> A structured conversation to understand your AI governance posture and delivery risks.
                 </p>
               </div>
             </div>
