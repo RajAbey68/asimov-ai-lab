@@ -198,19 +198,19 @@ const ProfessionalServices = () => {
             {/* ================================================================ */}
             {/* SECTION 2b — DESIGNED FOR PROFESSIONAL SERVICES FIRMS             */}
             {/* ================================================================ */}
-            <section className="bg-slate-900 py-16 px-6">
+            <section className="bg-blue-50 py-16 px-6">
                 <div className="max-w-4xl mx-auto">
-                    <div className="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10">
+                    <div className="bg-white border border-blue-100 rounded-2xl p-8 md:p-10 shadow-sm">
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="bg-brand-blue/20 size-12 rounded-xl flex items-center justify-center">
+                            <div className="bg-brand-blue/10 size-12 rounded-xl flex items-center justify-center">
                                 <Briefcase className="w-6 h-6 text-brand-blue" />
                             </div>
-                            <h2 className="text-white text-2xl md:text-3xl font-medium font-display">
+                            <h2 className="text-slate-900 text-2xl md:text-3xl font-medium font-display">
                                 Designed for Professional Services Firms
                             </h2>
                         </div>
 
-                        <p className="text-slate-400 text-base mb-6">
+                        <p className="text-slate-500 text-base mb-6">
                             Suitable for:
                         </p>
 
@@ -225,7 +225,7 @@ const ProfessionalServices = () => {
                             ].map((firm) => (
                                 <div
                                     key={firm}
-                                    className="flex items-center gap-2 text-white text-sm"
+                                    className="flex items-center gap-2 text-slate-700 text-sm"
                                 >
                                     <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
                                     <span>{firm}</span>
@@ -233,9 +233,9 @@ const ProfessionalServices = () => {
                             ))}
                         </div>
 
-                        <Separator className="bg-white/10 mb-6" />
+                        <Separator className="bg-slate-200 mb-6" />
 
-                        <p className="text-slate-300 text-base leading-relaxed">
+                        <p className="text-slate-600 text-base leading-relaxed">
                             Professional firms face unique AI risks due to confidentiality
                             and regulatory obligations. The Asimov AI framework is
                             specifically designed for these environments.
@@ -712,26 +712,26 @@ const ProfessionalServices = () => {
             {/* ================================================================ */}
             {/* SECTION 7 — PRIESTLEY-STYLE ASSESSMENT CTA                       */}
             {/* ================================================================ */}
-            <section className="bg-slate-900 py-20 px-6">
+            <section className="bg-brand-blue py-20 px-6">
                 <div className="max-w-3xl mx-auto text-center">
                     <div className="flex items-center justify-center gap-2 mb-3">
-                        <div className="h-[1px] w-8 bg-brand-blue" />
-                        <span className="text-brand-blue font-bold text-[10px] uppercase tracking-[0.2em]">
+                        <div className="h-[1px] w-8 bg-white/40" />
+                        <span className="text-white/80 font-bold text-[10px] uppercase tracking-[0.2em]">
                             Get Started
                         </span>
-                        <div className="h-[1px] w-8 bg-brand-blue" />
+                        <div className="h-[1px] w-8 bg-white/40" />
                     </div>
 
                     <h2 className="text-white text-3xl md:text-4xl font-medium font-display mb-6">
                         Start with the AI Readiness Assessment
                     </h2>
 
-                    <p className="text-slate-300 text-lg leading-relaxed mb-4">
+                    <p className="text-blue-100 text-lg leading-relaxed mb-4">
                         Before firms adopt AI tools, they need to understand their risk
                         exposure.
                     </p>
 
-                    <p className="text-slate-400 text-base leading-relaxed mb-8">
+                    <p className="text-blue-200 text-base leading-relaxed mb-8">
                         Our AI Readiness Assessment takes approximately 10 minutes and
                         provides an initial view of AI usage risk, governance maturity,
                         and opportunity areas.
@@ -740,7 +740,7 @@ const ProfessionalServices = () => {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
                         <Button
                             size="lg"
-                            className="bg-brand-blue hover:bg-blue-600 text-white font-semibold px-10 rounded-full shadow-lg shadow-brand-blue/20 transition-all hover:scale-105 gap-2"
+                            className="bg-white text-brand-blue hover:bg-blue-50 font-semibold px-10 rounded-full shadow-lg transition-all hover:scale-105 gap-2"
                             onClick={handleAssessment}
                         >
                             Take the AI Assessment
@@ -748,10 +748,10 @@ const ProfessionalServices = () => {
                         </Button>
                     </div>
 
-                    <p className="text-slate-500 text-sm">
+                    <p className="text-blue-200 text-sm">
                         Or{" "}
                         <button
-                            className="text-brand-blue hover:underline font-medium"
+                            className="text-white hover:underline font-medium"
                             onClick={handleBookConsultation}
                         >
                             speak to our team

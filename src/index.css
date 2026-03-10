@@ -48,43 +48,7 @@ All colors MUST be HSL.
     --gradient-subtle: linear-gradient(180deg, hsl(210 40% 98%) 0%, hsl(210 40% 96%) 100%);
   }
 
-  .dark {
-    --background: 223 63% 20%;
-    --foreground: 0 0% 100%;
-
-    --card: 223 63% 25%;
-    --card-foreground: 0 0% 100%;
-
-    --popover: 223 63% 25%;
-    --popover-foreground: 0 0% 100%;
-
-    --primary: 0 0% 100%;
-    --primary-foreground: 223 63% 33%;
-
-    --secondary: 223 50% 28%;
-    --secondary-foreground: 0 0% 100%;
-
-    --muted: 223 50% 28%;
-    --muted-foreground: 215 20% 75%;
-
-    --accent: 45 100% 51%;
-    --accent-foreground: 223 63% 33%;
-
-    --warning: 45 100% 51%;
-    --warning-foreground: 223 63% 33%;
-
-    --destructive: 0 63% 45%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 223 50% 28%;
-    --input: 223 50% 28%;
-    --ring: 45 100% 51%;
-
-    --gradient-primary: linear-gradient(135deg, hsl(223 63% 33%) 0%, hsl(223 63% 40%) 100%);
-    --gradient-hero: linear-gradient(to bottom right, hsl(223 63% 33%) 0%, hsl(223 55% 38%) 50%, hsl(223 63% 33%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(45 100% 51%) 0%, hsl(38 100% 48%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(223 63% 20%) 0%, hsl(223 63% 15%) 100%);
-  }
+  /* Dark mode deprecated per brand directive — white/blue only */
 }
 
 @layer base {
@@ -94,11 +58,13 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   /* Reduced motion support for accessibility */
   @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -113,5 +79,42 @@ All colors MUST be HSL.
   *:focus-visible {
     outline: 2px solid hsl(var(--accent));
     outline-offset: 2px;
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   ASIMOV DESIGN SYSTEM — Brand Utilities
+   ══════════════════════════════════════════════════ */
+
+@layer utilities {
+  /* Typography — Dual System */
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-sans {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Section Backgrounds */
+  .section-white {
+    @apply bg-white;
+  }
+
+  .section-alt {
+    background-color: #F4F7FA;
+  }
+
+  /* Brand Colors */
+  .text-brand-blue {
+    color: #0052FF;
+  }
+
+  .bg-brand-blue {
+    background-color: #0052FF;
+  }
+
+  .border-brand-blue {
+    border-color: #0052FF;
   }
 }

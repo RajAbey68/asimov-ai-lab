@@ -3,45 +3,54 @@ import SEO from "@/components/SEO";
 import Hero from "@/components/Hero";
 import ProvenResults from "@/components/ProvenResults";
 import RiskProfileSelector from "@/components/RiskProfileSelector";
-import ServiceTiers from "@/components/ServiceTiers";
 import ServicePillars from "@/components/ServicePillars";
-import DeliveryPackages from "@/components/DeliveryPackages";
-import RajivMethodology from "@/components/RajivMethodology";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
 import Team from "@/components/Team";
 import BookConsultationSection from "@/components/BookConsultationSection";
 import FloatingCTA from "@/components/FloatingCTA";
-import AsimovChatWidget from "@/components/AsimovChatWidget";
 import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
 import { CTARibbon } from "@/components/CTARibbon";
 import TrustBar from "@/components/TrustBar";
-import DataSovereignty from "@/components/DataSovereignty";
-import MBADLifecycle from "@/components/MBADLifecycle";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <SEO />
       <StructuredData />
       <Navigation />
       <FloatingCTA />
+
+      {/* 1. Hero — Priestley-style clarity */}
       <Hero />
-      <MBADLifecycle />
+
+      {/* 2. Trust Strip — Standards alignment */}
       <TrustBar />
-      <DataSovereignty />
+
+      {/* 3. Services — Audit → Prototype → Enterprise */}
+      <ServicePillars />
+
+      {/* 4. Who We Help — Risk profiles */}
       <div id="risk-profiles">
         <RiskProfileSelector />
       </div>
-      <ServicePillars />
+
+      {/* 5. Proven Results / Evidence */}
       <ProvenResults />
-      <ServiceTiers />
-      <DeliveryPackages />
-      <RajivMethodology />
-      <TestimonialCarousel />
+
+      {/* 6. Assessment CTA Ribbon */}
       <CTARibbon />
+
+      {/* 7. Testimonials */}
+      <TestimonialCarousel />
+
+      {/* 8. Team */}
       <Team />
+
+      {/* 9. Book Consultation */}
       <BookConsultationSection />
+
+      {/* 10. Footer */}
       <Footer />
     </div>
   );

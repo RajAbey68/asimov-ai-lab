@@ -21,7 +21,7 @@ const Insights = () => {
                             How enterprise organizations can balance the velocity of autonomous agents with the rigor of legal compliance. A framework for 2026.
                         </p>
                         <div className="flex items-center gap-4 pt-4">
-                            <button className="bg-slate-900 text-white px-6 py-3 rounded-md text-sm font-bold tracking-wide uppercase hover:bg-slate-800 transition-colors">
+                            <button className="bg-brand-blue text-white px-6 py-3 rounded-md text-sm font-bold tracking-wide uppercase hover:bg-blue-600 transition-colors">
                                 Read Whitepaper
                             </button>
                             <span className="text-slate-500 text-sm">5 min read</span>

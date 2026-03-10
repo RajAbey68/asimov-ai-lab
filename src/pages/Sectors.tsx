@@ -185,30 +185,30 @@ const Sectors = () => {
                     </CardHeader>
 
                     {/* Crisis Spotlight */}
-                    <div className="mb-8 bg-slate-900 rounded-lg p-6 text-white shadow-lg relative overflow-hidden group/crisis">
+                    <div className="mb-8 bg-red-50 rounded-lg p-6 text-slate-900 shadow-sm border border-red-100 relative overflow-hidden group/crisis">
                       <div className="absolute top-0 right-0 p-4 opacity-10 group-hover/crisis:opacity-20 transition-opacity">
-                        <AlertTriangle className="w-24 h-24" />
+                        <AlertTriangle className="w-24 h-24 text-red-300" />
                       </div>
                       <div className="relative z-10">
-                        <div className="flex items-center gap-2 mb-3 text-red-400">
+                        <div className="flex items-center gap-2 mb-3 text-red-600">
                           <AlertTriangle className="w-5 h-5" />
                           <h4 className="font-bold uppercase tracking-wider text-sm">Crisis Scenario</h4>
                         </div>
-                        <p className="text-lg font-medium mb-4 leading-relaxed">"{sector.scenario.crisis}"</p>
+                        <p className="text-lg font-medium mb-4 leading-relaxed text-slate-800">"{sector.scenario.crisis}"</p>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-300">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-slate-600">
                           <div>
-                            <span className="text-slate-500 font-semibold block text-xs uppercase mb-1">Team Involved</span>
+                            <span className="text-slate-400 font-semibold block text-xs uppercase mb-1">Team Involved</span>
                             {sector.scenario.team}
                           </div>
                           <div>
-                            <span className="text-slate-500 font-semibold block text-xs uppercase mb-1">Greatest Fear</span>
-                            <span className="text-white">{sector.scenario.fear}</span>
+                            <span className="text-slate-400 font-semibold block text-xs uppercase mb-1">Greatest Fear</span>
+                            <span className="text-slate-900 font-medium">{sector.scenario.fear}</span>
                           </div>
                         </div>
-                        <div className="mt-4 pt-4 border-t border-slate-800">
-                          <span className="text-slate-500 font-semibold text-xs uppercase mr-2">Environment:</span>
-                          <span className="text-slate-300 italic">{sector.scenario.environment}</span>
+                        <div className="mt-4 pt-4 border-t border-red-200">
+                          <span className="text-slate-400 font-semibold text-xs uppercase mr-2">Environment:</span>
+                          <span className="text-slate-600 italic">{sector.scenario.environment}</span>
                         </div>
                       </div>
                     </div>
