@@ -83,7 +83,8 @@ const Hero = () => {
                 Aligned with{" "}
                 <span className="text-slate-600 font-semibold">EU AI Act</span>{" · "}
                 <span className="text-slate-600 font-semibold">NIST AI RMF</span>{" · "}
-                <span className="text-slate-600 font-semibold">ISO/IEC 42001</span>
+                <span className="text-slate-600 font-semibold">ISO/IEC 42001</span>{" · "}
+                <span className="text-slate-600 font-semibold">BSI</span>
               </p>
             </div>
           </div>
@@ -103,19 +104,22 @@ const Hero = () => {
                   </div>
                 </div>
                 
-                {/* Simulated score visualization */}
-                <div className="space-y-4">
+                {/* Simulated score visualization — 6 risk domains */}
+                <div className="space-y-3">
                   {[
+                    { label: "Legal Risk", pct: 68, color: "bg-brand-blue" },
                     { label: "Regulatory Readiness", pct: 72, color: "bg-brand-blue" },
-                    { label: "Data Governance", pct: 45, color: "bg-blue-400" },
                     { label: "Ethical Alignment", pct: 88, color: "bg-brand-blue" },
+                    { label: "Reputational Risk", pct: 55, color: "bg-blue-400" },
+                    { label: "IP Risk", pct: 42, color: "bg-blue-400" },
+                    { label: "Security Risk", pct: 79, color: "bg-brand-blue" },
                   ].map((item, i) => (
-                    <div key={i} className="space-y-1.5">
+                    <div key={i} className="space-y-1">
                       <div className="flex justify-between text-sm">
                         <span className="text-slate-600 font-medium">{item.label}</span>
                         <span className="text-slate-900 font-bold">{item.pct}%</span>
                       </div>
-                      <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                      <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
                         <div
                           className={`h-full ${item.color} rounded-full transition-all duration-1000`}
                           style={{ width: `${item.pct}%` }}

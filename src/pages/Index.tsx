@@ -12,6 +12,7 @@ import Footer from "@/components/Footer";
 import StructuredData from "@/components/StructuredData";
 import { CTARibbon } from "@/components/CTARibbon";
 import TrustBar from "@/components/TrustBar";
+import MethodologySection from "@/components/MethodologySection";
 
 const Index = () => {
   return (
@@ -27,7 +28,10 @@ const Index = () => {
       {/* 2. Trust Strip — Standards alignment */}
       <TrustBar />
 
-      {/* 3. Services — Audit → Prototype → Enterprise */}
+      {/* 3. Methodology — Visual governance framework */}
+      <MethodologySection />
+
+      {/* 4. Services — Audit → Prototype → Enterprise */}
       <ServicePillars />
 
       {/* 4. Who We Help — Risk profiles */}

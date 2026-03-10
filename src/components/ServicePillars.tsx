@@ -77,7 +77,7 @@ const ServicePillars = () => {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">The Audit & Delivery Framework</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            From "Ghost in the Machine" risks to Enterprise Scale. A structured path to operationalizing AI.
+            From "Ghost in the Machine" risks to Enterprise Scale. A structured path to operationalising AI.
           </p>
         </div>
 

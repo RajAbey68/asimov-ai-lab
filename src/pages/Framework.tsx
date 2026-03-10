@@ -14,6 +14,9 @@ import aiGovernance from "@/assets/ai-governance.jpg";
 import aiLifecycle from "@/assets/ai-lifecycle.jpg";
 import euAiActInfographic from "@/assets/eu-ai-act-infographic.png";
 import mbadInfographic from "@/assets/mbad-method-infographic.png";
+import methodologyDiagram from "@/assets/methodology-diagram.png";
+import riskLifecycle from "@/assets/risk-lifecycle.png";
+import maturityModel from "@/assets/maturity-model.png";
 
 const Framework = () => {
   const phases = [
@@ -164,7 +167,7 @@ const Framework = () => {
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-4">AI System Risk Framework</h1>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                A structured approach to managing AI risks across four critical lifecycle phases: Design, Build, Operate, and Usage
+                A structured approach to managing AI risks across four critical lifecycle phases: Design, Build, Operate, and Usage — aligned with EU AI Act, NIST AI RMF, ISO/IEC 42001, COBIT, and BSI guidance.
               </p>
             </div>
 
@@ -198,6 +201,30 @@ const Framework = () => {
                       </div>
                     </div>
                   </Card>
+                </div>
+
+                {/* Methodology Visual Assets */}
+                <div className="mb-16">
+                  <h2 className="text-3xl font-bold text-center mb-8">The Asimov-AI Governance Methodology</h2>
+                  <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
+                    We evaluate AI systems across six risk domains using established governance frameworks — EU AI Act, NIST AI RMF, ISO/IEC 42001, COBIT, and BSI guidance.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-8 mb-8">
+                    <div className="flex items-center justify-center">
+                      <img
+                        src={methodologyDiagram}
+                        alt="Asimov-AI Governance Radar showing six risk domains"
+                        className="w-full max-w-md h-auto rounded-xl shadow-lg border border-border"
+                      />
+                    </div>
+                    <div className="flex items-center justify-center">
+                      <img
+                        src={riskLifecycle}
+                        alt="AI Risk Lifecycle showing strategy through continuous oversight"
+                        className="w-full max-w-md h-auto rounded-xl shadow-lg border border-border"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 {/* Lifecycle Visualization */}
@@ -796,6 +823,17 @@ const Framework = () => {
                   <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
                     Assess your organisation's AI governance maturity across all lifecycle phases
                   </p>
+
+                  {/* Maturity Model Visual */}
+                  <div className="mb-8 flex justify-center">
+                    <div className="relative max-w-2xl">
+                      <img
+                        src={maturityModel}
+                        alt="AI Governance Maturity Model showing five levels from Initial to Strategic"
+                        className="w-full h-auto rounded-xl shadow-lg border border-border"
+                      />
+                    </div>
+                  </div>
 
                   <div className="space-y-4">
                     {maturityLevels.map((level, index) => (
