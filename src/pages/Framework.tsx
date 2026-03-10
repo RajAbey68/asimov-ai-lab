@@ -141,7 +141,7 @@ const Framework = () => {
       usage: "Clear disclosures, documented appeals process"
     },
     {
-      level: "4 - Optimized",
+      level: "4 - Optimised",
       design: "Proactive risk anticipation, domain experts embedded",
       build: "Continuous security testing, adversarial robustness",
       operate: "Automated retraining triggers, comprehensive audit trails",
@@ -581,7 +581,7 @@ const Framework = () => {
                 <div className="mb-16">
                   <h2 className="text-3xl font-bold text-center mb-8">Audit Frameworks</h2>
                   <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
-                    Our audit frameworks translate complex regulatory requirements into clear, actionable controls that your organization can implement and demonstrate
+                    Our audit frameworks translate complex regulatory requirements into clear, actionable controls that your organisation can implement and demonstrate
                   </p>
 
                   {/* EU AI Act Audit Framework */}
@@ -644,7 +644,7 @@ const Framework = () => {
                               iconColor: "text-blue-600",
                               bgColor: "bg-blue-500/10",
                               title: "Risk-Based Classification",
-                              description: "The Act categorizes AI systems into four risk levels: Prohibited, High-Risk, Limited-Risk, and Minimal-Risk. Every AI system must be classified within these tiers."
+                              description: "The Act categorises AI systems into four risk levels: Prohibited, High-Risk, Limited-Risk, and Minimal-Risk. Every AI system must be classified within these tiers."
                             },
                             {
                               number: "2",
@@ -700,7 +700,7 @@ const Framework = () => {
                               iconColor: "text-pink-600",
                               bgColor: "bg-pink-500/10",
                               title: "Validation Scale",
-                              description: "A standardized scoring system: Fully Validated, Largely Validated, Partially Validated, or Not Yet Validated. This covers governance, data, and ethics."
+                              description: "A standardised scoring system: Fully Validated, Largely Validated, Partially Validated, or Not Yet Validated. This covers governance, data, and ethics."
                             },
                             {
                               number: "9",
@@ -740,7 +740,7 @@ const Framework = () => {
                         </CardHeader>
                         <CardContent>
                           <p className="text-sm text-accent-foreground/90 leading-relaxed mb-4">
-                            The framework converts legal requirements into measurable controls, ensuring traceability from EU AI Act provisions to audit evidence. It is aligned with <strong>ISO/IEC 42001</strong> and <strong>NIST AI RMF</strong>, giving organizational leadership a unified overview of their readiness for regulatory review and certification.
+                            The framework converts legal requirements into measurable controls, ensuring traceability from EU AI Act provisions to audit evidence. It is aligned with <strong>ISO/IEC 42001</strong> and <strong>NIST AI RMF</strong>, giving organisational leadership a unified overview of their readiness for regulatory review and certification.
                           </p>
                           <div className="pt-4 border-t border-accent-foreground/20">
                             <p className="text-sm font-semibold text-accent-foreground mb-3">Key Alignments:</p>
@@ -794,7 +794,7 @@ const Framework = () => {
                 <div className="mb-16">
                   <h2 className="text-3xl font-bold text-center mb-8">AI Governance Maturity Framework</h2>
                   <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-                    Assess your organization's AI governance maturity across all lifecycle phases
+                    Assess your organisation's AI governance maturity across all lifecycle phases
                   </p>
 
                   <div className="space-y-4">
@@ -1110,7 +1110,7 @@ const Framework = () => {
                           </div>
                         </div>
                         <div className="mt-4 p-3 rounded-lg bg-background border border-border">
-                          <p className="text-sm"><strong>Joint Deliverable:</strong> Prioritized backlog with risk scoring and compliance requirements mapped to each story</p>
+                          <p className="text-sm"><strong>Joint Deliverable:</strong> Prioritised backlog with risk scoring and compliance requirements mapped to each story</p>
                         </div>
                       </CardContent>
                     </Card>

@@ -8,14 +8,14 @@ const AIAgentConsultancy = () => {
     {
       icon: Map,
       title: "AI Opportunity Mapping",
-      description: "Comprehensive discovery process to identify high-impact AI agent use cases across your organization.",
+      description: "Comprehensive discovery process to identify high-impact AI agent use cases across your organisation.",
       benefits: [
         "Business process analysis",
         "ROI assessment & prioritization",
         "Technology stack evaluation",
         "Risk-opportunity matrix"
       ],
-      deliverables: "Strategic AI roadmap with prioritized initiatives"
+      deliverables: "Strategic AI roadmap with prioritised initiatives"
     },
     {
       icon: GraduationCap,
@@ -44,7 +44,7 @@ const AIAgentConsultancy = () => {
     {
       icon: Rocket,
       title: "AI-First Transformation",
-      description: "End-to-end organizational transformation to embed AI capabilities at the core of your operations.",
+      description: "End-to-end organisational transformation to embed AI capabilities at the core of your operations.",
       benefits: [
         "Culture & change management",
         "Operating model redesign",

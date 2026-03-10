@@ -230,7 +230,7 @@ const Assessment = () => {
                           <p className="font-semibold mb-1">Compliance Maturity Score</p>
                           <p className="text-xs">Rate the quality and maturity of your implementation:</p>
                           <ul className="text-xs mt-1 space-y-1">
-                            <li>• <strong>5:</strong> Fully documented, tested, and optimized</li>
+                            <li>• <strong>5:</strong> Fully documented, tested, and optimised</li>
                             <li>• <strong>4:</strong> Well implemented with minor gaps</li>
                             <li>• <strong>3:</strong> Basic implementation, needs improvement</li>
                             <li>• <strong>2:</strong> Significant gaps or documentation missing</li>

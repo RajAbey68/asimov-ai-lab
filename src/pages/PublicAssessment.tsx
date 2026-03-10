@@ -138,7 +138,7 @@ export default function PublicAssessment() {
         setAnswers(newAnswers);
 
         if (sessionId) {
-            const responseText = scoreVal >= 4 ? "Optimized" : scoreVal >= 3 ? "Defined" : "Ad-hoc";
+            const responseText = scoreVal >= 4 ? "Optimised" : scoreVal >= 3 ? "Defined" : "Ad-hoc";
             supabase.from("audit_responses").upsert({
                 session_id: sessionId,
                 control_id: control.id,

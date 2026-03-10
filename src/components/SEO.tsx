@@ -9,7 +9,7 @@ interface SEOProps {
 
 const SEO = ({
     title = "Asimov AI - Operationalizing AI Governance & Risk",
-    description = "Asimov AI helps organizations operationalize AI governance, ensuring compliance with the EU AI Act, NIST AI RMF, and ISO 42001 while accelerating delivery.",
+    description = "Asimov AI helps organisations operationalise AI governance, ensuring compliance with the EU AI Act, NIST AI RMF, and ISO 42001 while accelerating delivery.",
     keywords = "AI Governance, AI Risk Management, EU AI Act, NIST AI RMF, AI Audit, AI Compliance, Responsible AI",
     canonical
 }: SEOProps) => {

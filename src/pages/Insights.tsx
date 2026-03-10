@@ -18,7 +18,7 @@ const Insights = () => {
                             The Liability of Speed: Risk in the Age of Agentic AI
                         </h1>
                         <p className="text-lg text-slate-600 leading-relaxed">
-                            How enterprise organizations can balance the velocity of autonomous agents with the rigor of legal compliance. A framework for 2026.
+                            How enterprise organisations can balance the velocity of autonomous agents with the rigour of legal compliance. A framework for 2026.
                         </p>
                         <div className="flex items-center gap-4 pt-4">
                             <button className="bg-brand-blue text-white px-6 py-3 rounded-md text-sm font-bold tracking-wide uppercase hover:bg-blue-600 transition-colors">

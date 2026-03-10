@@ -200,7 +200,7 @@ const Assessment = () => {
               </CardHeader>
               <CardContent className="space-y-8">
                 <p className="text-muted-foreground">
-                  Each phase includes both quantitative and qualitative gates that determine whether to proceed or iterate back. This enables organizations to maintain quality, compliance, and performance throughout the model lifecycle.
+                  Each phase includes both quantitative and qualitative gates that determine whether to proceed or iterate back. This enables organisations to maintain quality, compliance, and performance throughout the model lifecycle.
                 </p>
 
                 {/* Lifecycle Diagram */}
@@ -431,7 +431,7 @@ const Assessment = () => {
                     Governance as Competitive Advantage
                   </h3>
                   <p className="text-muted-foreground mb-4 leading-relaxed">
-                    Organizations with robust CI/CD foundations gain <strong>speed with control</strong>—enabling rapid innovation while maintaining regulatory compliance. This includes:
+                    Organisations with robust CI/CD foundations gain <strong>speed with control</strong>—enabling rapid innovation while maintaining regulatory compliance. This includes:
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-3">
@@ -675,10 +675,10 @@ const Assessment = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="organization">Organization/Company *</Label>
+                        <Label htmlFor="organization">Organisation/Company *</Label>
                         <Input
                           id="organization"
-                          placeholder="Your organization name"
+                          placeholder="Your organisation name"
                           value={formData.organization}
                           onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
                           required

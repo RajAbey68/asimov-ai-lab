@@ -12,7 +12,7 @@ const riskProfiles = [
     title: "C-Suite / Board Members",
     subtitle: "Strategic & Governance Risk",
     badge: "Leadership",
-    whyYou: "You're accountable for organizational AI governance and face personal liability under emerging regulations.",
+    whyYou: "You're accountable for organisational AI governance and face personal liability under emerging regulations.",
     risks: [
       "Non-compliance fines up to €35M or 7% global revenue (EU AI Act)",
       "Board-level liability for AI system failures",

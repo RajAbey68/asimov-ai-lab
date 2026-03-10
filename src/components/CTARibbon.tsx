@@ -10,7 +10,7 @@ export const CTARibbon = () => {
             Ready to Strengthen Your AI Governance?
           </h2>
           <p className="text-xl text-primary/80 mb-8 max-w-2xl mx-auto">
-            Connect with our experts to discuss your organization's AI governance needs and regulatory readiness.
+            Connect with our experts to discuss your organisation's AI governance needs and regulatory readiness.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button

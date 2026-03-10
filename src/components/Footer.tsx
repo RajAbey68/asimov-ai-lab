@@ -14,7 +14,7 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-sm text-muted-foreground">
-              Expert AI risk assessment and governance solutions for enterprise organizations.
+              Expert AI risk assessment and governance solutions for enterprise organisations.
             </p>
           </div>
 

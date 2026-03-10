@@ -265,7 +265,7 @@ export const EvidenceUpload = ({ responseId, onEvidenceAdded }: EvidenceUploadPr
                 Artifacts reviewed internally (self-assessed)
               </Label>
               <p className="text-sm text-muted-foreground">
-                Evidence exists but cannot be uploaded due to organizational policies or data sensitivity
+                Evidence exists but cannot be uploaded due to organisational policies or data sensitivity
               </p>
             </div>
           </div>

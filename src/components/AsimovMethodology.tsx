@@ -85,7 +85,7 @@ const AsimovMethodology = () => {
     {
       icon: Users,
       title: "Role-Based Expertise",
-      description: "Specialized roles with clear responsibilities ensure appropriate expertise is applied at each stage of delivery."
+      description: "Specialised roles with clear responsibilities ensure appropriate expertise is applied at each stage of delivery."
     }
   ];
 

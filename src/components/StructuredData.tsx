@@ -93,7 +93,7 @@ const StructuredData = () => {
       "name": "Asimov AI"
     },
     "areaServed": "Worldwide",
-    "description": "Strategic AI governance consulting for enterprises. We help organizations establish robust AI governance frameworks aligned with ASIMOV methodology and regulatory requirements.",
+    "description": "Strategic AI governance consulting for enterprises. We help organisations establish robust AI governance frameworks aligned with ASIMOV methodology and regulatory requirements.",
     "offers": {
       "@type": "Offer",
       "availability": "https://schema.org/InStock"

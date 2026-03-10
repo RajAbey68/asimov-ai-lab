@@ -256,7 +256,7 @@ const Resources = () => {
 
                                 <div>
                                   <h4 className="font-semibold text-foreground mb-2">7) Validation & Enforcement</h4>
-                                  <p><strong>Frameworks:</strong> Maturity scales (initial → optimized).</p>
+                                  <p><strong>Frameworks:</strong> Maturity scales (initial → optimised).</p>
                                   <p><strong>EU AI Act:</strong> Compliance validation feeds conformity assessment and market surveillance; noncompliance can lead to enforcement, withdrawal, or fines.</p>
                                   <p className="italic">Practical upshot: the validation scale should be interpreted as a legal risk posture, not only capability maturity.</p>
                                 </div>

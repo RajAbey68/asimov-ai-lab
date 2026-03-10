@@ -10,7 +10,7 @@ const OurApproach = () => {
         <div className="min-h-screen bg-off-white text-slate-900 font-sans">
             <SEO
                 title="Our Approach - Asimov AI"
-                description="We combine legal authority with technical execution to operationalize AI governance. Certified ethical frameworks meeting EU AI Act & NIST standards."
+                description="We combine legal authority with technical execution to operationalise AI governance. Certified ethical frameworks meeting EU AI Act & NIST standards."
             />
             <Navigation />
 
@@ -34,7 +34,7 @@ const OurApproach = () => {
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Ethical Commitments</h2>
                         <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-                            Our work is grounded in internationally recognized standards, ensuring your AI is not just compliant, but fundamentally robust.
+                            Our work is grounded in internationally recognised standards, ensuring your AI is not just compliant, but fundamentally robust.
                         </p>
                     </div>
 
@@ -43,7 +43,7 @@ const OurApproach = () => {
                             {
                                 icon: Shield,
                                 title: "Safety First",
-                                desc: "We prioritize human safety and systemic resilience above all else, aligning with the EU AI Act's risk-based approach."
+                                desc: "We prioritise human safety and systemic resilience above all else, aligning with the EU AI Act's risk-based approach."
                             },
                             {
                                 icon: Scale,
@@ -131,7 +131,7 @@ const OurApproach = () => {
             {/* CTA */}
             <section className="py-24 px-6 bg-brand-blue text-white text-center">
                 <div className="container mx-auto max-w-3xl">
-                    <h2 className="text-3xl md:text-5xl font-display font-medium mb-8">Ready to Operationalize Trust?</h2>
+                    <h2 className="text-3xl md:text-5xl font-display font-medium mb-8">Ready to Operationalise Trust?</h2>
                     <p className="text-xl text-blue-100 mb-10">
                         Stop guessing about compliance. Start building with confidence.
                     </p>

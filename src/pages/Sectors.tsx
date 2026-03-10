@@ -277,7 +277,7 @@ const Sectors = () => {
             Don't See Your Sector?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            We work with organizations across all industries. Contact us to discuss
+            We work with organisations across all industries. Contact us to discuss
             your specific sector requirements and how we can tailor our AI risk management approach.
           </p>
           <Button size="lg" className="gap-2" onClick={handleBookConsultation}>
