@@ -10,17 +10,17 @@ const leadershipOutcomes = [
   {
     icon: Zap,
     label: "Reduced Regulatory Exposure",
-    description: "Pre-emptive alignment with EU AI Act & NIST. We identify non-compliance risks before they become legal liabilities."
+    description: "We help organisations identify and understand their AI compliance obligations, supporting proactive risk management."
   },
   {
     icon: CheckCircle2,
     label: "Defensible Delivery Decisions",
-    description: "Move from 'experimental' to 'evidence-based'. Every deployed model has a documented, audit-ready chain of custody."
+    description: "Structured documentation to support your audit preparation and governance processes."
   },
   {
     icon: TrendingUp,
     label: "Continuous Assurance",
-    description: "Governance doesn't stop at deployment. Implement real-time monitoring for drift, bias, and policy violations."
+    description: "Ongoing advisory support to monitor governance posture as your AI systems evolve."
   },
   {
     icon: DollarSign,
@@ -30,7 +30,7 @@ const leadershipOutcomes = [
   {
     icon: Clock,
     label: "Accelerated Time-to-Trust",
-    description: "Cut through compliance red tape. Our pre-validated frameworks get you to production faster, safely."
+    description: "Our structured frameworks are designed to help streamline your path to compliant AI deployment."
   }
 ];
 

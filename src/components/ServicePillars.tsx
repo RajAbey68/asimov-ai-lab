@@ -50,13 +50,13 @@ const ServicePillars = () => {
       title: "Step 3: Enterprise Scale",
       link: "/strategic-delivery",
       tagline: "Technical Sovereignty",
-      description: "Verifiable Knowledge Graphs & Cryptographic Provenance. Ensure your AI infrastructure is audit-ready with human-in-the-loop oversight and zero-data training policies.",
+      description: "Verifiable Knowledge Graphs & Cryptographic Provenance. Structured documentation to support your audit preparation with human-in-the-loop oversight and zero-data training policies.",
       deliverables: [
         "Verifiable Knowledge Graph Architecture",
         "Cryptographic Provenance Logging",
         "Human-in-the-Loop Oversight Models",
         "Zero-Data Training Policy Implementation",
-        "Continuous Governance Monitoring"
+        "Ongoing Governance Advisory"
       ],
       image: aiLifecycleImg
     }

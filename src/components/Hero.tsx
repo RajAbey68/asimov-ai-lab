@@ -38,7 +38,7 @@ const Hero = () => {
             {/* Subheadline */}
             <p className="text-lg lg:text-xl text-slate-600 leading-relaxed max-w-xl">
               Identify legal, regulatory and operational risks in your AI systems.
-              Board-ready governance in 6 weeks.
+              Our structured programme is designed to deliver board-level reporting within a typical 6-week engagement, subject to scope and availability.
             </p>
 
             {/* Trust bullets */}

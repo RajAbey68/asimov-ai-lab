@@ -48,8 +48,8 @@ const Services = () => {
     {
       icon: Sparkles,
       title: "Continuous Monitoring",
-      description: "Ongoing surveillance of deployed AI systems to ensure sustained performance, security, and compliance over time.",
-      features: ["Real-time Monitoring", "Drift Detection", "Performance Metrics", "Alert Management"],
+      description: "Periodic review and advisory support for deployed AI systems to help maintain performance, security, and compliance over time.",
+      features: ["Periodic Monitoring Reviews", "Drift Detection", "Performance Metrics", "Alert Management"],
       image: continuousMonitoringImg
     }
   ];

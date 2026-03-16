@@ -179,7 +179,7 @@ const LegacyModernisation = () => {
                                     <p className="font-medium text-slate-800">Code follows intent — not the other way around.</p>
                                     <p>Before implementation begins, AI personas collaborate to create a single source of truth (PRD.md, ARCHITECTURE.md, and versioned decision trails).</p>
                                     <div className="mt-4 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-sm">
-                                        <strong>Outcome:</strong> Less rework, fewer surprises, and audit-ready delivery.
+                                        <strong>Outcome:</strong> Less rework, fewer surprises, and well-documented delivery.
                                     </div>
                                 </CardContent>
                             </Card>
@@ -282,7 +282,7 @@ const LegacyModernisation = () => {
                                     { aspect: "Structure", old: "Unstructured prompts", new: "Agile multi-agent workflows" },
                                     { aspect: "Context", old: "Limited session memory", new: "Persistent spec-driven context" },
                                     { aspect: "Governance", old: "Manual oversight", new: "Built-in architectural guardrails" },
-                                    { aspect: "Trust", old: "Experimental output", new: "Audit-ready traceability" },
+                                    { aspect: "Trust", old: "Experimental output", new: "Documented traceability" },
                                     { aspect: "Efficiency", old: "High token usage", new: "Sharded context optimisation" },
                                 ].map((row, i) => (
                                     <tr key={i} className="hover:bg-blue-50/50 transition-colors">

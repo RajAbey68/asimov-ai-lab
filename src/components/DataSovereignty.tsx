@@ -18,7 +18,7 @@ const DataSovereignty = () => {
 
                         <h2 className="text-3xl md:text-5xl font-display font-medium leading-tight text-slate-900">
                             Technical Sovereignty & <br />
-                            <span className="text-brand-blue">Audit-Ready Logistics</span>
+                            <span className="text-brand-blue">Governance Architecture</span>
                         </h2>
 
                         <p className="text-xl text-slate-600 leading-relaxed">
@@ -86,9 +86,9 @@ const DataSovereignty = () => {
                                 </div>
 
                                 <div className="mt-8 pt-6 border-t border-slate-200">
-                                    <p className="text-xs text-slate-400 uppercase tracking-widest mb-4">Compliance Standards Detected</p>
+                                    <p className="text-xs text-slate-400 uppercase tracking-widest mb-4">Framework Alignment</p>
                                     <div className="flex flex-wrap gap-3">
-                                        {["SOC2 Type II", "ISO 27001", "EU AI Act High-Risk", "HIPAA"].map((badge, j) => (
+                                        {["EU AI Act", "NIST AI RMF", "ISO/IEC 42001", "BSI"].map((badge, j) => (
                                             <span key={j} className="px-3 py-1 bg-blue-50 border border-blue-100 rounded text-xs text-brand-blue font-semibold">
                                                 {badge}
                                             </span>

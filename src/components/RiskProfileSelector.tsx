@@ -58,7 +58,7 @@ const riskProfiles = [
     consequences: "Enforcement actions. Failed audits. Legal costs. Operational shutdowns. Export restrictions.",
     whoActs: "Chief Compliance Officer, General Counsel, Data Protection Officer, Risk Manager",
     assessment: "Regulatory Compliance & Audit Readiness Review",
-    assessmentDesc: "Gap analysis against EU AI Act, NIST AI RMF, ISO 42001, with audit-ready documentation framework."
+    assessmentDesc: "Gap analysis against EU AI Act, NIST AI RMF, ISO 42001, with structured documentation to support your audit preparation."
   },
   {
     id: "product",

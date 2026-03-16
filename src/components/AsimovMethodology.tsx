@@ -232,7 +232,7 @@ const AsimovMethodology = () => {
                     <p className="text-sm text-muted-foreground">Each deliverable is small, focused, and independently verifiable—preventing scope creep and hidden work.</p>
                   </div>
                   <div className="bg-background/50 rounded-lg p-4">
-                    <h4 className="font-semibold mb-2 text-accent">Audit-Ready Traceability</h4>
+                    <h4 className="font-semibold mb-2 text-accent">Structured Traceability</h4>
                     <p className="text-sm text-muted-foreground">Every control can be traced back to its regulatory requirement and business justification.</p>
                   </div>
                 </div>
