@@ -56,6 +56,7 @@ const ServicePillars = () => {
         "Cryptographic Provenance Logging",
         "Human-in-the-Loop Oversight Models",
         "Zero-Data Training Policy Implementation",
+        "Automated Regression & AI Model Testing (UTS PlatformX)",
         "Ongoing Governance Advisory"
       ],
       image: aiLifecycleImg

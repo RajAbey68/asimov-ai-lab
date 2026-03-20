@@ -13,6 +13,7 @@ import StructuredData from "@/components/StructuredData";
 import { CTARibbon } from "@/components/CTARibbon";
 import TrustBar from "@/components/TrustBar";
 import MethodologySection from "@/components/MethodologySection";
+import TechnologyPartners from "@/components/TechnologyPartners";
 
 const Index = () => {
   return (
@@ -41,6 +42,9 @@ const Index = () => {
 
       {/* 5. Proven Results / Evidence */}
       <ProvenResults />
+
+      {/* 5b. Technology Partners */}
+      <TechnologyPartners />
 
       {/* 6. Assessment CTA Ribbon */}
       <CTARibbon />

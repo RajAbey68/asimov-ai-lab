@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-card border-t border-border">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2 group">
               <Brain className="w-8 h-8 text-accent transition-transform group-hover:scale-110" />
@@ -62,6 +62,22 @@ const Footer = () => {
               <li className="text-sm text-muted-foreground">Integration Support</li>
               <li className="text-sm text-muted-foreground">Continuous Monitoring</li>
               <li className="text-sm text-muted-foreground">Project Delivery</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-4">Partners</h3>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="https://www.uts-global.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                >
+                  UTS Global — PlatformX
+                </a>
+              </li>
             </ul>
           </div>
 
