@@ -6,7 +6,7 @@ const partners = [
     product: "PlatformX (XpediteQA.ai)",
     description: "AI Test Automation — Scriptless, Self-Healing, Enterprise-Grade",
     url: "https://www.uts-global.com",
-    role: "Technology Assurance Partner",
+    role: "QA & Test Automation Partner",
   },
 ];
 
@@ -16,7 +16,7 @@ const TechnologyPartners = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-center gap-8">
           <span className="text-sm font-semibold text-slate-500 uppercase tracking-widest shrink-0">
-            Technology &amp; Assurance Partners
+            Technology & Assurance Partners
           </span>
           <div className="h-8 w-px bg-slate-200 hidden md:block" />
           <div className="flex flex-wrap items-center justify-center gap-8">
@@ -39,7 +39,7 @@ const TechnologyPartners = () => {
                     {partner.role}
                   </span>
                 </div>
-                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-accent transition-colors shrink-0" />
+                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-accent transition-colors shrink-0" aria-hidden="true" />
               </a>
             ))}
           </div>
