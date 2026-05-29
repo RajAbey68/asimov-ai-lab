@@ -91,7 +91,7 @@ const problems = [
     {
         icon: AlertTriangle,
         title: "Regulatory exposure mounting",
-        desc: "SRA, ICAEW, and FRC are sharpening AI guidance. The EU AI Act applies from August 2026. Firms without documented controls face conduct risk.",
+        desc: "SRA, FCA, ICAEW, ACCA, FRC, and the ICO are all sharpening AI guidance. The EU AI Act applies from August 2026. Firms without documented controls face conduct risk across multiple regulators simultaneously.",
     },
     {
         icon: FileText,
@@ -220,7 +220,7 @@ const AIIntegrationServices = () => {
 
                     {/* Proof strip */}
                     <div className="flex flex-wrap gap-6 mt-12 pt-10 border-t border-white/10">
-                        {["EU AI Act aligned", "SRA · ICAEW · FRC frameworks", "ISO 42001 certified approach", "Law Society Publishing 2026"].map((label) => (
+                        {["EU AI Act aligned", "SRA · FCA · ICO · ICAEW · ACCA · FRC", "ISO 42001 certified approach", "Law Society Publishing 2026"].map((label) => (
                             <div key={label} className="flex items-center gap-2">
                                 <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
                                 <span className="text-slate-300 text-sm">{label}</span>
@@ -514,6 +514,105 @@ const AIIntegrationServices = () => {
                             </CardContent>
                         </Card>
                     </div>
+                </div>
+            </section>
+
+            {/* ════════════════════════════════════════════════════════════════
+                REGULATORY LANDSCAPE
+            ════════════════════════════════════════════════════════════════ */}
+            <section className="bg-slate-900 py-20 px-6 border-b border-slate-800">
+                <div className="max-w-5xl mx-auto">
+                    <div className="mb-12">
+                        <div className="flex items-center gap-2 mb-3">
+                            <div className="h-[1px] w-8 bg-brand-blue" />
+                            <span className="text-brand-blue font-bold text-[10px] uppercase tracking-[0.2em]">
+                                Regulatory Landscape
+                            </span>
+                        </div>
+                        <h2 className="text-white text-3xl md:text-4xl font-medium font-display mb-4">
+                            Every regulator watching your AI.
+                        </h2>
+                        <p className="text-slate-400 text-lg max-w-2xl">
+                            Professional services firms answer to more oversight bodies than any
+                            other sector. Our governance framework maps to all of them.
+                        </p>
+                    </div>
+
+                    {/* All-firms band */}
+                    <div className="mb-6 rounded-xl border border-slate-700 bg-slate-800/60 p-5">
+                        <div className="flex items-center gap-2 mb-4">
+                            <Building2 className="w-4 h-4 text-brand-blue" />
+                            <span className="text-white text-sm font-semibold uppercase tracking-wider">All Professional Services Firms</span>
+                        </div>
+                        <div className="grid sm:grid-cols-3 gap-3">
+                            {[
+                                { code: "ICO", full: "Information Commissioner's Office", basis: "UK GDPR · Data Protection Act 2018 · Article 22 automated decisions" },
+                                { code: "EU AI Act", full: "Artificial Intelligence Act", basis: "High-risk AI obligations · Transparency requirements · Aug 2026 main provisions" },
+                                { code: "HMRC MLR", full: "Money Laundering Regulations 2017", basis: "AML supervision for firms not supervised by a professional body regulator" },
+                            ].map((r) => (
+                                <div key={r.code} className="rounded-lg bg-slate-900/70 border border-slate-700 px-4 py-3">
+                                    <div className="text-brand-blue font-bold text-sm mb-0.5">{r.code}</div>
+                                    <div className="text-white text-xs font-medium mb-1">{r.full}</div>
+                                    <div className="text-slate-400 text-[11px] leading-snug">{r.basis}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Two-column sector split */}
+                    <div className="grid md:grid-cols-2 gap-6">
+                        {/* Law */}
+                        <div className="rounded-xl border border-slate-700 bg-slate-800/60 overflow-hidden">
+                            <div className="flex items-center gap-2.5 px-5 py-4 border-b border-slate-700 bg-slate-800">
+                                <Scale className="w-4 h-4 text-brand-blue" />
+                                <span className="text-white text-sm font-semibold">Law Firms &amp; Chambers</span>
+                            </div>
+                            <div className="p-5 space-y-3">
+                                {[
+                                    { code: "SRA", full: "Solicitors Regulation Authority", basis: "Code of Conduct · Outcomes 8.5 &amp; 8.6 · AML supervision for solicitor firms" },
+                                    { code: "FCA", full: "Financial Conduct Authority", basis: "AML oversight · Financial promotions · Regulated activities in some practice areas" },
+                                    { code: "LSB", full: "Legal Services Board", basis: "Oversight regulator for all approved legal services regulators" },
+                                    { code: "BSB", full: "Bar Standards Board", basis: "Regulation of barristers and chambers · Professional standards" },
+                                ].map((r) => (
+                                    <div key={r.code} className="flex gap-3 rounded-lg bg-slate-900/70 border border-slate-700 px-4 py-3">
+                                        <div className="flex-shrink-0 w-12 text-brand-blue font-bold text-sm pt-0.5">{r.code}</div>
+                                        <div>
+                                            <div className="text-white text-xs font-medium mb-0.5">{r.full}</div>
+                                            <div className="text-slate-400 text-[11px] leading-snug" dangerouslySetInnerHTML={{ __html: r.basis }} />
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Accounting */}
+                        <div className="rounded-xl border border-slate-700 bg-slate-800/60 overflow-hidden">
+                            <div className="flex items-center gap-2.5 px-5 py-4 border-b border-slate-700 bg-slate-800">
+                                <Calculator className="w-4 h-4 text-brand-blue" />
+                                <span className="text-white text-sm font-semibold">Accounting &amp; Advisory Practices</span>
+                            </div>
+                            <div className="p-5 space-y-3">
+                                {[
+                                    { code: "ICAEW", full: "Institute of Chartered Accountants in England and Wales", basis: "Code of Ethics · AML supervision · Professional standards for chartered accountants" },
+                                    { code: "ACCA", full: "Association of Chartered Certified Accountants", basis: "Code of Ethics · AML supervision · Professional standards for certified accountants" },
+                                    { code: "FRC", full: "Financial Reporting Council", basis: "Audit quality · ISQM 1 quality management · Ethical Standard for auditors" },
+                                    { code: "FCA", full: "Financial Conduct Authority", basis: "Investment advice · Regulated financial activities · Consumer Duty obligations" },
+                                ].map((r) => (
+                                    <div key={r.code} className="flex gap-3 rounded-lg bg-slate-900/70 border border-slate-700 px-4 py-3">
+                                        <div className="flex-shrink-0 w-12 text-brand-blue font-bold text-sm pt-0.5">{r.code}</div>
+                                        <div>
+                                            <div className="text-white text-xs font-medium mb-0.5">{r.full}</div>
+                                            <div className="text-slate-400 text-[11px] leading-snug">{r.basis}</div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    <p className="text-slate-500 text-sm mt-6 text-center">
+                        Our 251-control audit maps each AI system to the specific obligations above — not a generic framework, but a regulator-by-regulator evidence trail.
+                    </p>
                 </div>
             </section>
 
