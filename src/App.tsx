@@ -31,6 +31,7 @@ import Insights from "./pages/Insights";
 import PublicAssessment from "./pages/PublicAssessment";
 import LegacyModernisation from "./pages/LegacyModernisation";
 import ProfessionalServices from "./pages/ProfessionalServices";
+import AIIntegrationServices from "./pages/AIIntegrationServices";
 
 
 const queryClient = new QueryClient();
@@ -124,6 +125,7 @@ const App = () => (
                 <Route path="/free-assessment" element={<PublicAssessment />} />
                 <Route path="/legacy-modernisation" element={<LegacyModernisation />} />
                 <Route path="/sectors/professional-services-ai-governance" element={<ProfessionalServices />} />
+                <Route path="/services/ai-integration-professional-services" element={<AIIntegrationServices />} />
 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />
