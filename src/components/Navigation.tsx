@@ -7,8 +7,11 @@ const Navigation = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [isIndustriesOpen, setIsIndustriesOpen] = useState(false);
   const [isMobileIndustriesOpen, setIsMobileIndustriesOpen] = useState(false);
+  const servicesTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
   const industriesTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleBookConsultation = () => {
@@ -26,6 +29,15 @@ const Navigation = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleServicesEnter = () => {
+    if (servicesTimeout.current) clearTimeout(servicesTimeout.current);
+    setIsServicesOpen(true);
+  };
+
+  const handleServicesLeave = () => {
+    servicesTimeout.current = setTimeout(() => setIsServicesOpen(false), 150);
+  };
+
   const handleIndustriesEnter = () => {
     if (industriesTimeout.current) clearTimeout(industriesTimeout.current);
     setIsIndustriesOpen(true);
@@ -37,10 +49,14 @@ const Navigation = () => {
 
   const navLinks = [
     { name: "AI Risk Assessment", path: "/assessment-info" },
-    { name: "Services", path: "/strategic-delivery" },
     { name: "Framework", path: "/framework" },
     { name: "Resources", path: "/resources" },
     { name: "Team", path: "/team" },
+  ];
+
+  const serviceLinks = [
+    { name: "Strategic Delivery", path: "/strategic-delivery" },
+    { name: "AI Integration for Professional Services", path: "/services/ai-integration-professional-services" },
   ];
 
   const industryLinks = [
@@ -83,6 +99,36 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
+
+            {/* Services Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={handleServicesEnter}
+              onMouseLeave={handleServicesLeave}
+            >
+              <button className={`flex items-center gap-1 text-sm font-medium transition-colors py-2 border-b-2 ${
+                serviceLinks.some(l => isActive(l.path))
+                  ? 'text-brand-blue border-brand-blue'
+                  : 'text-slate-600 hover:text-brand-blue border-transparent hover:border-brand-blue/30'
+              }`}>
+                Services
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isServicesOpen && (
+                <div className="absolute top-full left-0 mt-1 w-72 bg-white rounded-lg border border-slate-200 shadow-xl py-2 animate-in fade-in-0 zoom-in-95 duration-150">
+                  {serviceLinks.map((link) => (
+                    <Link
+                      key={link.name}
+                      to={link.path}
+                      className="block px-4 py-2.5 text-sm text-slate-600 hover:text-brand-blue hover:bg-blue-50/50 transition-colors"
+                      onClick={() => setIsServicesOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Industries Dropdown */}
             <div
@@ -146,6 +192,31 @@ const Navigation = () => {
                 {link.name}
               </Link>
             ))}
+
+            {/* Mobile Services Expandable */}
+            <div className="border-t border-slate-100 mt-1 pt-1">
+              <button
+                className="w-full flex items-center justify-between text-base font-medium text-slate-700 hover:text-brand-blue py-3 px-3 rounded-lg"
+                onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+              >
+                Services
+                <ChevronDown className={`w-4 h-4 transition-transform ${isMobileServicesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {isMobileServicesOpen && (
+                <div className="pl-4 pb-2 space-y-1">
+                  {serviceLinks.map((link) => (
+                    <Link
+                      key={link.name}
+                      to={link.path}
+                      className="block text-sm text-slate-500 hover:text-brand-blue py-2 px-3 rounded-lg hover:bg-blue-50/50"
+                      onClick={() => { setIsMobileMenuOpen(false); setIsMobileServicesOpen(false); }}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Mobile Industries Expandable */}
             <div className="border-t border-slate-100 mt-1 pt-1">
