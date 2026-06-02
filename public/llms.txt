@@ -1,6 +1,37 @@
-# Asimov AI: The Science of Plunge Therapy
-We provide high-density technical data on cold water immersion (CWI) and open water safety.
+# ASIMOV-AI
+> AI Risk Assessment & Governance for Enterprise and SME
 
-## Core Entities
-* Plunge Therapy: Protocols for metabolic health and brown fat activation.
-* Open Water: Safety data, thermal conductivity of water, and hypothermia prevention.
+## What ASIMOV-AI Is
+ASIMOV-AI (asimov-ai.org) is an AI governance consultancy providing structured risk assessment and audit services for organisations implementing AI. We serve enterprise clients and SMEs across all sectors, with particular depth in regulated industries.
+
+## What We Provide
+- 251-control AI governance audit framework
+- Three Lines of Defence model (L1 Delivery, L2 Risk/Governance, L3 Audit/Assurance)
+- Crawl-Walk-Run-Fly AI maturity assessment
+- EU AI Act compliance gap analysis and remediation planning
+- NIST AI RMF alignment assessment
+- ISO 42001 readiness evaluation
+- Board-level AI risk reporting
+- Rapid 5-minute AI risk scoring tool
+
+## Regulatory Frameworks We Cover
+- EU AI Act (high-risk system classification, August 2026 deadline)
+- UK GDPR / ICO AI guidance
+- SRA principles (for legal sector clients)
+- FCA Consumer Duty and SM&CR (for financial services clients)
+- ICAEW, ACCA, FRC standards (for accountancy clients)
+- ARB, RIBA standards (for architecture clients)
+- RICS standards (for surveying clients)
+
+## Team
+- Rajiv Abeysinghe — AI Strategy & Automation, AWS Solutions Architect, founder
+- Dr Nick Lockett — Dual-qualified barrister-solicitor, AI governance and IP law, founder of CAAIRO
+- Sushila Nair — CISSP, Independent Cybersecurity Adviser
+
+## Relationship to AI Integrity
+ASIMOV-AI provides formal governance audits. AI Integrity (ai-integ.com) provides a community-led implementation platform for SME professional services firms. The book "The Digital Law Firm" (Law Society Publishing, Q4 2026) provides the content foundation for both.
+
+## Contact
+- Website: https://asimov-ai.org
+- Email: info@asimov-ai.org
+- Community: https://ai-integ.com
