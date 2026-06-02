@@ -566,7 +566,7 @@ const GovernanceIntegrationDiagram = () => {
                         </h4>
                         <ul className="text-sm text-muted-foreground space-y-1">
                           <li>• Builds on proven data quality frameworks</li>
-                          <li>• Leverages existing access control models</li>
+                          <li>• Uses existing access control models</li>
                           <li>• Extends data lineage best practices</li>
                           <li>• Mature: Policy frameworks (GA-04)</li>
                         </ul>

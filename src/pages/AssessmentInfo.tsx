@@ -431,7 +431,7 @@ const Assessment = () => {
                     Governance as Competitive Advantage
                   </h3>
                   <p className="text-muted-foreground mb-4 leading-relaxed">
-                    Organisations with robust CI/CD foundations gain <strong>speed with control</strong>—enabling rapid innovation while maintaining regulatory compliance. This includes:
+                    Organisations with robust CI/CD foundations gain <strong>speed with control</strong>—enabling faster AI adoption while maintaining regulatory compliance. This includes:
                   </p>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-3">
@@ -593,7 +593,7 @@ const Assessment = () => {
                     { icon: CheckCircle, title: "Compliance-Ready", desc: "Aligns with EU AI Act, NIST AI RMF, ISO/IEC 42001" },
                     { icon: Shield, title: "Litigation Shield", desc: "Pre-empts legal challenges through documented governance" },
                     { icon: TrendingUp, title: "Investment-Ready", desc: "Builds confidence by proving you understand and manage AI risk" },
-                    { icon: Target, title: "Operational Agility", desc: "Balance innovation with governance, speed with responsibility" }
+                    { icon: Target, title: "Operational Agility", desc: "Balance speed with governance, speed with responsibility" }
                   ].map((benefit, i) => (
                     <div key={i} className="flex gap-4 items-start">
                       <benefit.icon className="w-6 h-6 text-accent-foreground flex-shrink-0 mt-1" />

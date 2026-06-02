@@ -41,7 +41,7 @@ const Services = () => {
     {
       icon: Layers,
       title: "Integration Support",
-      description: "Seamless integration of AI solutions into your existing infrastructure with minimal disruption and maximum efficiency.",
+      description: "Integration of AI solutions into your existing infrastructure with minimal disruption and maximum efficiency.",
       features: ["API Integration", "Legacy System Support", "Cloud Migration", "Workflow Automation"],
       image: integrationSupportImg
     },

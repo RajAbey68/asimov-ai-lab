@@ -168,7 +168,7 @@ const ServiceTiers = () => {
           <div className="bg-muted/50 border border-border/50 rounded-lg p-6">
             <h3 className="text-lg font-semibold mb-2 text-foreground">Collaborative Approach</h3>
             <p className="text-sm text-muted-foreground">
-              We work closely with your existing practices, internal subject matter experts, and external specialists to ensure seamless integration and knowledge transfer. Your team's expertise combined with our governance framework delivers sustainable, business-aligned outcomes.
+              We work closely with your existing practices, internal subject matter experts, and external specialists to ensure integration and knowledge transfer. Your team's expertise combined with our governance framework delivers sustainable, business-aligned outcomes.
             </p>
           </div>
           

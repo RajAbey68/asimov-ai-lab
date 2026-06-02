@@ -18,7 +18,7 @@ const ServicePillars = () => {
       title: "Step 1: The Audit",
       link: "/assessment-info",
       tagline: "\"Ghost in the Machine\"",
-      description: "70% of Enterprise AI fails due to 'Hallucination Risk'. See how our audit isolates your proprietary data from public model errors. We identify security gaps before you deploy.",
+      description: "Hallucination risk is the primary barrier to enterprise AI trust. Our audit isolates your proprietary data from public model errors and identifies security gaps before you deploy.",
       deliverables: [
         "30-Point AI Readiness Risk Assessment",
         "Proprietary Data Isolation Strategy",

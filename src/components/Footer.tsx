@@ -66,9 +66,23 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Partners</h3>
+            <h3 className="font-semibold mb-4">Ecosystem</h3>
             <ul className="space-y-2">
               <li>
+                <a
+                  href="https://ai-integ.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-muted-foreground hover:text-accent transition-colors"
+                >
+                  AI Integrity — Community
+                </a>
+              </li>
+              <li className="text-xs text-muted-foreground/60 leading-relaxed">
+                Peer-led AI implementation for regulated SME professional services.
+                Law, accounting, IFAs, architects.
+              </li>
+              <li className="mt-3">
                 <a
                   href="https://www.uts-global.com"
                   target="_blank"

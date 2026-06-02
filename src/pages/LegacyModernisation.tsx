@@ -45,7 +45,7 @@ const LegacyModernisation = () => {
         },
         {
             icon: <Network className="w-8 h-8 text-purple-400" />,
-            title: "Ecosystem Orchestration",
+            title: "Multi-Vendor AI Coordination",
             subtitle: "A New High-Value Space",
             content: "Enterprises need orchestration across AI agents, APIs, RPA, and business workflows. We act as automation architects and operational change strategists, enabling development teams to scale safely."
         },

@@ -147,7 +147,7 @@ export const ConsultationLeadForm = () => {
               <SelectItem value="integration-support">
                 <div className="space-y-1">
                   <div className="font-medium">Integration Support</div>
-                  <div className="text-xs text-muted-foreground">Seamless integration of AI solutions into existing infrastructure with minimal disruption.</div>
+                  <div className="text-xs text-muted-foreground">Integration of AI solutions into existing infrastructure with minimal disruption.</div>
                 </div>
               </SelectItem>
               <SelectItem value="continuous-monitoring">

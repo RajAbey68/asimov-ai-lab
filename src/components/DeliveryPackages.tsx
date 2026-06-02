@@ -81,7 +81,7 @@ const DeliveryPackages = () => {
     },
     {
       icon: Activity,
-      name: "Turnkey AI Agent Ecosystem",
+      name: "Turnkey AI Agent Deployment",
       description: "Fully managed deployment of multi-agent AI systems including voice assistants, customer service bots, and orchestrated agent workflows.",
       scope: "Voice AI, conversational agents, multi-agent orchestration, branded AI personalities",
       activities: ["Control Implementation (Framework-Based)", "Continuous Monitoring (Governance-Integrated)"],

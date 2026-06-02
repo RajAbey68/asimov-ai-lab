@@ -225,7 +225,7 @@ const AsimovMethodology = () => {
                   </div>
                   <div className="bg-background/50 rounded-lg p-4">
                     <h4 className="font-semibold mb-2 text-accent">Persistent Context</h4>
-                    <p className="text-sm text-muted-foreground">Documentation serves as a living knowledge base, enabling seamless handoffs and long-term maintenance.</p>
+                    <p className="text-sm text-muted-foreground">Documentation serves as a living knowledge base, enabling smooth handoffs and long-term maintenance.</p>
                   </div>
                   <div className="bg-background/50 rounded-lg p-4">
                     <h4 className="font-semibold mb-2 text-accent">Verifiable Units</h4>
