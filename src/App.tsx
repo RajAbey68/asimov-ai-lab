@@ -32,6 +32,8 @@ import PublicAssessment from "./pages/PublicAssessment";
 import LegacyModernisation from "./pages/LegacyModernisation";
 import ProfessionalServices from "./pages/ProfessionalServices";
 import AIIntegrationServices from "./pages/AIIntegrationServices";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 
 
 const queryClient = new QueryClient();
@@ -126,6 +128,8 @@ const App = () => (
                 <Route path="/legacy-modernisation" element={<LegacyModernisation />} />
                 <Route path="/sectors/professional-services-ai-governance" element={<ProfessionalServices />} />
                 <Route path="/services/ai-integration-professional-services" element={<AIIntegrationServices />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
 
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                 <Route path="*" element={<NotFound />} />

@@ -125,6 +125,14 @@ const Footer = () => {
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} Asimov AI. All rights reserved.
             </p>
+            <div className="flex gap-4">
+              <Link to="/privacy" className="text-sm text-muted-foreground hover:text-accent transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms" className="text-sm text-muted-foreground hover:text-accent transition-colors">
+                Terms of Service
+              </Link>
+            </div>
             <div className="flex gap-6">
               <Link to="/sitemap.xml" className="text-sm text-muted-foreground hover:text-accent transition-colors">
                 Sitemap
