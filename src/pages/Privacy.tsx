@@ -55,6 +55,40 @@ const Privacy = () => {
           </div>
 
           <div>
+            <h2 className="text-xl font-semibold text-foreground mb-3">Data Protection Impact Assessment (DPIA)</h2>
+            <p>
+              In accordance with UK GDPR Article 35 and ASIMOV control PD-01, we have
+              conducted a Data Protection Impact Assessment for our AI risk assessment
+              and chat services. The DPIA covers:
+            </p>
+            <ul className="list-disc pl-5 space-y-1 mt-2">
+              <li><strong>AI risk scoring tool:</strong> Processes organisational data
+                (sector, firm size, technology maturity) to generate a risk score.
+                Individual personal data is limited to name and email of the requesting
+                person. Risk classification: not high-risk processing under Art 35(3),
+                but DPIA conducted as best practice given the advisory nature of outputs.</li>
+              <li><strong>SIMO chat widget:</strong> Processes free-text user queries
+                via a large language model API. Messages may contain personal or
+                commercially sensitive information. Mitigations: 90-day retention limit,
+                no training on user data, AI-generated disclaimer on every session,
+                Supabase RLS on stored conversations.</li>
+              <li><strong>Consultation request forms:</strong> Collects name, email,
+                organisation, and description of AI governance needs. Stored in Supabase
+                with RLS. Accessed only by named Asimov AI team members.</li>
+            </ul>
+            <p className="mt-2">
+              Residual risk assessment: <strong>Low</strong>. No special category data
+              is processed. No automated decision-making with legal effects. No
+              large-scale profiling. The DPIA is reviewed quarterly (March, June,
+              September, December) or when processing activities materially change.
+            </p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              ASIMOV control reference: PD-01 (DPIA for high-risk AI use cases).
+              External standard: UK GDPR Article 35; ICO DPIA guidance.
+            </p>
+          </div>
+
+          <div>
             <h2 className="text-xl font-semibold text-foreground mb-3">AI systems disclosure</h2>
             <p>
               Our website includes an AI-powered chat widget that may generate responses
