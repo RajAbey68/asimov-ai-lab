@@ -16,38 +16,39 @@ export const homepageCopy = {
   hero: {
     h1: "We tell you the truth about your AI risk. In plain English. On paper. With a name on it.",
     subhead:
-      "Mid-tier professional services firms face enterprise-class AI liability. They cannot afford a McKinsey framework. They cannot afford to ignore the risk. We close that gap.",
+      "Mid-tier professional services firms and Tiers 2–4 corporates face enterprise-class AI liability. They cannot afford a McKinsey framework, and they cannot afford to ignore the risk. We deliver independent, signed risk verdicts.",
     primaryCta: { label: "Book an AI Risk Diagnostic", href: "/diagnostic" },
     secondaryCta: { label: "Download the ASIMOV Governance Matrix", href: "/matrix" },
   },
 
   hooks: [
     {
-      id: "big-firm-protection",
-      headline: "Magic Circle protection. Mid-market speed.",
-      body: "You don't need a Magic Circle budget to get Magic Circle protection. Your firm has the same data protection obligations as a top-tier firm — the same ICO enforcement risk, the same SM&CR personal liability, the same SRA expectations. We deliver a board-ready risk assessment and a clear remediation roadmap in a fixed-fee, 6-week engagement.",
-      subhook: "The same defensive rigour. A fraction of the cost and the time.",
+      id: "regulatory-trap",
+      headline:
+        "The EU AI Act and updated UK GDPR regulations hold deployers accountable, not just the creators.",
+      body: "If your staff uses unvetted models, the liability stops at your board. You don't need a Magic Circle budget to get Magic Circle protection. We deliver a board-ready risk assessment and a clear remediation roadmap in a fixed-fee, 6-week engagement.",
+      subhook: "The same defensive rigour. A fraction of the cost.",
     },
     {
       id: "vendor-blindspot",
-      headline:
-        "Your software vendors added AI features overnight. Did your liability change with them?",
-      body: "Document management systems, CRMs, case management platforms — they are all quietly rolling out AI copilots. Your client data is moving through models your firm never assessed, agreed to, or disclosed. We arm you with the precise questions to ask your technology suppliers to ensure your firm stays protected.",
-      subhook: "Third-party AI is your liability. We help you know what to ask.",
+      headline: "Your software vendors added AI features overnight. Did your liability change?",
+      body: "When your software vendors silently push generative AI features into your core case management or CRM systems overnight, your corporate liability changes instantly. Your client data is moving through models your firm never assessed, agreed to, or disclosed. We arm you with the precise questions to ask your suppliers to ensure your firm stays protected.",
+      subhook: "Third-party AI is your liability. Know what to ask.",
     },
     {
-      id: "independence",
-      headline: "We don't sell software. We don't implement systems.",
-      body: "Many IT providers offering AI advice are building toward a software sale or an implementation contract. ASIMOV AI has no commercial interest in what you buy or build. We provide independent, signed risk assessments so your leadership can act with certainty — not with a vendor's agenda attached.",
+      id: "objective-shield",
+      headline:
+        "Traditional software integrators audit your systems just to upsell you a contract.",
+      body: "ASIMOV AI does one thing: we give you an unbiased, signed risk verdict. We don't sell software, and we don't build systems. We have no conflict of interest, ensuring your leadership can act with complete certainty — our work ends at the recommendation.",
       subhook: "Independent verdict. No conflict of interest. Ever.",
     },
   ],
 
   product: {
     headline: "The ASIMOV Audit",
-    subhead: "A fixed-scope, 6-week structured programme built for mid-tier boards.",
+    subhead: "A fixed-scope, 6-week structured programme built for Tiers 2–4 boards.",
     description:
-      "We score your AI risk position from L0 to L5 across six essential governance domains. The output: a board-ready compliance dashboard, a prioritised remediation roadmap, and a signed report — every finding tied to a specific regulatory obligation, every recommendation ranked by effort and impact.",
+      "We score your AI risk position from L0 to L5 across six essential governance domains using a COBIT-aligned maturity scale. The output: a board-ready compliance dashboard, a prioritised remediation roadmap, and a signed report — every finding tied to a specific regulatory obligation (FCA SM&CR, SRA, UK GDPR), every recommendation ranked by effort and impact.",
     domains: [
       {
         id: "legal",
