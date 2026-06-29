@@ -83,6 +83,11 @@ export function App() {
                 </a>
               </li>
               <li>
+                <a href="#briefings" className="text-zinc-400 hover:text-white transition-colors">
+                  Briefings
+                </a>
+              </li>
+              <li>
                 <a href="#pricing" className="text-zinc-400 hover:text-white transition-colors">
                   Pricing
                 </a>
@@ -266,6 +271,76 @@ export function App() {
           </div>
         </section>
 
+        {/* Videos & Briefings */}
+        <section id="briefings" className="bg-zinc-900/30 py-20 border-t border-white/5">
+          <div className="mx-auto max-w-7xl px-6">
+            <h2
+              className="text-2xl md:text-3xl font-bold mb-4 text-center"
+              style={{ fontFamily: "var(--font-heading)" }}
+            >
+              Expert Briefings &amp; Training
+            </h2>
+            <p className="text-center text-zinc-400 mb-16 max-w-2xl mx-auto text-sm leading-relaxed">
+              Deep dives into AI security risks, board-level liability, and practical governance
+              frameworks with our lead practitioners.
+            </p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="border border-white/5 rounded p-6 bg-zinc-900/20 flex flex-col gap-4">
+                <div className="aspect-video w-full rounded overflow-hidden border border-white/10 bg-zinc-950">
+                  <iframe
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/GEMKwXxqvec"
+                    title="AI Risk for Leadership - Sushila Nair"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-2">AI Risk for Leadership</h3>
+                  <p
+                    className="text-xs font-mono font-semibold uppercase tracking-wider mb-2"
+                    style={{ color: "var(--color-amber)" }}
+                  >
+                    Sushila Nair CISSP
+                  </p>
+                  <p className="text-sm text-zinc-400 leading-relaxed">
+                    Sushila Nair covers AI fundamentals with a focus on cyber security, IT audit,
+                    and governance, addressing the critical disconnect between rapid AI adoption and
+                    security protocols.
+                  </p>
+                </div>
+              </div>
+
+              <div className="border border-white/5 rounded p-6 bg-zinc-900/20 flex flex-col gap-4">
+                <div className="aspect-video w-full rounded overflow-hidden border border-white/10 bg-zinc-950">
+                  <iframe
+                    className="w-full h-full"
+                    src="https://www.youtube.com/embed/5pZtNmQL9aY?rel=0&modestbranding=1&playsinline=1"
+                    title="ISACA GWDC Insights - AI in the Crosshairs"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-2">AI in the Crosshairs</h3>
+                  <p
+                    className="text-xs font-mono font-semibold uppercase tracking-wider mb-2"
+                    style={{ color: "var(--color-amber)" }}
+                  >
+                    ISACA GWDC Insights
+                  </p>
+                  <p className="text-sm text-zinc-400 leading-relaxed">
+                    An in-depth briefing on systemic AI vulnerabilities, threat modeling for
+                    professional services, and establishing a baseline for independent risk
+                    auditing.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Pricing */}
         <section id="pricing" className="bg-zinc-900/30 py-20 border-t border-white/5">
           <div className="mx-auto max-w-7xl px-6">
@@ -386,16 +461,25 @@ export function App() {
                   </div>
                 </div>
                 <div className="text-center pt-4">
-                  <a
-                    href="https://skool.com/ghostwriter-tandem-6940"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSuccess(false);
+                      setFormData({
+                        full_name: "",
+                        job_title: "",
+                        organisation: "",
+                        sector: "",
+                        headcount: "",
+                        concern: "",
+                      });
+                      setConsent(false);
+                    }}
                     className="inline-flex items-center gap-2 rounded px-8 py-3.5 text-xs font-bold font-mono uppercase tracking-wider transition-all hover:opacity-90 active:scale-95"
                     style={{ backgroundColor: "var(--color-amber)", color: "var(--color-navy)" }}
                   >
-                    Join the Skool Community
-                    <span className="material-symbols-outlined text-sm">login</span>
-                  </a>
+                    Submit Another Query
+                  </button>
                 </div>
               </div>
             )}
