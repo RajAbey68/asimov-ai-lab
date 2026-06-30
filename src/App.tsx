@@ -1,4 +1,7 @@
 import { useState } from "react";
+import nickImg from "./assets/nick-lockett-enhanced.png";
+import rajivImg from "./assets/rajiv-abeysinghe.png";
+import sushilaImg from "./assets/sushila-nair-enhanced.png";
 import { homepageCopy } from "./content/homepage";
 
 export function App() {
@@ -251,23 +254,40 @@ export function App() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {homepageCopy.principals.people.map((person) => (
-              <div
-                key={person.name}
-                className="border border-white/5 rounded p-6 bg-zinc-900/20 flex flex-col justify-between"
-              >
-                <div>
-                  <h3 className="text-lg font-bold text-white mb-1">{person.name}</h3>
-                  <p
-                    className="text-xs font-mono font-semibold uppercase tracking-wider mb-4"
-                    style={{ color: "var(--color-amber)" }}
-                  >
-                    {person.role}
-                  </p>
-                  <p className="text-sm text-zinc-400 leading-relaxed">{person.credential}</p>
+            {homepageCopy.principals.people.map((person) => {
+              const portrait =
+                person.name === "Sushila Nair CISSP"
+                  ? sushilaImg
+                  : person.name === "Dr Nick Lockett"
+                    ? nickImg
+                    : rajivImg;
+              return (
+                <div
+                  key={person.name}
+                  className="border border-white/5 rounded p-6 bg-zinc-900/20 flex flex-col justify-between"
+                >
+                  <div>
+                    {portrait && (
+                      <div className="mb-6 flex justify-center">
+                        <img
+                          src={portrait}
+                          alt={person.name}
+                          className="w-32 h-32 rounded-full object-cover border-2 border-white/10"
+                        />
+                      </div>
+                    )}
+                    <h3 className="text-lg font-bold text-white mb-1 text-center">{person.name}</h3>
+                    <p
+                      className="text-xs font-mono font-semibold uppercase tracking-wider mb-4 text-center"
+                      style={{ color: "var(--color-amber)" }}
+                    >
+                      {person.role}
+                    </p>
+                    <p className="text-sm text-zinc-400 leading-relaxed">{person.credential}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
