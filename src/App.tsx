@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import nickImg from "./assets/nick-lockett-enhanced.png";
 import rajivImg from "./assets/rajiv-abeysinghe.png";
 import sushilaImg from "./assets/sushila-nair-enhanced.png";
 import { homepageCopy } from "./content/homepage";
 import { getBannerText, getNextMilestone } from "./lib/euAiActTimeline";
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const SUBMIT_TIMEOUT_MS = 15_000;
+const CONTACT_EMAIL = "advisory@asimov-ai.org";
 
 export function App() {
   const [formData, setFormData] = useState<Record<string, string>>({
@@ -19,6 +23,8 @@ export function App() {
   const [error, setError] = useState("");
   const [consent, setConsent] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const inFlightRef = useRef(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -26,12 +32,27 @@ export function App() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Honeypot filled — a bot, not a person. Do nothing, quietly.
+    if (honeypot) {
+      return;
+    }
+    // A submit is already in flight — ignore the second click.
+    if (inFlightRef.current) {
+      return;
+    }
     if (!consent) {
       setError("Please consent to the privacy policy.");
       return;
     }
+    if (!EMAIL_PATTERN.test(formData.email)) {
+      setError("That email doesn't look right — please check it.");
+      return;
+    }
+    inFlightRef.current = true;
     setLoading(true);
     setError("");
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), SUBMIT_TIMEOUT_MS);
     try {
       const response = await fetch(
         "https://qcawafyfaqjwolgczhap.supabase.co/functions/v1/lead-intake",
@@ -41,6 +62,7 @@ export function App() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
+          signal: controller.signal,
         }
       );
       const data = await response.json();
@@ -50,9 +72,15 @@ export function App() {
       // Any generated analysis stays internal — it briefs the human call, it is never shown here.
       setSuccess(true);
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "An unexpected error occurred.";
-      setError(message);
+      if (err instanceof DOMException && err.name === "AbortError") {
+        setError(`Request timed out. Email us instead: ${CONTACT_EMAIL}`);
+      } else {
+        const message = err instanceof Error ? err.message : "An unexpected error occurred.";
+        setError(message);
+      }
     } finally {
+      clearTimeout(timeoutId);
+      inFlightRef.current = false;
       setLoading(false);
     }
   };
@@ -514,6 +542,17 @@ export function App() {
                     {error}
                   </div>
                 )}
+                {/* Honeypot — invisible to people, irresistible to bots */}
+                <input
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  autoComplete="off"
+                  className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                />
                 {homepageCopy.diagnostic.intakeFields.map((f) => (
                   <div key={f.id} className="space-y-1 text-left">
                     <label htmlFor={f.id} className="text-sm font-medium text-zinc-300">

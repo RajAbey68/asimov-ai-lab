@@ -72,6 +72,88 @@ describe("App", () => {
     expect(main).not.toHaveAttribute("role");
   });
 
+  it("renders the email input with type=email", () => {
+    // Arrange + Act
+    render(<App />);
+
+    // Assert — browsers only apply email keyboards/validation to type="email"
+    const emailInput = screen.getByPlaceholderText(/you@yourfirm/i);
+    expect(emailInput).toHaveAttribute("type", "email");
+  });
+
+  it("rejects a malformed email before POSTing", async () => {
+    // Arrange
+    const mockFetch = vi.fn();
+    vi.stubGlobal("fetch", mockFetch);
+    const { container } = render(<App />);
+
+    fireEvent.click(screen.getByLabelText(/I consent/i));
+    fireEvent.change(screen.getByPlaceholderText(/Jane Doe/i), { target: { value: "Jane" } });
+    fireEvent.change(screen.getByPlaceholderText(/Doe & Partners/i), { target: { value: "Doe" } });
+    fireEvent.change(screen.getByPlaceholderText(/Managing Partner/i), {
+      target: { value: "COO" },
+    });
+    fireEvent.change(screen.getByPlaceholderText(/you@yourfirm/i), {
+      target: { value: "not-an-email" },
+    });
+    fireEvent.change(screen.getByPlaceholderText(/Law firm/i), { target: { value: "Law" } });
+    fireEvent.change(screen.getByPlaceholderText(/50–200/i), { target: { value: "50-200" } });
+    fireEvent.change(screen.getByPlaceholderText(/We use Microsoft Copilot/i), {
+      target: { value: "Copilot risk" },
+    });
+
+    // Act — submit the form directly (bypasses native constraint validation)
+    const form = container.querySelector("form");
+    if (!form) throw new Error("Form element not found");
+    fireEvent.submit(form);
+
+    // Assert — inline plain-English error, no network call
+    expect(
+      await screen.findByText(/That email doesn't look right — please check it\./i)
+    ).toBeInTheDocument();
+    expect(mockFetch).not.toHaveBeenCalled();
+
+    vi.unstubAllGlobals();
+  });
+
+  it("silently no-ops the submit when the honeypot field is filled", async () => {
+    // Arrange
+    const mockFetch = vi.fn();
+    vi.stubGlobal("fetch", mockFetch);
+    const { container } = render(<App />);
+
+    fireEvent.click(screen.getByLabelText(/I consent/i));
+    fireEvent.change(screen.getByPlaceholderText(/Jane Doe/i), { target: { value: "Jane" } });
+    fireEvent.change(screen.getByPlaceholderText(/Doe & Partners/i), { target: { value: "Doe" } });
+    fireEvent.change(screen.getByPlaceholderText(/Managing Partner/i), {
+      target: { value: "COO" },
+    });
+    fireEvent.change(screen.getByPlaceholderText(/you@yourfirm/i), {
+      target: { value: "bot@spam.example" },
+    });
+    fireEvent.change(screen.getByPlaceholderText(/Law firm/i), { target: { value: "Law" } });
+    fireEvent.change(screen.getByPlaceholderText(/50–200/i), { target: { value: "50-200" } });
+    fireEvent.change(screen.getByPlaceholderText(/We use Microsoft Copilot/i), {
+      target: { value: "Copilot risk" },
+    });
+
+    // Bot fills the invisible field
+    const honeypot = container.querySelector('input[name="website"]');
+    if (!honeypot) throw new Error("Honeypot input not found");
+    fireEvent.change(honeypot, { target: { value: "https://spam.example" } });
+
+    const form = container.querySelector("form");
+    if (!form) throw new Error("Form element not found");
+    fireEvent.submit(form);
+
+    // Assert — nothing happens: no POST, no error, no confirmation
+    expect(mockFetch).not.toHaveBeenCalled();
+    expect(screen.queryByText(/Received\./i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/doesn't look right/i)).not.toBeInTheDocument();
+
+    vi.unstubAllGlobals();
+  });
+
   it("shows error if form is submitted without consent", async () => {
     // Arrange
     const { container } = render(<App />);
