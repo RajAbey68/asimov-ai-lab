@@ -16,9 +16,14 @@ export const homepageCopy = {
   hero: {
     h1: "We tell you the truth about your AI risk. In plain English. On paper. With a name on it.",
     subhead:
-      "Mid-tier professional services firms and Tiers 2–4 corporates face enterprise-class AI liability. They cannot afford a McKinsey framework, and they cannot afford to ignore the risk. We deliver independent, signed risk verdicts.",
-    primaryCta: { label: "Book an AI Risk Diagnostic", href: "/diagnostic" },
-    secondaryCta: { label: "Download the ASIMOV Governance Matrix", href: "/matrix" },
+      "Mid-tier professional services firms face enterprise-class AI liability. They cannot afford a McKinsey framework. They cannot afford to ignore the risk. We close that gap.",
+    primaryCta: {
+      label: "Book an AI Risk Diagnostic",
+      href: "mailto:advisory@asimov-ai.org?subject=AI%20Risk%20Diagnostic%20enquiry&body=Please%20tell%20us%20a%20little%20about%20your%20firm%20and%20we%20will%20be%20in%20touch%20within%20one%20business%20day.",
+    },
+    secondaryCta: { label: "See the six audit domains", href: "#audit" },
+    retainerLine:
+      "You keep a lawyer on retainer before there's a lawsuit. Nobody keeps AI counsel before there's an incident. We are that counsel.",
   },
 
   hooks: [
@@ -26,7 +31,7 @@ export const homepageCopy = {
       id: "regulatory-trap",
       headline:
         "The EU AI Act and updated UK GDPR regulations hold deployers accountable, not just the creators.",
-      body: "If your staff uses unvetted models, the liability stops at your board. You don't need a Magic Circle budget to get Magic Circle protection. We deliver a board-ready risk assessment and a clear remediation roadmap in a fixed-fee, 6-week engagement.",
+      body: "If your staff uses unvetted models, the liability stops at your board. You don't need a Magic Circle budget to get Magic Circle protection. We deliver a board-ready risk assessment and a clear remediation roadmap in a fixed-fee, 6-week engagement. Ask your IT lead one question: which of our approved tools added AI features this year? Most boards get silence. That silence is the finding.",
       subhook: "The same defensive rigour. A fraction of the cost.",
     },
     {
@@ -109,22 +114,38 @@ export const homepageCopy = {
   diagnostic: {
     headline: "Book an AI Risk Diagnostic",
     body: "A confidential, 30-minute consultation with a named practitioner — Nick, Sushila, or Raj — to review your immediate regulatory exposures. No sales pitches. No technical jargon. Just a clear view of where you stand.",
-    intakeLabel: "Answer three questions to confirm your booking:",
+    intakeLabel: "A few details to confirm your booking:",
     intakeFields: [
+      { id: "full_name", label: "Your name", placeholder: "Jane Doe", type: "text" },
+      { id: "organisation", label: "Firm", placeholder: "Doe & Partners LLP", type: "text" },
+      {
+        id: "job_title",
+        label: "Your role",
+        placeholder: "Managing Partner / COO / Head of Risk",
+        type: "text",
+      },
+      { id: "email", label: "Email", placeholder: "you@yourfirm.co.uk", type: "email" },
       {
         id: "sector",
         label: "Your sector",
         placeholder: "Law firm / Accountancy / IFA / Corporate / Other",
+        type: "text",
       },
-      { id: "headcount", label: "Approximate headcount", placeholder: "50–200 / 200–500 / 500+" },
+      {
+        id: "headcount",
+        label: "Approximate headcount",
+        placeholder: "50–200 / 200–500 / 500+",
+        type: "text",
+      },
       {
         id: "concern",
         label: "Your primary AI concern (one line)",
         placeholder:
           "e.g. 'We use Microsoft Copilot and have no idea where our client data is going'",
+        type: "text",
       },
     ],
-    cta: { label: "Book an AI Risk Diagnostic", href: "/diagnostic/book" },
+    cta: { label: "Book an AI Risk Diagnostic", href: "#diagnostic" },
   },
 
   matrix: {
@@ -134,7 +155,7 @@ export const homepageCopy = {
       { id: "email", label: "Work email address", type: "email" },
       { id: "job_title", label: "Your role", type: "text" },
     ],
-    cta: { label: "Download the ASIMOV Governance Matrix", href: "/matrix/download" },
+    cta: { label: "Request the ASIMOV Governance Matrix", href: "#diagnostic" },
     disclaimer:
       "We will email you the matrix immediately. We do not share your details with third parties.",
   },
