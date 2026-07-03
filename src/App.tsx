@@ -97,6 +97,11 @@ export function App() {
                 </a>
               </li>
               <li>
+                <a href="/insights/" className="text-zinc-400 hover:text-white transition-colors">
+                  Insights
+                </a>
+              </li>
+              <li>
                 <a
                   href="https://pqc.asimov-ai.org"
                   className="text-zinc-400 hover:text-white transition-colors"

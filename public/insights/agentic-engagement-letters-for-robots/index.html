@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engagement letters for robots: what delegated authority actually means | ASIMOV AI</title>
+  <meta name="description" content="Agent identification and authorization explained through the trainee analogy: workload identity, delegated authority tokens, and why 'the partner's credentials did it' is the answer that fails." />
+  <link rel="canonical" href="https://asimov-ai.org/insights/agentic-engagement-letters-for-robots/" />
+  <meta property="og:title" content="Engagement letters for robots: what delegated authority actually means" />
+  <meta property="og:description" content="Who authorised the agent's act — and can you prove it? Agent identity for non-engineers." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://asimov-ai.org/insights/agentic-engagement-letters-for-robots/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700;800&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/insights/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Engagement letters for robots: what delegated authority actually means",
+    "datePublished": "2026-07-03",
+    "author": { "@type": "Person", "name": "Rajiv Abeysinghe" },
+    "publisher": { "@type": "Organization", "name": "ASIMOV AI", "url": "https://asimov-ai.org" },
+    "mainEntityOfPage": "https://asimov-ai.org/insights/agentic-engagement-letters-for-robots/"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="/">ASIMOV AI</a>
+      <nav aria-label="Insights navigation">
+        <a href="/insights/">Insights</a>
+        <a href="https://pqc.asimov-ai.org">PQC Hub</a>
+        <a href="/#diagnostic">Book Diagnostic</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <p class="kicker">Agentic AI &amp; the Service Firm</p>
+      <h1>Engagement letters for robots: what delegated authority actually means</h1>
+      <p class="byline">Rajiv Abeysinghe · 3 July 2026 · Sources: NIST, IETF, MCP specification, Microsoft, Cloud Security Alliance</p>
+
+      <p>When a trainee acts on a matter, nobody is confused about authority. The engagement letter names the firm. The supervising partner delegates defined tasks. The trainee's work is recorded under the trainee's name, reviewed under the partner's. If something goes wrong, the chain of delegation is the first thing everyone examines — and it exists on paper.</p>
+
+      <p>Now ask the same questions about the AI agent that summarised a data room last week. Under whose authority did it act? Its own? It has none. The partner's? Then the record should show the partner delegated <em>that task</em> to <em>that agent</em> — not that the agent simply borrowed the partner's login. In most firms today, borrowing the login is exactly what happens. Every action the agent takes is indistinguishable, in the system's records, from an action the partner took personally.</p>
+
+      <p>That is the problem the emerging field of agent identity exists to fix. It sounds technical. It is actually the oldest idea in professional practice — delegation you can evidence — being rebuilt in software.</p>
+
+      <h2>Three layers, one trainee analogy</h2>
+      <p><strong>Layer one: the agent has its own name.</strong> In directory terms, the agent becomes a first-class identity — like a staff record — rather than a script running under a human's account. Microsoft shipped exactly this in its Entra directory: agents as directory objects with their own credentials, their own access policies, their own lifecycle (onboarded, permissioned, and — critically — decommissioned). The trainee analogy: the agent gets an HR file.</p>
+
+      <p><strong>Layer two: the agent's authority is delegated, scoped and recorded.</strong> The internet's authorization plumbing is being extended so that a token — the credential an agent presents when it touches a system — carries <em>both</em> identities: the human principal who authorised, and the agent that acted. Draft standards at the IETF propose exactly this structure for AI agents acting on behalf of a user. The Model Context Protocol, the de-facto standard for connecting agents to tools, already mandates modern OAuth with tokens bound to a specific destination, and expressly prohibits passing one system's token through to another — the "confused deputy" failure, where a downstream system trusts credentials it never verified. The trainee analogy: a delegation note that says which partner authorised which task, with authority that expires.</p>
+
+      <p><strong>Layer three: the authority is checked every time.</strong> Zero-trust architecture — NIST's published model since 2020 — replaces "inside the network, therefore trusted" with per-request verification. Applied to agents: no standing permissions, no assumed goodwill, every access decided on identity, scope and context. The trainee analogy: the file room checks the delegation note at every visit, not just the first.</p>
+
+      <p>None of this is exotic. NIST's National Cybersecurity Center of Excellence opened a formal programme on software and AI agent identity and authorization in February 2026, precisely because organisations were improvising. The building blocks exist. What most firms lack is the decision to use them.</p>
+
+      <h2>The benefits, stated honestly</h2>
+      <p>Agents with real identity and scoped delegation are not just safer — they are more useful. You can give a well-scoped agent <em>more</em> autonomy precisely because its blast radius is bounded: it can read the data room but not the finance system; it can draft but not send; its access ends when the matter closes. Firms that skip identity work face a false choice between locking agents down to uselessness and trusting them with a partner's keys.</p>
+
+      <h2>The pitfalls, stated honestly</h2>
+      <p>Three are documented rather than hypothetical. <strong>Sprawl:</strong> industry survey data suggests non-human identities already outnumber human ones by more than ninety to one, and that only about a quarter of organisations can trace an agent's actions back to a human sponsor. Untracked agents are the new untracked spreadsheets — except they act. <strong>The confused deputy:</strong> an agent with broad credentials can be manipulated — including by content in documents it merely reads — into using legitimate authority for illegitimate ends; scoped tokens exist to contain exactly this. <strong>The ownerless agent:</strong> the workflow bot whose sponsoring employee left. It still runs. Nobody owns it. A directory with lifecycle management flags it; a borrowed login never will.</p>
+
+      <h2>What to do this quarter</h2>
+      <p><strong>Register.</strong> List every agent, bot and automation touching client data. Name a sponsoring partner for each — the engagement-letter question, answered internally.</p>
+
+      <p><strong>Separate.</strong> Where the platform allows it, give agents their own identities and stop sharing human logins. Where it doesn't, record that as a supplier gap with a date on it.</p>
+
+      <p><strong>Scope and expire.</strong> Agent access follows the matter: defined systems, defined actions, an end date. Delegation that never expires is not delegation. It is abdication.</p>
+
+      <p>The firms that mastered leverage — juniors doing more work under partners who remained accountable — built the professional services model. Agents are leverage again, at a steeper ratio. The instrument that made leverage safe the first time was the documented chain of authority. It will be again.</p>
+
+      <section class="sources">
+        <h2>Sources</h2>
+        <ol>
+          <li>NIST NCCoE, <a href="https://csrc.nist.gov/pubs/other/2026/02/05/accelerating-the-adoption-of-software-and-ai-agent/ipd" rel="noopener">Accelerating the Adoption of Software and AI Agent Identity and Authorization</a> — concept paper, 5 Feb 2026.</li>
+          <li>NIST, <a href="https://csrc.nist.gov/pubs/sp/800/207/final" rel="noopener">SP 800-207 — Zero Trust Architecture</a> — Aug 2020.</li>
+          <li>Model Context Protocol, <a href="https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization" rel="noopener">Authorization specification</a> — 18 Jun 2025 (OAuth 2.1, resource-bound tokens, token-passthrough prohibition).</li>
+          <li>IETF, <a href="https://datatracker.ietf.org/doc/draft-oauth-ai-agents-on-behalf-of-user/" rel="noopener">draft-oauth-ai-agents-on-behalf-of-user</a> — individual draft, rev-02, Aug 2025 (status: expired; direction of travel).</li>
+          <li>Microsoft, <a href="https://learn.microsoft.com/en-us/entra/agent-id/what-is-microsoft-entra-agent-id" rel="noopener">What is Microsoft Entra Agent ID</a> — GA Apr 2026.</li>
+          <li>Cloud Security Alliance, <a href="https://cloudsecurityalliance.org/artifacts/agentic-ai-identity-and-access-management-a-new-approach" rel="noopener">Agentic AI Identity and Access Management: A New Approach</a> — 18 Aug 2025 (incl. non-human-identity survey figures, self-reported).</li>
+        </ol>
+      </section>
+
+      <div class="cta">
+        <p><strong>How many agents act under your firm's name today?</strong> If the answer is "we'd have to check", that is the finding. Start with a 30-minute diagnostic.</p>
+        <a class="button" href="/#diagnostic">Book an AI Risk Diagnostic</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <p>This website and all ASIMOV AI outputs are decision-support only and do not constitute legal advice. Consult qualified legal counsel before relying on any finding for compliance purposes. © 2026 ASIMOV AI. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

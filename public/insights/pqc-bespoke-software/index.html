@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>You commissioned bespoke software. No one is coming to update it for you | ASIMOV AI</title>
+  <meta name="description" content="The category of post-quantum risk most guidance skips: the client portal an agency built in 2018, the cryptographic library nobody has audited, and the migration nobody owns." />
+  <link rel="canonical" href="https://asimov-ai.org/insights/pqc-bespoke-software/" />
+  <meta property="og:title" content="You commissioned bespoke software. No one is coming to update it for you" />
+  <meta property="og:description" content="Bespoke systems have cryptographic assets no vendor update will touch. The migration is yours to own." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://asimov-ai.org/insights/pqc-bespoke-software/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700;800&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/insights/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "You commissioned bespoke software. No one is coming to update it for you",
+    "datePublished": "2026-07-03",
+    "author": { "@type": "Person", "name": "Rajiv Abeysinghe" },
+    "publisher": { "@type": "Organization", "name": "ASIMOV AI", "url": "https://asimov-ai.org" },
+    "mainEntityOfPage": "https://asimov-ai.org/insights/pqc-bespoke-software/"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="/">ASIMOV AI</a>
+      <nav aria-label="Insights navigation">
+        <a href="/insights/">Insights</a>
+        <a href="https://pqc.asimov-ai.org">PQC Hub</a>
+        <a href="/#diagnostic">Book Diagnostic</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <p class="kicker">Post-Quantum Cryptography</p>
+      <h1>You commissioned bespoke software. No one is coming to update it for you</h1>
+      <p class="byline">Rajiv Abeysinghe · 3 July 2026 · Sources: NIST, NCSC, ETSI</p>
+
+      <p>The application went live in 2018. A development agency built it. Client onboarding, document upload, encrypted data in transit. £180,000 contract. The agency was acquired three years later. The source code is somewhere on a server. Nobody is entirely sure where.</p>
+
+      <p>The application still runs. Thousands of client records flow through it every month. Somewhere in its dependencies sits a cryptographic library that last received a meaningful update before post-quantum cryptography was a boardroom conversation.</p>
+
+      <p>This is not a hypothetical. It describes a category of risk that most PQC guidance skips entirely — because most PQC guidance assumes you are a large enterprise with a dedicated security team, a software asset register, and a vendor who will push an update. Many organisations are not that. The ones that aren't are the ones most exposed.</p>
+
+      <h2>The assumption that fails</h2>
+      <p>The standard advice runs like this: post-quantum cryptography is coming; your vendors are preparing; the big platforms have published roadmaps; check with your suppliers and hold them to the published milestones.</p>
+
+      <p>That advice is correct — for the slice of your operation that runs on commercial off-the-shelf software. The NCSC's own timeline guidance says as much: organisations on commodity IT should inherit the migration through vendor updates. The same document is equally clear about the other slice — organisations running custom or bespoke systems follow the full migration timetable themselves: plan by 2028, priority migrations by 2031, complete by 2035.</p>
+
+      <p>If your organisation has ever commissioned bespoke software — a client portal, an internal workflow tool, a custom API connecting two systems that do not natively speak to each other — you have cryptographic assets that no vendor update will touch. The migration is yours to own. Most organisations have not started.</p>
+
+      <h2>What NIST settled in August 2024</h2>
+      <p>On 13 August 2024, the US National Institute of Standards and Technology finalised the first post-quantum cryptographic standards. FIPS 203 defines ML-KEM for key establishment. FIPS 204 defines ML-DSA and FIPS 205 defines SLH-DSA for digital signatures.</p>
+
+      <p>The algorithms are finalised. The standards are published. The migration path exists. The question is not whether quantum-resistant cryptography is available. It is whether your bespoke software can reach it. For most organisations running legacy bespoke applications, the honest answer is: we do not know, because we have not looked.</p>
+
+      <h2>The threat that is already active</h2>
+      <p>Post-quantum risk is not entirely a future problem. The attack is retrospective: an adversary captures encrypted data in transit today, stores it, and decrypts it when quantum computers arrive. The NCSC describes the risk plainly — data collected and stored today, decrypted at some point in the future — and notes it is worthwhile precisely for high-value, long-confidentiality data.</p>
+
+      <p>Any sensitive data your bespoke application transmitted over the last five to ten years, encrypted under RSA-2048 or ECDH key exchange, is a candidate. Client financial records, medical information, legal privilege, intellectual property — if your bespoke system handled any of it, the exposure window opened years ago.</p>
+
+      <h2>Three failure modes specific to bespoke software</h2>
+      <p>COTS systems have a defined migration path: the vendor updates the product; you update your instance. Bespoke software has none of that. What it has instead is one of three failure modes.</p>
+
+      <p><strong>The source code problem.</strong> Many organisations commissioned software without establishing clear ownership of the codebase. The contract specified deliverables, not IP transfer. The agency merged, was acquired, or closed. You cannot migrate cryptographic libraries in software you cannot open.</p>
+
+      <p><strong>The dependency blindspot.</strong> Organisations that do have the source code often cannot say which cryptographic library it uses or what version. The application works. Nobody has audited its dependencies since the original engagement. Whether it can support ML-KEM is unknown — because nobody has asked.</p>
+
+      <p><strong>The architectural entanglement.</strong> The hardest case: you have the code, you know the dependencies, and you discover that key-exchange logic is embedded in ways that cannot be swapped cleanly. The migration is not a dependency update. It is a partial rebuild.</p>
+
+      <p>None of these are resolvable by asking your cloud provider when they expect to be PQC-ready.</p>
+
+      <h2>The audit that has to happen first</h2>
+      <p>Migration cannot precede inventory — the sequencing every authority agrees on. ETSI's migration framework puts inventory as stage one of three; the NCSC's first milestone, due 2028, is exactly that discovery exercise. For bespoke software, the inventory answers four questions.</p>
+
+      <p><strong>Which applications handle sensitive data that is encrypted?</strong> A custom dashboard pulling anonymised metrics is different from an onboarding portal transmitting personal financial data. Start where encryption failure has the highest consequence.</p>
+
+      <p><strong>What cryptographic algorithms and libraries do they use?</strong> This requires the source code and someone able to read it. The answer is not always what the original documentation says.</p>
+
+      <p><strong>Is the source code accessible and under your control?</strong> If not, that is a finding before any PQC discussion. IP ownership and escrow are contractual matters, not technical ones.</p>
+
+      <p><strong>Who has the expertise to migrate it?</strong> The original developer may be gone. Knowing the gap is the beginning of addressing it — and the NCSC now runs a pilot PQC consultancy assurance scheme for organisations that need vetted help.</p>
+
+      <h2>What the deadlines actually mean for a build</h2>
+      <p>For bespoke systems, 2035 is not a delivery date. It is the end of a programme that works backwards: cryptographic inventory now; source-code ownership resolved through 2027; dependency audits complete by 2028 — the NCSC's planning milestone; migration work, including any partial rebuilds, scheduled across 2028–2031 for the systems that matter most. That is a multi-year programme for organisations that start immediately. Organisations that begin in 2028 will be writing the plan on the day it was due.</p>
+
+      <h2>The one action that precedes everything else</h2>
+      <p>Commission the cryptographic inventory. Not a full security audit. Not a vendor assessment. Specifically: a structured review of every bespoke application you run, asking the four questions above. The output is a risk-ranked register — applications handling long-lived sensitive data under RSA or ECDH, with uncertain source-code access, at the top.</p>
+
+      <p>That register is the starting point for every subsequent conversation — with boards, with development partners, with the suppliers who will eventually do the migration work. Without it, all post-quantum planning is a discussion about a problem the organisation has not yet described.</p>
+
+      <section class="sources">
+        <h2>Sources</h2>
+        <ol>
+          <li>NIST, <a href="https://csrc.nist.gov/pubs/fips/203/final" rel="noopener">FIPS 203 (ML-KEM)</a>, <a href="https://csrc.nist.gov/pubs/fips/204/final" rel="noopener">FIPS 204 (ML-DSA)</a>, <a href="https://csrc.nist.gov/pubs/fips/205/final" rel="noopener">FIPS 205 (SLH-DSA)</a> — final, 13 Aug 2024.</li>
+          <li>NCSC, <a href="https://www.ncsc.gov.uk/guidance/pqc-migration-timelines" rel="noopener">Timelines for migration to post-quantum cryptography</a> — incl. the custom/bespoke-software position and the 2028/2031/2035 milestones.</li>
+          <li>NCSC, <a href="https://www.ncsc.gov.uk/whitepaper/next-steps-preparing-for-post-quantum-cryptography" rel="noopener">Next steps in preparing for post-quantum cryptography</a> — retrospective-decryption risk.</li>
+          <li>ETSI, <a href="https://www.etsi.org/deliver/etsi_tr/103600_103699/103619/01.01.01_60/tr_103619v010101p.pdf" rel="noopener">TR 103 619 — Migration strategies and recommendations to Quantum Safe schemes</a> — the inventory → plan → execute framework.</li>
+        </ol>
+      </section>
+
+      <div class="cta">
+        <p><strong>Running a system nobody fully owns?</strong> The cryptographic inventory is a scoped, fixed-fee exercise. Start with a 30-minute diagnostic.</p>
+        <a class="button" href="/#diagnostic">Book an AI Risk Diagnostic</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <p>This website and all ASIMOV AI outputs are decision-support only and do not constitute legal advice. Consult qualified legal counsel before relying on any finding for compliance purposes. © 2026 ASIMOV AI. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

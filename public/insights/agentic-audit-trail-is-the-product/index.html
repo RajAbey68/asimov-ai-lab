@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The audit trail is the product: EU AI Act logging before August 2026 | ASIMOV AI</title>
+  <meta name="description" content="EU AI Act Article 12 makes automatic logging a legal duty for high-risk AI, with a six-month retention floor — and no finished technical standard. What firms should log from first principles." />
+  <link rel="canonical" href="https://asimov-ai.org/insights/agentic-audit-trail-is-the-product/" />
+  <meta property="og:title" content="The audit trail is the product: EU AI Act logging before August 2026" />
+  <meta property="og:description" content="Can you reconstruct what the agent did? That question is becoming a legal requirement, not an IT preference." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://asimov-ai.org/insights/agentic-audit-trail-is-the-product/" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700;800&family=Hanken+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/insights/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The audit trail is the product: EU AI Act logging before August 2026",
+    "datePublished": "2026-07-03",
+    "author": { "@type": "Person", "name": "Rajiv Abeysinghe" },
+    "publisher": { "@type": "Organization", "name": "ASIMOV AI", "url": "https://asimov-ai.org" },
+    "mainEntityOfPage": "https://asimov-ai.org/insights/agentic-audit-trail-is-the-product/"
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="inner">
+      <a class="brand" href="/">ASIMOV AI</a>
+      <nav aria-label="Insights navigation">
+        <a href="/insights/">Insights</a>
+        <a href="https://pqc.asimov-ai.org">PQC Hub</a>
+        <a href="/#diagnostic">Book Diagnostic</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <p class="kicker">Agentic AI &amp; the Service Firm</p>
+      <h1>The audit trail is the product: EU AI Act logging before August 2026</h1>
+      <p class="byline">Rajiv Abeysinghe · 3 July 2026 · Sources: EU AI Act, ISO/IEC, NIST, IMDA</p>
+
+      <p>Article 12 of the EU AI Act contains fourteen words that will reorganise how professional firms run AI: high-risk systems "shall technically allow for the automatic recording of events (logs)" over their lifetime. Automatic. Not a file note written afterwards. Not a screenshot when something looks odd. System-generated records, kept — under Articles 19 and 26 — for at least six months, and available when someone with authority asks what the machine actually did.</p>
+
+      <p>Most firms reading this are not yet running "high-risk" systems as the Act defines them — and the 2026 Digital Omnibus deferred the stand-alone high-risk obligations to December 2027. So why act now? Three reasons that have nothing to do with Brussels' timetable.</p>
+
+      <h2>Reason one: you already need the answer</h2>
+      <p>The question "can we reconstruct what the agent did?" arrives before any regulator does. It arrives when a client challenges a number in a report the agent drafted. When an insurer asks, at renewal, how AI-assisted work is supervised. When a departing employee claims the agent, not they, sent the file. In each case the firm's position is exactly as strong as its logs — and the uncomfortable discovery, in most firms, is that the chat tool's history shows the conversation but not the actions: which sources the agent fetched, which systems it touched, what a human corrected before the output left the building.</p>
+
+      <p>An agent is not a chat window. It plans, retrieves, calls tools, iterates. A defensible trail therefore has five elements, and they map directly onto what Article 12 anticipates: the instruction (who asked for what, when); the sources (what the agent retrieved or was given); the actions (each tool call and system touched); the interventions (who reviewed, sampled, corrected, overrode); and the adoption (the named human who signed the result out). Anthropic's engineering documentation makes a point worth repeating here: in a well-built agent system, permissions are enforced by the surrounding harness, not by the model's good intentions — and the same architecture that enforces is the architecture that logs.</p>
+
+      <h2>Reason two: there is no finished standard to wait for</h2>
+      <p>Firms accustomed to buying compliance as a product will look for the harmonised technical standard for AI logging. It does not exist yet: the European standardisation work and the relevant ISO drafts are still in progress. That is not a reason to wait; it is the reason the firms that design sensible logs now — from first principles, around the five elements above — will find the eventual standard descriptive of what they already do. ISO/IEC 42001, the certifiable AI management-system standard published in December 2023, already gives the wrapper: documented processes, assigned responsibility, continual review. The log is what makes those processes inspectable.</p>
+
+      <h2>Reason three: every serious regime is converging on the same artefact</h2>
+      <p>This is not a European peculiarity. NIST's Generative AI Profile — the US reference vocabulary for these risks — names confabulation and human-AI configuration among its core risk areas and prescribes documentation and traceability as the response. Singapore, which has no AI statute at all, published a Model AI Governance Framework for Agentic AI in January 2026; its territory is the same: who authorised the agent, within what bounds, with what record. When the voluntary regime in Singapore, the risk framework in Washington and the binding regulation in Brussels all converge on "show me the trail", the trail has stopped being a compliance artefact. It is becoming the professional work-product itself — the thing that distinguishes advice a firm stands behind from text a machine emitted.</p>
+
+      <h2>The more-for-less trap, and its exit</h2>
+      <p>Here is the commercial version of the argument. Agents let a firm deliver more work for less cost — the pressure Richard Susskind named "more-for-less" long before the technology existed to satisfy it. But a firm that captures the efficiency while quietly losing the evidentiary chain has traded margin for uninsurable risk. The exit from the trap is unglamorous: logging switched on and retained; a monthly sample of agent-assisted matters reviewed the way audit files get cold-reviewed; one page of management information to the board — how many agent-assisted matters, how many sampled, what was found. That regime costs hours. Its absence, discovered after an incident, costs the defence.</p>
+
+      <h2>Before August 2026</h2>
+      <p>The Act's transparency obligations apply from 2 August 2026 — days from now, as this is published. The logging duties bind later and, for most readers, indirectly. Act on the earlier date anyway: switch on and retain what your platforms can already log; close the gap between conversation history and action history with your vendors — in writing; and put the five-element record into your file-note discipline for anything an agent touches that a client will rely on.</p>
+
+      <p>Firms did not adopt time-recording because they loved it. They adopted it because it made their work defensible and billable at once. Agent logging is the same instrument, one technology later.</p>
+
+      <section class="sources">
+        <h2>Sources</h2>
+        <ol>
+          <li>EU AI Act, <a href="https://artificialintelligenceact.eu/article/12/" rel="noopener">Article 12 (Record-keeping)</a>, <a href="https://artificialintelligenceact.eu/article/14/" rel="noopener">Article 14 (Human oversight)</a>, Arts. 19 &amp; 26 (log retention ≥ 6 months) — Regulation (EU) 2024/1689, <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" rel="noopener">EUR-Lex</a>; high-risk dates as amended by the 2026 Digital Omnibus.</li>
+          <li>ISO/IEC, <a href="https://www.iso.org/standard/42001" rel="noopener">ISO/IEC 42001:2023 — AI management systems</a>.</li>
+          <li>NIST, <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf" rel="noopener">Generative AI Profile (NIST-AI-600-1)</a> — Jul 2024.</li>
+          <li>IMDA (Singapore), <a href="https://www.imda.gov.sg/-/media/imda/files/about/emerging-tech-and-research/artificial-intelligence/mgf-for-agentic-ai.pdf" rel="noopener">Model AI Governance Framework for Agentic AI</a> — Jan 2026, updated May 2026.</li>
+          <li>Anthropic, <a href="https://www.anthropic.com/engineering/claude-code-sandboxing" rel="noopener">Beyond permission prompts: making Claude Code more secure and autonomous</a> — Oct 2025 (harness-enforced permissions).</li>
+        </ol>
+      </section>
+
+      <div class="cta">
+        <p><strong>Could your firm reconstruct last month's agent activity?</strong> The ASIMOV Audit scores exactly this evidence chain across six governance domains.</p>
+        <a class="button" href="/#diagnostic">Book an AI Risk Diagnostic</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <p>This website and all ASIMOV AI outputs are decision-support only and do not constitute legal advice. Consult qualified legal counsel before relying on any finding for compliance purposes. © 2026 ASIMOV AI. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
