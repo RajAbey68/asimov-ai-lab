@@ -3,6 +3,7 @@ import nickImg from "./assets/nick-lockett-enhanced.png";
 import rajivImg from "./assets/rajiv-abeysinghe.png";
 import sushilaImg from "./assets/sushila-nair-enhanced.png";
 import { homepageCopy } from "./content/homepage";
+import { getBannerText, getNextMilestone } from "./lib/euAiActTimeline";
 
 export function App() {
   const [formData, setFormData] = useState<Record<string, string>>({
@@ -97,6 +98,15 @@ export function App() {
               </li>
               <li>
                 <a
+                  href="https://pqc.asimov-ai.org"
+                  className="text-zinc-400 hover:text-white transition-colors"
+                  aria-label="Post-Quantum advisory hub"
+                >
+                  PQC
+                </a>
+              </li>
+              <li>
+                <a
                   href="#diagnostic"
                   className="rounded px-4 py-2 text-xs font-bold transition-all border hover:opacity-90 active:scale-95"
                   style={{
@@ -114,11 +124,25 @@ export function App() {
       </header>
 
       <main className="flex-1">
-        {/* Alert Banner */}
+        {/* Alert Banner — computed from the Art. 113 timeline, never hardcoded */}
         <div className="mx-auto max-w-7xl px-6 pt-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded border border-red-500/30 bg-red-950/20 text-red-400 text-xs font-mono font-medium uppercase tracking-wider">
+          <div className="inline-flex flex-wrap items-center gap-2 px-3 py-1.5 rounded border border-red-500/30 bg-red-950/20 text-red-400 text-xs font-mono font-medium uppercase tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
-            CRITICAL DEADLINE ALERT: EU AI ACT (AUG 2026)
+            {getBannerText(new Date())}
+            <a
+              href={
+                (
+                  getNextMilestone(new Date()) ?? {
+                    sourceUrl: "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+                  }
+                ).sourceUrl
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-300 underline decoration-red-500/40 hover:text-white transition-colors normal-case"
+            >
+              Regulation (EU) 2024/1689
+            </a>
           </div>
         </div>
 
@@ -357,6 +381,26 @@ export function App() {
                   </p>
                 </div>
               </div>
+            </div>
+
+            <div className="mt-10 border border-white/5 rounded p-6 bg-zinc-900/20 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h3 className="text-lg font-bold text-white mb-2">
+                  Post-Quantum Cryptography Advisory
+                </h3>
+                <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
+                  NIST finalised the post-quantum standards in August 2024. Client files encrypted
+                  today can be harvested now and decrypted later. Our dedicated hub covers what that
+                  means for firms that hold privileged and confidential data.
+                </p>
+              </div>
+              <a
+                href="https://pqc.asimov-ai.org"
+                className="inline-flex items-center gap-2 rounded border border-white/10 hover:border-white/30 px-6 py-3 text-xs font-mono font-semibold uppercase tracking-wider transition-colors text-white shrink-0"
+              >
+                Visit the Post-Quantum hub
+                <span className="material-symbols-outlined text-sm">arrow_outward</span>
+              </a>
             </div>
           </div>
         </section>

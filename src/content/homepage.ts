@@ -39,8 +39,8 @@ export const homepageCopy = {
       id: "objective-shield",
       headline:
         "Traditional software integrators audit your systems just to upsell you a contract.",
-      body: "ASIMOV AI does one thing: we give you an unbiased, signed risk verdict. We don't sell software, and we don't build systems. We have no conflict of interest, ensuring your leadership can act with complete certainty — our work ends at the recommendation.",
-      subhook: "Independent verdict. No conflict of interest. Ever.",
+      body: "ASIMOV AI does one thing: we give you an unbiased, signed risk verdict. We don't sell software, and we don't build systems. When your roadmap needs building, we refer — openly, including to our sister practice — and no ASIMOV fee depends on what gets built. Our work ends at the recommendation.",
+      subhook: "Independent verdict. Disclosed relationships. Nothing buried.",
     },
   ],
 
@@ -203,10 +203,10 @@ export const homepageCopy = {
 
   crossReferral: {
     headline: "Need a partner to implement your remediation roadmap?",
-    body: "ASIMOV AI's work ends at the recommendation. We have no commercial interest in the implementation. If your roadmap requires someone to build — a governance dashboard, an isolated AI environment, a data classification system — our recommended delivery partner handles that work independently.",
+    body: "ASIMOV AI's work ends at the recommendation. If your roadmap requires someone to build — a governance dashboard, an isolated AI environment, a data classification system — AI Integ can take that work on. AI Integ is our sister practice. We say so here, plainly, rather than in the small print.",
     cta: { label: "Meet AI Integ →", href: "https://ai-integ.com" },
     neutralityNote:
-      "ASIMOV AI receives no commercial benefit from this referral. Your audit result is not influenced by this relationship.",
+      "The conflict wall: separate engagement teams, no shared client files, and no ASIMOV fee contingent on implementation. Your audit verdict does not change whether or not AI Integ is engaged. If you require complete separation, we will refer you to an unaffiliated delivery partner.",
   },
 
   disclaimer:
