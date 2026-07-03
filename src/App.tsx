@@ -10,12 +10,12 @@ export function App() {
     full_name: "",
     job_title: "",
     organisation: "",
+    email: "",
     sector: "",
     headcount: "",
     concern: "",
   });
   const [loading, setLoading] = useState(false);
-  const [roadmap, setRoadmap] = useState("");
   const [error, setError] = useState("");
   const [consent, setConsent] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -32,7 +32,6 @@ export function App() {
     }
     setLoading(true);
     setError("");
-    setRoadmap("");
     try {
       const response = await fetch(
         "https://qcawafyfaqjwolgczhap.supabase.co/functions/v1/lead-intake",
@@ -48,7 +47,7 @@ export function App() {
       if (!response.ok || !data.success) {
         throw new Error(data.error || "Form submission failed.");
       }
-      setRoadmap(data.roadmap);
+      // Any generated analysis stays internal — it briefs the human call, it is never shown here.
       setSuccess(true);
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "An unexpected error occurred.";
@@ -173,8 +172,7 @@ export function App() {
       <main className="flex-1">
         {/* Alert Banner — computed from the Art. 113 timeline, never hardcoded */}
         <div className="mx-auto max-w-7xl px-6 pt-8">
-          <div className="inline-flex flex-wrap items-center gap-2 px-3 py-1.5 rounded border border-red-500/30 bg-red-950/20 text-red-400 text-xs font-mono font-medium uppercase tracking-wider">
-            <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
+          <p className="inline-flex flex-wrap items-center gap-2 px-3 py-1.5 m-0 rounded border border-white/10 bg-zinc-900/40 text-zinc-300 text-xs font-mono tracking-wide">
             {getBannerText(new Date())}
             <a
               href={
@@ -186,30 +184,33 @@ export function App() {
               }
               target="_blank"
               rel="noopener noreferrer"
-              className="text-red-300 underline decoration-red-500/40 hover:text-white transition-colors normal-case"
+              className="text-zinc-200 underline decoration-white/30 hover:text-white transition-colors"
             >
               Regulation (EU) 2024/1689
             </a>
-          </div>
+          </p>
         </div>
 
         {/* Hero */}
         <section aria-labelledby="hero-heading" className="mx-auto max-w-7xl px-6 py-20 md:py-32">
           <div className="max-w-4xl">
+            <p
+              className="text-xs font-mono font-bold uppercase tracking-widest mb-4"
+              style={{ color: "var(--color-amber)" }}
+            >
+              ASIMOV AI · STANDING AI RISK COUNSEL
+            </p>
             <h1
               id="hero-heading"
               className="text-4xl md:text-6xl font-bold leading-[1.15] mb-6 tracking-tight"
               style={{ fontFamily: "var(--font-heading)" }}
             >
-              <span
-                className="text-xs font-mono font-bold uppercase tracking-widest block mb-4"
-                style={{ color: "var(--color-amber)" }}
-              >
-                ASIMOV AI · STRATEGIC ADVISORY & RISK TRIAGE
-              </span>
               {homepageCopy.hero.h1}
             </h1>
-            <p className="text-lg md:text-xl text-zinc-400 leading-relaxed mb-10 max-w-3xl font-light">
+            <p className="text-lg md:text-xl text-zinc-300 leading-relaxed mb-6 max-w-3xl">
+              {homepageCopy.hero.retainerLine}
+            </p>
+            <p className="text-base md:text-lg text-zinc-400 leading-relaxed mb-10 max-w-3xl font-light">
               {homepageCopy.hero.subhead}
             </p>
             <div className="flex flex-wrap gap-4">
@@ -246,7 +247,7 @@ export function App() {
                   >
                     {hook.headline}
                   </h3>
-                  <p className="text-sm text-zinc-400 leading-relaxed">{hook.body}</p>
+                  <p className="text-base text-zinc-400 leading-relaxed">{hook.body}</p>
                   <p
                     className="text-xs font-mono font-semibold uppercase tracking-wider"
                     style={{ color: "var(--color-amber)" }}
@@ -269,7 +270,7 @@ export function App() {
               {homepageCopy.product.headline}
             </h2>
             <p className="text-lg text-zinc-300 leading-relaxed">{homepageCopy.product.subhead}</p>
-            <p className="text-sm text-zinc-400 mt-4 leading-relaxed">
+            <p className="text-base text-zinc-400 mt-4 leading-relaxed">
               {homepageCopy.product.description}
             </p>
           </div>
@@ -283,7 +284,7 @@ export function App() {
                 >
                   {dom.label}
                 </h4>
-                <p className="text-sm text-zinc-400 leading-relaxed">{dom.description}</p>
+                <p className="text-base text-zinc-400 leading-relaxed">{dom.description}</p>
               </div>
             ))}
           </div>
@@ -302,7 +303,7 @@ export function App() {
               {homepageCopy.outputs.items.map((item) => (
                 <div key={item.label} className="border border-white/5 rounded p-6 bg-zinc-900/10">
                   <h3 className="font-bold text-base mb-2 text-white">{item.label}</h3>
-                  <p className="text-sm text-zinc-400 leading-relaxed">{item.description}</p>
+                  <p className="text-base text-zinc-400 leading-relaxed">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -320,7 +321,7 @@ export function App() {
           >
             {homepageCopy.principals.headline}
           </h2>
-          <p className="text-center text-zinc-400 mb-16 max-w-2xl mx-auto text-sm leading-relaxed">
+          <p className="text-center text-zinc-400 mb-16 max-w-2xl mx-auto text-base leading-relaxed">
             {homepageCopy.principals.subhead}
           </p>
 
@@ -474,7 +475,9 @@ export function App() {
                   <div>
                     <h3 className="font-bold text-sm text-white mb-1">{tier.name}</h3>
                     <p className="text-xs font-mono text-zinc-500 mb-4">{tier.duration}</p>
-                    <p className="text-sm text-zinc-400 leading-relaxed mb-6">{tier.description}</p>
+                    <p className="text-base text-zinc-400 leading-relaxed mb-6">
+                      {tier.description}
+                    </p>
                   </div>
                   <p
                     className="font-mono text-sm font-semibold"
@@ -497,7 +500,7 @@ export function App() {
             >
               {homepageCopy.diagnostic.headline}
             </h2>
-            <p className="text-zinc-400 text-center mb-8 text-sm leading-relaxed">
+            <p className="text-zinc-400 text-center mb-8 text-base leading-relaxed">
               {homepageCopy.diagnostic.body}
             </p>
             <p className="text-xs font-mono font-semibold uppercase tracking-wider mb-4 text-zinc-300">
@@ -507,26 +510,23 @@ export function App() {
             {!success ? (
               <form onSubmit={handleSubmit} className="space-y-4">
                 {error && (
-                  <div className="text-xs text-red-400 bg-red-950/20 border border-red-500/20 p-3 rounded">
+                  <div className="text-sm text-red-400 bg-red-950/20 border border-red-500/20 p-3 rounded">
                     {error}
                   </div>
                 )}
                 {homepageCopy.diagnostic.intakeFields.map((f) => (
                   <div key={f.id} className="space-y-1 text-left">
-                    <label
-                      htmlFor={f.id}
-                      className="text-[10px] font-mono font-semibold text-zinc-500 uppercase tracking-widest flex items-center gap-1"
-                    >
-                      <span>&gt;</span> {f.label}
+                    <label htmlFor={f.id} className="text-sm font-medium text-zinc-300">
+                      {f.label}
                     </label>
                     <input
-                      type="text"
+                      type={f.type}
                       id={f.id}
                       required
                       value={formData[f.id] || ""}
                       onChange={handleInputChange}
                       placeholder={f.placeholder}
-                      className="w-full bg-zinc-950 border border-white/10 rounded px-4 py-2 text-sm text-zinc-300 focus:outline-none focus:border-green-400 font-mono transition-colors"
+                      className="w-full bg-zinc-950 border border-white/10 rounded px-4 py-2 text-base text-zinc-300 focus:outline-none focus:border-[var(--color-amber)] transition-colors"
                     />
                   </div>
                 ))}
@@ -537,11 +537,14 @@ export function App() {
                     required
                     checked={consent}
                     onChange={(e) => setConsent(e.target.checked)}
-                    className="mt-1 accent-green-400"
+                    className="mt-1 accent-[var(--color-amber)]"
                   />
-                  <label htmlFor="privacy-consent" className="text-xs text-zinc-400">
+                  <label htmlFor="privacy-consent" className="text-sm text-zinc-400">
                     I consent to the processing of my data in accordance with the{" "}
-                    <a href="/privacy" className="underline hover:text-white transition-colors">
+                    <a
+                      href="/privacy.html"
+                      className="underline hover:text-white transition-colors"
+                    >
                       Privacy Policy
                     </a>
                     .
@@ -554,45 +557,15 @@ export function App() {
                     className="w-full text-center rounded py-3 text-xs font-bold font-mono uppercase tracking-wider transition-all hover:opacity-90 active:scale-95 disabled:opacity-50"
                     style={{ backgroundColor: "var(--color-amber)", color: "var(--color-navy)" }}
                   >
-                    {loading ? "Generating Roadmap..." : homepageCopy.diagnostic.cta.label}
+                    {loading ? "Sending..." : homepageCopy.diagnostic.cta.label}
                   </button>
                 </div>
               </form>
             ) : (
-              <div className="space-y-6 text-left">
-                <div className="text-xs text-green-400 bg-green-950/20 border border-green-500/20 p-4 rounded font-mono">
-                  ✓ Submission successful. Custom 90-Day Crawl-Walk-Run-Fly Roadmap generated.
-                </div>
-                <div className="border border-white/10 bg-zinc-950 p-6 rounded">
-                  <span className="text-[10px] font-mono font-bold text-zinc-500 uppercase tracking-wider block mb-3 border-b border-white/5 pb-2">
-                    GENERATED EXECUTIVE ANALYSIS
-                  </span>
-                  <div className="text-sm font-mono text-zinc-300 leading-relaxed whitespace-pre-wrap max-h-96 overflow-y-auto">
-                    {roadmap}
-                  </div>
-                </div>
-                <div className="text-center pt-4">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSuccess(false);
-                      setFormData({
-                        full_name: "",
-                        job_title: "",
-                        organisation: "",
-                        sector: "",
-                        headcount: "",
-                        concern: "",
-                      });
-                      setConsent(false);
-                    }}
-                    className="inline-flex items-center gap-2 rounded px-8 py-3.5 text-xs font-bold font-mono uppercase tracking-wider transition-all hover:opacity-90 active:scale-95"
-                    style={{ backgroundColor: "var(--color-amber)", color: "var(--color-navy)" }}
-                  >
-                    Submit Another Query
-                  </button>
-                </div>
-              </div>
+              <output className="block text-base text-zinc-200 border border-white/10 bg-zinc-950 p-4 rounded">
+                Received. Nick, Sushila or Raj will reply within one business day with three times
+                for your 30-minute call.
+              </output>
             )}
           </div>
         </section>
@@ -606,7 +579,7 @@ export function App() {
             >
               {homepageCopy.crossReferral.headline}
             </h2>
-            <p className="text-zinc-400 mb-8 max-w-2xl mx-auto leading-relaxed text-sm font-light">
+            <p className="text-zinc-400 mb-8 max-w-2xl mx-auto leading-relaxed text-base font-light">
               {homepageCopy.crossReferral.body}
             </p>
             <a
@@ -628,15 +601,30 @@ export function App() {
       <footer className="border-t border-white/5 py-10 bg-zinc-950">
         <div className="mx-auto max-w-7xl px-6 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-zinc-500">
           <span>&copy; {new Date().getFullYear()} ASIMOV AI. All rights reserved.</span>
-          <a
-            href="https://ai-integ.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline font-mono uppercase tracking-wider text-[10px] font-bold"
-            style={{ color: "var(--color-amber)" }}
-          >
-            Fulfillment Delivery Partner: AI Integrity (ai-integ.com)
-          </a>
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
+            <a
+              href="https://www.lawsociety.org.uk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-zinc-300 hover:underline transition-colors"
+            >
+              The Digital Law Firm — Law Society Publishing
+            </a>
+            <a
+              href="https://ai-integ.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-zinc-300 hover:underline transition-colors"
+            >
+              AI Integrity community — ai-integ.com
+            </a>
+            <a
+              href="/privacy.html"
+              className="hover:text-zinc-300 hover:underline transition-colors"
+            >
+              Privacy
+            </a>
+          </div>
         </div>
       </footer>
 
