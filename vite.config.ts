@@ -2,9 +2,38 @@ import { resolve } from "node:path";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    ViteImageOptimizer({
+      includePublic: true,
+      logStats: true,
+      png: {
+        quality: 80,
+        progressive: true,
+        palette: true,
+      },
+      jpeg: {
+        quality: 80,
+        progressive: true,
+        mozjpeg: true,
+      },
+      jpg: {
+        quality: 80,
+        progressive: true,
+        mozjpeg: true,
+      },
+      webp: {
+        quality: 75,
+      },
+      avif: {
+        quality: 65,
+      },
+    }),
+  ],
   resolve: {
     alias: {
       "@": resolve(__dirname, "./src"),
