@@ -84,6 +84,14 @@ describe("Insights hub — every public page honours the hard rules", () => {
     }
   });
 
+  it("every article discloses AI-assisted drafting and cross-model review", () => {
+    for (const dir of articleDirs()) {
+      const html = pageHtml(dir);
+      expect(html, `${dir} missing AI-use disclosure`).toMatch(/AI-assisted drafting/i);
+      expect(html, `${dir} missing review disclosure`).toMatch(/cross-model review/i);
+    }
+  });
+
   it("every article declares Article JSON-LD with an author", () => {
     for (const dir of articleDirs()) {
       const html = pageHtml(dir);
