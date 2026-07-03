@@ -74,8 +74,8 @@ export function App() {
               ASIMOV AI
             </span>
           </a>
-          <nav aria-label="Primary navigation">
-            <ul className="flex gap-8 text-xs font-mono tracking-wider uppercase list-none m-0 p-0 items-center">
+          <nav aria-label="Primary navigation" className="flex items-center gap-4">
+            <ul className="hidden md:flex gap-8 text-xs font-mono tracking-wider uppercase list-none m-0 p-0 items-center">
               <li>
                 <a href="#audit" className="text-zinc-400 hover:text-white transition-colors">
                   The Audit
@@ -110,20 +110,62 @@ export function App() {
                   PQC
                 </a>
               </li>
-              <li>
-                <a
-                  href="#diagnostic"
-                  className="rounded px-4 py-2 text-xs font-bold transition-all border hover:opacity-90 active:scale-95"
-                  style={{
-                    backgroundColor: "var(--color-amber)",
-                    color: "var(--color-navy)",
-                    borderColor: "var(--color-amber)",
-                  }}
-                >
-                  Book Assessment
-                </a>
-              </li>
             </ul>
+            <a
+              href="#diagnostic"
+              className="rounded px-4 py-2 text-xs font-mono font-bold uppercase tracking-wider transition-all border hover:opacity-90 active:scale-95"
+              style={{
+                backgroundColor: "var(--color-amber)",
+                color: "var(--color-navy)",
+                borderColor: "var(--color-amber)",
+              }}
+            >
+              Book Assessment
+            </a>
+            <details className="relative md:hidden">
+              <summary className="cursor-pointer list-none text-xs font-mono font-bold uppercase tracking-wider text-zinc-300 border border-white/10 rounded px-3 py-2">
+                Menu
+              </summary>
+              <ul className="absolute right-0 mt-2 w-52 rounded border border-white/10 bg-zinc-950 p-4 flex flex-col gap-3 text-xs font-mono tracking-wider uppercase list-none m-0 z-50">
+                <li>
+                  <a href="#audit" className="text-zinc-400 hover:text-white transition-colors">
+                    The Audit
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#principals"
+                    className="text-zinc-400 hover:text-white transition-colors"
+                  >
+                    Principals
+                  </a>
+                </li>
+                <li>
+                  <a href="#briefings" className="text-zinc-400 hover:text-white transition-colors">
+                    Briefings
+                  </a>
+                </li>
+                <li>
+                  <a href="#pricing" className="text-zinc-400 hover:text-white transition-colors">
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a href="/insights/" className="text-zinc-400 hover:text-white transition-colors">
+                    Insights
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://pqc.asimov-ai.org"
+                    className="text-zinc-400 hover:text-white transition-colors"
+                    aria-label="Post-Quantum advisory hub (mobile menu)"
+                  >
+                    PQC
+                  </a>
+                </li>
+              </ul>
+            </details>
           </nav>
         </div>
       </header>
