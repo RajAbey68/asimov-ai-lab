@@ -57,6 +57,8 @@ export default defineConfig({
         "node_modules/**",
         "dist/**",
         "tests/**",
+        "scripts/**",
+        "playwright.config.ts",
         "src/__tests__/setup.ts",
         "src/main.tsx",
         "vite.config.ts",
