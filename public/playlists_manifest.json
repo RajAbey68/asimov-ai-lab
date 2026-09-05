@@ -12,6 +12,48 @@
       "vendor_note": "Professional services firms do not need an internal army of data scientists, but leaders must possess AI fluency. Ask your managed service provider (MSP) and software vendors how client confidentiality boundaries and zero-retention policies are enforced across daily office tools.",
       "videos": [
         {
+          "id": "OiT_t6Affqc",
+          "title": "Enterprise Ready Agentic AI",
+          "channel": "Asimov AI",
+          "duration": "10 min",
+          "start": 86,
+          "level": "Executive Briefing",
+          "summary": "High-level strategic briefing on moving beyond passive chatbots to autonomous agent workflows. Outlines key readiness criteria non-technical leaders must verify before operational deployment.",
+          "jargon_explained": "Enterprise Readiness is a governance standard ensuring AI operates within business policies, compliance mandates, and measurable ROI before deployment.",
+          "vendor_questions": [
+            "Ask your technology partners what specific enterprise criteria (identity, auditability, error rollback) their agent solutions fulfill before piloting.",
+            "Ask your managed service provider (MSP) how agentic tools are evaluated against corporate data-protection standards."
+          ]
+        },
+        {
+          "id": "oHnrtUs3wPc",
+          "title": "Architecture to Armor",
+          "channel": "Asimov AI",
+          "duration": "9 min",
+          "start": 7,
+          "level": "Defensive Architecture",
+          "summary": "Translates enterprise architecture into defensive armor—establishing strict containment sandboxes, policy-enforced guardrails, and real-time observability.",
+          "jargon_explained": "Architectural Armor is the protective scaffolding, guardrails, and automated containment that wrap around AI models to prevent unauthorized actions and data leakage.",
+          "vendor_questions": [
+            "Ask your cloud architects how agent workflows are isolated into sandboxed containers to prevent cross-tenant containment breaches.",
+            "Ask what automated circuit breakers exist to stop an agent if it deviates from approved business rules."
+          ]
+        },
+        {
+          "id": "I9-2F6mkO3Q",
+          "title": "Agentic AI Security",
+          "channel": "Asimov AI",
+          "duration": "8 min",
+          "start": 29,
+          "level": "Risk Briefing",
+          "summary": "Demystifies the unique attack vectors introduced by agentic AI: prompt injection, unauthorized API actions, tool hijacking, and data spillages across internal systems.",
+          "jargon_explained": "Agentic Attack Surface refers to the new entry points created when an AI is empowered to execute tool commands, query internal databases, or draft external emails without manual intervention.",
+          "vendor_questions": [
+            "Ask your security team what least-privilege permissions and API boundaries are applied to autonomous agents interacting with confidential files.",
+            "Ask your software vendors how prompt injection firewalls protect against malicious data disguised as client documents."
+          ]
+        },
+        {
           "id": "GEMKwXxqvec",
           "title": "AI Risk for Leadership: Closing the Executive Disconnect",
           "channel": "Sushila Nair CISSP (ASIMOV AI Principal)",
