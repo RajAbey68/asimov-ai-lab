@@ -83,7 +83,7 @@
         <div class="hidden md:flex flex-col items-end">
           <div class="flex items-center space-x-2">
             <span class="text-xs text-zinc-400 font-mono">Curriculum Mastery:</span>
-            <span id="progress-text" class="text-xs font-bold font-mono text-[#F5A623]">0 / 20 (0%)</span>
+            <span id="progress-text" class="text-xs font-bold font-mono text-[#F5A623]">0 / 25 (0%)</span>
           </div>
           <div class="w-40 h-1.5 bg-[#091122] rounded-full mt-1 overflow-hidden border border-white/10">
             <div id="progress-bar" class="h-full bg-gradient-to-r from-[#F5A623] to-amber-300 transition-all duration-500" style="width: 0%"></div>
@@ -130,17 +130,21 @@
     <div class="lg:col-span-7 space-y-6">
 
       <!-- Phase Selector Tabs -->
-      <div class="flex space-x-2 p-1.5 bg-[#091122] rounded-xl border border-white/10 font-mono">
-        <button onclick="switchPhase('phase-1')" id="tab-phase-1" class="flex-1 py-2 px-3 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-2 bg-[#F5A623] text-[#0F1B33] shadow">
-          <span>Phase 1: Foundations</span>
-          <span class="px-1.5 py-0.5 bg-[#0F1B33]/20 rounded-full text-[10px]">4</span>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2 p-1.5 bg-[#091122] rounded-xl border border-white/10 font-mono">
+        <button onclick="switchPhase('phase-0')" id="tab-phase-0" class="py-2 px-2 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-1.5 bg-[#F5A623] text-[#0F1B33] shadow">
+          <span>Phase 0: Enablement</span>
+          <span class="px-1.5 py-0.5 bg-[#0F1B33]/20 rounded-full text-[10px]">5</span>
         </button>
-        <button onclick="switchPhase('phase-2')" id="tab-phase-2" class="flex-1 py-2 px-3 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-2 text-zinc-400 hover:text-white hover:bg-[#162442]/60">
+        <button onclick="switchPhase('phase-1')" id="tab-phase-1" class="py-2 px-2 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-1.5 text-zinc-400 hover:text-white hover:bg-[#162442]/60">
+          <span>Phase 1: Foundations</span>
+          <span class="px-1.5 py-0.5 bg-zinc-800 rounded-full text-[10px]">4</span>
+        </button>
+        <button onclick="switchPhase('phase-2')" id="tab-phase-2" class="py-2 px-2 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-1.5 text-zinc-400 hover:text-white hover:bg-[#162442]/60">
           <span>Phase 2: Developer Lab</span>
           <span class="px-1.5 py-0.5 bg-zinc-800 rounded-full text-[10px]">9</span>
         </button>
-        <button onclick="switchPhase('phase-3')" id="tab-phase-3" class="flex-1 py-2 px-3 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-2 text-zinc-400 hover:text-white hover:bg-[#162442]/60">
-          <span>Phase 3: Risk & Governance</span>
+        <button onclick="switchPhase('phase-3')" id="tab-phase-3" class="py-2 px-2 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-1.5 text-zinc-400 hover:text-white hover:bg-[#162442]/60">
+          <span>Phase 3: Governance</span>
           <span class="px-1.5 py-0.5 bg-zinc-800 rounded-full text-[10px]">7</span>
         </button>
       </div>
@@ -149,19 +153,19 @@
       <div class="p-6 rounded-xl bg-[#162442]/70 border border-white/10 relative overflow-hidden">
         <div class="flex items-center justify-between mb-3">
           <span id="phase-role-badge" class="text-xs font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded bg-[#F5A623]/10 text-[#F5A623] border border-[#F5A623]/30">
-            Role: Executive & Practice Leaders
+            Role: Managing Partners, Practice Heads & Non-Technical Leaders
           </span>
-          <span id="phase-completion-badge" class="text-xs font-mono text-zinc-400">0 of 4 Completed</span>
+          <span id="phase-completion-badge" class="text-xs font-mono text-zinc-400">0 of 5 Completed</span>
         </div>
-        <h2 id="phase-title" class="text-2xl font-bold text-white font-heading tracking-tight">Phase 1: Agentic AI Foundations</h2>
-        <p id="phase-subtitle" class="text-xs font-mono text-zinc-400 mt-1">The Paradigm Shift from Passive Chatbots to Autonomous Agents</p>
+        <h2 id="phase-title" class="text-2xl font-bold text-white font-heading tracking-tight">Phase 0: Non-IT Professional Enablement & Confidence with AI</h2>
+        <p id="phase-subtitle" class="text-xs font-mono text-zinc-400 mt-1">Executive Judgment, Safe Prompting & De-Risking AI for Non-Technical Leaders</p>
         <p id="phase-description" class="text-sm text-zinc-300 mt-3 leading-relaxed font-light">
-          Foundational syllabus covering the mechanics of Large Language Models, the distinction between machine learning and generative AI, and the transition toward goal-driven Agentic AI.
+          A tailored masterclass series designed specifically for legal partners, accountants, and practice heads. Learn how to direct, evaluate, and supervise AI as an executive associate without writing code, maintain strict client privilege, and ask your MSP the hard questions.
         </p>
         <div class="mt-4 p-3.5 rounded-lg bg-[#091122]/70 border border-white/10 flex items-start space-x-3 text-xs text-zinc-300">
           <i data-lucide="help-circle" class="w-4 h-4 text-[#F5A623] shrink-0 mt-0.5"></i>
           <span id="phase-vendor-note" class="leading-relaxed">
-            Even medium enterprises have multi-departmental interactions and confidentiality standards. Ask your managed service provider (MSP) or cloud vendors what foundational model hosting options they support.
+            Professional services firms do not need an internal army of data scientists, but leaders must possess AI fluency. Ask your managed service provider (MSP) and software vendors how client confidentiality boundaries and zero-retention policies are enforced across daily office tools.
           </span>
         </div>
       </div>
@@ -179,7 +183,7 @@
         <!-- Video Player -->
         <div class="relative w-full aspect-video bg-black">
           <iframe id="youtube-iframe" class="w-full h-full border-0" 
-                  src="https://www.youtube-nocookie.com/embed/qYNweeDHiyU?enablejsapi=1&rel=0" 
+                  src="https://www.youtube-nocookie.com/embed/GEMKwXxqvec?enablejsapi=1&rel=0" 
                   title="Video Lecture" 
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowfullscreen>
@@ -190,13 +194,13 @@
           <div class="flex items-start justify-between gap-3">
             <div>
               <div class="flex items-center space-x-2 mb-1.5 font-mono">
-                <span id="active-level" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#F5A623]/10 text-[#F5A623] border border-[#F5A623]/30">Foundational</span>
-                <span id="active-channel" class="text-xs text-zinc-400">IBM Technology</span>
+                <span id="active-level" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#F5A623]/10 text-[#F5A623] border border-[#F5A623]/30">Executive Briefing</span>
+                <span id="active-channel" class="text-xs text-zinc-400">Sushila Nair CISSP (ASIMOV AI Principal)</span>
                 <span class="text-zinc-600">•</span>
-                <span id="active-duration" class="text-xs text-zinc-400">11 min</span>
+                <span id="active-duration" class="text-xs text-zinc-400">23 min</span>
               </div>
               <h3 id="active-title" class="text-lg font-bold text-white font-heading leading-snug">
-                AI, Machine Learning, Deep Learning and Generative AI Explained
+                AI Risk for Leadership: Closing the Executive Disconnect
               </h3>
             </div>
             
@@ -208,7 +212,7 @@
 
           <!-- Summary -->
           <p id="active-summary" class="text-xs text-zinc-300 leading-relaxed bg-[#091122]/60 p-3.5 rounded-lg border border-white/5">
-            Deconstructs the layered hierarchy of artificial intelligence, supervised machine learning, neural networks, and modern generative models.
+            Sushila Nair breaks down executive liability, board governance, and the widening chasm between rapid staff AI adoption and formal security protocols.
           </p>
 
           <!-- Plain English Jargon Box -->
@@ -218,7 +222,7 @@
               <span>Key Concept in Plain English</span>
             </div>
             <p id="active-jargon" class="text-amber-100/90 leading-relaxed">
-              Machine Learning is an AI term for computer algorithms that learn patterns from historical data rather than following hardcoded rules.
+              Human-in-the-Loop Supervision is a governance term for ensuring a qualified human professional actively reviews, verifies, and signs off on every AI-assisted deliverable before it reaches a client or regulator.
             </p>
           </div>
 
@@ -397,7 +401,7 @@
   <!-- Script Logic -->
   <script>
     let CURRICULUM = null;
-    let currentPhaseId = 'phase-1';
+    let currentPhaseId = 'phase-0';
     let currentVideoId = null;
     let completedVideos = JSON.parse(localStorage.getItem('asimov_kt_completed') || '[]');
     let userNotes = JSON.parse(localStorage.getItem('asimov_kt_notes') || '{}');
@@ -412,9 +416,9 @@
       }
 
       if (CURRICULUM && CURRICULUM.playlists && CURRICULUM.playlists.length > 0) {
+        currentPhaseId = CURRICULUM.playlists[0].id;
         currentVideoId = CURRICULUM.playlists[0].videos[0].id;
-        renderRoadmap();
-        selectVideo(currentVideoId);
+        switchPhase(currentPhaseId);
         updateOverallProgress();
       }
       lucide.createIcons();
@@ -424,12 +428,14 @@
       if (!CURRICULUM) return;
       currentPhaseId = phaseId;
       
-      ['phase-1', 'phase-2', 'phase-3'].forEach(id => {
+      ['phase-0', 'phase-1', 'phase-2', 'phase-3'].forEach(id => {
         const tab = document.getElementById('tab-' + id);
-        if (id === phaseId) {
-          tab.className = 'flex-1 py-2 px-3 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-2 bg-[#F5A623] text-[#0F1B33] shadow';
-        } else {
-          tab.className = 'flex-1 py-2 px-3 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-2 text-zinc-400 hover:text-white hover:bg-[#162442]/60';
+        if (tab) {
+          if (id === phaseId) {
+            tab.className = 'py-2 px-2 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-1.5 bg-[#F5A623] text-[#0F1B33] shadow';
+          } else {
+            tab.className = 'py-2 px-2 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-1.5 text-zinc-400 hover:text-white hover:bg-[#162442]/60';
+          }
         }
       });
 
