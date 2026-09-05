@@ -6,8 +6,8 @@
   --color-blue: #adc7ff;
   --color-white: #e5e2e3;
 
-  --font-heading: "Geist", system-ui, sans-serif;
-  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --font-heading: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
   --duration-fast: 150ms;
