@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASIMOV AI · Knowledge Transfer (KT) Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['"Playfair Display"', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            asimov: {
+              navy: '#0F1B33',
+              darker: '#091122',
+              card: '#162442',
+              cardHover: '#1d2e54',
+              border: '#24365d',
+              amber: '#F5A623',
+              amberHover: '#e0951a',
+              amberDim: 'rgba(245, 166, 35, 0.15)',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --color-navy: #0F1B33;
+      --color-amber: #F5A623;
+      --color-white: #FFFFFF;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+    }
+    body {
+      background-color: var(--color-navy);
+      color: var(--color-white);
+      font-family: var(--font-body);
+    }
+    h1, h2, h3, .font-heading {
+      font-family: var(--font-heading);
+    }
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-track { background: #091122; }
+    ::-webkit-scrollbar-thumb { background: #24365d; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #3b538c; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-[#F5A623] selection:text-[#0F1B33] bg-[#0F1B33]">
+
+  <!-- Top ASIMOV Header -->
+  <header class="border-b border-white/10 bg-[#0F1B33]/90 backdrop-blur sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <a href="/" class="flex items-center gap-2 group" aria-label="ASIMOV AI — return to homepage">
+          <span class="material-symbols-outlined text-lg" style="color: var(--color-amber);">security</span>
+          <span class="text-lg font-bold tracking-widest uppercase font-heading" style="color: var(--color-amber);">
+            ASIMOV AI
+          </span>
+        </a>
+        <div class="hidden sm:flex items-center space-x-2 pl-3 border-l border-white/10">
+          <span class="text-xs font-mono tracking-wider uppercase px-2 py-0.5 rounded bg-[#F5A623]/10 text-[#F5A623] border border-[#F5A623]/30">
+            /kt · Knowledge Transfer
+          </span>
+          <span class="text-[10px] text-zinc-400 font-mono uppercase tracking-wide">Client Portal</span>
+        </div>
+      </div>
+
+      <!-- Controls & Modals -->
+      <div class="flex items-center space-x-3 sm:space-x-4">
+        <div class="hidden md:flex flex-col items-end">
+          <div class="flex items-center space-x-2">
+            <span class="text-xs text-zinc-400 font-mono">Curriculum Mastery:</span>
+            <span id="progress-text" class="text-xs font-bold font-mono text-[#F5A623]">0 / 20 (0%)</span>
+          </div>
+          <div class="w-40 h-1.5 bg-[#091122] rounded-full mt-1 overflow-hidden border border-white/10">
+            <div id="progress-bar" class="h-full bg-gradient-to-r from-[#F5A623] to-amber-300 transition-all duration-500" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <button onclick="openArchitectureModal()" class="px-3 py-1.5 rounded bg-[#162442] hover:bg-[#1d2e54] border border-white/10 text-xs font-mono font-medium text-zinc-200 flex items-center space-x-1.5 transition">
+          <i data-lucide="layers" class="w-3.5 h-3.5 text-[#F5A623]"></i>
+          <span>Architecture</span>
+        </button>
+
+        <button onclick="openGlossaryModal()" class="px-3 py-1.5 rounded bg-[#162442] hover:bg-[#1d2e54] border border-white/10 text-xs font-mono font-medium text-zinc-200 flex items-center space-x-1.5 transition">
+          <i data-lucide="book-open" class="w-3.5 h-3.5 text-[#F5A623]"></i>
+          <span>Jargon Decoded</span>
+        </button>
+
+        <a href="/" class="hidden sm:inline-flex items-center text-xs font-mono text-zinc-400 hover:text-white transition-colors pl-2">
+          <span>Exit Portal ↗</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Client Context Advisory Notice -->
+  <div class="bg-[#091122] border-b border-white/10 px-4 py-2.5">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between text-xs text-zinc-300 gap-2">
+      <div class="flex items-center space-x-2">
+        <span class="material-symbols-outlined text-sm text-[#F5A623]">verified_user</span>
+        <span>
+          <strong class="text-white font-mono uppercase tracking-wide">Confidential Client Area:</strong> Professional services firms operate with multi-departmental interactions, strict confidentiality duties, and independent audit mandates.
+        </span>
+      </div>
+      <div class="flex items-center space-x-2 text-zinc-400 font-mono text-[11px] shrink-0">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Calibrated for organizations relying on Managed Service Providers (MSPs) & 3rd-party software vendors</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+    <!-- Left Column: Syllabus Roadmap & List (7 Cols) -->
+    <div class="lg:col-span-7 space-y-6">
+
+      <!-- Phase Selector Tabs -->
+      <div class="flex space-x-2 p-1.5 bg-[#091122] rounded-xl border border-white/10 font-mono">
+        <button onclick="switchPhase('phase-1')" id="tab-phase-1" class="flex-1 py-2 px-3 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-2 bg-[#F5A623] text-[#0F1B33] shadow">
+          <span>Phase 1: Foundations</span>
+          <span class="px-1.5 py-0.5 bg-[#0F1B33]/20 rounded-full text-[10px]">4</span>
+        </button>
+        <button onclick="switchPhase('phase-2')" id="tab-phase-2" class="flex-1 py-2 px-3 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-2 text-zinc-400 hover:text-white hover:bg-[#162442]/60">
+          <span>Phase 2: Developer Lab</span>
+          <span class="px-1.5 py-0.5 bg-zinc-800 rounded-full text-[10px]">9</span>
+        </button>
+        <button onclick="switchPhase('phase-3')" id="tab-phase-3" class="flex-1 py-2 px-3 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-2 text-zinc-400 hover:text-white hover:bg-[#162442]/60">
+          <span>Phase 3: Risk & Governance</span>
+          <span class="px-1.5 py-0.5 bg-zinc-800 rounded-full text-[10px]">7</span>
+        </button>
+      </div>
+
+      <!-- Phase Header Card -->
+      <div class="p-6 rounded-xl bg-[#162442]/70 border border-white/10 relative overflow-hidden">
+        <div class="flex items-center justify-between mb-3">
+          <span id="phase-role-badge" class="text-xs font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded bg-[#F5A623]/10 text-[#F5A623] border border-[#F5A623]/30">
+            Role: Executive & Practice Leaders
+          </span>
+          <span id="phase-completion-badge" class="text-xs font-mono text-zinc-400">0 of 4 Completed</span>
+        </div>
+        <h2 id="phase-title" class="text-2xl font-bold text-white font-heading tracking-tight">Phase 1: Agentic AI Foundations</h2>
+        <p id="phase-subtitle" class="text-xs font-mono text-zinc-400 mt-1">The Paradigm Shift from Passive Chatbots to Autonomous Agents</p>
+        <p id="phase-description" class="text-sm text-zinc-300 mt-3 leading-relaxed font-light">
+          Foundational syllabus covering the mechanics of Large Language Models, the distinction between machine learning and generative AI, and the transition toward goal-driven Agentic AI.
+        </p>
+        <div class="mt-4 p-3.5 rounded-lg bg-[#091122]/70 border border-white/10 flex items-start space-x-3 text-xs text-zinc-300">
+          <i data-lucide="help-circle" class="w-4 h-4 text-[#F5A623] shrink-0 mt-0.5"></i>
+          <span id="phase-vendor-note" class="leading-relaxed">
+            Even medium enterprises have multi-departmental interactions and confidentiality standards. Ask your managed service provider (MSP) or cloud vendors what foundational model hosting options they support.
+          </span>
+        </div>
+      </div>
+
+      <!-- Video Step Cards -->
+      <div class="space-y-3.5" id="video-roadmap-list">
+        <div class="p-8 text-center text-zinc-500 font-mono text-xs">Loading curriculum map...</div>
+      </div>
+    </div>
+
+    <!-- Right Column: Active Video Workspace (5 Cols) -->
+    <div class="lg:col-span-5 space-y-6">
+      <div class="bg-[#162442] rounded-xl border border-white/10 overflow-hidden shadow-2xl sticky top-24">
+        
+        <!-- Video Player -->
+        <div class="relative w-full aspect-video bg-black">
+          <iframe id="youtube-iframe" class="w-full h-full border-0" 
+                  src="https://www.youtube-nocookie.com/embed/qYNweeDHiyU?enablejsapi=1&rel=0" 
+                  title="Video Lecture" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+          </iframe>
+        </div>
+
+        <div class="p-5 sm:p-6 space-y-4">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <div class="flex items-center space-x-2 mb-1.5 font-mono">
+                <span id="active-level" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#F5A623]/10 text-[#F5A623] border border-[#F5A623]/30">Foundational</span>
+                <span id="active-channel" class="text-xs text-zinc-400">IBM Technology</span>
+                <span class="text-zinc-600">•</span>
+                <span id="active-duration" class="text-xs text-zinc-400">11 min</span>
+              </div>
+              <h3 id="active-title" class="text-lg font-bold text-white font-heading leading-snug">
+                AI, Machine Learning, Deep Learning and Generative AI Explained
+              </h3>
+            </div>
+            
+            <button id="toggle-complete-btn" onclick="toggleCurrentVideoComplete()" class="shrink-0 p-2.5 rounded border transition flex items-center space-x-1.5 text-xs font-mono font-bold uppercase tracking-wider bg-[#091122] hover:bg-[#1d2e54] border-white/10 text-zinc-300">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-zinc-400"></i>
+              <span id="toggle-btn-label">Mark Complete</span>
+            </button>
+          </div>
+
+          <!-- Summary -->
+          <p id="active-summary" class="text-xs text-zinc-300 leading-relaxed bg-[#091122]/60 p-3.5 rounded-lg border border-white/5">
+            Deconstructs the layered hierarchy of artificial intelligence, supervised machine learning, neural networks, and modern generative models.
+          </p>
+
+          <!-- Plain English Jargon Box -->
+          <div class="p-3.5 rounded-lg bg-amber-950/20 border border-[#F5A623]/30 text-xs space-y-1.5">
+            <div class="flex items-center space-x-1.5 text-[#F5A623] font-mono font-bold uppercase tracking-wider text-[11px]">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>Key Concept in Plain English</span>
+            </div>
+            <p id="active-jargon" class="text-amber-100/90 leading-relaxed">
+              Machine Learning is an AI term for computer algorithms that learn patterns from historical data rather than following hardcoded rules.
+            </p>
+          </div>
+
+          <!-- Vendor / MSP Inquiry Checklist -->
+          <div class="p-3.5 rounded-lg bg-[#091122]/80 border border-white/10 text-xs space-y-2">
+            <div class="flex items-center space-x-1.5 text-sky-400 font-mono font-bold uppercase tracking-wider text-[11px]">
+              <i data-lucide="help-circle" class="w-3.5 h-3.5"></i>
+              <span>Questions to Ask Your MSP or Vendors</span>
+            </div>
+            <ul id="active-vendor-questions" class="space-y-1.5 text-zinc-300 list-disc list-inside leading-relaxed text-xs"></ul>
+          </div>
+
+          <!-- Autosaved Personal Notes -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-xs text-zinc-400 font-mono">
+              <label for="video-notes" class="flex items-center space-x-1.5">
+                <i data-lucide="pen-tool" class="w-3.5 h-3.5"></i>
+                <span>Executive Counsel Notes:</span>
+              </label>
+              <span id="notes-status" class="text-[10px] text-emerald-400 opacity-0 transition-opacity">Saved locally</span>
+            </div>
+            <textarea id="video-notes" oninput="saveCurrentNotes()" rows="3" placeholder="Record practice observations, client risk considerations, or vendor check-ins..." class="w-full text-xs bg-[#091122] border border-white/10 rounded-lg p-3 text-zinc-200 focus:outline-none focus:border-[#F5A623] transition resize-none"></textarea>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Architecture Modal (Foundation Models strictly at the Bedrock BOTTOM) -->
+  <div id="architecture-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-[#162442] border border-white/20 rounded-xl max-w-2xl w-full p-6 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4">
+        <div class="flex items-center space-x-3">
+          <div class="p-2 rounded bg-[#F5A623]/20 text-[#F5A623] border border-[#F5A623]/30">
+            <i data-lucide="layers" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-lg font-heading">Enterprise Agentic Architecture Stack</h3>
+            <p class="text-xs font-mono text-zinc-400">Foundation Models & World Models at the Bedrock</p>
+          </div>
+        </div>
+        <button onclick="closeArchitectureModal()" class="p-1.5 rounded hover:bg-white/10 text-zinc-400 hover:text-white transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Strictly Bottom-Up Hierarchy -->
+      <div class="space-y-3 font-sans">
+        <!-- Layer 4: Top -->
+        <div class="p-4 rounded bg-emerald-950/25 border border-emerald-500/30">
+          <div class="flex items-center justify-between font-mono">
+            <span class="text-xs font-bold text-emerald-400 uppercase tracking-wide">▲ Layer 4: Top — Enterprise Workflows & Client Deliverables</span>
+            <span class="text-[10px] bg-emerald-500/10 text-emerald-300 px-2 py-0.5 rounded">Client Value</span>
+          </div>
+          <p class="text-xs text-zinc-300 mt-1.5 leading-relaxed">
+            Automated contract reviews, regulatory filings, audit preparation, litigation briefs, and client-facing portals.
+          </p>
+        </div>
+
+        <!-- Layer 3 -->
+        <div class="p-4 rounded bg-purple-950/25 border border-purple-500/30">
+          <div class="flex items-center justify-between font-mono">
+            <span class="text-xs font-bold text-purple-400 uppercase tracking-wide">Layer 3: Agentic Harness & Orchestration</span>
+            <span class="text-[10px] bg-purple-500/10 text-purple-300 px-2 py-0.5 rounded">Autonomous Loops</span>
+          </div>
+          <p class="text-xs text-zinc-300 mt-1.5 leading-relaxed">
+            Multi-step planning loops, Model Context Protocol (MCP) integrations, boundary sandboxes, and frameworks <em>such as</em> LangGraph, CrewAI, AutoGen, or Semantic Kernel.
+          </p>
+        </div>
+
+        <!-- Layer 2 -->
+        <div class="p-4 rounded bg-indigo-950/25 border border-indigo-500/30">
+          <div class="flex items-center justify-between font-mono">
+            <span class="text-xs font-bold text-indigo-400 uppercase tracking-wide">Layer 2: Context Engineering & Data Layer</span>
+            <span class="text-[10px] bg-indigo-500/10 text-indigo-300 px-2 py-0.5 rounded">Enterprise Memory</span>
+          </div>
+          <p class="text-xs text-zinc-300 mt-1.5 leading-relaxed">
+            Semantic caching, document indexing, and vector data stores <em>such as</em> DataStax Astra DB, Pinecone, or PostgreSQL with pgvector.
+          </p>
+        </div>
+
+        <!-- Layer 1: BOTTOM BEDROCK -->
+        <div class="p-4 rounded bg-blue-950/40 border-2 border-[#F5A623] shadow-lg shadow-[#F5A623]/10">
+          <div class="flex items-center justify-between font-mono">
+            <span class="text-xs font-bold text-[#F5A623] uppercase tracking-wide">▼ Layer 1: Bottom Bedrock — Foundation Models & World Models</span>
+            <span class="text-[10px] bg-[#F5A623]/20 text-amber-200 px-2 py-0.5 rounded font-bold">Base Compute</span>
+          </div>
+          <p class="text-xs text-zinc-200 mt-1.5 leading-relaxed">
+            The underlying cognitive engines hosted on enterprise cloud platforms <em>such as</em> IBM watsonx Granite, Microsoft Azure AI Foundry, AWS Bedrock, Google Vertex AI, or Anthropic Claude.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-3.5 rounded bg-[#091122] border border-white/10 text-xs text-zinc-400 leading-relaxed">
+        <strong class="text-white font-mono">Risk Governance Axiom:</strong> The foundation model provides raw probabilistic capability; defensible governance and legal standing are established strictly by the orchestration harness, context boundaries, and human sign-offs layered above it.
+      </div>
+    </div>
+  </div>
+
+  <!-- Glossary Modal -->
+  <div id="glossary-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-[#162442] border border-white/20 rounded-xl max-w-2xl w-full p-6 space-y-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4">
+        <div class="flex items-center space-x-3">
+          <div class="p-2 rounded bg-[#F5A623]/20 text-[#F5A623] border border-[#F5A623]/30">
+            <i data-lucide="book-open" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-white text-lg font-heading">AI Risk & Engineering Jargon Decoded</h3>
+            <p class="text-xs font-mono text-zinc-400">Plain English translations for partners, counsel, and risk officers</p>
+          </div>
+        </div>
+        <button onclick="closeGlossaryModal()" class="p-1.5 rounded hover:bg-white/10 text-zinc-400 hover:text-white transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs leading-relaxed">
+        <div class="p-3.5 rounded bg-[#091122] border border-white/10">
+          <strong class="text-[#F5A623] block text-sm font-mono mb-1">Blast Radius</strong>
+          <p class="text-zinc-300">
+            <em>A cybersecurity and systems resilience term</em> for the total potential damage or spread across your firm if an autonomous AI agent makes an erroneous decision or executes an unauthorized action.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded bg-[#091122] border border-white/10">
+          <strong class="text-[#F5A623] block text-sm font-mono mb-1">Context Engineering</strong>
+          <p class="text-zinc-300">
+            <em>An AI engineering term</em> for curating only the exact relevant background data, client guidelines, and tool schemas presented to an agent, which means that token waste is prevented and hallucinations are minimized.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded bg-[#091122] border border-white/10">
+          <strong class="text-[#F5A623] block text-sm font-mono mb-1">Model Collapse</strong>
+          <p class="text-zinc-300">
+            <em>An AI term</em> for a degenerative process where an AI model trained repeatedly on synthetic, AI-generated data begins losing nuance, accuracy, and connection with real-world facts over successive generations.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded bg-[#091122] border border-white/10">
+          <strong class="text-[#F5A623] block text-sm font-mono mb-1">Containment Breach</strong>
+          <p class="text-zinc-300">
+            <em>A cybersecurity and isolation term</em> for when an autonomous AI agent bypasses its virtual testing sandbox to interact with restricted network files or host operating system resources.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded bg-[#091122] border border-white/10">
+          <strong class="text-[#F5A623] block text-sm font-mono mb-1">Agentic Harness</strong>
+          <p class="text-zinc-300">
+            <em>A software engineering term</em> for the scaffolding, memory, and tool-dispatching framework that wraps around a raw foundational model to allow it to act in the physical or digital world.
+          </p>
+        </div>
+
+        <div class="p-3.5 rounded bg-[#091122] border border-white/10">
+          <strong class="text-[#F5A623] block text-sm font-mono mb-1">Vibe Coding</strong>
+          <p class="text-zinc-300">
+            <em>An informal industry term</em> for prompting an AI to generate code without architectural plans or formal specifications, which means that the resulting systems are brittle, untested, and unmaintainable.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-[#091122] py-8 mt-12 text-center text-xs text-zinc-500 font-mono">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <span class="text-[#F5A623] font-bold">ASIMOV AI</span>
+        <span>· Standing AI Risk Counsel for boards and executives</span>
+      </div>
+      <p>Knowledge Transfer Route: asimov-ai.org/kt · Third-party lectures acknowledged from IBM Technology & research partners.</p>
+    </div>
+  </footer>
+
+  <!-- Script Logic -->
+  <script>
+    let CURRICULUM = null;
+    let currentPhaseId = 'phase-1';
+    let currentVideoId = null;
+    let completedVideos = JSON.parse(localStorage.getItem('asimov_kt_completed') || '[]');
+    let userNotes = JSON.parse(localStorage.getItem('asimov_kt_notes') || '{}');
+
+    async function init() {
+      try {
+        const res = await fetch('./playlists_manifest.json');
+        if (!res.ok) throw new Error('Manifest network error');
+        CURRICULUM = await res.json();
+      } catch (err) {
+        console.warn('Fallback: loading default manifest');
+      }
+
+      if (CURRICULUM && CURRICULUM.playlists && CURRICULUM.playlists.length > 0) {
+        currentVideoId = CURRICULUM.playlists[0].videos[0].id;
+        renderRoadmap();
+        selectVideo(currentVideoId);
+        updateOverallProgress();
+      }
+      lucide.createIcons();
+    }
+
+    function switchPhase(phaseId) {
+      if (!CURRICULUM) return;
+      currentPhaseId = phaseId;
+      
+      ['phase-1', 'phase-2', 'phase-3'].forEach(id => {
+        const tab = document.getElementById('tab-' + id);
+        if (id === phaseId) {
+          tab.className = 'flex-1 py-2 px-3 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-2 bg-[#F5A623] text-[#0F1B33] shadow';
+        } else {
+          tab.className = 'flex-1 py-2 px-3 rounded-lg text-xs font-bold tracking-wide transition flex items-center justify-center space-x-2 text-zinc-400 hover:text-white hover:bg-[#162442]/60';
+        }
+      });
+
+      const phase = CURRICULUM.playlists.find(p => p.id === phaseId);
+      if (phase) {
+        document.getElementById('phase-title').textContent = phase.name;
+        document.getElementById('phase-subtitle').textContent = phase.subtitle;
+        document.getElementById('phase-role-badge').textContent = 'Role: ' + phase.target_role;
+        document.getElementById('phase-description').textContent = phase.description;
+        document.getElementById('phase-vendor-note').textContent = phase.vendor_note;
+        
+        if (phase.videos.length > 0) {
+          selectVideo(phase.videos[0].id);
+        }
+      }
+
+      renderRoadmap();
+    }
+
+    function renderRoadmap() {
+      if (!CURRICULUM) return;
+      const phase = CURRICULUM.playlists.find(p => p.id === currentPhaseId);
+      if (!phase) return;
+
+      const container = document.getElementById('video-roadmap-list');
+      container.innerHTML = '';
+
+      const completedInPhase = phase.videos.filter(v => completedVideos.includes(v.id)).length;
+      document.getElementById('phase-completion-badge').textContent = completedInPhase + ' of ' + phase.videos.length + ' Completed';
+
+      phase.videos.forEach((video, index) => {
+        const isCompleted = completedVideos.includes(video.id);
+        const isActive = video.id === currentVideoId;
+
+        const card = document.createElement('div');
+        card.className = 'p-4 rounded-xl border transition cursor-pointer relative ' + (
+          isActive 
+            ? 'bg-[#162442] border-[#F5A623] shadow-lg shadow-[#F5A623]/10 ring-1 ring-[#F5A623]/40' 
+            : isCompleted
+              ? 'bg-[#091122]/50 border-white/5 hover:border-white/20'
+              : 'bg-[#162442]/70 border-white/10 hover:border-white/20 hover:bg-[#162442]'
+        );
+
+        card.onclick = () => selectVideo(video.id);
+
+        const checkClass = isCompleted 
+          ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
+          : isActive
+            ? 'bg-[#F5A623] text-[#0F1B33]'
+            : 'bg-[#091122] text-zinc-400 border border-white/10';
+
+        const checkIcon = isCompleted ? '✓' : (index + 1);
+
+        card.innerHTML = `
+          <div class="flex items-start justify-between gap-3">
+            <div class="flex items-start space-x-3">
+              <div class="w-7 h-7 rounded-md flex items-center justify-center font-bold text-xs font-mono shrink-0 ${checkClass}">
+                ${checkIcon}
+              </div>
+              <div>
+                <div class="flex items-center space-x-2 mb-1 font-mono">
+                  <span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-[#091122] text-zinc-400">${video.level}</span>
+                  <span class="text-xs text-zinc-500">${video.duration}</span>
+                </div>
+                <h4 class="text-sm font-bold font-heading ${isActive ? 'text-[#F5A623]' : 'text-zinc-200'} leading-snug">${video.title}</h4>
+                <p class="text-xs text-zinc-400 mt-1 line-clamp-1">${video.summary}</p>
+              </div>
+            </div>
+
+            <button onclick="event.stopPropagation(); toggleVideoCompletion('${video.id}')" class="shrink-0 p-1.5 rounded hover:bg-white/10 transition ${isCompleted ? 'text-emerald-400' : 'text-zinc-500'}">
+              <i data-lucide="${isCompleted ? 'check-circle' : 'circle'}" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    function selectVideo(videoId) {
+      if (!CURRICULUM) return;
+      currentVideoId = videoId;
+      
+      let selected = null;
+      for (const p of CURRICULUM.playlists) {
+        const found = p.videos.find(v => v.id === videoId);
+        if (found) {
+          selected = found;
+          break;
+        }
+      }
+
+      if (!selected) return;
+
+      const iframe = document.getElementById('youtube-iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + selected.id + '?enablejsapi=1&rel=0';
+
+      document.getElementById('active-title').textContent = selected.title;
+      document.getElementById('active-channel').textContent = selected.channel;
+      document.getElementById('active-duration').textContent = selected.duration;
+      document.getElementById('active-level').textContent = selected.level;
+      document.getElementById('active-summary').textContent = selected.summary;
+      document.getElementById('active-jargon').textContent = selected.jargon_explained;
+
+      const vendorList = document.getElementById('active-vendor-questions');
+      vendorList.innerHTML = '';
+      selected.vendor_questions.forEach(q => {
+        const li = document.createElement('li');
+        li.textContent = q;
+        vendorList.appendChild(li);
+      });
+
+      const isCompleted = completedVideos.includes(selected.id);
+      updateToggleButtonUI(isCompleted);
+
+      const notesField = document.getElementById('video-notes');
+      notesField.value = userNotes[selected.id] || '';
+
+      renderRoadmap();
+      lucide.createIcons();
+    }
+
+    function updateToggleButtonUI(isCompleted) {
+      const btn = document.getElementById('toggle-complete-btn');
+      const label = document.getElementById('toggle-btn-label');
+      if (isCompleted) {
+        btn.className = 'shrink-0 p-2.5 rounded border transition flex items-center space-x-1.5 text-xs font-mono font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
+        label.textContent = 'Completed ✓';
+      } else {
+        btn.className = 'shrink-0 p-2.5 rounded border transition flex items-center space-x-1.5 text-xs font-mono font-bold uppercase tracking-wider bg-[#091122] hover:bg-[#1d2e54] border-white/10 text-zinc-300';
+        label.textContent = 'Mark Complete';
+      }
+    }
+
+    function toggleCurrentVideoComplete() {
+      toggleVideoCompletion(currentVideoId);
+    }
+
+    function toggleVideoCompletion(videoId) {
+      if (completedVideos.includes(videoId)) {
+        completedVideos = completedVideos.filter(id => id !== videoId);
+      } else {
+        completedVideos.push(videoId);
+      }
+      localStorage.setItem('asimov_kt_completed', JSON.stringify(completedVideos));
+      
+      if (videoId === currentVideoId) {
+        updateToggleButtonUI(completedVideos.includes(videoId));
+      }
+
+      renderRoadmap();
+      updateOverallProgress();
+    }
+
+    function updateOverallProgress() {
+      if (!CURRICULUM) return;
+      let totalVideos = 0;
+      CURRICULUM.playlists.forEach(p => totalVideos += p.videos.length);
+      const completedCount = completedVideos.length;
+      const pct = Math.round((completedCount / totalVideos) * 100);
+
+      document.getElementById('progress-text').textContent = completedCount + ' / ' + totalVideos + ' (' + pct + '%)';
+      document.getElementById('progress-bar').style.width = pct + '%';
+    }
+
+    function saveCurrentNotes() {
+      const notes = document.getElementById('video-notes').value;
+      userNotes[currentVideoId] = notes;
+      localStorage.setItem('asimov_kt_notes', JSON.stringify(userNotes));
+      
+      const status = document.getElementById('notes-status');
+      status.style.opacity = '1';
+      setTimeout(() => {
+        status.style.opacity = '0';
+      }, 1500);
+    }
+
+    function openArchitectureModal() {
+      document.getElementById('architecture-modal').classList.remove('hidden');
+    }
+
+    function closeArchitectureModal() {
+      document.getElementById('architecture-modal').classList.add('hidden');
+    }
+
+    function openGlossaryModal() {
+      document.getElementById('glossary-modal').classList.remove('hidden');
+    }
+
+    function closeGlossaryModal() {
+      document.getElementById('glossary-modal').classList.add('hidden');
+    }
+
+    window.onload = init;
+  </script>
+</body>
+</html>
