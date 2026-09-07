@@ -117,6 +117,32 @@
             "Ask the person responsible for governance whether your firm has an up-to-date AI system inventory covering all software with built-in generative features.",
             "Ask your vendors to provide third-party SOC 2 Type II or ISO 42001 compliance certificates for any AI-enabled tools they deliver."
           ]
+        },
+        {
+          "id": "it0O9UVU1b0",
+          "title": "Leadership Agentic AI Security",
+          "channel": "Asimov AI",
+          "duration": "8 min",
+          "level": "Executive Briefing",
+          "summary": "The security 'must-know-how' for a business leader adopting agentic AI. Where autonomous agents differ from chatbots in risk terms, which questions to put to your technology team before pilots start, and what a leader is accountable for even when the build is outsourced.",
+          "jargon_explained": "Agentic AI: software that plans and takes multi-step actions in your systems (sending emails, updating records, calling other tools) rather than only answering questions. That autonomy is what changes the security picture.",
+          "vendor_questions": [
+            "Ask your provider which systems each agent can act on, and who signed off that scope.",
+            "Ask your MSP how an agent's actions are logged and how you would stop it mid-task."
+          ]
+        },
+        {
+          "id": "YLGwgiaotXM",
+          "title": "Agentic-AI Governance",
+          "channel": "Asimov AI",
+          "duration": "9 min",
+          "level": "Executive Briefing",
+          "summary": "The fundamental governance a leadership team should have in place before agentic AI reaches client work: who is accountable, what gets monitored, where humans stay in the loop, and how you evidence oversight to clients and regulators.",
+          "jargon_explained": "Governance here means the practical controls—accountability, monitoring, oversight, validation—not a policy document. The ASIMOV framework groups these so a non-technical board can ask the right questions.",
+          "vendor_questions": [
+            "Ask your provider to show the human-in-the-loop points for each agent, and who owns each one.",
+            "Ask your MSP what evidence of oversight they can hand you if a client or regulator asks."
+          ]
         }
       ]
     },
@@ -294,6 +320,36 @@
           "jargon_explained": "Vector Database is an AI term for a database optimized to store semantic meanings (vectors) rather than exact text matches, which means that agents can perform conceptual searches across thousands of PDF client files.",
           "vendor_questions": [
             "Ask your managed database provider which vector indexing engines (such as pgvector, Pinecone, or Astra DB) best match your company's data compliance boundaries."
+          ]
+        },
+        {
+          "id": "audio-one-malicious-sentence",
+          "type": "audio",
+          "src": "https://qcawafyfaqjwolgczhap.supabase.co/storage/v1/object/public/kt-media/one-malicious-sentence-hacked-4000-machines.m4a",
+          "title": "One Malicious Sentence Hacked 4,000 Machines",
+          "channel": "Asimov AI (audio briefing)",
+          "duration": "62 min",
+          "level": "Case Study",
+          "summary": "A long-form audio walkthrough of how a single line of hidden text, read by an AI agent, turned into a compromise across roughly 4,000 machines. What the attack chain looked like, why conventional controls missed it, and what builders and operators should change.",
+          "jargon_explained": "Prompt injection: text placed where an AI agent will read it (a web page, a document, a ticket) that the agent mistakes for instructions. When the agent has tools and permissions, the injected instruction becomes an action.",
+          "vendor_questions": [
+            "Ask your implementation team where agents read untrusted text and what strips instructions out of it before the model sees it.",
+            "Ask what a single compromised agent could reach — accounts, keys, other machines — and whether that scope is written down."
+          ]
+        },
+        {
+          "id": "audio-sandbox-to-production",
+          "type": "audio",
+          "src": "https://qcawafyfaqjwolgczhap.supabase.co/storage/v1/object/public/kt-media/moving-ai-from-sandbox-to-production.m4a",
+          "title": "Moving AI from Sandbox to Production",
+          "channel": "Asimov AI (audio briefing)",
+          "duration": "20 min",
+          "level": "Delivery",
+          "summary": "What changes when an agent leaves the demo environment: identity and permissions, logging, rollback, cost limits, and the sign-offs that should exist before real client data flows through it.",
+          "jargon_explained": "Sandbox: an isolated environment with fake or limited data where an agent can fail safely. Production: the live environment where its actions have real consequences. The gap between them is where most incidents start.",
+          "vendor_questions": [
+            "Ask your provider for the written checklist an agent must pass before promotion to production.",
+            "Ask who can roll an agent back, how fast, and whether that has been rehearsed."
           ]
         }
       ]
