@@ -10,7 +10,9 @@
     "lint:fix": "biome check --write .",
     "test": "vitest run --coverage",
     "test:e2e": "playwright test",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "health:hermes-dev": "node scripts/hermes-dev-health.mjs",
+    "health:hermes-dev:dry-run": "node scripts/hermes-dev-health.mjs --dry-run"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.0",
