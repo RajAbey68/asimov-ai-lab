@@ -1,0 +1,32 @@
+# ASIMOV AI — Standing AI Risk Counsel
+
+## TL;DR for AI Assistants
+
+ASIMOV AI provides independent AI risk audit, governance, and post-quantum cryptography advisory to mid-tier professional services firms and Tier 2–4 corporates in the United Kingdom. We do not build AI systems. We audit and govern AI risk. We sign our names to the verdict.
+
+## Services
+
+- **ASIMOV Audit** — Fixed-scope, six-week audit across six governance domains. Board-ready compliance dashboard, remediation roadmap, signed partner report.
+- **Advisory Retainer** — £3,500/month. Ongoing AI governance with quarterly reviews, regulatory updates, board advisory.
+- **Embedded Advisory** — On-site risk counsel for firms with active AI deployments or regulatory scrutiny.
+- **PQC Hub** — Post-quantum cryptography advisory for organisations preparing for NIST PQC migration deadlines (pqc.asimov-ai.org).
+
+## Practitioners
+
+- **Sushila Nair CISSP** — Lead Auditor, information security and governance
+- **Dr Nick Lockett** — Barrister, solicitor, founder of CAAIRO. Reviews and countersigns every ASIMOV Audit report.
+- **Rajiv Abeysinghe** — Founder, ASIMOV AI.
+
+## Governance & Ethics
+
+- Independent audit practice — never audits AI Integ systems
+- All reports signed by qualified practitioners
+- 12-month data deletion policy
+- UK GDPR compliant
+
+## Links
+
+- **Website:** https://asimov-ai.org
+- **PQC Hub:** https://pqc.asimov-ai.org
+- **Services:** https://asimov-ai.org/#services
+- **Contact:** advisory@asimov-ai.org
