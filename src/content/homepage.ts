@@ -30,8 +30,8 @@ export const homepageCopy = {
     {
       id: "regulatory-trap",
       headline:
-        "The EU AI Act and updated UK GDPR regulations hold deployers accountable, not just the creators.",
-      body: "If your staff uses unvetted models, the liability stops at your board. You don't need a Magic Circle budget to get Magic Circle protection. We deliver a board-ready risk assessment and a clear remediation roadmap in a fixed-fee, 6-week engagement. Ask your IT lead one question: which of our approved tools added AI features this year? Most boards get silence. That silence is the finding.",
+        "The EU AI Act and UK GDPR regulations hold deployers accountable, not just the creators.",
+      body: "When your staff uses unvetted models, accountability lands on your board — not the vendor's. You don't need a Magic Circle budget to get board-grade AI risk counsel. We deliver a board-ready risk assessment and a clear remediation roadmap in a fixed-fee, 6-week engagement. Ask your IT lead one question: which of our approved tools added AI features this year? Most boards get silence. That silence is the finding.",
       subhook: "The same defensive rigour. A fraction of the cost.",
     },
     {
@@ -43,7 +43,7 @@ export const homepageCopy = {
     {
       id: "objective-shield",
       headline:
-        "Traditional software integrators audit your systems just to upsell you a contract.",
+        "Traditional software integrators often audit systems before proposing their own build contract.",
       body: "ASIMOV AI does one thing: we give you an unbiased, signed risk verdict. We don't sell software, and we don't build systems. When your roadmap needs building, we refer — openly, including to our sister practice — and no ASIMOV fee depends on what gets built. Our work ends at the recommendation.",
       subhook: "Independent verdict. Disclosed relationships. Nothing buried.",
     },
@@ -189,7 +189,7 @@ export const homepageCopy = {
   },
 
   pricing: {
-    headline: "Predictable, fixed-fee engagements. No hourly billing. No scope creep.",
+    headline: "Predictable, fixed-fee engagements. No hourly billing. Scope confirmed at intake.",
     signal: "Typical engagement: 6 weeks · Fixed fee · Confirmed at Diagnostic",
     tiers: [
       {

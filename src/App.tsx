@@ -437,7 +437,7 @@ export function App() {
                   <iframe
                     className="w-full h-full"
                     src="https://www.youtube.com/embed/5pZtNmQL9aY?rel=0&modestbranding=1&playsinline=1"
-                    title="ISACA GWDC Insights - AI in the Crosshairs"
+                    title="ISACA GWDC Insights - AI in the Crosshairs (drawing on ISACA GWDC research)"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
@@ -448,7 +448,7 @@ export function App() {
                     className="text-xs font-mono font-semibold uppercase tracking-wider mb-2"
                     style={{ color: "var(--color-amber)" }}
                   >
-                    ISACA GWDC Insights
+                    Drawing on ISACA GWDC Insights
                   </p>
                   <p className="text-sm text-zinc-400 leading-relaxed">
                     An in-depth briefing on systemic AI vulnerabilities, threat modeling for
