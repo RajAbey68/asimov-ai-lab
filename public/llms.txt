@@ -7,7 +7,7 @@ ASIMOV AI provides independent AI risk audit, governance, and post-quantum crypt
 ## Services
 
 - **ASIMOV Audit** — Fixed-scope, six-week audit across six governance domains. Board-ready compliance dashboard, remediation roadmap, signed partner report.
-- **Advisory Retainer** — £3,500/month. Ongoing AI governance with quarterly reviews, regulatory updates, board advisory.
+- **Advisory Retainer** — Ongoing AI governance with quarterly reviews, regulatory updates, board advisory.
 - **Embedded Advisory** — On-site risk counsel for firms with active AI deployments or regulatory scrutiny.
 - **PQC Hub** — Post-quantum cryptography advisory for organisations preparing for NIST PQC migration deadlines (pqc.asimov-ai.org).
 
