@@ -180,7 +180,7 @@ export const homepageCopy = {
       },
       {
         name: "Rajiv Abeysinghe",
-        role: "Co-founder, ASIMOV AI | BCS Chartered IT Professional | AWS Certified Solutions Architect",
+        role: "BCS Chartered IT Professional | AWS Certified Solutions Architect",
         credential:
           "27 years delivering AI and enterprise technology across public sector, financial services, and regulated industries. Co-author, The Digital Law Firm (Law Society Publishing, Q4 2026).",
         portrait: "/images/raj-abeysinghe.jpg",
