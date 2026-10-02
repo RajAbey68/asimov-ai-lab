@@ -15,7 +15,7 @@ ASIMOV AI provides independent AI risk audit, governance, and post-quantum crypt
 
 - **Sushila Nair CISSP** — Lead Auditor, information security and governance
 - **Dr Nick Lockett** — Barrister, solicitor, founder of CAAIRO. Reviews and countersigns every ASIMOV Audit report.
-- **Rajiv Abeysinghe** — Founder, ASIMOV AI.
+- **Rajiv Abeysinghe** — ASIMOV AI.
 
 ## Governance & Ethics
 
