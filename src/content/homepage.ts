@@ -182,7 +182,7 @@ export const homepageCopy = {
         name: "Rajiv Abeysinghe",
         role: "BCS Chartered IT Professional | AWS Certified Solutions Architect",
         credential:
-          "27 years delivering AI and enterprise technology across public sector, financial services, and regulated industries. Co-author, The Digital Law Firm (Law Society Publishing, Q4 2026).",
+          "27 years delivering AI and enterprise technology across public sector, financial services, and regulated industries. ",
         portrait: "/images/raj-abeysinghe.jpg",
       },
     ],
@@ -208,7 +208,7 @@ export const homepageCopy = {
       {
         name: "Advisory Retainer",
         duration: "Ongoing",
-        from: "From £3,500/month",
+        from: "Fixed fee confirmed at Diagnostic",
         description:
           "Standing counsel. Regulatory monitoring. Monthly session. Quarterly posture update.",
       },
